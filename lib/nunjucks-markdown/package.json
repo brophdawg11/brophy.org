@@ -1,0 +1,11 @@
+{
+  "name": "nunjucks-markdown",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matt Brophy <matt@brophy.org> (http://www.brophy.org/)",
+  "license": "ISC"
+}

@@ -1,0 +1,46 @@
+{
+  "name": "brophy.org",
+  "description": "Matt Brophy's personal website (brophy.org)",
+  "version": "0.0.1",
+  "author": "Matt Brophy <matt@brophy.org> (http://www.brophy.org/)",
+  "license": "MIT",
+  "homepage": "https://github.com/brophdawg11/brophy.org",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brophdawg11/brophy.org.git"
+  },
+  "bugs": {
+    "url": "https://github.com/brophdawg11/brophy.org/issues"
+  },
+  "keywords": [
+    "brophy",
+    "software",
+    "web",
+    "development",
+    "javascript",
+    "html",
+    "css",
+    "angular",
+    "node"
+  ],
+  "dependencies": {
+    "moment": "2.3.x",
+    "underscore": "1.4.x",
+    "typogr": "0.5.x"
+  },
+  "private": "true",
+  "devDependencies": {
+    "font-awesome": "^4.6.1",
+    "foundation-sites": "^6.2.1",
+    "is-array": "./lib/is-array",
+    "marked": "^0.3.5",
+    "nunjucks": "^2.4.2",
+    "nunjucks-markdown": "./lib/nunjucks-markdown",
+    "wintersmith": "^2.3.1",
+    "wintersmith-libsass": "^0.4.1"
+  }
+}

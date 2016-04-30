@@ -1,0 +1,29 @@
+{% extends "aside.nunjucks" %}
+
+{% block header %}
+  <nav class="page-header-nav">
+    <ul class="page-header-nav__ul">
+      {% for link in env.locals.headerLinks %}
+        <li class="page-header-nav__li">
+          <a class="page-header-nav__a
+                    page-header-nav__a--{{link.class}}
+                    fa fa-{{link.icon}}"
+             href="{{link.url}}"
+             title="{{link.title}}">
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+{% endblock %}
+
+{% block aside %}
+  <div class="page-aside-inner">
+    <h1 class="page-aside-inner__h1">{{env.locals.name}}</h1>
+    <h2 class="page-aside-inner__h2">{{env.locals.description}}</h2>
+  </div>
+{% endblock %}
+
+{% block content %}
+This is the content
+{% endblock %}

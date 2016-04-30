@@ -1,0 +1,60 @@
+{
+  "plugins": [
+    "./plugins/paginator.coffee",
+    "wintersmith-nunjucks",
+    "wintersmith-libsass"
+  ],
+  "require": {
+    "moment": "moment",
+    "_": "underscore",
+    "typogr": "typogr"
+  },
+  "jade": {
+    "pretty": true
+  },
+  "nunjucks": {
+    "filtermodules": [
+      "nunjucks-markdown"
+    ]
+  },
+  "markdown": {
+    "smartLists": true,
+    "smartypants": true
+  },
+  "node-sass": {
+    "includePaths": [
+        "./node_modules/foundation-sites/scss",
+        "./node_modules/font-awesome/scss"
+    ]
+  },
+  "paginator": {
+    "perPage": 3
+  },
+  "locals": {
+    "url": "http://localhost:8080",
+    "name": "Matt Brophy - Web Developer",
+    "owner": "Matt Brophy (matt@brophy.org)",
+    "description": "Philadelphian. Enjoys sports, beer, coffee, and coding. Order of preference depends on day and time.",
+    "headerLinks": [{
+      "url": "/",
+      "title": "Home",
+      "class": "home",
+      "icon": "home"
+    }, {
+      "url": "/about.html",
+      "title": "About",
+      "class": "about",
+      "icon": "info-circle"
+    }, {
+      "url": "/blog.html",
+      "title": "Blog",
+      "class": "blog",
+      "icon": "comments"
+    }, {
+      "url": "/resume.html",
+      "title": "Resume",
+      "class": "resume",
+      "icon": "file-text"
+    }]
+  }
+}

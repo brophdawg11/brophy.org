@@ -1,0 +1,431 @@
+{% extends "layout.nunjucks" %}
+
+{% block body %}
+{% set data = page.metadata %}
+<div id="cv">
+  <div class="mainDetails">
+    <div class="headshot">
+      <img src="{{data.headshot}}" alt="{{data.name}}" />
+    </div>
+
+    <div class="name">
+      <h1>{{data.name}}</h1>
+      <h2>{{data.title}}</h2>
+    </div>
+
+    <div class="contactDetails">
+      <ul>
+        <li>{{data.location}}</li>
+        <li>
+          e:
+          <a href="mailto:{{data.email}}" target="_blank">
+            {{data.email}}
+          </a>
+        </li>
+        <li>
+          w:
+          <a href="http://{{data.website}}">
+            {{data.website}}
+          </a>
+        </li>
+        <li>
+          <a href="https://{{data.github}}" target="_blank">
+            {{data.github}}
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div id="mainArea">
+
+    <section class="keySkillsSection">
+      <div class="sectionTitle">
+        <h1>Key Skills</h1>
+      </div>
+
+      <div class="sectionContent">
+        {% for keySkill in page.metadata.keySkills %}
+          <p class="subDetails">{{keySkill.title}}:</p>
+          <ul class="keySkills">
+            {% for skill in keySkill.skills %}
+              <li>{{skill}}</li>
+            {% endfor %}
+          </ul>
+        {% endfor %}
+      </div>
+
+      <div class="clear"></div>
+    </section>
+
+    <section class="workDetails">
+      <div class="sectionTitle">
+        <h1>Work Experience</h1>
+      </div>
+
+      <div class="sectionContent">
+
+
+
+        <article>
+          <h2>Senior Web/Mobile Developer - Judge Consulting Group</h2>
+          <p class="subDetails">February 2014 - Present</p>
+          <ul>
+            <li>Lockheed Martin 'Build Your Own Littoral Combat Ship' iPad application
+              <ul>
+                <li>Developed a Hybrid PhoneGap application to assist sales
+                    personnel in presenting varying models of
+                    Littoral Combat Ships to potential buyers</li>
+                <li>Implemented a real-time ship overview of selected options,
+                    with the ability to zoom in on portions of the ship by
+                    dragging a finger across the overview</li>
+                <li>Implemented click-tracking analytics and graphing
+                    capabilities for retrospective analysis of popular ship
+                    options</li>
+                <li>Technologies: Angular, Bootstrap, LoDash, Chart.js, Less,
+                    lscache, Karma, Jasmine</li>
+              </ul>
+            </li>
+
+            <li>GlaxoSmithKline Field Communications Center POC
+              <ul>
+                <li>Developed a Hybrid PhoneGap application to provide corporate
+                    article access to field personnel</li>
+                <li>Provided caching ability in WebSQL for offline article
+                    reading</li>
+                <li>Integrated with native iOS calendar to allow creation of
+                    follow up reminder alerts for articles</li>
+                <li>Integrated with GSK corporate OAuth login endpoint</li>
+                <li>Technologies: jQuery, jQuery Mobile, LoDash, Handlebars,
+                    Less, WebSQL, QUnit, Gulp</li>
+              </ul>
+            </li>
+
+            <li><a href="http://www.judge.com" target="_blank">The Judge Group</a> Corporate Website redesign
+              <ul>
+                <li>Responsible for all .NET MVC Web application and front-end
+                    HTML/CSS/JavaScript development for the redesigned Judge
+                    Group corporate website</li>
+                <li>Leveraged mobile-first responsive web design techniques
+                    to support all mobile and tablet device resolutions</li>
+                <li>Implemented a Sharepoint-backed Widget-based site design
+                    that can be controlled and modified by content managers</li>
+                <li>Integrated with LinkedIn, Dropbox, and Google Drive APIs
+                    to upload resume information</li>
+                <li>Technologies: .NET MVC, jQuery, Bootstrap, LoDash, Razor templates,
+                    Less</li>
+              </ul>
+            </li>
+
+            <li>PAR Assessment Toolkit iOS/Android Application
+              <ul>
+                <li>Developed a Hybrid PhoneGap application to assist
+                    Psychological professionals, aimed to replace the existing
+                    native iOS and Android applications</li>
+                <li>Leveraged mobile-first responsive web design techniques
+                    to support all mobile and tablet device resolutions</li>
+                <li>Implemented AJAX localStorage caching mechanism to reduce
+                    call traffic to server endpoints</li>
+                <li>Technologies: jQuery, jQuery Mobile, LoDash, Handlebars,
+                    Less, Flotr2, lscache, QUnit, Gulp</li>
+              </ul>
+            </li>
+
+            <li>GlaxoSmithKline GPO Rebate Calculator iPad Application
+              <ul>
+                <li>Developed an iPad application to assist in calculation of
+                    available and earned rebates for bulk pharmaceutical
+                    purchases</li>
+                <li>Developed a HTML5 web application to run within the native
+                    Skura hybrid wrapper</li>
+                <li>Technologies: Zepto, LoDash, Knockout, Hammer, Less,
+                    FTScroller, QUnit, Gulp</li>
+              </ul>
+            </li>
+
+            <li>UK Parliament MyConstituency iOS/Android Application
+              <ul>
+                <li>Performed additional application development and maintenance
+                    on existing PhoneGap Hybrid application</li>
+                <li>Implemented a stremlined build process using Gulp</li>
+                <li>Modularized and refactored JavaScript application code
+                    resulting in a close to a 40% reduction in lines of code</li>
+                <li>Technologies: jQuery, LoDash, Leaflet, Kendo</li>
+              </ul>
+            </li>
+
+            <li>BNP Paribas <a href="www.hellotrends.be" target="_blank">hellotrends.be</a> website
+              <ul>
+                <li>Developed a multi-lingual responsive website for displaying
+                    new articles and blog entries in the banking industry</li>
+                <li>Implemented a personalization algorithm based on article
+                    categories and tags that allows the user to opt-in to a
+                    personalized sorting of articles</li>
+                <li>Runs on top of a Sitefinity CMS instance</li>
+                <li>Handled cross-browser issues to ensure proper site execution
+                    in IE8</li>
+                <li>Technologies: jQuery, LoDash, Hammer, Handlebars</li>
+              </ul>
+            </li>
+          </ul>
+
+        </article>
+
+        <article>
+          <h2>JavaScript Developer - EPAM Empathy Lab</h2>
+          <p class="subDetails">February 2013 - February 2014</p>
+          <ul>
+            <li>DAWN Set Top Box UI
+              <ul>
+                <li>Served as a lead developer on a team of 15+ developers,
+                    building a JavaScript/HTML5/CSS3 user interface running in
+                    an embedded QT WebKit browser on a Linux-based set top
+                    cable box</li>
+                <li>Designed and implemented main routing, view lifecycle, and
+                    event handler modules in an 80k-line JavaScript application</li>
+                <li>Diagnosed and addressed various animation performance issues
+                    due to the hardware limitations of the set top box.  Heavy use
+                    of requestAnimationFrame() and ensuring JavaScript was not
+                    running at the same time as animations ensured smooth visual
+                    effects</li>
+                <li>Diagnosed and addressed various memory leaks via heavy use of
+                    Chrome DevTools and other memory management tools</li>
+                <li>Primarily used native, heavily-asynchronous Javascript, along
+                    with libraries/frameworks such as jQuery Deferred, LoDash,
+                    Director.js, Backbone, and Duster.js</li>
+              </ul>
+            </li>
+            <li>Brite WebRTC Video Chat Application</li>
+              <ul>
+                <li>Finished in 1st place out of 8 teams in the EPAM North
+                    American Hackathon</li>
+                <li>Given 12 hours to build something from scratch to help the
+                    global EPAM corporation to "Follow the Sun," our 3-man team
+                    built a browser-based WebRTC video/audio/text chat application
+                    to faciliate communication amongst global development teams</li>
+                <li>Demo available at <a href="http://www.getbrite.info" target="_blank">getbrite.info</a>
+                    (Only tested in Chrome)</li>
+                <li>The same team will be travelling to Minsk, Belarus in
+                    January 2014 to compete in a 24-hour EPAM Global Hackathon
+                    against other regional winners</li>
+              </ul>
+            </li>
+          </ul>
+
+        </article>
+
+        <article>
+          <h2>Web/Mobile Developer - Judge Consulting Group</h2>
+          <p class="subDetails">April 2012 - February 2013</p>
+          <ul>
+            <li>
+              Official Mike Vick Mobile App (MV7 Mobile)
+              <ul>
+                <li>Performed all JavaScript and UI development for a hybrid
+                    iOS/Android mobile application using the PhoneGap framework,
+                    Backbone.js, jQuery, jQuery Mobile, and Handlebars.js</li>
+                <li>Incorporated native camera and geolocation functionality
+                    through the PhoneGap APIs</li>
+                <li>Incorporated native in-app ads, in-app purchasing, push
+                    notifications, child browser, and iOS TabBar via PhoneGap
+                    plugins.</li>
+              </ul>
+            </li>
+            <li>
+              iZUP Android Application
+              <ul>
+                <li>Fixed various functionality issues for the application
+                    which uses GPS tracking to determine the speed of the user
+                    in order to lock down phone use while travelling above a
+                    certain speed threshold.</li>
+                <li>Re-wrote the location tracking and speed calculation
+                    algorithms to account for inaccuracies of the GPS sensor
+                    across various Android hardware.</li>
+                <li>Implemented a debugging tool using the Google Maps API to
+                    plot captured GPS data and values to determine problem
+                    sections of the algorithm</li>
+                <li>Fixed communication and state issues between the UI thread
+                    and the long running background service</li>
+                <li>Incorporated a separate Watcher application that could
+                    alert an account administrator if the user attempted to
+                    disable the GPS sensor or uninstall the application from
+                    their phone.  Packaged up as a dual install from a single
+                    .apk file</li>
+              </ul>
+            </li>
+            <li>
+              iApps e-Commerce Client Implementation
+              <ul>
+                <li>Implemented an e-Commerce site based on the iApps framework
+                    in a SaaS environment</li>
+                <li>Helped develop automated processes to sync data between the
+                    clients backend data sources and the SaaS e-Commerce
+                    database</li>
+                <li>Designed a cloud based error logging system, utilizing
+                    Amazons SNS service to handle error logging from an
+                    external SaaS environment</li>
+              </ul>
+            </li>
+          </ul>
+        </article>
+
+        {% for workExperience in data.workExperience %}
+          <article>
+            <h2>{{workExperience.title | md | safe}}</h2>
+            {% for subDetail in workExperience.subDetails %}
+              <p class="subDetails">{{subDetail}}</p>
+            {% endfor %}
+            <ul class="workDetails-list">
+              {% for detail in workExperience.details %}
+                {% if _.isArray(detail) %}
+                  <ul>
+                    {% for detail2 in detail %}
+                      <li>{{detail2}}</li>
+                    {% endfor %}
+                  </ul>
+                {% else %}
+                  <li>{{detail}}</li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </article>
+        {% endfor %}
+
+        <article>
+          <h2>CSE Master's Degree Candidate - Lehigh University</h2>
+          <p class="subDetails">August 2008 - May 2010</p>
+          <ul>
+            <li>
+              <span class="italics">Thesis:</span>
+              <span>OWL-PL: A Presentation Language for Displaying Semantic
+                    Data on the Web</span>
+            </li>
+            <li>Independently developed a database-driven web application to
+                facilitate the hiring process for new CSE faculty members using
+                the Java Stripes web framework</li>
+            <li>Additional areas of study included Semantic Web, WWW Search,
+                Web Applications, Pattern Recognition, Parallel Computing, and
+                Robotics</li>
+          </ul>
+        </article>
+
+        <article>
+          <h2>Web Programmer - Software Consulting Services</h2>
+          <p class="subDetails">January 2008 - January 2010</p>
+          <ul>
+            <li>Worked in an agile Scrum environment developing web-based
+                modules to interface with backend applications in the newspaper
+                industry.</li>
+            <li>Used technologies including generative programming and
+                frame-based macro preprocessing.</li>
+          </ul>
+        </article>
+
+        <article>
+          <h2>Web Programmer, System Admin - <a href="http://www.brophy.org" target="_blank">brophy.org</a></h2>
+          <p class="subDetails">2002 - Present</p>
+          <ul>
+            <li>Installed, configured, and currently maintaining various Web
+                sites, hosted at sub domains of brophy.org</li>
+            <li>Initially installed and maintained on personal Linux server
+                hardware</li>
+            <li>Web sites currently hosted at GoDaddy.com and on virtual
+                servers in Amazon's EC2 infrastructure</li>
+            <li>Mail currently hosted via Google Apps</li>
+            <li>Integrated with Google calendar</li>
+          </ul>
+        </article>
+
+        <article>
+          <h2>Web Programmer - <a href="http://www.victorypicks.com" target="_blank">victorypicks.com</a></h2>
+          <p class="subDetails">February 2007 - February 2008</p>
+          <ul>
+            <li>Developed and maintained a commercial, database driven web
+                application:
+              <ul>
+                <li>Built on the LAMP (Linux, Apache, MySQL, PHP)
+                    architecture</li>
+                <li>Extensive use of AJAX, XML, JavaScript, DHTML, CSS, PHP,
+                    and SQL</li>
+                <li>Interfaced with PayPal to accept electronic payments</li>
+                <li>Included separate, restricted member and administrator only
+                    access zones</li>
+              </ul>
+            </li>
+            <li>Served as the DB admin, DB programmer, front and back-end web
+                programmer</li>
+          </ul>
+        </article>
+
+        <article>
+          <h2>IT Advisory Associate - KPMG LLP</h2>
+          <p class="subDetails">September 2006 - January 2008</p>
+          <ul>
+            <li>Assisted in planning, execution, and documentation of IT audit
+                and attestation engagements</li>
+            <li>Led small teams in client engagements, as well as executed
+                individual engagements</li>
+          </ul>
+        </article>
+
+        <article class="noprint">
+          <h2>Junior System Administrator - Lehigh University CSE Department</h2>
+          <p class="subDetails">January 2003 - May 2006</p>
+          <ul>
+            <li>Installed hardware and software in department machines, working
+                in UNIX/Linux/Windows environments</li>
+            <li>Programmed various system administrative functions, including
+                an automated password cracking program to detect and alert
+                users of weak passwords</li>
+          </ul>
+        </article>
+
+        <article class="noprint">
+          <h2>Integrated Product Development Program - Lehigh University</h2>
+          <p class="subDetails">Spring/Fall 2005</p>
+          <p>
+            Programmed a custom Excel add-on in VBA to perform a regression
+            analysis on data extracted from a MS SQL Server database and graph
+            the results for an engineering firm in Harrisburg, PA
+          </p>
+        </article>
+
+        <article class="noprint">
+          <h2>WUME (Web Usage Methodology and Evaluation) Laboratory - Lehigh University</h2>
+          <p class="subDetails">Fall 2002</p>
+          <p>
+            Assisted in the research and programming for the
+            <a href="http://www.cse.lehigh.edu/~brian/pubs/2003/www/" target="_blank">
+                Finding Relevant Website Queries
+            </a>
+            paper published at the 12th International World Wide Web Conference
+          </p>
+        </article>
+
+      </div>
+      <div class="clear"></div>
+    </section>
+
+    <section>
+      <div class="sectionTitle">
+        <h1>Education</h1>
+      </div>
+
+      <div class="sectionContent">
+        {% for education in data.education %}
+          <article>
+            <h2>{{education.title}}</h2>
+            {% for detail in education.details %}
+              <p class="subDetails">{{detail}}</p>
+            {% endfor %}
+          </article>
+        {% endfor %}
+      </div>
+
+      <div class="clear"></div>
+    </section>
+
+  </div>
+</div>
+{% endblock %}

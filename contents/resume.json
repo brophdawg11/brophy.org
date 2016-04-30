@@ -1,0 +1,155 @@
+{
+  "template": "resume.nunjucks",
+
+  "name": "Matt Brophy",
+  "title": "Web/Software Developer",
+  "headshot": "images/headshot.jpg",
+  "location": "Philadelphia, PA",
+  "email": "matt@brophy.org",
+  "website": "www.brophy.org",
+  "github": "github.com/brophdawg11",
+
+  "keySkills": [{
+    "title": "Web Languages",
+    "skills": [
+      "JavaScript",
+      "HTML5",
+      "CSS3",
+      "Less",
+      "Scss",
+      "Java Servlets",
+      "JSP",
+      "PHP",
+      "XML",
+      "XSLT"
+    ]
+  }, {
+    "title": "Web Technologies",
+    "skills": [
+      "jQuery",
+      "Angular",
+      "AJAX",
+      "Zepto",
+      "jQuery Mobile",
+      "Underscore",
+      "LoDash",
+      "Knockout",
+      "Hammer",
+      "Handlebars",
+      "Backbone",
+      "Gulp",
+      "QUnit",
+      "localSorage",
+      "lscache",
+      "WebSQL",
+      "Director",
+      "Dust.js",
+      "Canvas",
+      "Google Maps API",
+      "Leaflet",
+      "Chart.js",
+      "Modernizr",
+      "MochiKit",
+      "Java Stripes",
+      "Apache Tomcat",
+      "CGI"
+    ]
+  }, {
+    "title": "Mobile Technologies",
+    "skills": [
+      "PhoneGap",
+      "iOS",
+      "Android"
+    ]
+  }, {
+    "title": "Programming Languages",
+    "skills": [
+      "Java",
+      "C#",
+      "C++",
+      "Perl",
+      "Bash",
+      "C (OpenMP, MPI)",
+      "VBA (Excel, Access)"
+    ]
+  }, {
+    "title": "Systems",
+    "skills": [
+      "Mac OS X (10.6-10.8)",
+      "Windows (7, XP, NT, 98, 95)",
+      "Linux (Ubuntu, CentOS, Fedora, RedHat)",
+      "UNIX (Sun Solaris)"
+    ]
+  }, {
+    "title": "Cloud Technologies",
+    "skills": [
+      "AWS EC2",
+      "AWS S3",
+      "AWS SNS"
+    ]
+  }, {
+    "title": "Semantic Web Languages",
+    "skills": [
+      "OWL",
+      "RDF"
+    ]
+  }, {
+    "title": "Databases",
+    "skills": [
+      "MySQL",
+      "SQL Server 2008",
+      "MS Access",
+      "PostgreSQL"
+    ]
+  }, {
+    "title": "Web Languages",
+    "skills": [
+      "Git",
+      "TFS (git-tfs, git-tf)",
+      "SVN",
+      "CVS",
+      "MapReduce",
+      "Agile (Scrum)"
+    ]
+  }],
+
+  "workExperience": [{
+    "title": "Expert Consultant - Software Rights Archive, LLC. vs. Google Inc. et al",
+    "subDetails": [
+      "May 2009 - August 2009",
+      "May 2010 - January 2012"
+    ],
+    "details": [
+      "Reviewed source code and documentation related to system architecture and algorithms of search engines owned by Google, Yahoo! and IAC (Ask.com) to evaluate patent infringement claims",
+      "Consulted with legal counsel regarding crawl-to-query pipeline including key algorithms and system interfaces",
+      "Guided legal counsel through source code level depositions with software engineers"
+    ]
+  }, {
+    "title": "Web Programmer, System Admin - [brophy.org](http://www.brophy.org \"www.brophy.org\")",
+    "subDetails": [
+      "2002 - Present"
+    ],
+    "details": [
+      "Installed, configured, and currently maintaining various Web sites, hosted at sub domains of brophy.org",
+      "Initially installed and maintained on personal Linux server hardware",
+      "Web sites currently hosted at GoDaddy.com and on virtual servers in Amazon's EC2 infrastructure",
+      "Mail currently hosted via Google Apps",
+      "Integrated with Google calendar"
+    ]
+  }],
+
+  "education": [{
+    "title": "Lehigh University",
+    "details": [
+      "College of Engineering and Applied Science",
+      "Master of Science, Computer Science and Engineering, May 2010, GPA: 4.0/4.0"
+    ]
+  }, {
+    "title": "Lehigh University",
+    "details": [
+      "College of Engineering and Applied Science/College of Business and Economics",
+      "Bachelor of Science, Computer Science and Business, May 2006, GPA: 3.32/4.0",
+      "Honors: Phi Eta Sigma Honor Fraternity, National Society of Collegiate Scholars, The National Dean's List"
+    ]
+  }]
+}
