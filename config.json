@@ -32,19 +32,12 @@
   },
   "locals": {
     "url": "http://localhost:8080",
-    "name": "Matt Brophy - Web Developer",
-    "owner": "Matt Brophy (matt@brophy.org)",
-    "description": "Philadelphian. Enjoys sports, beer, coffee, and coding. Order of preference depends on day and time.",
+    "owner": "Matt Brophy",
     "headerLinks": [{
       "url": "/",
       "title": "Home",
       "class": "home",
       "icon": "home"
-    }, {
-      "url": "/about.html",
-      "title": "About",
-      "class": "about",
-      "icon": "info-circle"
     }, {
       "url": "/blog.html",
       "title": "Blog",
@@ -55,6 +48,37 @@
       "title": "Resume",
       "class": "resume",
       "icon": "file-text"
+    }],
+    "footerLinks": [{
+      "url": "http://www.github.com/brophdawg11",
+      "title": "GitHub",
+      "class": "github",
+      "icon": "github"
+    }, {
+      "url": "http://www.instagram.com/brophdawg11",
+      "title": "Instagram",
+      "class": "instagram",
+      "icon": "instagram"
+    }, {
+      "url": "http://www.facebook.com/matt.b.brophy",
+      "title": "Facebook",
+      "class": "facebook",
+      "icon": "facebook"
+    }, {
+      "url": "http://www.twitter.com/brophdawg11",
+      "title": "Twitter",
+      "class": "twitter",
+      "icon": "twitter"
+    }, {
+      "url": "mailto:matt@brophy.org",
+      "title": "Email",
+      "class": "email",
+      "icon": "envelope"
+    }, {
+      "url": "/rss.html",
+      "title": "RSS",
+      "class": "rss",
+      "icon": "rss"
     }]
   }
 }

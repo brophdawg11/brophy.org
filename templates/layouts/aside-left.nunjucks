@@ -1,13 +1,58 @@
 {% extends "layouts/layout.nunjucks" %}
 
+{% block head %}
+<style>
+  {% set keys = _.keys(contents.images.asides) %}
+  {% set num = keys.length %}
+  {% set startImg = contents.images.asides[keys[0]] %}
+  {% set percentage = 0 %}
+  {% set percentageIncrement = (100 / num) %}
+
+  @keyframes rotate-background {
+    from {
+      background-image: url(../{{startImg.filepath.relative}});
+    }
+
+    {% for key in _.rest(keys, 1) %}
+      {% set img = contents.images.asides[key] %}
+      {% set percentage = percentage + percentageIncrement %}
+      {{percentage}}% {
+        background-image: url(../{{img.filepath.relative}});
+      }
+    {% endfor %}
+
+    to {
+      background-image: url(../{{startImg.filepath.relative}});
+    }
+  }
+
+  .page-aside {
+    animation-name: rotate-background;
+    animation-duration: {{num*5}}s;
+    animation-iteration-count: infinite;
+  }
+</style>
+{% endblock %}
+
 {% block body %}
-<header class="page-header">
-  {% block header %}{% endblock %}
-</header>
+
 <aside class="page-aside">
+  <div class="page-aside-img-loader"></div>
   {% block aside %}{% endblock %}
 </aside>
+
 <section class="page-content">
+
+  <header class="page-header">
+    {% block header %}{% endblock %}
+  </header>
+
   {% block content %}{% endblock %}
+
+  <footer class="page-footer">
+    {% block footer %}{% endblock %}
+  </footer>
+
 </section>
+
 {% endblock %}
