@@ -1,6 +1,6 @@
-{% extends "layout.nunjucks" %}
+{% extends "layouts/content-centered.nunjucks" %}
 
-{% block body %}
+{% block content %}
 {% set data = page.metadata %}
 <div id="cv">
   <div class="mainDetails">

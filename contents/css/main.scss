@@ -4,6 +4,7 @@
 
 // http://demo.onedesigns.com/graceunderpressure/journal/
 
+// Variables
 // Breakpoints
 $small-max: 767px;
 $medium-min: 768px;
@@ -25,8 +26,41 @@ $lightgrey: lightgrey;
 $serif: 'Rokkitt', serif;
 $sans-serif: 'Lato', helvetica, arial, sans-serif;
 
+// Global Styles
 * {
   box-sizing: border-box;
+}
+
+body {
+  font-family: $sans-serif;
+}
+
+@import "./resume";
+
+.c-content-centered-outer {
+  width: 100%;
+  min-height: 100vh;
+  background: $offblack;
+  padding: 1em 0;
+}
+
+.c-content-centered {
+  background: $offwhite;
+  width: 98%;
+  padding: 0.5em;
+  margin: 0 1%;
+
+  @media all and (min-width: $medium-min) {
+    width: 94%;
+    padding: 1%;
+    margin: 0 3%;
+  }
+
+  @media all and (min-width: $large-min) {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
 }
 
 .page-header-nav {
@@ -130,299 +164,3 @@ $sans-serif: 'Lato', helvetica, arial, sans-serif;
 
 
 
-
-////// Old resume styles
-html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video {
-    border:0;
-    font:inherit;
-    font-size:100%;
-    margin: 0px;
-    padding:0;
-    vertical-align:baseline;
-}
-
-article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
-    display:block;
-}
-
-html, body {
-    background: $offblack;
-    font-family: $sans-serif;
-    font-size: 16px;
-    color: #222;
-}
-
-.clear { clear: both; margin-top: 10px;}
-.bold { font-weight: bold; }
-.italics { font-style: italic; }
-
-p {
-    font-size: 1em;
-    line-height: 1.4em;
-    color: #444;
-}
-
-li {
-    line-height: 125%;
-}
-
-#cv {
-    background: $offwhite;
-    width: 98%;
-    margin: 0;
-    padding: 1%;
-    min-width: 280px;
-}
-
-.headshot {
-    /* TODO: Come back and fix this. Don't include the image for mobile. */
-    display:none;
-}
-
-.mainDetails {
-    border-bottom: 2px solid #cf8a05;
-    background: #ededed;
-    padding: 15px 15px;
-}
-
-.name,
-.contactDetails {
-    text-align: center;
-}
-
-.name h1 {
-    font-size: 1.5em;
-    line-height: 125%;
-    font-weight: 700;
-    font-family: $serif;
-    margin-bottom: -6px;
-}
-
-.name h2 {
-    font-size: 1.25em;
-    line-height: 125%;
-    margin-left: 2px;
-    font-family: $serif;
-}
-
-.contactDetails ul {
-    list-style-type: none;
-    font-size: 0.9em;
-    margin-top: 2px;
-}
-
-.contactDetails ul li {
-    margin-bottom: 3px;
-    color: #444;
-}
-
-section {
-    border-top: 1px solid #dedede;
-    padding: 10px 0 10px;
-}
-
-section:first-child {
-    border-top: 0;
-}
-
-section:last-child {
-    padding-bottom: 10px;
-}
-
-.sectionTitle, .sectionContent {
-    float: none;
-    width: 100%;
-}
-
-.sectionTitle {
-    font-size: 1.25em;
-}
-
-.sectionTitle h1 {
-    font-family: $serif;
-    font-style: italic;
-    font-size: 1.5em;
-    color: #cf8a05;
-}
-
-.sectionContent {
-    margin-left: 5px;
-}
-
-.sectionContent article {
-    margin-top: 15px;
-    margin-right: 10px;
-}
-
-.sectionContent h2 {
-    font-family: $serif;
-    font-size: 1.5em;
-}
-
-.subDetails {
-    font-size: 0.8em;
-    font-style: italic;
-    margin-bottom: 0px;
-}
-
-.workDetails .sectionContent ul {
-    padding: 5px 0 4px 20px;
-}
-
-.workDetails-list {
-  list-style-type: disc;
-  list-style-position: outside;
-}
-
-.keySkills + .subDetails {
-    padding-top: 10px;
-}
-
-.keySkills {
-    list-style-type: none;
-    -moz-column-count:2;
-    -webkit-column-count:2;
-    column-count:2;
-    font-size: 1em;
-    color: #444;
-}
-
-.keySkills.large {
-    -moz-column-count:1;
-    -webkit-column-count:1;
-    column-count:1;
-}
-
-.keySkills:last-child {
-    margin-bottom: 5%;
-}
-
-/* Add a third column, and some external padding */
-@media all and (min-width: 480px) {
-    .keySkills {
-        -moz-column-count:3;
-        -webkit-column-count: 3;
-        column-count: 3;
-    }
-
-    #cv {
-        width: 94%;
-        margin: 2% auto;
-        padding: 1%;
-    }
-}
-
-/* Transform the columns into comma separated lists */
-@media all and (min-width: 600px), print {
-    .name h1 {
-        font-size: 2.5em;
-    }
-
-    .name h2 {
-        font-size: 2em;
-    }
-
-    .keySkills,
-    .keySkills.large {
-        display: inline;
-        list-style: none;
-
-        padding-bottom: 10px;
-}
-
-    .keySkills li,
-    .keySkills.large li {
-        display: inline;
-    }
-
-    .keySkills li:after,
-    .keySkills.large li:after {
-        content: ", ";
-    }
-
-    .keySkills li:last-child:after,
-    .keySkills.large li:last-child:after {
-        content: ""
-    }
-
-    .keySkills:last-child {
-        margin-bottom: 30px;
-    }
-}
-
-/* Show the headshot */
-@media screen and (min-width: 700px), print {
-    .name {
-        float: left;
-        text-align: left;
-    }
-
-    .contactDetails {
-        float: right;
-        text-align: left;
-    }
-
-    .headshot {
-        display: block;
-        width: 80px;
-        float: left;
-        margin-right: 30px;
-    }
-
-    .headshot img {
-        width: 100%;
-        height: auto;
-        -webkit-border-radius: 50%;
-        border-radius: 50%;
-    }
-}
-
-/* For print, remove background colors and headshot */
-@media print {
-    html, body, #cv, .mainDetails {
-        background: white;
-        font-size: 95%;
-    }
-
-    .mainDetails {
-        background: inherit;
-        padding: 0;
-    }
-
-    .headshot {
-        display: none;
-        margin-right: 0;
-    }
-
-    .noprint {
-        display: none;
-    }
-}
-
-/* Move the headers to the left column, and cap the max width of the content */
-@media all and (min-width: 800px) {
-
-    #cv {
-        width: 90%;
-        max-width: 1000px;
-        margin: 30px auto;
-    }
-
-    .sectionTitle {
-        float: left;
-        width: 25%;
-    }
-
-    .sectionContent {
-        float: right;
-        width: 72.5%;
-    }
-
-    .sectionContent article:first-child {
-        margin-top: 5px;
-    }
-
-    .keySkillsSection p:first-child {
-        margin-top: 10px;
-    }
-}

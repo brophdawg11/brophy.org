@@ -1,4 +1,4 @@
-{% extends "aside.nunjucks" %}
+{% extends "layouts/aside-left.nunjucks" %}
 
 {% block header %}
   <nav class="page-header-nav">

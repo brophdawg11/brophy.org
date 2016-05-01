@@ -1,4 +1,4 @@
-{% extends "layout.nunjucks" %}
+{% extends "layouts/layout.nunjucks" %}
 
 {% block body %}
 <header class="page-header">
