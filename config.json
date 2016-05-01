@@ -1,7 +1,7 @@
 {
   "plugins": [
     "./plugins/paginator.coffee",
-    "wintersmith-nunjucks",
+    "./node_modules/wintersmith-nunjucks",
     "wintersmith-libsass"
   ],
   "require": {
@@ -14,7 +14,7 @@
   },
   "nunjucks": {
     "filtermodules": [
-      "nunjucks-markdown"
+      "nunjucks-markdown-filter"
     ]
   },
   "markdown": {
