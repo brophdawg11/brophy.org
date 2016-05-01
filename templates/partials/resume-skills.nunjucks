@@ -1,0 +1,6 @@
+<p class="subDetails">{{keySkill.title}}:</p>
+<ul class="keySkills">
+  {% for skill in keySkill.skills %}
+    <li>{{skill}}</li>
+  {% endfor %}
+</ul>

@@ -47,12 +47,7 @@
 
       <div class="sectionContent">
         {% for keySkill in page.metadata.keySkills %}
-          <p class="subDetails">{{keySkill.title}}:</p>
-          <ul class="keySkills">
-            {% for skill in keySkill.skills %}
-              <li>{{skill}}</li>
-            {% endfor %}
-          </ul>
+          {% include "partials/resume-skills.nunjucks" %}
         {% endfor %}
       </div>
 
@@ -67,25 +62,7 @@
       <div class="sectionContent">
 
         {% for workExperience in data.workExperience %}
-          <article>
-            <h2>{{workExperience.title | md | safe}}</h2>
-            {% for subDetail in workExperience.subDetails %}
-              <p class="subDetails">{{subDetail | md | safe}}</p>
-            {% endfor %}
-            <ul class="workDetails-list">
-              {% for detail in workExperience.details %}
-                {% if _.isArray(detail) %}
-                  <ul>
-                    {% for detail2 in detail %}
-                      <li>{{detail2 | md | safe}}</li>
-                    {% endfor %}
-                  </ul>
-                {% else %}
-                  <li>{{detail | md | safe}}</li>
-                {% endif %}
-              {% endfor %}
-            </ul>
-          </article>
+          {% include "partials/resume-experience.nunjucks" %}
         {% endfor %}
 
       </div>
@@ -99,12 +76,7 @@
 
       <div class="sectionContent">
         {% for education in data.education %}
-          <article>
-            <h2>{{education.title}}</h2>
-            {% for detail in education.details %}
-              <p class="subDetails">{{detail}}</p>
-            {% endfor %}
-          </article>
+          {% include "partials/resume-education.nunjucks" %}
         {% endfor %}
       </div>
 
