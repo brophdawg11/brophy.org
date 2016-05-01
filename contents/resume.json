@@ -16,7 +16,7 @@
       "HTML5",
       "CSS3",
       "Less",
-      "Scss",
+      "SCSS",
       "Java Servlets",
       "JSP",
       "PHP",
@@ -24,20 +24,27 @@
       "XSLT"
     ]
   }, {
+    "title": "Web Frameworks",
+    "skills": [
+      "Angular",
+      "Hapi",
+      "Gulp",
+      "Backbone",
+      "Java Stripes"
+    ]
+  }, {
     "title": "Web Technologies",
     "skills": [
+      "LoDash",
       "jQuery",
-      "Angular",
-      "AJAX",
       "Zepto",
       "jQuery Mobile",
       "Underscore",
-      "LoDash",
       "Knockout",
       "Hammer",
       "Handlebars",
-      "Backbone",
-      "Gulp",
+      "Karma",
+      "Jasmine",
       "QUnit",
       "localSorage",
       "lscache",
@@ -50,7 +57,6 @@
       "Chart.js",
       "Modernizr",
       "MochiKit",
-      "Java Stripes",
       "Apache Tomcat",
       "CGI"
     ]
@@ -114,6 +120,26 @@
   }],
 
   "workExperience": [{
+    "title": "Senior Front-End Developer/Architect - [Urban Outfitters](http://www.urbn.com/ \"URBN\")",
+    "subDetails": [
+      "February 2015 - Present"
+    ],
+    "details": [
+      "Unified Cart Checkout Application",
+      [
+        "Lead Architect and Developer for a multi-tenant Angular.js application providing the URBN brand Cart/Checkout E-Commerce experience",
+        "Heavily asynchronous SPA leveraging RESTful micro services",
+        "Leveraged Angular providers and decorators to provide brand-customizable experiences from a single codebase",
+        "Leveraged ui-router views to incorporate portions of non-Angular browsing applications into the Angular application to improve code-reuse and provide a consistent look and feel throughout",
+        "Internationalized application to run in multiple languages",
+        "Heavy use of Angular interceptors to manage app-wide API request logic, including detecting failed requests, adjusting where possible, and retrying originating requests",
+        "Gulp-based build process used to provide branded builds",
+        "Launched with new global [freepeople.com](http://www.freepeople.com \"freepeople.com\") in April 2016",
+        "Planned launches for new global [urbanoutfitters.com](http://www.urbanoutfitters.com \"urbanoutfitters.com\") and [anthropologie.com](http://www.anthropologie.com \"anthropologie.com\") in Q4 2016/Q1 2017",
+        "Technologies: Angular, ui-router, LoDash, Hapi, Foundation, SCSS, Gulp, Karma, Jasmine"
+      ]
+    ]
+  }, {
     "title": "Senior Web/Mobile Developer - Judge Consulting Group",
     "subDetails": [
       "February 2014 - February 2015"
