@@ -30,14 +30,14 @@
     "node"
   ],
   "devDependencies": {
-    "foundation-sites": "^6.2.1",
+    "foundation-sites": "6.2.1",
     "moment": "2.3.x",
-    "nunjucks": "^2.4.2",
-    "nunjucks-markdown-filter": "^0.1.0",
+    "nunjucks": "2.4.2",
+    "nunjucks-markdown-filter": "0.1.0",
     "typogr": "0.5.x",
     "underscore": "1.4.x",
-    "wintersmith": "^2.3.1",
-    "wintersmith-libsass": "^0.4.1",
-    "wintersmith-nunjucks": "^1.1.0"
+    "wintersmith": "2.3.1",
+    "wintersmith-libsass": "0.4.1",
+    "wintersmith-nunjucks": "1.1.0"
   }
 }
