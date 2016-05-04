@@ -33,9 +33,9 @@
   <div class="c-home-content">
     <img class="c-home-logo" src="images/logo.png" alt="Matt Brophy" />
 
-    <h2 class="c-home-title">
+    <h1 class="c-home-title">
       Matt Brophy
-    </h2>
+    </h1>
 
     <p class="c-home-description">
       philadelphian

@@ -4,9 +4,9 @@ module.exports = (env, callback) ->
       e.g. "paginator": {"perPage": 10} ###
 
   defaults =
-    template: 'index.nunjucks' # template that renders pages
+    template: 'articles.nunjucks' # template that renders pages
     articles: 'articles' # directory containing contents to paginate
-    first: 'index.html' # filename/url for first page
+    first: 'articles/index.html' # filename/url for first page
     filename: 'page/%d/index.html' # filename for rest of pages
     perPage: 2 # number of articles per page
 

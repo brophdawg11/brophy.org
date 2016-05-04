@@ -13,6 +13,7 @@ $large-min: 1024px;
 
 // Sizing
 $lhs-aside-width: 30%;
+$content-padding: 2em;
 
 // Transitions
 $transition-duration: 200ms;
@@ -37,6 +38,47 @@ $sans-serif: 'Lato', helvetica, arial, sans-serif;
 body {
   font-family: $sans-serif;
   font-size: 100%;
+}
+
+h1, h2, h3, h4, h5 h6 {
+  font-family: $serif;
+}
+
+h1 {
+  font-size: 3em;
+  margin: .67em 0
+}
+
+h2 {
+  font-size: 2.25em;
+  margin: .75em 0
+}
+
+h3 {
+  font-size: 1.5em;
+  margin: .83em 0;
+}
+
+h4 {
+  font-size: 1em;
+  margin: 1em 0;
+}
+
+h5 {
+  font-size: .83em;
+  margin: 1.5em 0;
+}
+
+h6 {
+  font-size: .75em;
+  margin: 1.67em 0;
+}
+
+
+pre {
+  font-family: monospace;
+  overflow-y: hidden;
+  overflow-x: auto;
 }
 
 a {
@@ -87,9 +129,6 @@ a {
 }
 
 .c-home-title {
-  padding-bottom: 1em;
-  font-size: 3em;
-  font-family: $serif;
 }
 
 .c-home-description {
@@ -208,10 +247,13 @@ a {
 
 .page-content {
   position: relative;
+  padding: $content-padding;
 
   @media screen and (min-width: $large-min) {
-    margin-left: $lhs-aside-width;
-    width: 100% - $lhs-aside-width;
+    padding: $content-padding 0;
+    // @todo This is messy!!
+    margin-left: calc(#{$lhs-aside-width} + #{$content-padding});
+    width: calc(100% - #{$lhs-aside-width} - #{2 * $content-padding});
     min-height: 100vh;
   }
 }
@@ -242,8 +284,25 @@ a {
 
 
 
+.article-title {
+  margin-bottom: 0;
+}
 
+.article-subtitle {
+  font-size: 0.8em;
+  margin-bottom: 1.5em;
+}
 
+.article-date {
+  font-style: italics;
+}
 
+.article-tags {
+
+}
+
+.article-content {
+
+}
 
 

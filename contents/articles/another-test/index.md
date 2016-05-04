@@ -1,8 +1,9 @@
 ---
-title: Code and stuff!
+title: Article 1
 author: brophy
 date: 2012-10-01 15:00
-template: article.jade
+tags: tag1,tag2
+template: article.nunjucks
 ---
 
 Syntax highlighting with [highlight.js](http://softwaremaniacs.org/soft/highlight/en/).

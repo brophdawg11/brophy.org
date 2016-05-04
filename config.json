@@ -39,7 +39,7 @@
       "class": "home",
       "icon": "home"
     }, {
-      "url": "/blog.html",
+      "url": "/articles/",
       "title": "Blog",
       "class": "blog",
       "icon": "comments"
