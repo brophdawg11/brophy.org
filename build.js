@@ -1,7 +1,8 @@
+'use strict';
+
 var metalsmith = require('metalsmith'),
     assets = require('metalsmith-assets'),
     metadata = require('metalsmith-metadata-directory'),
-    branch = require('metalsmith-branch'),
     collections = require('metalsmith-collections'),
     excerpts = require('metalsmith-excerpts'),
     markdown = require('metalsmith-markdown'),
@@ -19,11 +20,11 @@ var metalsmith = require('metalsmith'),
     nunjucksMdFilter = require('./plugins/nunjucks-markdown-filter'),
     debugVerbose = require('./plugins/debug-verbose'),
     nunjucksLibraries = require('./plugins/nunjucks-libraries'),
-    moment = require('moment'),
     cmdArgs = require('yargs').argv,
     globalData = require('./contents/global.json'),
-    _ = require('lodash'),
+    /* eslint-disable no-unused-vars */
     builder;
+    /* eslint-enable no-unused-vars */
 
 builder =
     metalsmith(__dirname)
@@ -38,13 +39,13 @@ builder =
         .destination('./output')
         // Workaround for metalsmith.metadata issue on watching files
         // See: https://github.com/segmentio/metalsmith-collections/issues/27#issuecomment-266647074
-        .use((files, metalsmith, done) => {
+        .use(function (files, metalsmith, done) {
             setImmediate(done);
             metalsmith.metadata({
                 site: {
                     url: globalData.url
                 },
-                package: require( './package.json')
+                package: require('./package.json')
             });
         })
         // Clean the output directory each time
@@ -65,7 +66,7 @@ builder =
         .use(markdown())
         // Run files through typography plugin for formatting
         .use(typography({
-            lang: "en"
+            lang: 'en'
         }))
         // Generate post excerpts
         .use(excerpts())
@@ -79,7 +80,7 @@ builder =
         }))
         // Compile scss files from contents/
         .use(sass({
-            outputStyle: "expanded"
+            outputStyle: 'expanded'
         }))
         // Generate permalinks
         //   contents/post/test-post -> /post/test-post/index.html
@@ -117,14 +118,14 @@ if (cmdArgs.serve) {
     builder = builder.use(serve({
         port: 8080,
         verbose: true
-    }))
+    }));
 }
 
 if (cmdArgs.watch) {
     builder = builder.use(watch({
         pattern: '**/*',
         livereload: true
-    }))
+    }));
 }
 
 if (cmdArgs.debug) {
@@ -134,9 +135,8 @@ if (cmdArgs.debug) {
 
 builder = builder.build(function (err) {
     if (err) {
-      console.log(err);
-    }
-    else {
-      console.log('Site build complete!');
+        console.log(err);
+    } else {
+        console.log('Site build complete!');
     }
 });
