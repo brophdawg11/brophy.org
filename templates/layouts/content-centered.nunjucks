@@ -1,9 +1,0 @@
-{% extends "layouts/layout.nunjucks" %}
-
-{% block body %}
-<div class="c-content-centered-outer">
-  <div class="c-content-centered">
-    {% block content %}{% endblock %}
-  </div>
-</div>
-{% endblock %}

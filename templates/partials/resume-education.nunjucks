@@ -1,6 +1,0 @@
-<article>
-  <h2>{{education.title}}</h2>
-  {% for detail in education.details %}
-    <p class="subDetails">{{detail}}</p>
-  {% endfor %}
-</article>

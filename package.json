@@ -8,9 +8,9 @@
   "homepage": "https://github.com/brophdawg11/brophy.org",
   "main": "index.html",
   "scripts": {
-    "preview": "./node_modules/wintersmith/bin/wintersmith preview",
-    "build": "./node_modules/wintersmith/bin/wintersmith build",
-    "clean": "rm -rf build/",
+    "preview": "echo \"Not Implemented!\"",
+    "build": "echo \"Not Implemented!\"",
+    "clean": "echo \"Not Implemented!\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -32,14 +32,5 @@
     "node"
   ],
   "devDependencies": {
-    "foundation-sites": "6.2.1",
-    "moment": "2.3.x",
-    "nunjucks": "2.4.2",
-    "nunjucks-markdown-filter": "0.1.0",
-    "typogr": "0.5.x",
-    "underscore": "1.4.x",
-    "wintersmith": "2.3.1",
-    "wintersmith-libsass": "0.4.1",
-    "wintersmith-nunjucks": "1.1.0"
   }
 }
