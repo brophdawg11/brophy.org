@@ -1,5 +1,6 @@
 {
-    "url": "http://localhost:8080",
+    "url": "http://brophy.org",
+    "title": "Matt Brophy - Web Developer",
     "owner": "Matt Brophy",
     "headerLinks": [{
         "url": "/",
@@ -7,12 +8,12 @@
         "class": "home",
         "icon": "home"
     }, {
-        "url": "/articles/",
+        "url": "/posts/",
         "title": "Blog",
         "class": "blog",
         "icon": "comments"
     }, {
-        "url": "/resume.html",
+        "url": "/resume/",
         "title": "Resume",
         "class": "resume",
         "icon": "file-text"

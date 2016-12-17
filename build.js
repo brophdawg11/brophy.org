@@ -1,6 +1,5 @@
 var metalsmith = require('metalsmith'),
     assets = require('metalsmith-assets'),
-    json = require('metalsmith-json'),
     metadata = require('metalsmith-metadata-directory'),
     branch = require('metalsmith-branch'),
     collections = require('metalsmith-collections'),
@@ -15,8 +14,9 @@ var metalsmith = require('metalsmith'),
     icons = require('metalsmith-icons'),
     debug = require('metalsmith-debug'),
     nunjucks = require('nunjucks'),
+    nunjucksJsonFilter = require('./plugins/nunjucks-json-filter'),
     nunjucksMdFilter = require('./plugins/nunjucks-markdown-filter'),
-    brophyDebug = require('./plugins/debug'),
+    debugVerbose = require('./plugins/debug-verbose'),
     nunjucksLibraries = require('./plugins/nunjucks-libraries'),
     moment = require('moment'),
     cmdArgs = require('yargs').argv,
@@ -25,57 +25,70 @@ var metalsmith = require('metalsmith'),
 
 builder =
     metalsmith(__dirname)
-        .metadata({
-            site: {
-              title: 'brophy.org',
-              url: 'https://brophy.org',
-
-            }
-        })
+        // Read all input from contents/
         .source('./contents')
+        // Write all output to output/
         .destination('./output')
+        // Workaround for metalsmith.metadata issue on watching files
+        // See: https://github.com/segmentio/metalsmith-collections/issues/27#issuecomment-266647074
+        .use((files, metalsmith, done) => {
+            setImmediate(done);
+            metalsmith.metadata({
+                site: {},
+                package: require( './package.json')
+            });
+        })
+        // Clean the output directory each time
         .clean(true)
+        // Copy static assets from assets/ -> assets/
         .use(assets({
-            source: './assets', // relative to the working directory
-            destination: './assets' // relative to the build directory
+            source: './assets',
+            destination: './assets'
         }))
+        // Load external libraries into the nunjucks environment (moment, _)
         .use(nunjucksLibraries())
-        .use(json())
+        // Copy all .json files into global metadata for easy access
+        //   resume.json -> metadata.resume = {}
         .use(metadata({
             directory: 'contents/**/*.json'
         }))
+        // Process markdown files
         .use(markdown())
+        // Run files through typography plugin for formatting
         .use(typography({
             lang: "en"
         }))
+        // Generate post excerpts
         .use(excerpts())
+        // Define a posts collection of all posts, to be rendered to /post/title
         .use(collections({
             posts: {
-                pattern: 'posts/**.html',
-                sortBy: 'publishDate',
+                pattern: 'post/**.html',
+                sortBy: 'date',
                 reverse: true
             }
         }))
+        // Compile scss files from contents/
         .use(sass({
             outputStyle: "expanded"
         }))
-        .use(branch('posts/**.html')
-                 .use(permalinks({
-                        pattern: 'posts/:title',
-                        relative: false
-                      })))
-        // .use(branch('!posts/**.html')
-        //          .use(branch('!index.md')
-        //               .use(permalinks({
-        //                   relative: false
-        //               }))))
+        // Generate permalinks
+        //   contents/post/test-post -> /post/test-post/index.html
+        .use(permalinks({
+            relative: false
+        }))
+        // Register the rendering engine
         .use(templates({
             engine: 'nunjucks',
+            // Function add nunjucks specific functionality
             exposeConsolidate: function (requires) {
                 requires.nunjucks = nunjucks.configure();
                 nunjucksMdFilter.install(requires.nunjucks);
+                nunjucksJsonFilter.install(requires.nunjucks);
             }
         }))
+        // Use the Fontello icons plugin to scrape for used fonts and generate
+        // a font icon file
         .use(icons({
             sets: {
                 fa:'fontawesome'
@@ -102,7 +115,7 @@ if (cmdArgs.watch) {
 
 if (cmdArgs.debug) {
     builder = builder.use(debug())
-                     .use(brophyDebug());
+                     .use(debugVerbose());
 }
 
 builder = builder.build(function (err) {

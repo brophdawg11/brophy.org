@@ -12,16 +12,49 @@
   {% block aside %}{% endblock %}
 </aside>
 
+{% macro links(links) %}
+    <ul class="page-links__ul">
+      {% for link in links %}
+        <li class="page-link__li">
+          <a class="page-link__a"
+             href="{{link.url}}"
+             title="{{link.title}}">
+             <span class="fa fa-{{link.icon}}"></span>
+          </a>
+          <p class="page-link__p">
+            {{link.title}}
+          </p>
+        </li>
+      {% endfor %}
+    </ul>
+{% endmacro %}
+
 <section class="page-content">
 
   <header class="page-header">
-    {% block header %}{% endblock %}
+
+    {% block header %}
+
+        <nav class="page-header-nav">
+          {{ links(global.headerLinks) }}
+        </nav>
+
+    {% endblock %}
+
   </header>
 
   {% block content %}{% endblock %}
 
   <footer class="page-footer">
-    {% block footer %}{% endblock %}
+
+    {% block footer %}
+
+      <nav class="page-header-nav">
+        {{ links(global.footerLinks) }}
+      </nav>
+
+    {% endblock %}
+
   </footer>
 
 </section>

@@ -10,6 +10,7 @@
   "scripts": {
     "preview": "echo \"Not Implemented!\"",
     "build": "node build",
+    "serve": "node build --serve --watch --debug",
     "clean": "rm -rf output/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
