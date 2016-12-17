@@ -1,0 +1,51 @@
+{
+    "url": "http://localhost:8080",
+    "owner": "Matt Brophy",
+    "headerLinks": [{
+        "url": "/",
+        "title": "Home",
+        "class": "home",
+        "icon": "home"
+    }, {
+        "url": "/articles/",
+        "title": "Blog",
+        "class": "blog",
+        "icon": "comments"
+    }, {
+        "url": "/resume.html",
+        "title": "Resume",
+        "class": "resume",
+        "icon": "file-text"
+    }],
+    "footerLinks": [{
+        "url": "http://www.github.com/brophdawg11",
+        "title": "GitHub",
+        "class": "github",
+        "icon": "github"
+    }, {
+        "url": "http://www.instagram.com/brophdawg11",
+        "title": "Instagram",
+        "class": "instagram",
+        "icon": "instagram"
+    }, {
+        "url": "http://www.facebook.com/matt.b.brophy",
+        "title": "Facebook",
+        "class": "facebook",
+        "icon": "facebook"
+    }, {
+        "url": "http://www.twitter.com/brophdawg11",
+        "title": "Twitter",
+        "class": "twitter",
+        "icon": "twitter"
+    }, {
+        "url": "mailto:matt@brophy.org",
+        "title": "Email",
+        "class": "email",
+        "icon": "envelope"
+    }, {
+        "url": "/rss.html",
+        "title": "RSS",
+        "class": "rss",
+        "icon": "rss"
+    }]
+}

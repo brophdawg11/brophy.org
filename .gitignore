@@ -2,3 +2,4 @@ node_modules
 *.sublime-*
 build
 npm-debug.log
+.icon_cache

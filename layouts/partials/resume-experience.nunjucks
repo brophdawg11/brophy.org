@@ -1,0 +1,19 @@
+<article>
+  <h2>{{workExperience.title | md | safe}}</h2>
+  {% for subDetail in workExperience.subDetails %}
+    <p class="subDetails">{{subDetail | md | safe}}</p>
+  {% endfor %}
+  <ul class="workDetails-list">
+    {% for detail in workExperience.details %}
+      {% if _.isArray(detail) %}
+        <ul>
+          {% for detail2 in detail %}
+            <li>{{detail2 | md | safe}}</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <li>{{detail | md | safe}}</li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</article>

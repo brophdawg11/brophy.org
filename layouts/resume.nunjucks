@@ -1,0 +1,87 @@
+{% extends "layouts/content-centered.nunjucks" %}
+
+{% block content %}
+<div id="cv">
+  <div class="mainDetails">
+    <div class="headshot">
+      <img src="{{resumeData.headshot}}" alt="{{resumeData.name}}" />
+    </div>
+
+    <div class="name">
+      <h1>{{resumeData.name}}</h1>
+      <h2>{{resumeData.title}}</h2>
+    </div>
+
+    <div class="contactDetails">
+      <ul>
+        <li>{{resumeData.location}}</li>
+        <li>
+          e:
+          <a href="mailto:{{resumeData.email}}" target="_blank">
+            {{resumeData.email}}
+          </a>
+        </li>
+        <li>
+          w:
+          <a href="http://{{resumeData.website}}">
+            {{resumeData.website}}
+          </a>
+        </li>
+        <li>
+          <a href="https://{{resumeData.github}}" target="_blank">
+            {{resumeData.github}}
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div id="mainArea">
+
+    <section class="keySkillsSection">
+      <div class="sectionTitle">
+        <h1>Key Skills</h1>
+      </div>
+
+      <div class="sectionContent">
+        {% for keySkill in resumeData.keySkills %}
+          {% include "layouts/partials/resume-skills.nunjucks" %}
+        {% endfor %}
+      </div>
+
+      <div class="clear"></div>
+    </section>
+
+    <section class="workDetails">
+      <div class="sectionTitle">
+        <h1>Work Experience</h1>
+      </div>
+
+      <div class="sectionContent">
+
+        {% for workExperience in resumeData.workExperience %}
+          {% include "layouts/partials/resume-experience.nunjucks" %}
+        {% endfor %}
+
+      </div>
+      <div class="clear"></div>
+    </section>
+
+    <section>
+      <div class="sectionTitle">
+        <h1>Education</h1>
+      </div>
+
+      <div class="sectionContent">
+        {% for education in resumeData.education %}
+          {% include "layouts/partials/resume-education.nunjucks" %}
+        {% endfor %}
+      </div>
+
+      <div class="clear"></div>
+    </section>
+
+  </div>
+</div>
+{% endblock %}

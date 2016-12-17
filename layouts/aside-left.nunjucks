@@ -1,0 +1,29 @@
+{% extends "layouts/layout.nunjucks" %}
+
+{% block head %}
+<style>
+</style>
+{% endblock %}
+
+{% block body %}
+
+<aside class="page-aside">
+  <div class="page-aside-img-loader"></div>
+  {% block aside %}{% endblock %}
+</aside>
+
+<section class="page-content">
+
+  <header class="page-header">
+    {% block header %}{% endblock %}
+  </header>
+
+  {% block content %}{% endblock %}
+
+  <footer class="page-footer">
+    {% block footer %}{% endblock %}
+  </footer>
+
+</section>
+
+{% endblock %}

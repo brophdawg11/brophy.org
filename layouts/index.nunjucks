@@ -1,0 +1,83 @@
+{% extends "layouts/aside-left.nunjucks" %}
+
+{% macro links(links) %}
+    <ul class="page-links__ul">
+      {% for link in links %}
+        <li class="page-link__li">
+          <a class="page-link__a"
+             href="{{link.url}}"
+             title="{{link.title}}">
+             <span class="fa fa-{{link.icon}}"></span>
+          </a>
+          <p class="page-link__p">
+            {{link.title}}
+          </p>
+        </li>
+      {% endfor %}
+    </ul>
+{% endmacro %}
+
+{% block header %}
+  <nav class="page-header-nav">
+    {{ links(global.headerLinks) }}
+  </nav>
+{% endblock %}
+
+{% block aside %}
+  <div class="page-aside-inner">
+    <h1 class="page-aside-inner__h1"></h1>
+    <h2 class="page-aside-inner__h2"></h2>
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div class="c-home-content">
+    <img class="c-home-logo" src="/assets/images/logo.png" alt="Matt Brophy" />
+
+    <h1 class="c-home-title">
+      Matt Brophy
+    </h1>
+
+    <p class="c-home-description">
+      philadelphian
+    </p>
+    <p class="c-home-description">
+      web/software developer at <a href="http://www.urbn.com" title="URBN">urbn</a>
+    </p>
+    <p class="c-home-description">
+      enjoys sports, beer, coffee, and coding
+    </p>
+    <p class="c-home-description">
+      order of preference depends on day and time
+    </p>
+  </div>
+{% endblock %}
+
+{% block footer %}
+  <nav class="page-header-nav">
+    {{ links(global.footerLinks) }}
+  </nav>
+  <p class="c-home-footer">
+    powered by
+    <a href="http://www.metalsmith.io/">Metalsmith</a>
+  </p>
+  <p class="c-home-footer">
+    hosted on
+    <a href="https://aws.amazon.com/s3/" title="S3">AWS S3</a>
+    &mdash;
+    stored in
+    <a href="https://www.github.com/brophdawg11/brophy.org" title="GitHub">GitHub</a>
+  </p>
+  <p class="c-home-footer">
+    side images from
+    <a href="http://www.gratisography.com/" title="Gratisography">gratisography</a>
+    &mdash;
+    icons from
+    <a href="http://fortawesome.github.io/Font-Awesome/" title="Font-Awesome">font-awesome</a> via
+    <a href="http://fontello.com/" title="Fontello">Fontello</a>
+  </p>
+  <p class="c-home-footer">
+    {% set year = moment().format('YYYY') %}
+    &copy; {{year}} {{env.locals.owner}}
+  </p>
+{% endblock %}

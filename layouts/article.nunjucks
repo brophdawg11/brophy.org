@@ -1,0 +1,32 @@
+{% extends "layouts/aside-left.nunjucks" %}
+
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+{% endblock %}
+
+{% block content %}
+  <h1 class="article-title">
+    {{page.title}}
+  </h1>
+
+  <div class="article-subtitle">
+
+    <span class="article-date">
+      {{ moment.utc(article.date).format('MMMM D YYYY') }}
+    </span>
+
+    <span class="article-tags">
+      {% for tag in tags.split(',') %}
+        {{ tag }}
+      {% endfor %}
+    </span>
+
+  </div>
+
+  <article class="article-content">
+    {{ contents | safe}}
+  </article>
+{% endblock %}
