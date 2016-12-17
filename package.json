@@ -9,8 +9,8 @@
   "main": "index.html",
   "scripts": {
     "preview": "echo \"Not Implemented!\"",
-    "build": "echo \"Not Implemented!\"",
-    "clean": "echo \"Not Implemented!\"",
+    "build": "node build",
+    "clean": "rm -rf output/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -53,6 +53,7 @@
     "metalsmith-typography": "0.1.1",
     "metalsmith-watch": "1.0.3",
     "moment": "2.17.1",
-    "nunjucks": "3.0.0"
+    "nunjucks": "3.0.0",
+    "yargs": "6.5.0"
   }
 }

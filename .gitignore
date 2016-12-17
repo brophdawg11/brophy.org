@@ -1,5 +1,5 @@
 node_modules
 *.sublime-*
-build
+output
 npm-debug.log
 .icon_cache

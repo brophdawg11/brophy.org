@@ -1,5 +1,5 @@
 // we would like you to use debug
-var debug = require('debug')('metalsmith-brophy-debug'),
+var debug = require('debug')('brophy-debug'),
     _ = require('lodash');
 
 // Expose `plugin`.
