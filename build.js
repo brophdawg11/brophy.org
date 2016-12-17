@@ -9,6 +9,7 @@ var metalsmith = require('metalsmith'),
     permalinks = require('metalsmith-permalinks'),
     serve = require('metalsmith-serve'),
     templates = require('metalsmith-layouts'),
+    feed = require('metalsmith-feed'),
     sass = require('metalsmith-sass'),
     watch = require('metalsmith-watch'),
     icons = require('metalsmith-icons'),
@@ -20,11 +21,17 @@ var metalsmith = require('metalsmith'),
     nunjucksLibraries = require('./plugins/nunjucks-libraries'),
     moment = require('moment'),
     cmdArgs = require('yargs').argv,
+    globalData = require('./contents/global.json'),
     _ = require('lodash'),
     builder;
 
 builder =
     metalsmith(__dirname)
+        .metadata({
+            site: {
+                url: globalData.url
+            }
+        })
         // Read all input from contents/
         .source('./contents')
         // Write all output to output/
@@ -34,7 +41,9 @@ builder =
         .use((files, metalsmith, done) => {
             setImmediate(done);
             metalsmith.metadata({
-                site: {},
+                site: {
+                    url: globalData.url
+                },
                 package: require( './package.json')
             });
         })
@@ -86,6 +95,11 @@ builder =
                 nunjucksMdFilter.install(requires.nunjucks);
                 nunjucksJsonFilter.install(requires.nunjucks);
             }
+        }))
+        // Generate an RSS feed
+        .use(feed({
+            collection: 'posts',
+            title: globalData.rss.title
         }))
         // Use the Fontello icons plugin to scrape for used fonts and generate
         // a font icon file

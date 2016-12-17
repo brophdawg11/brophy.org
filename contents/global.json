@@ -1,6 +1,9 @@
 {
     "url": "http://brophy.org",
     "title": "Matt Brophy - Web Developer",
+    "rss": {
+        "title": "Matt Brophy's Blog"
+    },
     "owner": "Matt Brophy",
     "headerLinks": [{
         "url": "/",
@@ -44,7 +47,7 @@
         "class": "email",
         "icon": "envelope"
     }, {
-        "url": "/rss.html",
+        "url": "/rss.xml",
         "title": "RSS",
         "class": "rss",
         "icon": "rss"
