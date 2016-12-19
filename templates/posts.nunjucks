@@ -1,4 +1,4 @@
-{% extends "layouts/aside-left.nunjucks" %}
+{% extends "templates/layouts/aside-left.nunjucks" %}
 
 {% block head %}
     {{ super() }}

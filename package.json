@@ -12,6 +12,7 @@
     "build": "node build",
     "serve": "node build --serve --watch --debug",
     "clean": "rm -rf output/",
+    "lint": "./node_modules/.bin/eslint src/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -32,7 +33,13 @@
     "angular",
     "node"
   ],
-  "devDependencies": {
+  "dependencies": {
+    "debug": "2.4.5",
+    "eslint": "3.12.2",
+    "eslint-config-airbnb": "13.0.0",
+    "eslint-plugin-import": "2.2.0",
+    "eslint-plugin-jsx-a11y": "2.2.3",
+    "eslint-plugin-react": "6.8.0",
     "foundation-sites": "6.3.0",
     "globule": "1.1.0",
     "lodash": "4.17.2",

@@ -1,4 +1,4 @@
-{% extends "layouts/layout.nunjucks" %}
+{% extends "templates/layouts/layout.nunjucks" %}
 
 {% block head %}
 <style>

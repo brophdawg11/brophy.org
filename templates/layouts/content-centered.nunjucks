@@ -1,4 +1,4 @@
-{% extends "layouts/layout.nunjucks" %}
+{% extends "templates/layouts/layout.nunjucks" %}
 
 {% block body %}
 <div class="c-content-centered-outer">

@@ -1,4 +1,5 @@
-var marked = require('marked');
+const debug = require('debug')('nunjucks/markdown-filter'),
+    marked = require('marked');
 
 /**
  * @function mdFilter
@@ -12,19 +13,20 @@ var marked = require('marked');
  *                                     HTML.  Defaults to true.
  * @returns {String}                   Resulting HTML string
  */
-function mdFilter(value, stripPara) {
-  var result;
-  stripPara = stripPara !== false;
-  try {
-    result = marked(value).trim();
-    if (stripPara) {
-      result = result.replace(/^<p>|<\/p>$/g, '');
+function mdFilter(value, _stripPara) {
+    const stripPara = _stripPara !== false;
+    let result;
+
+    try {
+        result = marked(value).trim();
+        if (stripPara) {
+            result = result.replace(/^<p>|<\/p>$/g, '');
+        }
+        return result;
+    } catch (e) {
+        debug('Error processing markdown:', e);
+        return value;
     }
-    return result;
-  } catch (e) {
-    console.error('Error processing markdown:', e);
-    return value;
-  }
 }
 
 module.exports = mdFilter;
@@ -32,6 +34,4 @@ module.exports = mdFilter;
 /**
  * Add filter to nunjucks environment
  */
-module.exports.install = function(env, customName) {
-  env.addFilter(customName || 'md', mdFilter);
-};
+module.exports.install = env => env.addFilter('md', mdFilter);

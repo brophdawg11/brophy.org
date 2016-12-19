@@ -1,4 +1,4 @@
-{% extends "layouts/content-centered.nunjucks" %}
+{% extends "templates/layouts/content-centered.nunjucks" %}
 
 {% block content %}
 <div id="cv">
@@ -46,7 +46,7 @@
 
       <div class="sectionContent">
         {% for keySkill in resumeData.keySkills %}
-          {% include "layouts/partials/resume-skills.nunjucks" %}
+          {% include "templates/partials/resume-skills.nunjucks" %}
         {% endfor %}
       </div>
 
@@ -61,7 +61,7 @@
       <div class="sectionContent">
 
         {% for workExperience in resumeData.workExperience %}
-          {% include "layouts/partials/resume-experience.nunjucks" %}
+          {% include "templates/partials/resume-experience.nunjucks" %}
         {% endfor %}
 
       </div>
@@ -75,7 +75,7 @@
 
       <div class="sectionContent">
         {% for education in resumeData.education %}
-          {% include "layouts/partials/resume-education.nunjucks" %}
+          {% include "templates/partials/resume-education.nunjucks" %}
         {% endfor %}
       </div>
 
