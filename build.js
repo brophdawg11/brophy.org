@@ -16,12 +16,19 @@ var metalsmith = require('metalsmith'),
     icons = require('metalsmith-icons'),
     debug = require('metalsmith-debug'),
     nunjucks = require('nunjucks'),
-    nunjucksJsonFilter = require('./plugins/nunjucks-json-filter'),
-    nunjucksMdFilter = require('./plugins/nunjucks-markdown-filter'),
-    debugVerbose = require('./plugins/debug-verbose'),
-    nunjucksLibraries = require('./plugins/nunjucks-libraries'),
     cmdArgs = require('yargs').argv,
+
+    // Metalsmith plugins
+    debugVerbose = require('./src/plugins/debug-verbose'),
+    nunjucksLibraries = require('./src/plugins/nunjucks-libraries'),
+
+    // Nunjucks filters
+    nunjucksJsonFilter = require('./src/nunjucks/json-filter'),
+    nunjucksMdFilter = require('./src/nunjucks/markdown-filter'),
+
+    // Global configuration data
     globalData = require('./contents/global.json'),
+
     /* eslint-disable no-unused-vars */
     builder;
     /* eslint-enable no-unused-vars */
