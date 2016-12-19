@@ -4,6 +4,7 @@
     "rss": {
         "title": "Matt Brophy's Blog"
     },
+    "cssFile": "css/app.css",
     "owner": "Matt Brophy",
     "headerLinks": [{
         "url": "/",

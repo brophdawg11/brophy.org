@@ -12,6 +12,7 @@ const metalsmith = require('metalsmith'),
     sass = require('metalsmith-sass'),
     watch = require('metalsmith-watch'),
     icons = require('metalsmith-icons'),
+    concat = require('metalsmith-concat'),
     metalsmithDebug = require('metalsmith-debug'),
     nunjucks = require('nunjucks'),
     cmdArgs = require('yargs').argv,
@@ -77,10 +78,6 @@ builder =
                 reverse: true,
             },
         }))
-        // Compile scss files from contents/
-        .use(sass({
-            outputStyle: 'expanded',
-        }))
         // Generate permalinks
         //   contents/post/test-post -> /post/test-post/index.html
         .use(permalinks({
@@ -111,7 +108,17 @@ builder =
             fontello: {
                 name: 'icons',
             },
-            fontDir: 'fonts',
+            CSSDir: 'css',
+            fontDir: 'css/fonts',
+        }))
+        // Compile scss files from contents/
+        .use(sass({
+            outputStyle: 'expanded',
+        }))
+        // Concat all CSS files into a single file
+        .use(concat({
+            files: 'css/**/*.css',
+            output: globalData.cssFile,
         }));
 
 if (cmdArgs.serve) {
