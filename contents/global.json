@@ -52,5 +52,12 @@
         "title": "RSS",
         "class": "rss",
         "icon": "rss"
-    }]
+    }],
+    "asides": [
+        "assets/images/asides/bike.jpg",
+        "assets/images/asides/bike2.jpg",
+        "assets/images/asides/bike3.jpg",
+        "assets/images/asides/bike4.jpg",
+        "assets/images/asides/bikes.jpg"
+    ]
 }

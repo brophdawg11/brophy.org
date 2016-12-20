@@ -2,10 +2,48 @@
 
 {% block head %}
 <style>
+  {% set startImg = global.asides[0] %}
+  {% set num = global.asides.length %}
+  {% set percentage = 0 %}
+  {% set percentageIncrement = (100 / num) %}
+
+  .page-aside {
+      background-image: url({{ startImg }});
+  }
+
+  @keyframes rotate-background {
+    from {
+      background-image: url(../{{startImg}});
+    }
+
+    {% for img in _.tail(global.asides) %}
+      {% set percentage = percentage + percentageIncrement %}
+      {% set start = percentage - 9 %}
+      {% set end = percentage + 9 %}
+      {{start}}%, {{end}}% {
+        background-image: url(../{{img}});
+      }
+    {% endfor %}
+
+    to {
+      background-image: url(../{{startImg}});
+    }
+  }
+
+  .page-aside {
+    animation-name: rotate-background;
+    animation-duration: {{num * 30}}s;
+    animation-iteration-count: infinite;
+  }
 </style>
 {% endblock %}
-
 {% block body %}
+
+<div style="display: none;">
+    {% for img in _.tail(global.asides) %}
+        <img src="{{ img }}" />
+    {% endfor %}
+</div>
 
 <aside class="page-aside">
   <div class="page-aside-img-loader"></div>
