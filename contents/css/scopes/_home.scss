@@ -1,0 +1,12 @@
+.s-home {
+
+    .page-footer {
+        @media screen and (min-width: $large-min) {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            margin-top: 0;
+        }
+    }
+
+}

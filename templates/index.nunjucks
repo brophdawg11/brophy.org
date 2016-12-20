@@ -8,26 +8,24 @@
 {% endblock %}
 
 {% block content %}
-  <div class="c-home-content">
-    <img class="c-home-logo" src="/assets/images/logo.png" alt="Matt Brophy" />
+  <img class="c-home-logo" src="/assets/images/logo.png" alt="Matt Brophy" />
 
-    <h1 class="c-home-title">
-      Matt Brophy
-    </h1>
+  <h1 class="c-home-title">
+    Matt Brophy
+  </h1>
 
-    <p class="c-home-description">
-      philadelphian
-    </p>
-    <p class="c-home-description">
-      web/software developer at <a href="http://www.urbn.com" title="URBN">urbn</a>
-    </p>
-    <p class="c-home-description">
-      enjoys sports, beer, coffee, and coding
-    </p>
-    <p class="c-home-description">
-      order of preference depends on day and time
-    </p>
-  </div>
+  <p class="c-home-description">
+    philadelphian
+  </p>
+  <p class="c-home-description">
+    web/software developer at <a href="http://www.urbn.com" title="URBN">urbn</a>
+  </p>
+  <p class="c-home-description">
+    enjoys sports, beer, coffee, and coding
+  </p>
+  <p class="c-home-description">
+    order of preference depends on day and time
+  </p>
 {% endblock %}
 
 {% block footer %}

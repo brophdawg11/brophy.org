@@ -23,7 +23,43 @@
 
               <p>{{ post.excerpt | safe }}</p>
 
-              <div>{{ post | json | safe }}</div>
+              <!--<div>{{ post | json | safe }}</div>-->
+
+           </li>
+
+      {% endfor %}
+
+      {% for post in collections.posts %}
+
+          <li class="post">
+
+              <h2>
+                  <a href="{{ post.path }}" title="{{ post.title }}">
+                      {{ post.title }}
+                  </a>
+              </h2>
+
+              <p>{{ post.excerpt | safe }}</p>
+
+              <!--<div>{{ post | json | safe }}</div>-->
+
+           </li>
+
+      {% endfor %}
+
+      {% for post in collections.posts %}
+
+          <li class="post">
+
+              <h2>
+                  <a href="{{ post.path }}" title="{{ post.title }}">
+                      {{ post.title }}
+                  </a>
+              </h2>
+
+              <p>{{ post.excerpt | safe }}</p>
+
+              <!--<div>{{ post | json | safe }}</div>-->
 
            </li>
 

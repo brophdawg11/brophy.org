@@ -1,4 +1,7 @@
 // Breakpoints
+$extra-small-min: 0;
+$extra-small-max: 499px;
+$small-min: 500px;
 $small-max: 767px;
 $medium-min: 768px;
 $medium-max: 1023px;
@@ -6,6 +9,7 @@ $large-min: 1024px;
 
 // Sizing
 $lhs-aside-width: 30%;
+$top-aside-height: 150px;
 $content-padding: 2em;
 
 // Transitions

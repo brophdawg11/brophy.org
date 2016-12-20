@@ -12,8 +12,8 @@
   {% block aside %}{% endblock %}
 </aside>
 
-{% macro links(links) %}
-    <ul class="page-links__ul">
+{% macro links(links, class) %}
+    <ul class="page-links__ul {{ class }}">
       {% for link in links %}
         <li class="page-link__li">
           <a class="page-link__a"
@@ -27,28 +27,30 @@
     </ul>
 {% endmacro %}
 
-<section class="page-content">
+<section class="page-content-wrapper">
 
   <header class="page-header">
 
     {% block header %}
 
-        <nav class="page-header-nav">
-          {{ links(global.headerLinks) }}
+        <nav>
+          {{ links(global.headerLinks, 's-header-links') }}
         </nav>
 
     {% endblock %}
 
   </header>
 
-  {% block content %}{% endblock %}
+  <div class="page-content">
+    {% block content %}{% endblock %}
+  </div>
 
   <footer class="page-footer">
 
     {% block footer %}
 
-      <nav class="page-header-nav">
-        {{ links(global.footerLinks) }}
+      <nav>
+        {{ links(global.footerLinks, 's-footer-links') }}
       </nav>
 
     {% endblock %}
