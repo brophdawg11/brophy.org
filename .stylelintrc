@@ -1,0 +1,21 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+      "indentation": [4, {
+          ignore: [ "inside-parens", "value" ]
+      }],
+      "declaration-empty-line-before": "never",
+      "rule-nested-empty-line-before": null,
+      "at-rule-empty-line-before": null,
+      "block-closing-brace-empty-line-before": null,
+      "block-closing-brace-newline-before": null,
+      "block-no-empty": null,
+      "declaration-colon-newline-after": null,
+      "selector-pseudo-element-colon-notation": "single",
+      "block-closing-brace-newline-after": ["always", {
+          ignoreAtRules: [ "if", "else" ]
+      }],
+      "number-no-trailing-zeros": null,
+      "declaration-block-no-ignored-properties": null
+  }
+}

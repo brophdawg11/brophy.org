@@ -12,7 +12,6 @@ const metalsmith = require('metalsmith'),
     sass = require('metalsmith-sass'),
     watch = require('metalsmith-watch'),
     icons = require('metalsmith-icons'),
-    concat = require('metalsmith-concat'),
     metalsmithDebug = require('metalsmith-debug'),
     nunjucks = require('nunjucks'),
     cmdArgs = require('yargs').argv,
@@ -60,7 +59,7 @@ builder =
         // Copy all .json files into global metadata for easy access
         //   resume.json -> metadata.resume = {}
         .use(metadata({
-            directory: 'contents/**/*.json',
+            directory: './contents/**/*.json',
         }))
         // Process markdown files
         .use(markdown())
@@ -113,12 +112,10 @@ builder =
         }))
         // Compile scss files from contents/
         .use(sass({
-            outputStyle: 'expanded',
-        }))
-        // Concat all CSS files into a single file
-        .use(concat({
-            files: 'css/**/*.css',
-            output: globalData.cssFile,
+            outputStyle: cmdArgs.prod ? 'compressed' : 'expanded',
+            sourceMap: true,
+            sourceMapContents: true,
+            sourceMapEmbed: true,
         }));
 
 if (cmdArgs.serve) {
@@ -128,16 +125,21 @@ if (cmdArgs.serve) {
     }));
 }
 
-if (cmdArgs.watch) {
-    builder = builder.use(watch({
-        pattern: '**/*',
-        livereload: true,
-    }));
-}
-
 if (cmdArgs.debug) {
     builder = builder.use(metalsmithDebug())
                      .use(debugVerbose());
+}
+
+if (cmdArgs.watch) {
+    builder = builder.use(watch({
+        paths: {
+            './contents/*': '**/*',
+            './assets/**/*': '**/*',
+            './src/**/*': '**/*',
+            './templates/**/*': '**/*',
+        },
+        invalidateCache: true,
+    }));
 }
 
 builder = builder.build((err) => {

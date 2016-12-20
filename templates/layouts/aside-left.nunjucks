@@ -20,10 +20,8 @@
              href="{{link.url}}"
              title="{{link.title}}">
              <span class="fa fa-{{link.icon}}"></span>
+             <span class="page-link__p">{{ link.title }}</span>
           </a>
-          <p class="page-link__p">
-            {{link.title}}
-          </p>
         </li>
       {% endfor %}
     </ul>

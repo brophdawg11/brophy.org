@@ -65,5 +65,8 @@
     "moment": "2.17.1",
     "nunjucks": "3.0.0",
     "yargs": "6.5.0"
+  },
+  "devDependencies": {
+    "stylelint-config-standard": "15.0.1"
   }
 }
