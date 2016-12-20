@@ -121,6 +121,8 @@
 }
 
 .page-content {
+    max-width: 768px;
+    margin: auto;
     padding-bottom: $content-padding;
 }
 

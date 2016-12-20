@@ -9,6 +9,7 @@ $large-min: 1024px;
 
 // Sizing
 $lhs-aside-width: 30%;
+$max-lhs-aside-width: 450px;
 $top-aside-height: 150px;
 $content-padding: 2em;
 
@@ -19,12 +20,14 @@ $transition-duration: 200ms;
 $white: white;
 $offwhite: #fafafa;
 $offblack: #181818;
+$dark-grey: #ccc;
 $grey: grey;
 $lightgrey: lightgrey;
 $orange: #cf8a05;
 
 // Fonts
 $serif: 'Rokkitt', serif;
+$serif-content: 'PT Serif', serif;
 $sans-serif: 'Lato', helvetica, arial, sans-serif;
 
 // Misc

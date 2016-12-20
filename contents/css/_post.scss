@@ -1,20 +1,26 @@
-.article-title {
+.c-post__title {
     margin-bottom: 0;
 }
 
-.article-subtitle {
+.c-post__meta {
     font-size: 0.8em;
-    margin-bottom: 1.5em;
+    margin-bottom: $content-padding;
 }
 
-.article-date {
+.c-post__date {
     font-style: italics;
 }
 
-.article-tags {
+.c-post__tags {
 
 }
 
-.article-content {
+.c-post__content {
+    line-height: 1.5em;
+
+    p {
+        padding-bottom: $content-padding;
+    }
 
 }
+

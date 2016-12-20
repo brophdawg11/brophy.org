@@ -2,51 +2,71 @@
 
 {% block head %}
 
-  {{ super() }}
+    {{ super() }}
 
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 
 {% endblock %}
 
 {% block content %}
-  <h1 class="article-title">
-    {{ page.title }}
-  </h1>
+    <h1 class="c-post__title">
+        {{ title }}
+    </h1>
 
-  <div class="article-subtitle">
+    <div class="c-post__meta">
 
-    <span class="article-date">
-      {{ moment.utc(article.date).format('MMMM D YYYY') }}
-    </span>
+        <span class="c-post__date">
+            {{ moment.utc(date).format('MMMM D YYYY') }}
+        </span>
 
-    <span class="article-tags">
-      {% for tag in tags.split(',') %}
-        {{ tag }}
-      {% endfor %}
-    </span>
+        <!--
+        <span class="c-post__tags">
+            {% for tag in tags.split(',') %}
+                {{ tag }}
+            {% endfor %}
+        </span>
+        -->
 
-  </div>
+    </div>
 
-  <article class="article-content">
-    {{ contents | safe}}
-  </article>
+    <article class="c-post__content">
+        {{ contents | safe}}
+    </article>
 
-  <div style="padding-bottom: 100px;">
-    {% if previous %}
-      Previous post:
-      <a href="{{ previous.path }}" title="{{ previous.title }}">
-        {{ previous.title }}
-      </a>
-    {% endif %}
+    <!--
+    <div class="c-post__nav">
 
-    {% if next %}
-      Next post:
-      <a href="{{ next.path }}" title="{{ next.title }}">
-        {{ next.title }}
-      </a>
-    {% endif %}
-  </div>
+        <div class="c-post__previous">
+            {% if previous %}
+                <a href="{{ previous.path }}" title="{{ previous.title }}">
+                    <span class="fa fa-arrow-left"></span>
+                </a>
+                <a href="{{ previous.path }}" title="{{ previous.title }}">
+                    {{ previous.title }}
+                </a>
+
+                {% if next %}
+                    <span class="c-post__nav-divider">|</span>
+                {% endif %}
+
+            {% endif %}
+        </div>
+
+        <div class="c-post__next">
+
+            {% if next %}
+                <a href="{{ next.path }}" title="{{ next.title }}">
+                    {{ next.title }}
+                </a>
+                <a href="{{ next.path }}" title="{{ next.title }}">
+                    <span class="fa fa-arrow-right"></span>
+                </a>
+            {% endif %}
+        </div>
+
+    </div>
+    -->
 
 {% endblock %}
