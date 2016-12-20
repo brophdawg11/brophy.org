@@ -91,18 +91,18 @@
         {{ links(global.footerLinks, 's-footer-links') }}
       </nav>
 
-      <p class="c-home-footer">
+      <p class="page-footer-line">
         built with
         <a href="http://www.metalsmith.io/">metalsmith</a>
       </p>
-      <p class="c-home-footer">
+      <p class="page-footer-line">
         hosted on
         <a href="https://aws.amazon.com/s3/" title="S3">aws s3</a>
         &mdash;
         stored in
         <a href="https://www.github.com/brophdawg11/brophy.org" title="GitHub">github</a>
       </p>
-      <p class="c-home-footer">
+      <p class="page-footer-line">
         side images from
         <a href="http://www.gratisography.com/" title="Gratisography">gratisography</a>
         &mdash;
@@ -110,7 +110,7 @@
         <a href="http://fortawesome.github.io/Font-Awesome/" title="Font-Awesome">font-awesome</a> via
         <a href="http://fontello.com/" title="Fontello">fontello</a>
       </p>
-      <p class="c-home-footer">
+      <p class="page-footer-line">
         {% set year = moment().format('YYYY') %}
         &copy; {{year}} {{global.owner}}
       </p>
