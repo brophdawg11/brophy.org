@@ -5,61 +5,26 @@
 {% endblock %}
 
 {% block content %}
-    <h1 class="posts-title">
-      Recent Posts
-    </h1>
-
-    <ul class="posts">
+    <ul class="c-posts__list">
 
       {% for post in collections.posts %}
 
-          <li class="post">
+          <li>
 
-              <h2>
+              <h2 class="c-posts__title">
                   <a href="{{ post.path }}" title="{{ post.title }}">
                       {{ post.title }}
                   </a>
               </h2>
 
-              <p>{{ post.excerpt | safe }}</p>
+              <p class="c-posts__excerpt">
+                  {{ post.excerpt }}
+              </p>
 
-              <!--<div>{{ post | json | safe }}</div>-->
-
-           </li>
-
-      {% endfor %}
-
-      {% for post in collections.posts %}
-
-          <li class="post">
-
-              <h2>
-                  <a href="{{ post.path }}" title="{{ post.title }}">
-                      {{ post.title }}
-                  </a>
-              </h2>
-
-              <p>{{ post.excerpt | safe }}</p>
-
-              <!--<div>{{ post | json | safe }}</div>-->
-
-           </li>
-
-      {% endfor %}
-
-      {% for post in collections.posts %}
-
-          <li class="post">
-
-              <h2>
-                  <a href="{{ post.path }}" title="{{ post.title }}">
-                      {{ post.title }}
-                  </a>
-              </h2>
-
-              <p>{{ post.excerpt | safe }}</p>
-
-              <!--<div>{{ post | json | safe }}</div>-->
+              <p class="c-posts__meta">
+                  {{ moment(post.date).format('MMM D YYYY') }} |
+                  {{ post.author }}
+              </p>
 
            </li>
 

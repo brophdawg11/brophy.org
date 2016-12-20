@@ -34,6 +34,7 @@
     "node"
   ],
   "dependencies": {
+    "cheerio": "0.22.0",
     "debug": "2.4.5",
     "eslint": "3.12.2",
     "eslint-config-airbnb": "13.0.0",

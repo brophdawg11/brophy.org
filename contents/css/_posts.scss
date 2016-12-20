@@ -1,0 +1,22 @@
+.c-posts {
+
+    &__list {
+        list-style: none;
+        padding-bottom: $content-padding;
+    }
+
+    &__title {
+        margin-bottom: 0.25em;
+    }
+
+    &__excerpt {
+        color: grey;
+        padding-bottom: 1em;
+    }
+
+    &__meta {
+        text-align: right;
+        font-size: 0.75em;
+    }
+
+}

@@ -110,7 +110,6 @@
 .page-content-wrapper {
     position: relative;
     padding: $content-padding;
-    text-align: center;
 
     @media screen and (min-width: $large-min) {
         padding: $content-padding 0;
@@ -131,12 +130,15 @@
     left: 0;
     right: 0;
     padding-bottom: $content-padding;
+    text-align: center;
 
     @media screen and (min-width: $large-min) {
         position: relative;
+        top: 0;
     }
 }
 
 .page-footer {
+    text-align: center;
     font-size: 0.75em;
 }

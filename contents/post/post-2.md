@@ -1,5 +1,5 @@
 ---
-title: post 2
+title: This is my Second Post
 author: brophy
 date: 2012-11-01 15:00
 tags: tag1,tag2

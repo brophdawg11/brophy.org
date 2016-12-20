@@ -2,7 +2,6 @@ const metalsmith = require('metalsmith'),
     assets = require('metalsmith-assets'),
     metadata = require('metalsmith-metadata-directory'),
     collections = require('metalsmith-collections'),
-    excerpts = require('metalsmith-excerpts'),
     markdown = require('metalsmith-markdown'),
     typography = require('metalsmith-typography'),
     permalinks = require('metalsmith-permalinks'),
@@ -19,6 +18,7 @@ const metalsmith = require('metalsmith'),
 
     // Metalsmith plugins
     debugVerbose = require('./src/plugins/debug-verbose'),
+    excerpts = require('./src/plugins/excerpts'),
     metadataPatch = require('./src/plugins/metadata-patch'),
     nunjucksLibraries = require('./src/plugins/nunjucks-libraries'),
 
