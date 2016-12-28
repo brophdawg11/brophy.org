@@ -1,4 +1,5 @@
 {% extends "templates/layouts/aside-left.nunjucks" %}
+{% import "templates/utils/macros.nunjucks" as macros %}
 
 {% block head %}
 
@@ -11,24 +12,13 @@
 {% endblock %}
 
 {% block content %}
+
     <h1 class="c-post__title">
         {{ title }}
     </h1>
 
     <div class="c-post__meta">
-
-        <span class="c-post__date">
-            {{ moment.utc(date).format('MMMM D YYYY') }}
-        </span>
-
-        <!--
-        <span class="c-post__tags">
-            {% for tag in tags %}
-                {{ tag.name }}
-            {% endfor %}
-        </span>
-        -->
-
+        {{ macros.postMeta(moment, date, tags) }}
     </div>
 
     <article class="c-post__content">
