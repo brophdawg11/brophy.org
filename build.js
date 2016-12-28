@@ -1,5 +1,6 @@
 const metalsmith = require('metalsmith'),
     assets = require('metalsmith-assets'),
+    favicons = require('metalsmith-favicons'),
     metadata = require('metalsmith-metadata-directory'),
     collections = require('metalsmith-collections'),
     markdown = require('metalsmith-markdown'),
@@ -53,6 +54,16 @@ builder =
         .use(assets({
             source: './assets',
             destination: './assets',
+        }))
+        // Generate favicon from source image
+        .use(favicons({
+            src: 'assets/images/logo.png',
+            dest: 'favicon/',
+            icons: {
+                android: true,
+                appleIcon: true,
+                favicons: true,
+            },
         }))
         // Load external libraries into the nunjucks environment (moment, _)
         .use(nunjucksLibraries())

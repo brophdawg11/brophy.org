@@ -10,6 +10,10 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        {% for item in favicons.html %}
+            {{ item | safe }}
+        {% endfor %}
+
         <link href='http://fonts.googleapis.com/css?family=Rokkitt:400,700|Lato:400,300' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="/css/icons.css" />
         <link rel="stylesheet" href="/css/main.css" />
