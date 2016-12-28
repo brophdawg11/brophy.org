@@ -3,6 +3,8 @@ const metalsmith = require('metalsmith'),
     favicons = require('metalsmith-favicons'),
     metadata = require('metalsmith-metadata-directory'),
     collections = require('metalsmith-collections'),
+    tags = require('metalsmith-tags'),
+    pagination = require('metalsmith-pagination'),
     markdown = require('metalsmith-markdown'),
     typography = require('metalsmith-typography'),
     permalinks = require('metalsmith-permalinks'),
@@ -87,6 +89,23 @@ builder =
                 sortBy: 'date',
                 reverse: true,
             },
+        }))
+        .use(pagination({
+            'collections.posts': {
+                layout: 'posts.nunjucks',
+                perPage: globalData.pageSize,
+                first: 'posts/index.html',
+                path: 'posts/page/:num/index.html',
+            },
+        }))
+        .use(tags({
+            handle: 'tags',
+            path: 'tags/:tag.html',
+            pathPage: 'tags/:tag/:num/index.html',
+            perPage: globalData.pageSize,
+            layout: 'tag.nunjucks',
+            sortBy: 'date',
+            reverse: true,
         }))
         // Generate permalinks
         //   contents/post/test-post -> /post/test-post/index.html

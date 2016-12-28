@@ -23,8 +23,8 @@
 
         <!--
         <span class="c-post__tags">
-            {% for tag in tags.split(',') %}
-                {{ tag }}
+            {% for tag in tags %}
+                {{ tag.name }}
             {% endfor %}
         </span>
         -->

@@ -1,0 +1,34 @@
+<ul class="c-posts__list">
+
+    {% for post in pagination.files %}
+
+        <li>
+
+            <h2 class="c-posts__title">
+                <a href="{{ post.path }}" title="{{ post.title }}">
+                    {{ post.title }}
+                </a>
+            </h2>
+
+            <p class="c-posts__excerpt">
+                {{ post.excerpt }}
+                <a class="read-more" href="{{ post.path }}">
+                    <span class="fa fa-angle-double-right"></span>
+                </a>
+            </p>
+
+            <p class="c-posts__meta">
+                {{ moment(post.date).format('MMM D YYYY') }} |
+                {% for tag in post.tags %}
+                    <a href="/tags/{{tag.slug}}/" title="{{tag.name}}">{{tag.name}}</a><!--
+                    -->{% if not loop.last %},{% endif %}
+                {% endfor %}
+            </p>
+
+         </li>
+
+    {% endfor %}
+
+</ul>
+
+{% include "templates/partials/pagination.nunjucks" %}

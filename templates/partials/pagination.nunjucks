@@ -1,0 +1,29 @@
+{% if pagination %}
+
+    <nav class="c-pagination" role="navigation">
+
+        {% if pagination.previous %}
+            <a class="c-pagination__newer"
+               href="{{ pagination.previous.path }}"><!--
+                --><span class="fa fa-arrow-left"></span><!--
+            --></a>
+        {% else %}
+            <span class="fa fa-arrow-left"></span>
+        {% endif %}
+
+        <span class="c-pagination__page">
+            Page {{ pagination.num }} of {{ pagination.pages.length }}
+        </span>
+
+        {% if pagination.next %}
+            <a class="c-pagination__older"
+               href="{{ pagination.next.path }}"><!--
+                --><span class="fa fa-arrow-right"></span><!--
+            --></a>
+        {% else %}
+            <span class="fa fa-arrow-right"></span>
+        {% endif %}
+
+    </nav>
+
+{% endif %}

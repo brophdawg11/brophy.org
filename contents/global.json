@@ -6,6 +6,7 @@
     },
     "cssFile": "css/app.css",
     "owner": "Matt Brophy",
+    "pageSize": 6,
     "headerLinks": [{
         "url": "/",
         "title": "Home",
