@@ -19,7 +19,7 @@
             </h2>
 
             <p class="c-posts__excerpt">
-                {{ post.excerpt }}
+                {{ post.excerpt | safe }}
                 <a class="read-more" href="{{ post.path }}">
                     <span class="fa fa-angle-double-right"></span>
                 </a>

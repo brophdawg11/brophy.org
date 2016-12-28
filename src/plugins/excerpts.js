@@ -19,7 +19,10 @@ module.exports = () => {
 
             debug('storing excerpt: %s', file);
             const $ = cheerio.load(data.contents.toString());
-            data.excerpt = $('p').first().text().trim();
+            data.excerpt = $.html($('p').first())
+                            .trim()
+                            .replace(/^<p>/, '')
+                            .replace(/<\/p>$/, '');
         });
 
         setImmediate(done);

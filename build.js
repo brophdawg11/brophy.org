@@ -2,6 +2,7 @@ const metalsmith = require('metalsmith'),
     assets = require('metalsmith-assets'),
     favicons = require('metalsmith-favicons'),
     metadata = require('metalsmith-metadata-directory'),
+    drafts = require('metalsmith-drafts'),
     collections = require('metalsmith-collections'),
     tags = require('metalsmith-tags'),
     pagination = require('metalsmith-pagination'),
@@ -74,6 +75,8 @@ builder =
         .use(metadata({
             directory: './contents/**/*.json',
         }))
+        // Allow draft:true front-matter flags
+        .use(drafts())
         // Process markdown files
         .use(markdown())
         // Run files through typography plugin for formatting

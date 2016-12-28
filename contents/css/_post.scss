@@ -18,12 +18,9 @@
     }
 
     &__content {
-        line-height: 1.5em;
-
-        p {
-            padding-bottom: $content-padding;
-        }
-
+        @include code-styles;
+        font-size: 1.15em;
+        line-height: 1.75em;
     }
 
     &__share {

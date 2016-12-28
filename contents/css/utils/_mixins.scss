@@ -27,3 +27,19 @@
         *zoom: 1;
     }
 }
+
+@mixin code-styles() {
+    p,
+    pre {
+        padding-bottom: $content-padding;
+    }
+
+    em {
+        font-style: italic;
+    }
+
+    code {
+        font-family: monospace;
+        background-color: $lightgrey;
+    }
+}
