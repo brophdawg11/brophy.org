@@ -12,6 +12,7 @@
     "build": "node build",
     "serve": "node build --serve --watch --debug",
     "clean": "rm -rf output/",
+    "nuke": "npm run clean && rm -rf node_modules && rm -rf .icon_cache && npm install",
     "lint": "./node_modules/.bin/eslint src/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

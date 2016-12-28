@@ -10,7 +10,7 @@
 
     {% for post in pagination.files %}
 
-        <li>
+        <li class="c-posts__item">
 
             <h2 class="c-posts__title">
                 <a href="{{ post.path }}" title="{{ post.title }}">
