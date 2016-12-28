@@ -136,6 +136,7 @@ builder =
             },
             fontello: {
                 name: 'icons',
+                css_prefix_text: 'fa-',
             },
             CSSDir: 'css',
             fontDir: 'css/fonts',

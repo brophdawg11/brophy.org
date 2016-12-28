@@ -1,26 +1,49 @@
-.c-post__title {
-    margin-bottom: 0;
-}
+.c-post {
 
-.c-post__meta {
-    font-size: 0.8em;
-    margin-bottom: $content-padding;
-}
+    &__title {
+        margin-bottom: 10px;
+    }
 
-.c-post__date {
-    font-style: italics;
-}
+    &__meta {
+        font-size: 0.8em;
+        margin-bottom: $content-padding;
+    }
 
-.c-post__tags {
+    &__date {
+        font-style: italics;
+    }
 
-}
+    &__tags {
 
-.c-post__content {
-    line-height: 1.5em;
+    }
 
-    p {
-        padding-bottom: $content-padding;
+    &__content {
+        line-height: 1.5em;
+
+        p {
+            padding-bottom: $content-padding;
+        }
+
+    }
+
+    &__share {
+        text-align: right;
+        margin-bottom: $content-padding;
+    }
+
+    &__share-medium {
+        .fa {
+            padding: 5px;
+            border-radius: 50%;
+            transition: color $transition-duration,
+                        background-color $transition-duration;
+
+            &:hover,
+            &:focus {
+                color: $white;
+                background-color: $orange;
+            }
+        }
     }
 
 }
-
