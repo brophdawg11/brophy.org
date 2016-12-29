@@ -4,6 +4,7 @@
     "rules": {
         "func-names": [ "error", "as-needed" ],
         "indent": [ "error", 4 ],
-        "one-var": 0
+        "one-var": 0,
+        "no-param-reassign": 0
     }
 }

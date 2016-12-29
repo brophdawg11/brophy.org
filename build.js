@@ -18,6 +18,7 @@ const metalsmith = require('metalsmith'),
     autoprefixer = require('metalsmith-autoprefixer'),
     icons = require('metalsmith-icons'),
     ignore = require('metalsmith-ignore'),
+    transform = require('metalsmith-transform'),
     metalsmithDebug = require('metalsmith-debug'),
     nunjucks = require('nunjucks'),
     cmdArgs = require('yargs').argv,
@@ -141,6 +142,25 @@ builder =
                 nunjucksMdFilter.install(requires.nunjucks);
                 nunjucksJsonFilter.install(requires.nunjucks);
             },
+        }))
+        // metalsmith-feed doesn't seem to play nice with permalinks, and wants
+        // to generate URLs like:
+        //     http://brophy.org/post/post-title.html
+        // We can just provide our own URL before the feed plugin runs:
+        //     http://brophy.org/post/post-title
+        .use(transform((file, metalsmithData) => {
+            const posts = _.get(metalsmithData, '_metadata.collections.posts', []),
+                postRE = /^post\//,
+                htmlRE = /\.html$/;
+
+            posts.forEach((post) => {
+                // If this is a post and it doesn't yet have a URL
+                if (postRE.test(post.path) && !post.url) {
+                    post.url = `${globalData.url}/${post.path.replace(htmlRE, '')}`;
+                }
+            });
+
+            return file;
         }))
         // Generate an RSS feed
         .use(feed({
