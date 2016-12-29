@@ -1,5 +1,9 @@
 {% extends "templates/layouts/aside-left.nunjucks" %}
 
+{% block title %}
+    {{tag}} Posts | {{ global.title }}
+{% endblock %}
+
 {% block content %}
 
     <h1 class="c-tags__title">

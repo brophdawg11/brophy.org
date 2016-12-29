@@ -1,7 +1,7 @@
 {% extends "templates/layouts/aside-left.nunjucks" %}
 
-{% block head %}
-    {{ super() }}
+{% block title %}
+    Blog Posts | {{ global.title }}
 {% endblock %}
 
 {% block content %}

@@ -1,5 +1,6 @@
 const metalsmith = require('metalsmith'),
     assets = require('metalsmith-assets'),
+    pageTitles = require('metalsmith-page-titles'),
     favicons = require('metalsmith-favicons'),
     metadata = require('metalsmith-metadata-directory'),
     drafts = require('metalsmith-drafts'),
@@ -45,8 +46,11 @@ builder =
         .metadata({
             site: {
                 url: globalData.url,
+                title: globalData.title,
             },
         })
+        // Generate page titles
+        .use(pageTitles())
         // Read all input from contents/
         .source('./contents')
         // Write all output to output/
@@ -108,6 +112,7 @@ builder =
                 layout: 'posts.nunjucks',
                 perPage: globalData.pageSize,
                 first: 'posts/index.html',
+                noPageOne: true,
                 path: 'posts/page/:num/index.html',
             },
         }))
