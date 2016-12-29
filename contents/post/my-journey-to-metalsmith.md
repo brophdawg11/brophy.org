@@ -145,7 +145,7 @@ Well, crap.  That sounds _a lot_ like what I was headed towards.  Metalsmith bas
 
 I'll do a separate post on my Metalsmith setup at some point (_queue TODO list reference_), but in a nutshell, I've been pleasantly surprised with the ease of debugging, inspecting, altering plugins as needed to achieve what I wanted.  It's by far the easiest to grasp of all the Node SSG's I've tried thus far.  For more info, read the [How Does it Work][Metalsmith-details] section.  But, essentially, I can jump into `node_modules`, add some debugging code to figure out what the heck is going on quite easily.  I can write my own little plugins where needed, but for the most part, their extensive list of [community plugins][Metalsmith-plugins] have solved my needs on the first try, with minimal adjustments or digging.
 
-So, in the end, it was a bit of a long road, but I'm happy where I landed.  Of course, as I was putting some final touches on tonight adding tag support using [metalsmith-tags], I tripped across the former author's blog post describing a similar journey of his, which resulted in his writing of [Yarn], yet another Node SSG...so, I'm for now praying I'm not ditching Metalsmith in a few months.  _Shudder._
+So, in the end, it was a bit of a long road, but I'm happy where I landed.  Of course, as I was putting some final touches on tonight adding tag support using [metalsmith-tags], I tripped across the former author's blog post describing a similar journey of his, which resulted in his writing of [Yarn], yet another Node SSG...so, for now I'm for praying I won't be ditching Metalsmith in a few months.  _Shudder._
 
 [brophy.org]: http://brophy.org "brophy.org"
 [Metalsmith]: http://metalsmith.io "Metalsmith"
