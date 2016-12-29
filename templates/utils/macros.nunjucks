@@ -13,8 +13,8 @@
     </ul>
 {% endmacro %}
 
-{% macro postMeta(moment, date, tags) %}
-    <spam class="c-meta__date">
+{% macro postMeta(moment, date, tags, readtime) %}
+    <span class="c-meta__date">
         {{ moment(date).format('MMMM, D YYYY') }}
     </span>
 
@@ -26,4 +26,9 @@
             -->{% if not loop.last %},{% endif %}
         {% endfor %}
     </span>
+
+    <span class="c-meta__divider">|</span>
+
+    <span class="c-meta__readtime">{{ readtime.text }}</span>
+
 {% endmacro %}

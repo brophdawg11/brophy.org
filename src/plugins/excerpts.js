@@ -2,7 +2,7 @@ const debug = require('debug')('excerpts'),
     extname = require('path').extname,
     cheerio = require('cheerio');
 
-module.exports = () => {
+module.exports = function excerpts() {
     return (files, metalsmith, done) => {
         Object.keys(files).forEach((file) => {
             const data = files[file];

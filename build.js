@@ -23,6 +23,7 @@ const metalsmith = require('metalsmith'),
     // Metalsmith plugins
     debugVerbose = require('./src/plugins/debug-verbose'),
     excerpts = require('./src/plugins/excerpts'),
+    readtime = require('./src/plugins/readtime'),
     metadataPatch = require('./src/plugins/metadata-patch'),
     nunjucksLibraries = require('./src/plugins/nunjucks-libraries'),
 
@@ -77,6 +78,10 @@ builder =
         }))
         // Allow draft:true front-matter flags
         .use(drafts())
+        // Generate post readtimes
+        .use(readtime({
+            path: 'post/**/*.md',
+        }))
         // Process markdown files
         .use(markdown())
         // Run files through typography plugin for formatting
