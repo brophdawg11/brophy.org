@@ -13,6 +13,7 @@
     "serve": "node build --serve --debug",
     "nodemon": "./node_modules/.bin/nodemon build.js --serve",
     "nodemon-debug": "./node_modules/.bin/nodemon build.js --serve --debug",
+    "sync": "aws --profile brophy.org s3 sync output/. s3://brophy.org/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers",
     "clean": "rm -rf output/",
     "nuke": "npm run clean && rm -rf node_modules && rm -rf .icon_cache && npm install",
     "lint": "./node_modules/.bin/eslint src/",
