@@ -51,7 +51,7 @@
   {% block aside %}{% endblock %}
 </aside>
 
-<section class="page-content-wrapper">
+<section class="page-content-wrapper {% block scope %}{% endblock %}">
 
   <header class="page-header">
 

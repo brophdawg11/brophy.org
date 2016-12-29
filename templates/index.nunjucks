@@ -7,6 +7,8 @@
   </div>
 {% endblock %}
 
+{% block scope %}s-home{% endblock %}
+
 {% block content %}
   <div class="c-home-content">
 
@@ -21,8 +23,8 @@
       </p>
       <p class="c-home-description">
         enjoys sports, beer, coffee, and coding
-      </p>
-      <p class="c-home-description">
+        <span class="c-home-description-dash">&mdash;</span>
+        <br class="c-home-description-break" />
         order of preference depends on day and time
       </p>
 

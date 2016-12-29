@@ -44,11 +44,6 @@
         "class": "twitter",
         "icon": "twitter"
     }, {
-        "url": "mailto:matt@brophy.org",
-        "title": "Email",
-        "class": "email",
-        "icon": "envelope"
-    }, {
         "url": "/rss.xml",
         "title": "RSS",
         "class": "rss",

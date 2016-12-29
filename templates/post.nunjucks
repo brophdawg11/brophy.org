@@ -26,7 +26,7 @@
 
         <footer>
             <div class="c-post__share">
-                Did you enjoy this post?  Share on
+                Enjoy this post?  Share on
 
                 <a class="c-post__share-medium"
                    href="https://twitter.com/share?text={{title}}&amp;url={{global.url}}/{{path}}"

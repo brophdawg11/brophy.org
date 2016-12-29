@@ -30,10 +30,17 @@
 
 @mixin post-styles() {
     p {
+        font-size: 0.9em;
+        line-height: 1.5em;
         padding-bottom: $content-padding;
+
+        @media screen and (min-width: $medium-min) {
+            font-size: 1em;
+        }
 
         img {
             margin: 0 auto;
+            max-width: 100%;
         }
     }
 
@@ -49,7 +56,12 @@
     // Only large sections of code, not inline <code> tags
     pre {
         padding-bottom: $content-padding;
-        margin: 0 $content-padding;
+        margin: 0;
+
+        @media screen and (min-width: $medium-min) {
+            margin-left: $content-padding;
+            margin-right: $content-padding;
+        }
 
         code {
             padding: 1em;
@@ -59,10 +71,15 @@
     }
 
     blockquote {
-        padding: 2em;
+        padding: 1em;
         background-color: $lightgrey;
-        margin: 0 $content-padding $content-padding;
+        margin: 0 0 $content-padding;
         font-style: italic;
+
+        @media screen and (min-width: $medium-min) {
+            margin-left: $content-padding;
+            margin-right: $content-padding;
+        }
 
         ol,
         ul {
