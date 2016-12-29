@@ -13,7 +13,6 @@ const metalsmith = require('metalsmith'),
     templates = require('metalsmith-layouts'),
     feed = require('metalsmith-feed'),
     sass = require('metalsmith-sass'),
-    watch = require('metalsmith-watch'),
     icons = require('metalsmith-icons'),
     metalsmithDebug = require('metalsmith-debug'),
     nunjucks = require('nunjucks'),
@@ -162,18 +161,6 @@ if (cmdArgs.serve) {
 if (cmdArgs.debug) {
     builder = builder.use(metalsmithDebug())
                      .use(debugVerbose());
-}
-
-if (cmdArgs.watch) {
-    builder = builder.use(watch({
-        paths: {
-            './contents/*': '**/*',
-            './assets/**/*': '**/*',
-            './src/**/*': '**/*',
-            './templates/**/*': '**/*',
-        },
-        invalidateCache: true,
-    }));
 }
 
 builder = builder.build((err) => {
