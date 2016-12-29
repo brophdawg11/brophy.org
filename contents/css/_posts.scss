@@ -14,7 +14,7 @@
     }
 
     &__excerpt {
-        @include code-styles;
+        @include post-styles;
         padding-bottom: 1em;
         line-height: 1.5em;
     }

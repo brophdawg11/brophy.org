@@ -19,7 +19,7 @@
     }
 
     &__content {
-        @include code-styles;
+        @include post-styles;
         font-size: 1.15em;
         line-height: 1.75em;
     }

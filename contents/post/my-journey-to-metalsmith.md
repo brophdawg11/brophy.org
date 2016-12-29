@@ -125,7 +125,7 @@ flowAsync.apply(null, config.pipelines.map(processPipeline))();
 
 Cool.  Now I can run whatever the heck I want on any set of file globs.  In any order, all the while having global access to the rest of the pipeline info from prior steps, if needed.  That's where all the usages of `this` come in.  Pipelines have access to their array of instances (`this.pipelineInstanes`) and instances have access to their parent pipeline (`this.pipeline`).  Tack on any metadata you want in an earlier step, and use it in a later step.
 
-I was pretty happy at this point, not so much about anything groundbreaking, although I was pretty psyched about the easy of which `flowAsync` made the pipeline steps.  But still, the thought of writing pipeline steps for everything needed for a true SSG blog was a little daunting.  Templates, Tags, Archives, Drafts, Pagination, Images, Styles, RSS feed, icons...uh oh.  I might be in over my head.
+I was pretty happy at this point, not so much about anything groundbreaking, although I was pretty psyched about the ease of which `flowAsync` made the pipeline steps.  But still, the thought of writing pipeline steps for everything needed for a true SSG blog was a little daunting.  Templates, Tags, Archives, Drafts, Pagination, Images, Styles, RSS feed, icons...uh oh.  I might be in over my head.
 
 So I went back to Googling, and this time, read a little deeper into Metalsmith and caught this little nugget:
 
@@ -139,7 +139,9 @@ So I went back to Googling, and this time, read a little deeper into Metalsmith 
 
 Well, crap.  That sounds _a lot_ like what I was headed towards.  Metalsmith basically does this concept, providing you a global `metadata` object throughout your applied plugins.  A bit more reading, and I was sold:
 
-![Hello Metalsmith](https://d17oy1vhnax1f7.cloudfront.net/items/3J0p0L2d3b2E2G1M0C13/Image%202016-12-28%20at%201.02.42%20AM.png?v=b9e9bffa "Hello Metalsmith")
+<p style="text-align:center">
+    <img src="https://d17oy1vhnax1f7.cloudfront.net/items/3J0p0L2d3b2E2G1M0C13/Image%202016-12-28%20at%201.02.42%20AM.png?v=b9e9bffa" title="Hello Metalsmith" />
+</p>
 
 I'll do a separate post on my Metalsmith setup at some point (_queue TODO list reference_), but in a nutshell, I've been pleasantly surprised with the ease of debugging, inspecting, altering plugins as needed to achieve what I wanted.  It's by far the easiest to grasp of all the Node SSG's I've tried thus far.  For more info, read the [How Does it Work][Metalsmith-details] section.  But, essentially, I can jump into `node_modules`, add some debugging code to figure out what the heck is going on quite easily.  I can write my own little plugins where needed, but for the most part, their extensive list of [community plugins][Metalsmith-plugins] have solved my needs on the first try, with minimal adjustments or digging.
 
@@ -148,7 +150,7 @@ So, in the end, it was a bit of a long road, but I'm happy where I landed.  Of c
 [brophy.org]: http://brophy.org "brophy.org"
 [Metalsmith]: http://metalsmith.io "Metalsmith"
 [Metalsmith-plugins]: http://www.metalsmith.io/#the-community-plugins "Metalsmith Plugins"
-[Metalsmith-detail]: http://www.metalsmith.io/how-does-it-work-in-more-detail- "Metalsmith Details"
+[Metalsmith-details]: http://www.metalsmith.io/how-does-it-work-in-more-detail- "Metalsmith Details"
 [metalsmith-tags]: https://github.com/totocaster/metalsmith-tags "metalsmith-tags"
 [EC2]: https://aws.amazon.com/ec2/ "EC2"
 [S3]: https://aws.amazon.com/s3/ "S3"

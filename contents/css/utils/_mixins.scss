@@ -28,10 +28,13 @@
     }
 }
 
-@mixin code-styles() {
-    p,
-    pre {
+@mixin post-styles() {
+    p {
         padding-bottom: $content-padding;
+
+        img {
+            margin: 0 auto;
+        }
     }
 
     em {
@@ -40,8 +43,35 @@
 
     code {
         font-family: monospace;
-        font-size: 0.9em;
-        line-height: 1.25em;
         background-color: $lightgrey;
+    }
+
+    // Only large sections of code, not inline <code> tags
+    pre {
+        padding-bottom: $content-padding;
+        margin: 0 $content-padding;
+
+        code {
+            padding: 1em;
+            font-size: 0.9em;
+            line-height: 1.25em;
+        }
+    }
+
+    blockquote {
+        padding: 2em;
+        background-color: $lightgrey;
+        margin: 0 $content-padding $content-padding;
+        font-style: italic;
+
+        ol,
+        ul {
+            margin-left: 40px;
+            padding-bottom: $content-padding;
+        }
+
+        p:last-child {
+            padding-bottom: 0;
+        }
     }
 }
