@@ -120,7 +120,7 @@
   }],
 
   "workExperience": [{
-    "title": "Senior Front-End Developer/Architect - [Urban Outfitters](http://www.urbn.com/ \"URBN\")",
+    "title": "Senior Front-End Developer/Architect - [URBN](http://www.urbn.com/ \"URBN\")",
     "subDetails": [
       "February 2015 - Present"
     ],
@@ -134,8 +134,9 @@
         "Internationalized application to run in multiple languages",
         "Heavy use of Angular interceptors to manage app-wide API request logic, including detecting failed requests, adjusting where possible, and retrying originating requests",
         "Gulp-based build process used to provide branded builds",
-        "Launched with new global [freepeople.com](http://www.freepeople.com \"freepeople.com\") in April 2016",
-        "Planned launches for new global [urbanoutfitters.com](http://www.urbanoutfitters.com \"urbanoutfitters.com\") and [anthropologie.com](http://www.anthropologie.com \"anthropologie.com\") in Q4 2016/Q1 2017",
+        "Launched [freepeople.com](http://www.freepeople.com \"freepeople.com\") in April 2016",
+        "Launched [anthropologie.com](http://www.anthropologie.com \"anthropologie.com\") in October 2016",
+        "Planned launch for [urbanoutfitters.com](http://www.urbanoutfitters.com \"urbanoutfitters.com\") in Q1 2017",
         "Technologies: Angular, ui-router, LoDash, Hapi, Foundation, SCSS, Gulp, Karma, Jasmine"
       ]
     ]
