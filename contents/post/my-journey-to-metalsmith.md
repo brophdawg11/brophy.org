@@ -123,7 +123,7 @@ function processPipeline(pipeline) {
 flowAsync.apply(null, config.pipelines.map(processPipeline))();
 ```
 
-Cool.  Now I can run whatever the heck I want on any set of file globs.  In any order, all the while having global access to the rest of the pipeline info from prior steps, if needed.  That's where all the usages of `this` come in.  Pipelines have access to their array of instances (`this.pipelineInstanes`) and instances have access to their parent pipeline (`this.pipeline`).  Tack on any metadata you want in an earlier step, and use it in a later step.
+Cool.  Now I can run whatever the heck I want on any set of file globs.  In any order, all the while having global access to the rest of the pipeline info from prior steps, if needed.  That's where all the usages of `this` come in.  Pipelines have access to their array of instances (`this.pipelineInstances`) and instances have access to their parent pipeline (`this.pipeline`).  Tack on any metadata you want in an earlier step, and use it in a later step.
 
 I was pretty happy at this point, not so much about anything groundbreaking, although I was pretty psyched about the ease of which `flowAsync` made the pipeline steps.  But still, the thought of writing pipeline steps for everything needed for a true SSG blog was a little daunting.  Templates, Tags, Archives, Drafts, Pagination, Images, Styles, RSS feed, icons...uh oh.  I might be in over my head.
 

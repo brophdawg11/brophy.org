@@ -7,6 +7,7 @@ const metalsmith = require('metalsmith'),
     tags = require('metalsmith-tags'),
     pagination = require('metalsmith-pagination'),
     markdown = require('metalsmith-markdown'),
+    metallic = require('metalsmith-metallic'),
     typography = require('metalsmith-typography'),
     permalinks = require('metalsmith-permalinks'),
     serve = require('metalsmith-serve'),
@@ -82,6 +83,8 @@ builder =
         .use(readtime({
             path: 'post/**/*.md',
         }))
+        // Add code highlighting to markdown files
+        .use(metallic())
         // Process markdown files
         .use(markdown())
         // Run files through typography plugin for formatting
