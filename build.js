@@ -14,6 +14,7 @@ const metalsmith = require('metalsmith'),
     feed = require('metalsmith-feed'),
     sass = require('metalsmith-sass'),
     icons = require('metalsmith-icons'),
+    ignore = require('metalsmith-ignore'),
     metalsmithDebug = require('metalsmith-debug'),
     nunjucks = require('nunjucks'),
     cmdArgs = require('yargs').argv,
@@ -149,7 +150,8 @@ builder =
             sourceMap: true,
             sourceMapContents: true,
             sourceMapEmbed: true,
-        }));
+        }))
+        .use(ignore('**/*.json'));
 
 if (cmdArgs.serve) {
     builder = builder.use(serve({
