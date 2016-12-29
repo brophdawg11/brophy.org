@@ -14,6 +14,7 @@ const metalsmith = require('metalsmith'),
     templates = require('metalsmith-layouts'),
     feed = require('metalsmith-feed'),
     sass = require('metalsmith-sass'),
+    autoprefixer = require('metalsmith-autoprefixer'),
     icons = require('metalsmith-icons'),
     ignore = require('metalsmith-ignore'),
     metalsmithDebug = require('metalsmith-debug'),
@@ -101,6 +102,7 @@ builder =
                 reverse: true,
             },
         }))
+        // Paginate posts collection
         .use(pagination({
             'collections.posts': {
                 layout: 'posts.nunjucks',
@@ -109,6 +111,7 @@ builder =
                 path: 'posts/page/:num/index.html',
             },
         }))
+        // Generate tag pages
         .use(tags({
             handle: 'tags',
             path: 'tags/:tag.html',
@@ -159,6 +162,9 @@ builder =
             sourceMapContents: true,
             sourceMapEmbed: true,
         }))
+        // Autoprefix CSS
+        .use(autoprefixer())
+        // Don't output .json files
         .use(ignore('**/*.json'));
 
 if (cmdArgs.serve) {
