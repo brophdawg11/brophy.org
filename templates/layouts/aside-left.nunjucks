@@ -98,7 +98,7 @@
       </p>
       <p class="page-footer-line">
         {% set year = moment().format('YYYY') %}
-        &copy; {{year}} {{global.owner}}
+        &copy; Copyright {{year}} {{global.owner}}
       </p>
 
     {% endblock %}
