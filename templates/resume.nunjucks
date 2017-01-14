@@ -6,14 +6,14 @@
 
     <meta property="og:title" content="Matt Brophy" />
     <meta property="og:site_name" content="{{ global.title }}" />
-    <meta property="og:url" content="{{ global.url }}/resume" />
+    <meta property="og:url" content="{{ global.url }}/resume/" />
     <meta property="og:description" content="Matt Brophy's Resume" />
     <meta property="og:image" content="http://brophy.org/assets/images/logo.png" />
 
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@brophdawg11" />
     <meta name="twitter:creator" content="@brophdawg11" />
-    <meta name="twitter:url" content="{{ global.url }}/resume" />
+    <meta name="twitter:url" content="{{ global.url }}/resume/" />
     <meta name="twitter:title" content="{{ global.title }}" />
     <meta name="twitter:description" content="Matt Brophy's Resume" />
     <meta name="twitter:image" content="http://brophy.org/assets/images/logo.png" />
