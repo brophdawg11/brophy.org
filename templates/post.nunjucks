@@ -5,6 +5,20 @@
 
     {{ super() }}
 
+    <meta property="og:title" content="{{ title }}" />
+    <meta property="og:site_name" content="{{ global.rss.title }}" />
+    <meta property="og:url" content="{{ global.url }}/{{ path }}" />
+    <meta property="og:description" content="{{ excerpt }}" />
+    <meta property="og:image" content="" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@brophdawg11" />
+    <meta name="twitter:creator" content="@brophdawg11" />
+    <meta name="twitter:url" content="{{ global.url }}/{{ path }}" />
+    <meta name="twitter:title" content="{{ title }}" />
+    <meta name="twitter:description" content="{{ excerpt }}" />
+    <meta name="twitter:image" content="" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/atom-one-light.min.css">
 
 {% endblock %}

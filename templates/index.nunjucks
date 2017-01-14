@@ -1,5 +1,25 @@
 {% extends "templates/layouts/aside-left.nunjucks" %}
 
+{% block head %}
+
+    {{ super() }}
+
+    <meta property="og:title" content="{{ global.title }}" />
+    <meta property="og:site_name" content="{{ global.title }}" />
+    <meta property="og:url" content="{{ global.url }}" />
+    <meta property="og:description" content="{{ global.description }}" />
+    <meta property="og:image" content="http://brophy.org/assets/images/logo.png" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@brophdawg11" />
+    <meta name="twitter:creator" content="@brophdawg11" />
+    <meta name="twitter:url" content="{{ global.url }}" />
+    <meta name="twitter:title" content="{{ global.title }}" />
+    <meta name="twitter:description" content="{{ global.description }}" />
+    <meta name="twitter:image" content="http://brophy.org/assets/images/logo.png" />
+
+{% endblock %}
+
 {% block aside %}
   <div class="page-aside-inner">
     <h1 class="page-aside-inner__h1"></h1>
@@ -15,7 +35,7 @@
       <img class="c-home-logo" src="/assets/images/logo.png" alt="Matt Brophy" />
 
       <h1 class="c-home-title">
-        Matt Brophy
+        {{ global.title }}
       </h1>
 
       <p class="c-home-description">
