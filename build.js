@@ -104,7 +104,6 @@ builder =
             posts: {
                 pattern: 'post/**.html',
                 sortBy: 'date',
-                reverse: true,
             },
         }))
         // Paginate posts collection
@@ -125,7 +124,6 @@ builder =
             perPage: globalData.pageSize,
             layout: 'tag.nunjucks',
             sortBy: 'date',
-            reverse: true,
         }))
         // Generate permalinks
         //   contents/post/test-post -> /post/test-post/index.html
