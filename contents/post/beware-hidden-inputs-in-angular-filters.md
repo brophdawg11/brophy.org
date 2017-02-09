@@ -1,7 +1,7 @@
 ---
 title: Beware of hidden inputs in Angular filters
 author: Matt Brophy
-date: 2016-01-14 12:00
+date: 2017-01-14 12:00
 tags: angular,javascript,functional
 layout: post.nunjucks
 ---

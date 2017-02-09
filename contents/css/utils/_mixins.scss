@@ -54,6 +54,7 @@
     }
 
     code {
+        padding: 0 3px;
         font-family: monospace;
         background-color: $lightgrey;
     }
@@ -95,5 +96,11 @@
         p:last-child {
             padding-bottom: 0;
         }
+    }
+
+    ol,
+    ul {
+        margin-left: 40px;
+        margin-bottom: 2em;
     }
 }
