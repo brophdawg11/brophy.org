@@ -15,8 +15,14 @@
         {% endfor %}
 
         <link href='http://fonts.googleapis.com/css?family=Rokkitt:400,700|Lato:400,300' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="/css/icons.css" />
-        <link rel="stylesheet" href="/css/main.css" />
+
+        {% if site.prod %}
+            <link rel="stylesheet" href="/css/app.css" />
+        {% else %}
+            <link rel="stylesheet" href="/css/icons.css" />
+            <link rel="stylesheet" href="/css/main.css" />
+        {% endif %}
+
         {% block head %}{% endblock %}
     </head>
     <body>

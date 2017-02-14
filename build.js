@@ -4,6 +4,7 @@ const metalsmith = require('metalsmith'),
     favicons = require('metalsmith-favicons'),
     metadata = require('metalsmith-metadata-directory'),
     drafts = require('metalsmith-drafts'),
+    concat = require('metalsmith-concat'),
     collections = require('metalsmith-collections'),
     tags = require('metalsmith-tags'),
     pagination = require('metalsmith-pagination'),
@@ -36,7 +37,14 @@ const metalsmith = require('metalsmith'),
     nunjucksMdFilter = require('./src/nunjucks/markdown-filter'),
 
     // Global configuration data
-    globalData = require('./contents/global.json');
+    globalData = require('./contents/global.json'),
+    metadataOpts = {
+        site: {
+            url: globalData.url,
+            title: globalData.title,
+            prod: cmdArgs.prod === true,
+        },
+    };
 
 /* eslint-disable no-unused-vars */
 let builder;
@@ -44,12 +52,7 @@ let builder;
 
 builder =
     metalsmith(__dirname)
-        .metadata({
-            site: {
-                url: globalData.url,
-                title: globalData.title,
-            },
-        })
+        .metadata(metadataOpts)
         // Generate page titles
         .use(pageTitles())
         // Read all input from contents/
@@ -58,7 +61,7 @@ builder =
         .destination('./output')
         // Workaround for metalsmith.metadata issue on watching files
         // See: https://github.com/segmentio/metalsmith-collections/issues/27#issuecomment-266647074
-        .use(metadataPatch())
+        .use(metadataPatch(metadataOpts))
         // Clean the output directory each time
         .clean(true)
         // Copy static assets from assets/ -> assets/
@@ -183,14 +186,21 @@ builder =
         // Compile scss files from contents/
         .use(sass({
             outputStyle: cmdArgs.prod ? 'compressed' : 'expanded',
-            sourceMap: true,
-            sourceMapContents: true,
-            sourceMapEmbed: true,
+            sourceMap: !cmdArgs.prod,
+            sourceMapContents: !cmdArgs.prod,
+            sourceMapEmbed: !cmdArgs.prod,
         }))
         // Autoprefix CSS
         .use(autoprefixer())
         // Don't output .json files
         .use(ignore('**/*.json'));
+
+if (cmdArgs.prod) {
+    builder = builder.use(concat({
+        files: 'css/**/*.css',
+        output: 'css/app.css',
+    }));
+}
 
 if (cmdArgs.serve) {
     builder = builder.use(serve({
