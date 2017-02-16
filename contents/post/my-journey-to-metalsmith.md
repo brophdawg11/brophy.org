@@ -150,7 +150,7 @@ So, in the end, it was a bit of a long road, but I'm happy where I landed.  Of c
 [brophy.org]: http://brophy.org "brophy.org"
 [Metalsmith]: http://metalsmith.io "Metalsmith"
 [Metalsmith-plugins]: http://www.metalsmith.io/#the-community-plugins "Metalsmith Plugins"
-[Metalsmith-details]: http://www.metalsmith.io/how-does-it-work-in-more-detail- "Metalsmith Details"
+[Metalsmith-details]: http://www.metalsmith.io/#how-does-it-work-in-more-detail- "Metalsmith Details"
 [metalsmith-tags]: https://github.com/totocaster/metalsmith-tags "metalsmith-tags"
 [EC2]: https://aws.amazon.com/ec2/ "EC2"
 [S3]: https://aws.amazon.com/s3/ "S3"
