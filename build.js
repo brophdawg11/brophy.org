@@ -23,6 +23,7 @@ const metalsmith = require('metalsmith'),
     metalsmithDebug = require('metalsmith-debug'),
     nunjucks = require('nunjucks'),
     cmdArgs = require('yargs').argv,
+    moment = require('moment'),
     _ = require('lodash'),
 
     // Metalsmith plugins
@@ -30,7 +31,6 @@ const metalsmith = require('metalsmith'),
     excerpts = require('./src/plugins/excerpts'),
     readtime = require('./src/plugins/readtime'),
     metadataPatch = require('./src/plugins/metadata-patch'),
-    nunjucksLibraries = require('./src/plugins/nunjucks-libraries'),
 
     // Nunjucks filters
     nunjucksJsonFilter = require('./src/nunjucks/json-filter'),
@@ -44,6 +44,9 @@ const metalsmith = require('metalsmith'),
             title: globalData.title,
             prod: cmdArgs.prod === true,
         },
+        // Load external libraries into the nunjucks environment (moment, _)
+        moment,
+        _,
     };
 
 /* eslint-disable no-unused-vars */
@@ -79,8 +82,6 @@ builder =
                 favicons: true,
             },
         }))
-        // Load external libraries into the nunjucks environment (moment, _)
-        .use(nunjucksLibraries())
         // Copy all .json files into global metadata for easy access
         //   resume.json -> metadata.resume = {}
         .use(metadata({
