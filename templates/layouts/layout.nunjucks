@@ -17,15 +17,26 @@
         <link href='http://fonts.googleapis.com/css?family=Rokkitt:400,700|Lato:400,300' rel='stylesheet' type='text/css'>
 
         {% if site.prod %}
-            <link rel="stylesheet" href="/css/app.css" />
+            {# <link rel="stylesheet" href="/css/app.css" /> #}
         {% else %}
-            <link rel="stylesheet" href="/css/icons.css" />
-            <link rel="stylesheet" href="/css/main.css" />
+            {# <link rel="stylesheet" href="/css/icons.css" /> #}
+            {# <link rel="stylesheet" href="/css/main.css" /> #}
         {% endif %}
 
         {% block head %}{% endblock %}
     </head>
     <body>
+        <center>
+            <p>
+                <b>Uh oh, did I break it?</b><em>Nope!  The styles have all
+                been intentionally removed to celebrate
+                <a href="https://css-naked-day.github.io/" title="CSS Naked Day">
+                CSS Naked Day
+                </a>.
+                They'll be back to normal around April 10th or so.  Enjoy!</em>
+            </p>
+        </center>
+
         {% block body %}{% endblock %}
 
         <script>

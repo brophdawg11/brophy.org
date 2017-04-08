@@ -93,8 +93,8 @@ builder =
         .use(readtime({
             path: 'post/**/*.md',
         }))
-        // Add code highlighting to markdown files
-        .use(metallic())
+        // // Add code highlighting to markdown files
+        // .use(metallic())
         // Process markdown files
         .use(markdown())
         // Run files through typography plugin for formatting
@@ -173,17 +173,17 @@ builder =
         }))
         // Use the Fontello icons plugin to scrape for used fonts and generate
         // a font icon file
-        .use(icons({
-            sets: {
-                fa: 'fontawesome',
-            },
-            fontello: {
-                name: 'icons',
-                css_prefix_text: 'fa-',
-            },
-            CSSDir: 'css',
-            fontDir: 'css/fonts',
-        }))
+        // .use(icons({
+        //     sets: {
+        //         fa: 'fontawesome',
+        //     },
+        //     fontello: {
+        //         name: 'icons',
+        //         css_prefix_text: 'fa-',
+        //     },
+        //     CSSDir: 'css',
+        //     fontDir: 'css/fonts',
+        // }))
         // Compile scss files from contents/
         .use(sass({
             outputStyle: cmdArgs.prod ? 'compressed' : 'expanded',
