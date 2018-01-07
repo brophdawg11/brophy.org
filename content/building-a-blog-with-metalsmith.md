@@ -1,7 +1,7 @@
 ---
 title: Building a Blog with Metalsmith
 author: Matt Brophy
-date: 2017-02-15 19:00
+postDate: 2017-02-15 19:00
 tags: ssg,javascript,metalsmith,blog
 layout: post.nunjucks
 ---

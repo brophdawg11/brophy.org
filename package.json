@@ -38,10 +38,12 @@
     "node"
   ],
   "dependencies": {
+    "@nuxtjs/axios": "4.5.2",
     "lodash": "4.17.4",
     "marked": "0.3.9",
     "moment": "2.20.1",
     "nuxt": "1.0.0-rc11",
+    "nuxtent": "1.2.2",
     "reading-time": "1.1.0",
     "vue": "2.4.4",
     "vuex": "3.0.1"

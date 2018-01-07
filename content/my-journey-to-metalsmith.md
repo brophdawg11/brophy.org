@@ -1,7 +1,7 @@
 ---
 title: My Journey to Metalsmith
 author: Matt Brophy
-date: 2016-12-27 12:00
+postDate: 2016-12-27 12:00
 tags: ssg,javascript,metalsmith
 layout: post.nunjucks
 ---

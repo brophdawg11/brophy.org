@@ -36,6 +36,9 @@ module.exports = {
     ** Customize the progress bar color
     */
     loading: { color: '#3B8070' },
+    modules: [
+        'nuxtent',
+    ],
     plugins: [
         '~/plugins/index.js',
     ],
@@ -55,6 +58,17 @@ module.exports = {
           //     exclude: /(node_modules)/
           //   })
           // }
+        },
+    },
+    nuxtent: {
+        content: {
+            page: '/pages/post/_slug',
+            permalink: '/post/:slug',
+            isPost: false,
+            generate: [
+                'get',
+                'getAll',
+            ],
         },
     },
 };
