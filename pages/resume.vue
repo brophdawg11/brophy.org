@@ -111,10 +111,10 @@
 
 <script>
 import { isArray } from 'lodash';
-import marked from 'marked';
 
 // @todo Custom meta tags?
 export default {
+    layout: 'centered',
     data() {
         // @ytodo: Make constant/non-reactive
         return {
