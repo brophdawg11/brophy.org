@@ -19,10 +19,10 @@
 
             <nav>
 
-                <circle-links
+                <CircleLinks
                     :links="headerLinks"
                     class='s-header-links'>
-                </circle-links>
+                </CircleLinks>
 
             </nav>
 
@@ -36,10 +36,10 @@
 
             <nav>
 
-                <circle-links
+                <CircleLinks
                     :links="footerLinks"
                     class='s-footer-links'>
-                </circle-links>
+                </CircleLinks>
 
             </nav>
 

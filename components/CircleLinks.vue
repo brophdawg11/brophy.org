@@ -4,9 +4,9 @@
     <li v-for="link in links"
         class="page-link__li">
 
-        <a class="page-link__a"
-           :href="link.url"
-           :title="link.title">
+        <nuxt-link class="page-link__a"
+                   :to="link.url"
+                   :title="link.title">
 
            <span class="fa"
                  :class="`fa-${link.icon}`">
@@ -16,7 +16,7 @@
                {{ link.title }}
            </span>
 
-        </a>
+        </nuxt-link>
 
     </li>
 
@@ -25,7 +25,7 @@
 
 <script>
 export default {
-    name: 'circle-links',
+    name: 'CircleLinks',
     props: {
         links: {
             type: Array,
