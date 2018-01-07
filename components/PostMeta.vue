@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import { isString } from 'lodash';
 import moment from 'moment';
 import readingTime from 'reading-time';
 
@@ -40,10 +41,20 @@ export default {
             return moment(this.post.postDate).format('MMMM D, YYYY');
         },
         tagArray() {
-            return this.post.tags.split(',');
+            return isString(this.post.tags) ?
+                this.post.tags.split(',') :
+                [];
         },
         readTime() {
-            return readingTime(this.post.body).text;
+            if (this.post.readTime) {
+                return this.post.readTime.text;
+            }
+
+            if (this.post.body) {
+                return readingTime(this.post.body).text;
+            }
+
+            return null;
         },
     },
 };
