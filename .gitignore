@@ -4,3 +4,5 @@ output
 npm-debug.log
 .icon_cache
 todo.txt
+.nuxt
+dist
