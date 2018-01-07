@@ -2,7 +2,7 @@
 <div class="c-home-content">
 
     <img class="c-home-logo"
-         src="~/assets/images/logo.png"
+         src="~/static/images/logo.png"
          alt="Matt Brophy" />
 
     <h1 class="c-home-title">

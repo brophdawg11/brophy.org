@@ -161,6 +161,6 @@ export default {
 @import '../assets/scss/scopes/home';
 
 .page-aside {
-    background-image: url(/assets/images/asides/bike.jpg);
+    background-image: url(/static/images/asides/bike.jpg);
 }
 </style>

@@ -8,6 +8,7 @@
         'indent': [ 'error', 4 ],
         'one-var': 'off',
         'no-param-reassign': 'off',
-        'no-plusplus': 'off'
+        'no-plusplus': 'off',
+        'no-console': 'off',
     }
 }
