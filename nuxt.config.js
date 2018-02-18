@@ -42,6 +42,9 @@ module.exports = {
     plugins: [
         '~/plugins/index.js',
     ],
+    router: {
+        middleware: 'routing',
+    },
     /*
     ** Build configuration
     */

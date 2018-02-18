@@ -13,7 +13,7 @@
 
     </aside>
 
-    <section class="page-content-wrapper">
+    <section class="page-content-wrapper" :class="pageScope">
 
         <header class="page-header">
 
@@ -129,5 +129,10 @@ export default {
             }],
         };
     },
+    computed: {
+        pageScope() {
+            return this.$store.state.pageScope || '';
+        },
+    }
 };
 </script>

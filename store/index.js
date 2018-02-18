@@ -1,4 +1,5 @@
 import Vuex from 'vuex';
+import mutationHandlers from './mutations';
 
 export default () => new Vuex.Store({
     state: {
@@ -18,10 +19,7 @@ export default () => new Vuex.Store({
             'assets/images/asides/bike4.jpg',
             'assets/images/asides/bikes.jpg',
         ],
+        pageScope: null,
     },
-    mutations: {
-        // increment(state) {
-        //     state.counter++;
-        // },
-    },
+    mutations: mutationHandlers,
 });

@@ -26,11 +26,16 @@
 </template>
 
 <script>
+import { SET_PAGE_SCOPE } from '../store/mutations';
+
 export default {
     computed: {
         title() {
             return this.$store.state.title;
         },
+    },
+    beforeCreate() {
+        this.$store.commit(SET_PAGE_SCOPE, 's-home');
     },
 };
 </script>

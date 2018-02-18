@@ -17,7 +17,8 @@
     "nuke": "npm run clean && rm -rf node_modules && rm -rf .icon_cache && npm install",
     "serve": "cd dist && python -m SimpleHTTPServer",
     "start": "nuxt start",
-    "sync": "aws --profile brophy.org s3 sync dist/. s3://brophy.org/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers --size-only"
+    "sync": "aws --profile brophy.org s3 sync dist/. s3://brophy.org/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers --size-only",
+    "watch": "npm-watch"
   },
   "repository": {
     "type": "git",
@@ -60,6 +61,7 @@
     "eslint-plugin-standard": "3.0.1",
     "eslint-plugin-vue": "4.1.0",
     "node-sass": "4.7.2",
+    "npm-watch": "0.3.0",
     "sass-loader": "6.0.6",
     "stylelint": "8.4.0",
     "stylelint-config-standard": "18.0.0"
