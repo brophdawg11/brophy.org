@@ -4,9 +4,7 @@
     <li v-for="link in links"
         class="page-link__li">
 
-        <nuxt-link class="page-link__a"
-                   :to="link.url"
-                   :title="link.title">
+        <CircleLink :link="link">
 
            <span class="fa"
                  :class="`fa-${link.icon}`">
@@ -16,7 +14,7 @@
                {{ link.title }}
            </span>
 
-        </nuxt-link>
+        </CircleLink>
 
     </li>
 
@@ -24,8 +22,13 @@
 </template>
 
 <script>
+import CircleLink from './CircleLink.vue';
+
 export default {
     name: 'CircleLinks',
+    components: {
+        CircleLink,
+    },
     props: {
         links: {
             type: Array,

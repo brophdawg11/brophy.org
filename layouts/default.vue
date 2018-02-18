@@ -103,21 +103,25 @@ export default {
             }],
             footerLinks: [{
                 url: 'http://www.github.com/brophdawg11',
+                external: true,
                 title: 'GitHub',
                 class: 'github',
                 icon: 'github-circled',
             }, {
                 url: 'http://www.instagram.com/brophdawg11',
+                external: true,
                 title: 'Instagram',
                 class: 'instagram',
                 icon: 'instagram',
             }, {
                 url: 'http://www.facebook.com/matt.b.brophy',
+                external: true,
                 title: 'Facebook',
                 class: 'facebook',
                 icon: 'facebook',
             }, {
                 url: 'http://www.twitter.com/brophdawg11',
+                external: true,
                 title: 'Twitter',
                 class: 'twitter',
                 icon: 'twitter',
