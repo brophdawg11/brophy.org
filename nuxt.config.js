@@ -1,3 +1,5 @@
+const hljs = require('highlight.js');
+
 module.exports = {
     /*
     ** Headers of the page
@@ -22,6 +24,10 @@ module.exports = {
             type: 'image/x-icon',
             href: '/favicon/favicon.ico',
             // @todo: Add remaining favicons
+        }, {
+            href: 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css',
+            rel: 'stylesheet',
+            type: 'text/css',
         }, {
             href: 'http://fonts.googleapis.com/css?family=Rokkitt:400,700|Lato:400,300',
             rel: 'stylesheet',
@@ -72,6 +78,21 @@ module.exports = {
                 'get',
                 'getAll',
             ],
+        },
+        parsers: {
+            md: {
+                extend(config) {
+                    config.highlight = (code) => {
+                        try {
+                            const highlighted = hljs.highlightAuto(code).value;
+                            return `<pre><code class="hljs">${highlighted}</code></pre>`;
+                        } catch (e) {
+                            console.warn('Error encountered using highlight.js:', e);
+                        }
+                        return code;
+                    };
+                },
+            },
         },
     },
 };
