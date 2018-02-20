@@ -9,11 +9,12 @@
 
     <span class="c-meta__tags">
         <template v-for="(tag, index) in tagArray">
-            <a :href="`/tags/${tag}/`"
-               :title="tag">
-                {{tag}}<!--
-            --></a><!--
-            --><template v-if="index < tagArray.length - 1">,</template>
+            <nuxt-link
+                :to="`/tag/${tag}/`"
+                :title="tag"><!--
+                -->{{tag}}<!--
+            --></nuxt-link><!--
+            --><template v-if="index < tagArray.length - 1">, </template>
         </template>
     </span>
 
