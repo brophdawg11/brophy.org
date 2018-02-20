@@ -93,8 +93,5 @@ export default {
             return `${this.$store.state.url}${this.post.permalink}`;
         },
     },
-    created() {
-        console.log(omit(this.post, 'body'));
-    },
 };
 </script>
