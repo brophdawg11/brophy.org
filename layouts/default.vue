@@ -1,76 +1,69 @@
 <template>
-<Layout>
-    <div style="display: none;">
-        <!--{% for img in _.tail(global.asides) %}
-            <img src="{{ img }}" />
-        {% endfor %}-->
-    </div>
-
-    <aside class="page-aside">
-
-        <div class="page-aside-img-loader">
+    <Layout>
+        <div style="display: none;">
+            <!--{% for img in _.tail(global.asides) %}
+                <img src="{{ img }}" />
+            {% endfor %}-->
         </div>
 
-    </aside>
+        <aside class="page-aside">
 
-    <section class="page-content-wrapper" :class="pageScope">
+            <div class="page-aside-img-loader" />
 
-        <header class="page-header">
+        </aside>
 
-            <nav>
+        <section :class="pageScope" class="page-content-wrapper">
 
-                <CircleLinks
-                    :links="headerLinks"
-                    class='s-header-links'>
-                </CircleLinks>
+            <header class="page-header">
 
-            </nav>
+                <nav>
 
-        </header>
+                    <CircleLinks :links="headerLinks" class="s-header-links" />
 
-        <div class="page-content">
-            <nuxt></nuxt>
-        </div>
+                </nav>
 
-        <footer class="page-footer">
+            </header>
 
-            <nav>
+            <div class="page-content">
+                <nuxt/>
+            </div>
 
-                <CircleLinks
-                    :links="footerLinks"
-                    class='s-footer-links'>
-                </CircleLinks>
+            <footer class="page-footer">
 
-            </nav>
+                <nav>
 
-            <p class="page-footer-line">
-                built with
-                <a href="https://nuxtjs.org/" title="Nuxt">nuxt</a>
-            </p>
-            <p class="page-footer-line">
-                hosted on
-                <a href="https://aws.amazon.com/s3/" title="S3">aws s3</a>
-                &mdash;
-                stored in
-                <a href="https://www.github.com/brophdawg11/brophy.org" title="GitHub">github</a>
-            </p>
-            <p class="page-footer-line">
-                side images from
-                <a href="http://www.gratisography.com/" title="Gratisography">gratisography</a>
-                &mdash;
-                icons from
-                <a href="http://fortawesome.github.io/Font-Awesome/" title="Font-Awesome">font-awesome</a> via
-                <a href="http://fontello.com/" title="Fontello">fontello</a>
-            </p>
-            <p class="page-footer-line">
-                &copy; Copyright {{year}} Matt Brophy
-            </p>
+                    <CircleLinks :links="footerLinks" class="s-footer-links" />
 
-        </footer>
+                </nav>
 
-    </section>
+                <p class="page-footer-line">
+                    built with
+                    <a href="https://nuxtjs.org/" title="Nuxt">nuxt</a>
+                </p>
+                <p class="page-footer-line">
+                    hosted on
+                    <a href="https://aws.amazon.com/s3/" title="S3">aws s3</a>
+                    &mdash;
+                    stored in
+                    <a href="https://www.github.com/brophdawg11/brophy.org" title="GitHub">github</a>
+                </p>
+                <p class="page-footer-line">
+                    side images from
+                    <a href="http://www.gratisography.com/" title="Gratisography">gratisography</a>
+                    &mdash;
+                    icons from
+                    <a href="http://fortawesome.github.io/Font-Awesome/" title="Font-Awesome">font-awesome</a> via
+                    <a href="http://fontello.com/" title="Fontello">fontello</a>
+                </p>
+                <p class="page-footer-line">
+                    &copy; Copyright {{ year }} Matt Brophy
+                </p>
 
-</Layout>
+            </footer>
+
+        </section>
+
+    </Layout>
 </template>
 
 <script>
@@ -137,6 +130,6 @@ export default {
         pageScope() {
             return this.$store.state.pageScope || '';
         },
-    }
+    },
 };
 </script>

@@ -1,11 +1,11 @@
 <template>
-<div>
-    <h1 class="c-tags__title">
-        <span class="c-tags__title-tag">{{tag}}</span> Posts
-    </h1>
+    <div>
+        <h1 class="c-tags__title">
+            <span class="c-tags__title-tag">{{ tag }}</span> Posts
+        </h1>
 
-    <PostList :posts="posts"></PostList>
-</div>
+        <PostList :posts="posts" />
+    </div>
 </template>
 
 <script>
@@ -23,12 +23,12 @@ export default {
         const tag = get(route, 'params.tag');
         const postHasTag = p => includes(get(p, 'tags', '').split(','), tag);
         return app.$content('/')
-                  .getAll()
-                  .then(posts => filter(posts, postHasTag))
-                  .then(posts => ({
-                      tag,
-                      posts: enhancePosts(posts)
-                  }));
+            .getAll()
+            .then(posts => filter(posts, postHasTag))
+            .then(posts => ({
+                tag,
+                posts: enhancePosts(posts),
+            }));
     },
     data() {
         return {

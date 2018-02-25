@@ -16,10 +16,25 @@
     "deploy": "npm run clean && npm run build && npm run sync",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "nuke": "npm run clean && rm -rf node_modules && rm -rf .icon_cache && npm install",
+    "precommit": "npm run lint",
     "serve": "cd dist && python -m SimpleHTTPServer",
     "start": "nuxt start",
     "sync": "aws --profile brophy.org s3 sync dist/. s3://brophy.org/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers --size-only",
     "watch": "npm-watch"
+  },
+  "watch": {
+    "lint": {
+      "patterns": [
+        "components",
+        "js",
+        "layouts",
+        "pages",
+        "plugins",
+        "store",
+        "nuxt.config.js"
+      ],
+      "extensions": "js,vue,scss"
+    }
   },
   "repository": {
     "type": "git",
@@ -53,15 +68,19 @@
     "vuex": "3.0.1"
   },
   "devDependencies": {
-    "eslint": "4.14.0",
+    "eslint": "4.18.1",
     "eslint-config-airbnb-base": "12.1.0",
     "eslint-loader": "1.9.0",
-    "eslint-plugin-html": "4.0.1",
-    "eslint-plugin-import": "2.8.0",
-    "eslint-plugin-node": "5.2.1",
+    "eslint-plugin-html": "4.0.2",
+    "eslint-plugin-import": "2.9.0",
+    "eslint-plugin-node": "6.0.1",
     "eslint-plugin-promise": "3.6.0",
     "eslint-plugin-standard": "3.0.1",
-    "eslint-plugin-vue": "4.1.0",
+    "eslint-plugin-vue": "4.3.0",
+    "husky": "0.14.3",
+    "lodash": "4.17.5",
+    "marked": "0.3.16",
+    "moment": "2.20.1",
     "node-sass": "4.7.2",
     "npm-watch": "0.3.0",
     "sass-loader": "6.0.6",

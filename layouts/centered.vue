@@ -1,15 +1,15 @@
 <template>
-<Layout>
+    <Layout>
 
-    <div class="c-content-centered-outer">
+        <div class="c-content-centered-outer">
 
-         <div class="c-content-centered">
-             <nuxt></nuxt>
-         </div>
+            <div class="c-content-centered">
+                <nuxt/>
+            </div>
 
-    </div>
+        </div>
 
-</Layout>
+    </Layout>
 </template>
 
 <script>

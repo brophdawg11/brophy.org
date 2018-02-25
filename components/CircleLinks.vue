@@ -1,24 +1,23 @@
 <template>
-<ul class="page-links__ul">
+    <ul class="page-links__ul">
 
-    <li v-for="link in links"
-        class="page-link__li">
+        <li v-for="link in links"
+            :key="link"
+            class="page-link__li">
 
-        <CircleLink :link="link">
+            <CircleLink :link="link">
 
-           <span class="fa"
-                 :class="`fa-${link.icon}`">
-           </span>
+                <span :class="`fa-${link.icon}`" class="fa" />
 
-           <span class="page-link__p">
-               {{ link.title }}
-           </span>
+                <span class="page-link__p">
+                    {{ link.title }}
+                </span>
 
-        </CircleLink>
+            </CircleLink>
 
-    </li>
+        </li>
 
-</ul>
+    </ul>
 </template>
 
 <script>

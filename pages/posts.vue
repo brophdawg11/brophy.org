@@ -1,7 +1,7 @@
 <template>
-<div>
-    <PostList :posts="posts"></PostList>
-</div>
+    <div>
+        <PostList :posts="posts" />
+    </div>
 </template>
 
 <script>
@@ -15,7 +15,7 @@ export default {
     },
     asyncData({ app }) {
         return app.$content('/').getAll().then(posts => ({
-            posts: enhancePosts(posts)
+            posts: enhancePosts(posts),
         }));
     },
     data() {

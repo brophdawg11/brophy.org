@@ -1,112 +1,118 @@
 <template>
-<div id="cv">
-    <div class="mainDetails">
-        <div class="headshot">
-          <img :src="headshot" :alt="name" />
-        </div>
-
-        <div class="name">
-          <h1>{{name}}</h1>
-          <h2>{{title}}</h2>
-        </div>
-
-        <div class="contactDetails">
-            <ul>
-                <li>{{location}}</li>
-                <li>
-                    e:
-                    <a :href="`mailto:${email}`" target="_blank">
-                        {{email}}
-                    </a>
-                </li>
-                <li>
-                    w:
-                    <a :href="`http://${website}`">
-                        {{website}}
-                    </a>
-                </li>
-                <li>
-                    <a :href="`https://${github}`" target="_blank">
-                        {{github}}
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="clear"></div>
-    </div>
-
-    <div id="mainArea">
-
-        <section class="keySkillsSection">
-            <div class="sectionTitle">
-                <h1>Key Skills</h1>
+    <div id="cv">
+        <div class="mainDetails">
+            <div class="headshot">
+                <img :src="headshot" :alt="name">
             </div>
 
-            <div class="sectionContent">
-                <template v-for="keySkill in keySkills">
-                    <p class="subDetails">{{keySkill.title}}:</p>
-                    <ul class="keySkills">
-                        <li v-for="skill in keySkill.skills">{{skill}}</li>
-                    </ul>
-                </template>
+            <div class="name">
+                <h1>{{ name }}</h1>
+                <h2>{{ title }}</h2>
             </div>
 
-            <div class="clear"></div>
-        </section>
-
-        <section class="workDetails">
-            <div class="sectionTitle">
-                <h1>Work Experience</h1>
+            <div class="contactDetails">
+                <ul>
+                    <li>{{ location }}</li>
+                    <li>
+                        e:
+                        <a :href="`mailto:${email}`" target="_blank">
+                            {{ email }}
+                        </a>
+                    </li>
+                    <li>
+                        w:
+                        <a :href="`http://${website}`">
+                            {{ website }}
+                        </a>
+                    </li>
+                    <li>
+                        <a :href="`https://${github}`" target="_blank">
+                            {{ github }}
+                        </a>
+                    </li>
+                </ul>
             </div>
 
-            <div class="sectionContent">
+            <div class="clear" />
+        </div>
 
-                <article v-for="job in jobs">
-                    <h2 v-html="md(job.title)"></h2>
-                    <p v-for="subDetail in job.subDetails"
-                       class="subDetails"
-                       v-html="md(subDetail)">
-                    </p>
-                    <ul class="workDetails-list">
-                        <template v-for="detail in job.details">
-                            <ul v-if="isArray(detail)">
-                                <li v-for="detail2 in detail"
-                                    v-html="md(detail2)">
-                                </li>
-                            </ul>
-                            <li v-else
-                                v-html="md(detail)">
+        <div id="mainArea">
+
+            <section class="keySkillsSection">
+                <div class="sectionTitle">
+                    <h1>Key Skills</h1>
+                </div>
+
+                <div class="sectionContent">
+                    <template v-for="keySkill in keySkills">
+                        <p :key="keySkill.title" class="subDetails">
+                            {{ keySkill.title }}:
+                        </p>
+                        <ul :key="keySkill.title" class="keySkills">
+                            <li v-for="skill in keySkill.skills" :key="skill">
+                                {{ skill }}
                             </li>
-                        </template>
-                    </ul>
-                </article>
+                        </ul>
+                    </template>
+                </div>
 
-            </div>
-            <div class="clear"></div>
-        </section>
+                <div class="clear" />
+            </section>
 
-        <section>
-            <div class="sectionTitle">
-                <h1>Education</h1>
-            </div>
+            <section class="workDetails">
+                <div class="sectionTitle">
+                    <h1>Work Experience</h1>
+                </div>
 
-            <div class="sectionContent">
-                <article v-for="education in education">
-                    <h2>{{education.title}}</h2>
-                    <p v-for="detail in education.details"
-                       class="subDetails">
-                       {{detail}}
-                    </p>
-                </article>
-            </div>
+                <div class="sectionContent">
 
-            <div class="clear"></div>
-        </section>
+                    <article v-for="job in jobs" :key="job.title">
+                        <h2 v-html="md(job.title)"/>
+                        <p v-for="subDetail in job.subDetails"
+                           :key="subDetail"
+                           class="subDetails"
+                           v-html="md(subDetail)" />
+                        <ul class="workDetails-list">
+                            <template v-for="detail in job.details">
+                                <ul v-if="isArray(detail)" :key="detail">
+                                    <li v-for="detail2 in detail"
+                                        :key="detail2"
+                                        v-html="md(detail2)" />
+                                </ul>
+                                <li v-else
+                                    :key="detail"
+                                    v-html="md(detail)" />
+                            </template>
+                        </ul>
+                    </article>
+
+                </div>
+                <div class="clear" />
+            </section>
+
+            <section>
+                <div class="sectionTitle">
+                    <h1>Education</h1>
+                </div>
+
+                <div class="sectionContent">
+                    <article v-for="education in education"
+                             :key="education.title">
+                        <h2>{{ education.title }}</h2>
+                        <p v-for="detail in education.details"
+                           :key="detail"
+                           class="subDetails">
+                            {{ detail }}
+                        </p>
+                    </article>
+                </div>
+
+                <div class="clear" />
+            </section>
+
+        </div>
 
     </div>
-
-</div>
 </template>
 
 <script>

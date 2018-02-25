@@ -1,4 +1,4 @@
-import { extend, map, omit, sortBy } from 'lodash';
+import { extend, map, omit } from 'lodash';
 import cheerio from 'cheerio';
 import readingTime from 'reading-time';
 

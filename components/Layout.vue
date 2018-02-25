@@ -1,7 +1,7 @@
 <template>
-<div>
-    <slot></slot>
-</div>
+    <div>
+        <slot/>
+    </div>
 </template>
 
 <script>
@@ -20,23 +20,7 @@ export default {
 </script>
 
 <style lang="scss">
-// Layout inspired by http://demo.onedesigns.com/graceunderpressure/journal/
-@import '../assets/scss/reset';
-@import '../assets/scss/variables';
-@import '../assets/scss/utils/mixins';
-@import '../assets/scss/global';
-@import '../assets/scss/content-centered';
-@import '../assets/scss/page';
-@import '../assets/scss/home';
-@import '../assets/scss/posts';
-@import '../assets/scss/tags';
-@import '../assets/scss/pagination';
-@import '../assets/scss/post';
-@import '../assets/scss/meta';
-@import '../assets/scss/resume';
-@import '../assets/scss/scopes/header';
-@import '../assets/scss/scopes/footer';
-@import '../assets/scss/scopes/home';
+@import '../assets/scss/main';
 
 .page-aside {
     background-image: url(/static/images/asides/bike.jpg);

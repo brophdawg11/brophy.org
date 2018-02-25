@@ -1,17 +1,17 @@
 <template>
     <span>
         <a v-if="link.external"
-           class="page-link__a"
            :href="link.url"
-           :title="link.title">
-           <slot></slot>
+           :title="link.title"
+           class="page-link__a">
+            <slot/>
         </a>
 
         <nuxt-link v-else
-                   class="page-link__a"
                    :to="link.url"
-                   :title="link.title">
-            <slot></slot>
+                   :title="link.title"
+                   class="page-link__a">
+            <slot/>
         </nuxt-link>
     </span>
 </template>

@@ -1,28 +1,29 @@
 <template>
-<div>
+    <div>
 
-    <span class="c-meta__date">
-        {{ formattedDate }}
-    </span>
+        <span class="c-meta__date">
+            {{ formattedDate }}
+        </span>
 
-    <span class="c-meta__divider">|</span>
+        <span class="c-meta__divider">|</span>
 
-    <span class="c-meta__tags">
-        <template v-for="(tag, index) in tagArray">
-            <nuxt-link
-                :to="`/tag/${tag}/`"
-                :title="tag"><!--
-                -->{{tag}}<!--
-            --></nuxt-link><!--
-            --><template v-if="index < tagArray.length - 1">, </template>
-        </template>
-    </span>
+        <span class="c-meta__tags">
+            <template v-for="(tag, index) in tagArray">
+                <nuxt-link
+                    :key="tag"
+                    :to="`/tag/${tag}/`"
+                    :title="tag"><!--
+                    -->{{ tag }}<!--
+                --></nuxt-link><!--
+                --><template v-if="index < tagArray.length - 1">, </template>
+            </template>
+        </span>
 
-    <span class="c-meta__divider">|</span>
+        <span class="c-meta__divider">|</span>
 
-    <span class="c-meta__readtime">{{ readTime }}</span>
+        <span class="c-meta__readtime">{{ readTime }}</span>
 
-</div>
+    </div>
 </template>
 
 <script>

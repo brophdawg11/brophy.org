@@ -66,24 +66,24 @@ module.exports = {
             '/tag/vue',
         ],
         minify: {
-          collapseBooleanAttributes: true,
-          collapseWhitespace: false,
-          decodeEntities: true,
-          minifyCSS: isProd,
-          minifyJS: isProd,
-          processConditionalComments: true,
-          removeAttributeQuotes: false,
-          removeComments: isProd,
-          removeEmptyAttributes: true,
-          removeOptionalTags: true,
-          removeRedundantAttributes: true,
-          removeScriptTypeAttributes: false,
-          removeStyleLinkTypeAttributes: false,
-          removeTagWhitespace: false,
-          sortAttributes: isProd,
-          sortClassName: false,
-          trimCustomFragments: true,
-          useShortDoctype: true
+            collapseBooleanAttributes: true,
+            collapseWhitespace: false,
+            decodeEntities: true,
+            minifyCSS: isProd,
+            minifyJS: isProd,
+            processConditionalComments: true,
+            removeAttributeQuotes: false,
+            removeComments: isProd,
+            removeEmptyAttributes: true,
+            removeOptionalTags: true,
+            removeRedundantAttributes: true,
+            removeScriptTypeAttributes: false,
+            removeStyleLinkTypeAttributes: false,
+            removeTagWhitespace: false,
+            sortAttributes: isProd,
+            sortClassName: false,
+            trimCustomFragments: true,
+            useShortDoctype: true,
         },
     },
     /*
@@ -93,15 +93,15 @@ module.exports = {
         /*
         ** Run ESLint on save
         */
-        extend(config, ctx) {
-          // if (ctx.dev && ctx.isClient) {
-          //   config.module.rules.push({
-          //     enforce: 'pre',
-          //     test: /\.(js|vue)$/,
-          //     loader: 'eslint-loader',
-          //     exclude: /(node_modules)/
-          //   })
-          // }
+        extend(/* config, ctx */) {
+            // if (ctx.dev && ctx.isClient) {
+            //   config.module.rules.push({
+            //     enforce: 'pre',
+            //     test: /\.(js|vue)$/,
+            //     loader: 'eslint-loader',
+            //     exclude: /(node_modules)/
+            //   })
+            // }
         },
     },
     nuxtent: {
