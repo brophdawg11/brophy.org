@@ -1,5 +1,7 @@
 const hljs = require('highlight.js');
 
+const isProd = process.env.BUILD_ENV === 'production';
+
 module.exports = {
     /*
     ** Headers of the page
@@ -48,8 +50,41 @@ module.exports = {
     plugins: [
         '~/plugins/index.js',
     ],
-    router: {
-        middleware: 'routing',
+    generate: {
+        interval: 100,
+        routes: [
+            '/tag/angular',
+            '/tag/angularjs',
+            '/tag/blog',
+            '/tag/frp',
+            '/tag/functional',
+            '/tag/javascript',
+            '/tag/metalsmith',
+            '/tag/reactive',
+            '/tag/spa',
+            '/tag/ssg',
+            '/tag/vue',
+        ],
+        minify: {
+          collapseBooleanAttributes: true,
+          collapseWhitespace: false,
+          decodeEntities: true,
+          minifyCSS: isProd,
+          minifyJS: isProd,
+          processConditionalComments: true,
+          removeAttributeQuotes: false,
+          removeComments: isProd,
+          removeEmptyAttributes: true,
+          removeOptionalTags: true,
+          removeRedundantAttributes: true,
+          removeScriptTypeAttributes: false,
+          removeStyleLinkTypeAttributes: false,
+          removeTagWhitespace: false,
+          sortAttributes: isProd,
+          sortClassName: false,
+          trimCustomFragments: true,
+          useShortDoctype: true
+        },
     },
     /*
     ** Build configuration

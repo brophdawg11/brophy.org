@@ -107,6 +107,9 @@
 }
 
 .page-content-wrapper {
+    display: flex;
+    flex-direction: column;
+
     position: relative;
     padding: $content-padding;
 
@@ -123,6 +126,10 @@
     max-width: 768px;
     margin: auto;
     padding-bottom: $content-padding;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .page-header {

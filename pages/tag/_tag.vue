@@ -10,6 +10,9 @@
 
 <script>
 import { get, filter, includes } from 'lodash';
+
+import { enhancePosts } from '../../js/post-utils';
+
 import PostList from '../../components/PostList.vue';
 
 export default {
@@ -22,7 +25,10 @@ export default {
         return app.$content('/')
                   .getAll()
                   .then(posts => filter(posts, postHasTag))
-                  .then(posts => ({ tag, posts }));
+                  .then(posts => ({
+                      tag,
+                      posts: enhancePosts(posts)
+                  }));
     },
     data() {
         return {

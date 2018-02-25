@@ -15,10 +15,10 @@
             class="c-posts__item">
 
             <h2 class="c-posts__title">
-                <a :href="post.permalink"
-                   :title="post.title">
+                <nuxt-link :to="post.permalink"
+                           :title="post.title">
                     {{ post.title }}
-                </a>
+                </nuxt-link>
             </h2>
 
             <p class="c-posts__excerpt">
@@ -43,19 +43,9 @@
 </template>
 
 <script>
-import { extend, map, omit, sortBy } from 'lodash';
-import cheerio from 'cheerio';
-import readingTime from 'reading-time';
+import { sortBy } from 'lodash';
 
 import PostMeta from './PostMeta.vue';
-
-function excerpt(body) {
-    const $ = cheerio.load(body);
-    return $.html($('p').first())
-        .trim()
-        .replace(/^<p>/, '')
-        .replace(/<\/p>$/, '');
-}
 
 export default {
     components: {
@@ -69,11 +59,7 @@ export default {
     },
     computed: {
         sortedPosts() {
-            const mapped = map(this.posts, post => extend(omit(post, 'body'), {
-                excerpt: excerpt(post.body),
-                readTime: readingTime(post.body),
-            }));
-            return sortBy(mapped, 'postDate').reverse();
+            return sortBy(this.posts, 'postDate').reverse();
         },
     },
 };

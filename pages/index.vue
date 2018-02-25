@@ -34,9 +34,6 @@ export default {
             return this.$store.state.title;
         },
     },
-    beforeCreate() {
-        this.$store.commit(SET_PAGE_SCOPE, 's-home');
-    },
 };
 </script>
 

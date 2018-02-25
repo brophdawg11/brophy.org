@@ -19,7 +19,6 @@ export default () => new Vuex.Store({
             'assets/images/asides/bike4.jpg',
             'assets/images/asides/bikes.jpg',
         ],
-        pageScope: null,
     },
     mutations: mutationHandlers,
 });

@@ -10,7 +10,8 @@
   "scripts": {
     "clean": "rm -rf dist/",
     "build": "nuxt build",
-    "generate": "nuxt generate",
+    "generate": "NODE_ENV=production nuxt generate",
+    "generate-dev": "nuxt generate",
     "dev": "nuxt",
     "deploy": "npm run clean && npm run build && npm run sync",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",

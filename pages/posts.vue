@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import { enhancePosts } from '../js/post-utils';
+
 import PostList from '../components/PostList.vue';
 
 export default {
@@ -12,7 +14,9 @@ export default {
         PostList,
     },
     asyncData({ app }) {
-        return app.$content('/').getAll().then(posts => ({ posts }));
+        return app.$content('/').getAll().then(posts => ({
+            posts: enhancePosts(posts)
+        }));
     },
     data() {
         return {
