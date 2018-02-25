@@ -44,4 +44,21 @@
         }
     }
 
+    &__nav {
+        display: flex;
+    }
+
+    &__nav-link {
+        flex-grow: 1;
+
+        &--previous {
+            padding-right: 10px;
+        }
+
+        &--next {
+            padding-left: 10px;
+            text-align: right;
+        }
+    }
+
 }

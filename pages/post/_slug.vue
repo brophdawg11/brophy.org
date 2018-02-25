@@ -35,55 +35,43 @@
                 --></a>
             </div>
 
-            <!--
-            <div class="c-post__nav">
-
-                <div class="c-post__previous">
-                    {% if previous %}
-                        <a href="{{ previous.path }}" title="{{ previous.title }}">
-                            <span class="fa fa-arrow-left"></span>
-                        </a>
-                        <a href="{{ previous.path }}" title="{{ previous.title }}">
-                            {{ previous.title }}
-                        </a>
-
-                        {% if next %}
-                            <span class="c-post__nav-divider">|</span>
-                        {% endif %}
-
-                    {% endif %}
-                </div>
-
-                <div class="c-post__next">
-
-                    {% if next %}
-                        <a href="{{ next.path }}" title="{{ next.title }}">
-                            {{ next.title }}
-                        </a>
-                        <a href="{{ next.path }}" title="{{ next.title }}">
-                            <span class="fa fa-arrow-right"></span>
-                        </a>
-                    {% endif %}
-                </div>
-
-            </div>
-            -->
+            <PostNav :previous-post="previousPost" :next-post="nextPost" />
         </footer>
 
     </article>
 </template>
 
 <script>
+import { findIndex, get, sortBy } from 'lodash';
+
 import PostMeta from '../../components/PostMeta.vue';
+import PostNav from '../../components/PostNav.vue';
 
 export default {
     components: {
         PostMeta,
+        PostNav,
     },
-    asyncData({ app, route, payload }) {
-        return app.$content('/')
-            .get(route.path)
-            .then(post => ({ post: post || payload }));
+    asyncData({ app, route }) {
+        return app.$content('/').getAll().then((posts) => {
+            const sortedPosts = sortBy(posts, 'postDate');
+            const postIndex = findIndex(sortedPosts, { permalink: route.path });
+            const post = sortedPosts[postIndex];
+            const previousPost = get(sortedPosts, postIndex - 1);
+            const nextPost = get(sortedPosts, postIndex + 1);
+            return {
+                previousPost,
+                post,
+                nextPost,
+            };
+        });
+    },
+    data() {
+        return {
+            previousPost: null,
+            post: null,
+            nextPost: null,
+        };
     },
     computed: {
         url() {
