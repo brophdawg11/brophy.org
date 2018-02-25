@@ -21,8 +21,4 @@ export default {
 
 <style lang="scss">
 @import '../assets/scss/main';
-
-.page-aside {
-    background-image: url(/static/images/asides/bike.jpg);
-}
 </style>

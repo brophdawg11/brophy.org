@@ -1,9 +1,15 @@
 <template>
     <Layout>
-        <div style="display: none;">
-            <!--{% for img in _.tail(global.asides) %}
-                <img src="{{ img }}" />
-            {% endfor %}-->
+
+        <style v-once>
+            {{ cssStyles }}
+        </style>
+
+        <!-- Prefetch subsequent images -->
+        <div v-once style="display: none;">
+            <img v-for="img in tailImages"
+                 :key="img"
+                 :src="img">
         </div>
 
         <aside class="page-aside">
@@ -67,6 +73,8 @@
 </template>
 
 <script>
+import { tail } from 'lodash';
+
 import CircleLinks from '../components/CircleLinks.vue';
 import Layout from '../components/Layout.vue';
 
@@ -129,6 +137,51 @@ export default {
     computed: {
         pageScope() {
             return this.$store.state.pageScope || '';
+        },
+        images() {
+            return this.$store.state.asides;
+        },
+        tailImages() {
+            return tail(this.images);
+        },
+    },
+    created() {
+        // Set here so it's purposely not dynamic
+        this.cssStyles = this.genStyles();
+    },
+    methods: {
+        genStyles() {
+            const startImg = this.images[0];
+            const num = this.images.length;
+            const duration = num * 30;
+            const pi = Math.round(100 / num); // percentage increment
+            const pd = Math.round(pi / 2); // percentage delta
+
+            return [
+                `.page-aside { background-image: url(${startImg}); }     `,
+                '@keyframes rotate-background {                          ',
+                '    from {                                              ',
+                `        background-image: url(${startImg});             `,
+                '    }                                                   ',
+
+                // Include a step for each subsequent image
+                this.tailImages.map((img, i) => {
+                    const p = pi * (i + 1);
+                    const bg = `background-image: url(${img});`;
+                    return `${p - pd}%, ${p + pd}% { ${bg} }`;
+                }).join('\n'),
+
+                '    to {                                                ',
+                `      background-image: url(${startImg});               `,
+                '    }                                                   ',
+                '}                                                       ',
+
+                '.page-aside {                                           ',
+                '    animation-name: rotate-background;                  ',
+                `    animation-duration: ${duration}s;                   `,
+                '    animation-iteration-count: infinite;                ',
+                '}                                                       ',
+            ].join('\n');
         },
     },
 };
