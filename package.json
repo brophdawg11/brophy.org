@@ -7,6 +7,24 @@
   "license": "MIT",
   "homepage": "https://github.com/brophdawg11/brophy.org",
   "main": "build.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brophdawg11/brophy.org.git"
+  },
+  "bugs": {
+    "url": "https://github.com/brophdawg11/brophy.org/issues"
+  },
+  "keywords": [
+    "brophy",
+    "software",
+    "web",
+    "development",
+    "javascript",
+    "html",
+    "css",
+    "angular",
+    "node"
+  ],
   "scripts": {
     "clean": "rm -rf dist/",
     "build": "nuxt build",
@@ -36,24 +54,6 @@
       "extensions": "js,vue,scss"
     }
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/brophdawg11/brophy.org.git"
-  },
-  "bugs": {
-    "url": "https://github.com/brophdawg11/brophy.org/issues"
-  },
-  "keywords": [
-    "brophy",
-    "software",
-    "web",
-    "development",
-    "javascript",
-    "html",
-    "css",
-    "angular",
-    "node"
-  ],
   "dependencies": {
     "@nuxtjs/axios": "4.5.2",
     "cheerio": "1.0.0-rc.2",
