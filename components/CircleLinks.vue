@@ -2,7 +2,7 @@
     <ul class="page-links__ul">
 
         <li v-for="link in links"
-            :key="link"
+            :key="link.url"
             class="page-link__li">
 
             <CircleLink :link="link">

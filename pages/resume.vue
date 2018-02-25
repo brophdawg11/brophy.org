@@ -387,7 +387,7 @@ export default {
                 ],
                 details: [
                     'Installed, configured, and currently maintaining various Web sites, hosted at sub domains of brophy.org',
-                    'Currently a static site generated with [Metalsmith](http:s//metalsmith.io \'Metalsmith\') and hosted in AWS S3',
+                    'Currently a static site generated with [Nuxt](https://nuxtjs.org/ \'Nuxt\') and hosted in AWS S3',
                     'Previously hosted in personal Linux server hardware and Amazon\'s EC2 infrastructure',
                     'Mail currently hosted via Google Apps',
                     'Integrated with Google calendar',
