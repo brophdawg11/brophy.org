@@ -1,0 +1,22 @@
+{
+  "hosting": {
+    "ignore": [
+       "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+    ],
+    "headers": [{
+      "source" : "**/*.js",
+      "headers" : [{
+        "key" : "Cache-Control",
+        "value" : "public; max-age=60"
+      }]
+    }],
+    "public": "public",
+    "port": 8080,
+    "rewrites": [{
+      "source": "**",
+      "function": "server"
+    }]
+  }
+}
