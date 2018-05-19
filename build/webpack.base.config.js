@@ -22,6 +22,7 @@ module.exports = {
     },
     resolve: {
         alias: {
+            '@content': path.resolve(__dirname, '../content'),
             '@components': path.resolve(__dirname, '../src/components'),
             '@dist': path.resolve(__dirname, '../dist'),
             '@js': path.resolve(__dirname, '../src/js'),
@@ -53,6 +54,9 @@ module.exports = {
                 'css-loader',
                 'sass-loader',
             ],
+        }, {
+            test: /\.md$/,
+            use: 'markdown-with-front-matter-loader',
         }],
     },
     plugins: [

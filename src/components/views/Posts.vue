@@ -1,27 +1,32 @@
 <template>
-    <div>
+    <DefaultLayout>
         <PostList :posts="posts" />
-    </div>
+    </DefaultLayout>
 </template>
 
 <script>
-import { enhancePosts } from '../js/post-utils';
+import { SET_POSTS } from '@store/mutations';
 
-import PostList from '../components/PostList.vue';
+import DefaultLayout from '@components/layouts/DefaultLayout.vue';
+import PostList from '@components/PostList.vue';
 
 export default {
     components: {
+        DefaultLayout,
         PostList,
     },
-    asyncData({ app }) {
-        return app.$content('/').getAll().then(posts => ({
-            posts: enhancePosts(posts),
-        }));
+    fetchData({ store }) {
+        return import(
+            /* webpakcChunkName: "contents" */
+            '@dist/contents.json',
+        ).then(contents => {
+            store.commit(SET_POSTS, contents.contents);
+        });
     },
-    data() {
-        return {
-            posts: [],
-        };
+    computed: {
+        posts() {
+            return this.$store.state.posts;
+        },
     },
 };
 </script>

@@ -5,6 +5,7 @@ const merge = require('webpack-merge');
 
 const VueSSRClientPlugin = require('vue-server-renderer/client-plugin');
 
+const ContentMetadataPlugin = require('./content-metadata-plugin');
 const isomorphicUtils = require('../src/js/isomorphic-utils');
 const base = require('./webpack.base.config');
 
@@ -18,6 +19,13 @@ const clientConfig = merge(base, {
     plugins: [
         new webpack.DefinePlugin({ 'process.env.VUE_ENV': '"client"' }),
         new VueSSRClientPlugin(),
+        new ContentMetadataPlugin({
+            contentDir: './content',
+            outputFile: 'contents.json',
+            stringifyOptions: {
+                spaces: 4,
+            },
+        }),
     ],
 });
 

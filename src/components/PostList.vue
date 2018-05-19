@@ -15,10 +15,10 @@
                 class="c-posts__item">
 
                 <h2 class="c-posts__title">
-                    <nuxt-link :to="post.permalink"
-                               :title="post.title">
+                    <router-link :to="`/post/${post.slug}`"
+                                 :title="post.title">
                         {{ post.title }}
-                    </nuxt-link>
+                    </router-link>
                 </h2>
 
                 <p class="c-posts__excerpt">
@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import { sortBy } from 'lodash';
+import { sortBy } from 'lodash-es';
 
 import PostMeta from './PostMeta.vue';
 

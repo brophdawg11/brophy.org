@@ -64,6 +64,8 @@ export default function createStore(/* request */) {
                 '/static/images/asides/bike4.jpg',
                 '/static/images/asides/bikes.jpg',
             ],
+            post: null,
+            posts: null,
         },
         getters,
         mutations,

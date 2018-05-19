@@ -16,6 +16,22 @@ export default function createRouter(/* store */) {
                 '@components/views/Index.vue',
             ),
         }, {
+            path: '/posts',
+            name: 'Posts',
+            // Enable code splitting at the route level using async components
+            component: () => import(
+                /* webpackChunkName: "posts" */
+                '@components/views/Posts.vue',
+            ),
+        }, {
+            path: '/post/:slug',
+            name: 'Post',
+            // Enable code splitting at the route level using async components
+            component: () => import(
+                /* webpackChunkName: "post" */
+                '@components/views/Post.vue',
+            ),
+        }, {
             path: '/resume',
             name: 'Resume',
             // Enable code splitting at the route level using async components
