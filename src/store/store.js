@@ -54,13 +54,6 @@ export default function createStore(/* request */) {
             cssFile: 'css/app.css',
             owner: 'Matt Brophy',
             pageSize: 6,
-            asides: [
-                '/static/images/asides/bike.jpg',
-                '/static/images/asides/bike2.jpg',
-                '/static/images/asides/bike3.jpg',
-                '/static/images/asides/bike4.jpg',
-                '/static/images/asides/bikes.jpg',
-            ],
             post: null,
             posts: null,
         },

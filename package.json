@@ -36,6 +36,7 @@
     "dev": "NODE_ENV=local npm run build && NODE_ENV=local npm run start",
     "fb": "firebase",
     "fb:build": "npm run clean && npm run build && npm run fb:copy",
+    "fb:build:prod": "npm run clean && NODE_ENV=production npm run build && npm run fb:copy",
     "fb:clean": "rm -rf public && rm -rf functions/src && rm -rf functions/dist",
     "fb:copy": "npm run fb:copy:server && npm run fb:copy:create && npm run fb:copy:index && npm run fb:copy:dist && npm run fb:copy:static",
     "fb:copy:server": "mkdir -p functions/src/server && cp src/server/server.js functions/src/server/",
