@@ -65,7 +65,7 @@ export default {
 
         const loadPosts = store.state.posts == null ?
             import(
-                /* webpakcChunkName: "contents" */
+                /* webpackChunkName: "contents" */
                 '@dist/contents.json',
             ).then(contents => {
                 store.commit(SET_POSTS, contents.contents);

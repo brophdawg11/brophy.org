@@ -17,7 +17,7 @@ export default {
     },
     fetchData({ store }) {
         return import(
-            /* webpakcChunkName: "contents" */
+            /* webpackChunkName: "contents" */
             '@dist/contents.json',
         ).then(contents => {
             store.commit(SET_POSTS, contents.contents);
