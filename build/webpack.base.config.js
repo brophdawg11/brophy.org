@@ -5,10 +5,10 @@ const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 /* eslint-enable import/no-extraneous-dependencies */
 
+const isomorphicUtils = require('../src/js/isomorphic-utils');
 
-const environment = process.env.NODE_ENV === 'production' ?
-    'production' :
-    'development';
+const { isProd } = isomorphicUtils.config;
+const environment = isProd ? 'production' : 'development';
 
 /* eslint-disable no-console */
 console.log('process.env.NODE_ENV', process.env.NODE_ENV);
@@ -46,13 +46,13 @@ module.exports = {
             test: /\.css$/,
             use: [
                 'vue-style-loader',
-                'css-loader',
+                { loader: 'css-loader', options: { minimize: isProd } },
             ],
         }, {
             test: /\.scss$/,
             use: [
                 'vue-style-loader',
-                'css-loader',
+                { loader: 'css-loader', options: { minimize: isProd } },
                 'sass-loader',
             ],
         }, {
