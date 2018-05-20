@@ -67,4 +67,8 @@ export default {
 </script>
 
 <style lang="scss">
+.page-footer-line {
+    line-height: 1.5em;
+    padding: 0.5em;
+}
 </style>

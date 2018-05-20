@@ -63,7 +63,12 @@ module.exports = {
             use: 'base64-inline-loader?limit=1000&name=[name].[ext]',
         }, {
             test: /\.(ttf|woff2?|eot|svg)$/,
-            use: 'url-loader',
+            use: {
+                loader: 'url-loader',
+                options: {
+                    limit: 8192,
+                },
+            },
         }],
     },
     plugins: [

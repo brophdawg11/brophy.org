@@ -139,5 +139,73 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~@static/highlight.js/atom-one-light.min.css'
+@import '~@static/highlight.js/atom-one-light.min.css';
+@import '~@scss/_variables.scss';
+@import '~@scss/utils/_mixins.scss';
+
+.c-post {
+
+    &__title {
+        margin-bottom: 10px;
+    }
+
+    &__meta {
+        font-size: 0.9em;
+        font-style: italic;
+        margin-bottom: $content-padding;
+    }
+
+    &__date {
+        font-style: italics;
+    }
+
+    &__tags {
+
+    }
+
+    &__content {
+        @include post-styles;
+        font-size: 1.15em;
+        line-height: 1.75em;
+    }
+
+    &__share {
+        text-align: right;
+        margin-bottom: $content-padding;
+    }
+
+    &__share-medium {
+        .fa {
+            padding: 5px;
+            border-radius: 50%;
+            transition: color $transition-duration,
+                        background-color $transition-duration;
+
+            &:hover,
+            &:focus {
+                color: $white;
+                background-color: $orange;
+            }
+        }
+    }
+
+    &__nav {
+        display: flex;
+    }
+
+    &__nav-link {
+        flex-grow: 1;
+
+        &--previous {
+            padding-right: 10px;
+        }
+
+        &--next {
+            padding-left: 10px;
+            text-align: right;
+        }
+    }
+
+}
+
 </style>

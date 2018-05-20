@@ -1,12 +1,19 @@
 @font-face {
   font-family: 'icon-font';
   font-display: fallback;
+  /* WOFF is supported by all browers including IE9+, so just choose it
+    by itself and inline it.  See:
+    https://creativemarket.com/blog/the-missing-guide-to-font-formats
+  */
+  src: url('~@static/fontello/font/icon-font.woff?88191577') format('woff');
+/*
   src: url('~@static/fontello/font/icon-font.eot?88191577');
   src: url('~@static/fontello/font/icon-font.eot?88191577#iefix') format('embedded-opentype'),
        url('~@static/fontello/font/icon-font.woff2?88191577') format('woff2'),
        url('~@static/fontello/font/icon-font.woff?88191577') format('woff'),
        url('~@static/fontello/font/icon-font.ttf?88191577') format('truetype'),
        url('~@static/fontello/font/icon-font.svg?88191577#icon-font') format('svg');
+*/
   font-weight: normal;
   font-style: normal;
 }

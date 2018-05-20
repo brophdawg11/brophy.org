@@ -64,3 +64,41 @@ export default {
     },
 };
 </script>
+
+<style lang="scss">
+@import '~@scss/_variables.scss';
+@import '~@scss/utils/_mixins.scss';
+
+.c-posts {
+
+    &__list {
+        list-style: none;
+        padding-bottom: $content-padding;
+    }
+
+    &__item {
+        padding-bottom: $content-padding;
+    }
+
+    &__title {
+        margin-bottom: 0.25em;
+    }
+
+    &__excerpt {
+        @include post-styles;
+        padding-bottom: 1em;
+        line-height: 1.5em;
+    }
+
+    &__meta {
+        font-size: 1em;
+        font-style: italic;
+    }
+
+}
+
+.c-pagination {
+    text-align: center;
+    margin-bottom: $content-padding;
+}
+</style>

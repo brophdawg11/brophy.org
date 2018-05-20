@@ -53,4 +53,39 @@ export default {
 </script>
 
 <style lang="scss">
+@import '~@scss/_variables.scss';
+
+.c-home-content {
+    text-align: center;
+    padding-top: 1.5em;
+}
+
+.c-home-logo {
+    width: 75px;
+    padding-bottom: 1em;
+}
+
+.c-home-title {
+}
+
+.c-home-description {
+    padding: 1em;
+    line-height: 1.5em;
+}
+
+.c-home-description-dash {
+    display: inline;
+
+    @media all and (min-width: $small-min) {
+        display: none;
+    }
+}
+
+.c-home-description-break {
+    display: none;
+
+    @media all and (min-width: $small-min) {
+        display: block;
+    }
+}
 </style>

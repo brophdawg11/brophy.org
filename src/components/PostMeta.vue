@@ -63,3 +63,25 @@ export default {
     },
 };
 </script>
+
+<style lang="scss">
+.c-meta {
+
+    &__date {
+
+    }
+
+    &__divider {
+        padding: 0 10px;
+    }
+
+    &__tags {
+
+    }
+
+    &__readtime {
+
+    }
+
+}
+</style>

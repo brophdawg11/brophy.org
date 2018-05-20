@@ -17,5 +17,9 @@ export default {
 
 <style lang="scss">
 @import '~@static/fontello/css/icon-font.css';
-@import '~@scss/main.scss';
+// Layout inspired by http://demo.onedesigns.com/graceunderpressure/journal/
+@import '~@scss/_reset.scss';
+@import '~@scss/_variables.scss';
+@import '~@scss/_fonts.scss';
+@import '~@scss/_global.scss';
 </style>
