@@ -25,7 +25,7 @@
 
             <footer class="page-footer">
 
-                <nav>
+                <nav class="page-footer-nav">
 
                     <CircleLinks :links="footerLinks" class="s-footer-links" />
 
@@ -167,6 +167,10 @@ export default {
 }
 
 .page-footer {
+    text-align: center;
+}
+
+.page-footer-nav {
     text-align: center;
     font-size: 0.75em;
 }

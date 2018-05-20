@@ -15,9 +15,10 @@
                     <li>{{ resumeData.location }}</li>
                     <li>
                         e:
-                        <a :href="`mailto:${resumeData.email}`" target="_blank">
+                        <ExternalLink :href="`mailto:${resumeData.email}`"
+                                      :title="resumeData.email">
                             {{ resumeData.email }}
-                        </a>
+                        </ExternalLink>
                     </li>
                     <li>
                         w:
@@ -26,9 +27,10 @@
                         </a>
                     </li>
                     <li>
-                        <a :href="`https://${resumeData.github}`" target="_blank">
+                        <ExternalLink :href="`https://${resumeData.github}`"
+                                      :title="resumeData.github">
                             {{ resumeData.github }}
-                        </a>
+                        </ExternalLink>
                     </li>
                 </ul>
             </div>

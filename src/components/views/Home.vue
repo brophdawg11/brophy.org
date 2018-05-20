@@ -13,11 +13,9 @@
 
             <p class="c-home-description">
                 web/software developer at
-                <a href="http://www.urbn.com"
-                   title="URBN"
-                   target="_blank">
+                <ExternalLink href="http://www.urbn.com" title="URBN">
                     urbn
-                </a>
+                </ExternalLink>
             </p>
 
             <p class="c-home-description">
@@ -34,10 +32,12 @@
 
 <script>
 import DefaultLayout from '@components/layouts/DefaultLayout.vue';
+import ExternalLink from '@components/ExternalLink.vue';
 
 export default {
     components: {
         DefaultLayout,
+        ExternalLink,
     },
     computed: {
         title() {

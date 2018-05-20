@@ -2,57 +2,48 @@
     <div v-once>
         <p class="page-footer-line">
             built with
-            <a href="https://vuejs.org/"
-               title="Vue"
-               target="_blank">vue</a>
+            <ExternalLink href="https://vuejs.org/" title="Vue">
+                vue
+            </ExternalLink>
             and
-            <a href="https://ssr.vuejs.org/"
-               title="Vue SSR"
-               target="_blank">vue ssr</a>
+            <ExternalLink href="https://ssr.vuejs.org/en/" title="Vue SSR">
+                vue ssr
+            </ExternalLink>
         </p>
         <p class="page-footer-line">
             hosted on
-            <a href="https://firebase.google.com/"
-               title="Firebase"
-               target="_blank">
+            <ExternalLink href="https://firebase.google.com/" title="Firebase">
                 firebase
-            </a>
+            </ExternalLink>
             using
-            <a href="https://firebase.google.com/products/functions/"
-               title="Cloud Functions"
-               target="_blank">
+            <ExternalLink href="https://firebase.google.com/products/functions/"
+                          title="Cloud Functions">
                 cloud functions
-            </a>
+            </ExternalLink>
         </p>
         <p class="page-footer-line">
             stored in
-            <a href="https://www.github.com/brophdawg11/brophy.org"
-               title="GitHub"
-               target="_blank">
+            <ExternalLink href="https://www.github.com/brophdawg11/brophy.org"
+                          title="GitHub">
                 github
-            </a>
+            </ExternalLink>
         </p>
         <p class="page-footer-line">
             side images from
-            <a href="http://www.gratisography.com/"
-               title="Gratisography"
-               target="_blank">
+            <ExternalLink href="http://www.gratisography.com/" title="Gratisography">
                 gratisography
-            </a>
+            </ExternalLink>
         </p>
         <p class="page-footer-line">
             icons from
-            <a href="http://fortawesome.github.io/Font-Awesome/"
-               title="Font-Awesome"
-               target="_blank">
+            <ExternalLink href="http://fortawesome.github.io/Font-Awesome/"
+                          title="Font-Awesome">
                 font-awesome
-            </a>
+            </ExternalLink>
             via
-            <a href="http://fontello.com/"
-               title="Fontello"
-               target="_blank">
+            <ExternalLink href="http://fontello.com/" title="Fontello">
                 fontello
-            </a>
+            </ExternalLink>
         </p>
         <p class="page-footer-line">
             &copy; Copyright {{ year }} Matt Brophy
@@ -62,8 +53,13 @@
 </template>
 
 <script>
+import ExternalLink from '@components/ExternalLink.vue';
+
 export default {
     name: 'SiteInfo',
+    components: {
+        ExternalLink,
+    },
     data() {
         return {
             year: new Date().getFullYear(),
@@ -75,6 +71,6 @@ export default {
 <style lang="scss">
 .page-footer-line {
     line-height: 1.5em;
-    padding: 0.5em;
+    padding: 0.25em;
 }
 </style>
