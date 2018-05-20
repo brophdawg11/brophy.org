@@ -8,66 +8,43 @@ body {
     color: $offblack;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: $serif;
-}
+$headingFontSizesSmall: (
+    h1: 1.5rem,
+    h2: 1.25rem,
+    h3: 1rem,
+    h4: 0.83rem,
+    h5: 0.6rem,
+    h6: 0.5rem
+);
 
-h1 {
-    font-size: 1.5rem;
-    margin: 0.67rem 0;
+$headingFontSizesMedium: (
+    h1: 2rem,
+    h2: 1.6rem,
+    h3: 1.4rem,
+    h4: 1.2rem,
+    h5: 1rem,
+    h6: 0.75rem
+);
 
-    @media all and (min-width: $medium-min) {
-        font-size: 2rem;
-    }
-}
+$headingMargins: (
+    h1: 0.67rem 0,
+    h2: 0.75rem 0,
+    h3: 0.83rem 0,
+    h4: 1rem 0,
+    h5: 1.5rem 0,
+    h6: 1.67rem 0
+);
 
-h2 {
-    font-size: 1.25rem;
-    margin: 0.75rem 0;
+@for $lvl from 1 through 4 {
+    h#{$lvl} {
+        font-family: $serif;
+        font-size: map-get($headingFontSizesSmall, h#{$lvl});
+        font-weight: bold;
+        margin: map-get($headingMargins, h#{$lvl});;
 
-    @media all and (min-width: $medium-min) {
-        font-size: 1.75rem;
-    }
-}
-
-h3 {
-    font-size: 1rem;
-    margin: 0.83rem 0;
-
-    @media all and (min-width: $medium-min) {
-        font-size: 1.5rem;
-    }
-}
-
-h4 {
-    font-size: 0.83rem;
-    margin: 1rem 0;
-
-    @media all and (min-width: $medium-min) {
-        font-size: 1.25rem;
-    }
-}
-
-h5 {
-    font-size: 0.6rem;
-    margin: 1.5rem 0;
-
-    @media all and (min-width: $medium-min) {
-        font-size: 1rem;
-    }
-}
-
-h6 {
-    font-size: 0.5rem;
-    margin: 1.67rem 0;
-
-    @media all and (min-width: $medium-min) {
-        font-size: 0.75rem;
+        @media all and (min-width: $medium-min) {
+            font-size: map-get($headingFontSizesMedium, h#{$lvl});
+        }
     }
 }
 
