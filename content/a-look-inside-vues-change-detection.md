@@ -43,7 +43,7 @@ The `highlight` function is just for this example - to apply a little CSS animat
 ## Non-Reactive UI
 
 <a class="jsbin-embed" 
-   href="http://jsbin.com/joguyav/3/embed?js,output">
+   href="https://jsbin.com/joguyav/3/embed?js,output">
     Simple Non-Reactive UI
 </a>
 
@@ -167,7 +167,7 @@ Now, when `renderA` executes inside of `wrapped` above, and it accesses our prox
 ## Reactive UI
 
 <a class="jsbin-embed" 
-   href="http://jsbin.com/joguyav/5/embed?js,output">
+   href="https://jsbin.com/joguyav/5/embed?js,output">
     Fully Reactive UI
 </a>
 
