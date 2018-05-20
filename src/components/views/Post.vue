@@ -113,13 +113,8 @@ export default {
         },
     },
     mounted() {
-        import(
-            /* webpackChunkName: "highlight" */
-            'highlight.js',
-        ).then(hljs => {
-            document.querySelectorAll('pre code')
-                .forEach(el => hljs.highlightBlock(el));
-        });
+        this.highlightCode();
+        this.loadJsBin();
     },
     methods: {
         shareTwitter() {
@@ -133,6 +128,40 @@ export default {
         shareGooglePlus() {
             window.open(this.googlePlusUrl, 'google-plus-share', 'width=490,height=530');
             return false;
+        },
+        highlightCode() {
+            return import(
+                /* webpackChunkName: "highlight" */
+                'highlight.js',
+            ).then(hljs => {
+                document.querySelectorAll('pre code')
+                    .forEach(el => hljs.highlightBlock(el));
+            });
+        },
+        loadJsBin() {
+            function appendScript(url) {
+                return new Promise(resolve => {
+                    const el = document.createElement('script');
+                    const m = document.getElementsByTagName('script')[0];
+                    el.async = 1;
+                    el.src = url;
+                    el.onload = resolve;
+                    m.parentNode.insertBefore(el, m);
+                });
+            }
+
+            if (document.querySelectorAll('.jsbin-embed').length === 0) {
+                return Promise.resolve();
+            }
+
+            // HACK: This is needed to make embedded JSBin's work on client side
+            // routes for subsequent posts including JSBin.  After it loads the
+            // first time, it sets this global variable which prevents it from
+            // executing on subsequent inclusions of this script.  This may change
+            // at any time and it may break :()
+            // TODO: File issue with JSBin to make this an API behavior
+            window.jsbinified = undefined;
+            return appendScript('https://static.jsbin.com/js/embed.min.js?4.1.0');
         },
     },
 };

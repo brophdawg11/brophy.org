@@ -186,8 +186,6 @@ But I think it's a great example of the core concepts and their underlying simpl
 
 Thanks for reading!
 
-<script src="https://static.jsbin.com/js/embed.min.js?4.1.0"></script>
-
 [frontend-masters]: https://frontendmasters.com/ "Frontend Masters"
 [getter]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get "Object Getter"
 [occams-razor]: https://en.wikipedia.org/wiki/Occam%27s_razor "Occam's Razor"
