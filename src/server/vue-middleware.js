@@ -14,9 +14,6 @@ const renderer = VSR.createBundleRenderer(serverBundle, {
     // Note: __dirname will be relative to dist/ due to webpack build
     template: fs.readFileSync(path.resolve(__dirname, '../index.tpl.html'), 'utf-8'),
     clientManifest,
-    shouldPrefetch() {
-        return false;
-    },
 });
 
 function setCacheControl(res, enable) {
