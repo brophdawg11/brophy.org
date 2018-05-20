@@ -3,8 +3,8 @@
 
         <div class="c-home-content">
 
-            <img class="c-home-logo"
-                 src="/static/images/logo.png"
+            <img :src="logo"
+                 class="c-home-logo"
                  alt="Matt Brophy">
 
             <h1 class="c-home-title">
@@ -14,7 +14,8 @@
             <p class="c-home-description">
                 web/software developer at
                 <a href="http://www.urbn.com"
-                   title="URBN">
+                   title="URBN"
+                   target="_blank">
                     urbn
                 </a>
             </p>
@@ -41,6 +42,11 @@ export default {
     computed: {
         title() {
             return this.$store.state.title;
+        },
+        logo() {
+            /* eslint-disable global-require */
+            return require('@static/images/logo.png');
+            /* eslint-enable global-require */
         },
     },
 };

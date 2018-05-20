@@ -137,3 +137,7 @@ export default {
     },
 };
 </script>
+
+<style lang="scss">
+@import '~@static/highlight.js/atom-one-light.min.css'
+</style>

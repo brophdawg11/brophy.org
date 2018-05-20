@@ -29,6 +29,7 @@ module.exports = {
             '@scss': path.resolve(__dirname, '../src/scss'),
             '@server': path.resolve(__dirname, '../src/server'),
             '@src': path.resolve(__dirname, '../src'),
+            '@static': path.resolve(__dirname, '../static'),
             '@store': path.resolve(__dirname, '../src/store'),
         },
         extensions: [ '*', '.js', '.vue', '.json' ],
@@ -57,6 +58,12 @@ module.exports = {
         }, {
             test: /\.md$/,
             use: 'markdown-with-front-matter-loader',
+        }, {
+            test: /logo\.png$/,
+            use: 'base64-inline-loader?limit=1000&name=[name].[ext]',
+        }, {
+            test: /\.(ttf|woff2?|eot|svg)$/,
+            use: 'url-loader',
         }],
     },
     plugins: [

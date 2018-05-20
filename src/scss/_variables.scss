@@ -26,9 +26,9 @@ $lightgrey: #eee;
 $orange: #cf8a05;
 
 // Fonts
-$serif: 'Rokkitt', serif;
-$serif-content: 'PT Serif', serif;
-$sans-serif: 'Lato', helvetica, arial, sans-serif;
+$serif: 'PT Serif', serif;
+$serif-content: $serif;
+$sans-serif: 'system', sans-serif;
 
 // Misc
 $base-link-unit: 0.5em;

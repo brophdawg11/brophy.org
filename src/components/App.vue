@@ -16,5 +16,6 @@ export default {
 </script>
 
 <style lang="scss">
+@import '~@static/fontello/css/icon-font.css';
 @import '~@scss/main.scss';
 </style>
