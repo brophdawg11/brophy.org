@@ -1,27 +1,33 @@
 <template>
     <div>
 
-        <span class="c-meta__date">
-            {{ formattedDate }}
-        </span>
+        <p class="c-meta__line1">
+            <span class="c-meta__date">
+                {{ formattedDate }}
+            </span>
 
-        <span class="c-meta__divider">|</span>
+            <span class="c-meta__divider c-meta__divider--first">|</span>
 
-        <span class="c-meta__tags">
-            <template v-for="(tag, index) in tagArray">
-                <router-link
-                    :key="tag"
-                    :to="`/tag/${tag}/`"
-                    :title="tag"><!--
-                    -->{{ tag }}<!--
-                --></router-link><!--
-                --><template v-if="index < tagArray.length - 1">, </template>
-            </template>
-        </span>
+            <span class="c-meta__readtime">{{ readTime }}</span>
 
-        <span class="c-meta__divider">|</span>
+        </p>
 
-        <span class="c-meta__readtime">{{ readTime }}</span>
+        <p class="c-meta__line2">
+
+            <span class="c-meta__tags">
+                Tags:
+                <template v-for="(tag, index) in tagArray">
+                    <router-link
+                        :key="tag"
+                        :to="`/tag/${tag}/`"
+                        :title="tag"><!--
+                        -->{{ tag }}<!--
+                    --></router-link><!--
+                    --><template v-if="index < tagArray.length - 1">, </template>
+                </template>
+            </span>
+
+        </p>
 
     </div>
 </template>
@@ -66,6 +72,10 @@ export default {
 
 <style lang="scss">
 .c-meta {
+
+    &__line1 {
+        padding-bottom: 0.5rem;
+    }
 
     &__date {
 

@@ -20,7 +20,14 @@ const renderer = VSR.createBundleRenderer(serverBundle, {
 });
 
 function setCacheControl(res, enable) {
-    const policy = enable ? 'public, max-age=300, s-maxage=600' : 'private';
+    // No caching for now - need to figure out how to coordinate cache updates.
+    //  - cloud function v1 requests hosted v1 assets
+    //  - Deploy v2
+    //  - hosted v1 assets start to 404
+    //  - CDN cached v1 cloud function still requests broken v1 assets until
+    //    v2 function starts propagating
+    // const policy = enable ? 'public, max-age=300, s-maxage=600' : 'private';
+    const policy = enable ? 'private' : 'private';
     res.set('Cache-Control', policy);
 }
 

@@ -5,6 +5,10 @@
             <a href="https://vuejs.org/"
                title="Vue"
                target="_blank">vue</a>
+            and
+            <a href="https://ssr.vuejs.org/"
+               title="Vue SSR"
+               target="_blank">vue ssr</a>
         </p>
         <p class="page-footer-line">
             hosted on
@@ -19,7 +23,8 @@
                target="_blank">
                 cloud functions
             </a>
-            &mdash;
+        </p>
+        <p class="page-footer-line">
             stored in
             <a href="https://www.github.com/brophdawg11/brophy.org"
                title="GitHub"
@@ -34,7 +39,8 @@
                target="_blank">
                 gratisography
             </a>
-            &mdash;
+        </p>
+        <p class="page-footer-line">
             icons from
             <a href="http://fortawesome.github.io/Font-Awesome/"
                title="Font-Awesome"

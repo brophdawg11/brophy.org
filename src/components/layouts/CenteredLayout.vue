@@ -19,14 +19,11 @@ export default {};
     width: 100%;
     min-height: 100vh;
     background: $offblack;
-    padding: 1em 0;
 }
 
 .c-content-centered {
     background: $offwhite;
-    width: 98%;
     padding: 0.5em;
-    margin: 0 1%;
 
     @media all and (min-width: $medium-min) {
         width: 94%;

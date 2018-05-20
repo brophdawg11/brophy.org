@@ -18,33 +18,57 @@ h6 {
 }
 
 h1 {
-    font-size: 3em;
-    margin: 0.67em 0;
+    font-size: 1.5rem;
+    margin: 0.67rem 0;
+
+    @media all and (min-width: $medium-min) {
+        font-size: 2rem;
+    }
 }
 
 h2 {
-    font-size: 2.25em;
-    margin: 0.75em 0;
+    font-size: 1.25rem;
+    margin: 0.75rem 0;
+
+    @media all and (min-width: $medium-min) {
+        font-size: 1.75rem;
+    }
 }
 
 h3 {
-    font-size: 1.5em;
-    margin: 0.83em 0;
+    font-size: 1rem;
+    margin: 0.83rem 0;
+
+    @media all and (min-width: $medium-min) {
+        font-size: 1.5rem;
+    }
 }
 
 h4 {
-    font-size: 1em;
-    margin: 1em 0;
+    font-size: 0.83rem;
+    margin: 1rem 0;
+
+    @media all and (min-width: $medium-min) {
+        font-size: 1.25rem;
+    }
 }
 
 h5 {
-    font-size: 0.83em;
-    margin: 1.5em 0;
+    font-size: 0.6rem;
+    margin: 1.5rem 0;
+
+    @media all and (min-width: $medium-min) {
+        font-size: 1rem;
+    }
 }
 
 h6 {
-    font-size: 0.75em;
-    margin: 1.67em 0;
+    font-size: 0.5rem;
+    margin: 1.67rem 0;
+
+    @media all and (min-width: $medium-min) {
+        font-size: 0.75rem;
+    }
 }
 
 pre {

@@ -19,7 +19,7 @@ Start with a brand new empty directory, set it up for a Node project, and instal
 ```bash
 > mkdir blog
 > cd blog
-> npm init 
+> npm init
 # Answer questions
 > npm install --save metalsmith
 ```
@@ -47,7 +47,7 @@ Yep, that's it.  That's a fully-functioning Metalsmith static site.  It's not go
 <h1>Hello World</h1>
 ```
 
-Look at that, there's our file, processed through the Metalsmith pipeline.  
+Look at that, there's our file, processed through the Metalsmith pipeline.
 
 The pipeline is an important concept to grasp when it comes to working with Metalsmith.  You tell it where to find your input files via `.source()` and where to write the output files via `.destination()`, and then you will begin inserting a bunch of plugins as ordered steps along the pipeline.  When all your plugins are registered, you call `.build()` to start the processing.  It will then process _all_ files from your `source` directory through the plugin pipeline, transforming them at each step of the way, and finally write out the final files in your `destination` directory.
 
@@ -67,16 +67,16 @@ This is the format of a plugin and it's going to show us exactly what the pipeli
 **The `files` object:**
 
 ```json
-{ 
-    'index.html': { 
+{
+    'index.html': {
         contents: <Buffer>,
         mode: '0644',
-        stats: {  
-            dev: 16777220, 
-            mode: 33188, 
-            ... 
+        stats: {
+            dev: 16777220,
+            mode: 33188,
+            ...
         }
-    } 
+    }
 }
 ```
 
@@ -86,7 +86,7 @@ The files object is just a key-value store with an entry for each file in your `
 
 ...is not super important for now.  It's got lots of global metadata about the actual build you're running.  Maybe we'll come back to it, but in building out [this blog][brophy.org], I don't think I ever actually touched it.
 
-**The done() callback**
+**The `done()` callback**
 
 This is to tell Metalsmith when you're done.  For whatever reason, all of their examples show it being called with `setImmediate` during synchronous plugins, so I followed suit.  Don't ask me why that matters.
 
@@ -231,7 +231,7 @@ So what's next?  We've got markdown files with frontmatter metadata building int
 * `metalsmith-favicons` to copy over and setup your site icons
 * `metalsmith-drafts` to support draft posts that don't get published
 * `metalsmith-permalinks` to generate permalinks without the `.html`
-* `metalsmith-excerpts` to grab the first paragraph of a post for an overview display 
+* `metalsmith-excerpts` to grab the first paragraph of a post for an overview display
 * `metalsmith-tags` to allow tagging of posts and listing posts by tag`
 * `metalsmith-sass` for SCSS compilation
 * `metalsmith-icons` for easy inclusion of custom icon fonts from font-awesome

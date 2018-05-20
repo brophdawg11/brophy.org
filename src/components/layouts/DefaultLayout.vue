@@ -142,6 +142,7 @@ export default {
 }
 
 .page-content {
+    width: 100%;
     max-width: 768px;
     margin: auto;
     padding-bottom: $content-padding;
@@ -181,7 +182,7 @@ export default {
     }
 
     .page-link__li {
-        margin: 4 * $base-link-unit;
+        margin: (3 * $base-link-unit) (1.5 * $base-link-unit);
 
         @media screen and (min-width: $small-min) {
             margin: 2 * $base-link-unit;
