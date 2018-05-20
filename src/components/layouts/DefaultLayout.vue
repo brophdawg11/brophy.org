@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-html="cssStyles"></div>
+        <div v-html="cssStyles" />
 
         <!-- Prefetch subsequent images -->
         <div v-once style="display: none;">
@@ -48,14 +48,23 @@
                     <a href="https://aws.amazon.com/s3/" title="S3">aws s3</a>
                     &mdash;
                     stored in
-                    <a href="https://www.github.com/brophdawg11/brophy.org" title="GitHub">github</a>
+                    <a href="https://www.github.com/brophdawg11/brophy.org"
+                       title="GitHub">
+                        github
+                    </a>
                 </p>
                 <p class="page-footer-line">
                     side images from
-                    <a href="http://www.gratisography.com/" title="Gratisography">gratisography</a>
+                    <a href="http://www.gratisography.com/" title="Gratisography">
+                        gratisography
+                    </a>
                     &mdash;
                     icons from
-                    <a href="http://fortawesome.github.io/Font-Awesome/" title="Font-Awesome">font-awesome</a> via
+                    <a href="http://fortawesome.github.io/Font-Awesome/"
+                       title="Font-Awesome">
+                        font-awesome
+                    </a>
+                    via
                     <a href="http://fontello.com/" title="Fontello">fontello</a>
                 </p>
                 <p class="page-footer-line">

@@ -45,9 +45,6 @@ export default function createStore(/* request */) {
         strict,
         plugins,
         state: {
-            count: 0,
-            pageTitle: null,
-
             url: 'http://brophy.org',
             title: 'Matt Brophy',
             description: 'Matt Brophy\'s Website',

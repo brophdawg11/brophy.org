@@ -5,13 +5,13 @@ const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 /* eslint-enable import/no-extraneous-dependencies */
 
-console.log('process.env.NODE_ENV', process.env.NODE_ENV);
 
 const environment = process.env.NODE_ENV === 'production' ?
     'production' :
     'development';
 
 /* eslint-disable no-console */
+console.log('process.env.NODE_ENV', process.env.NODE_ENV);
 console.log(`Webpack building for environment: ${environment}`);
 /* eslint-enable no-console */
 

@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import { findIndex, get, sortBy } from 'lodash';
+import { findIndex, sortBy } from 'lodash-es';
 
 import { SET_POST } from '@store/mutations';
 
@@ -69,26 +69,6 @@ export default {
             store.commit(SET_POST, post.default);
         });
     },
-    // asyncData({ app, route }) {
-    //     return app.$content('/').getAll().then((posts) => {
-    //         const sortedPosts = sortBy(posts, 'postDate');
-    //         const postIndex = findIndex(sortedPosts, { permalink: route.path });
-    //         const post = sortedPosts[postIndex];
-    //         const previousPost = get(sortedPosts, postIndex - 1);
-    //         const nextPost = get(sortedPosts, postIndex + 1);
-    //         return {
-    //             previousPost,
-    //             post,
-    //             nextPost,
-    //         };
-    //     });
-    // },
-    data() {
-        return {
-            previousPost: null,
-            nextPost: null,
-        };
-    },
     computed: {
         url() {
             return `${this.$store.state.url}${this.post.permalink}`;
@@ -105,26 +85,28 @@ export default {
         post() {
             return this.$store.state.post;
         },
-        // content() {
-        //            config.highlight = (code) => {
-        //                 try {
-        //                     const highlighted = hljs.highlightAuto(code).value;
-        //                     return `<pre><code class='hljs'>${highlighted}</code></pre>`;
-        //                 } catch (e) {
-        //                     console.warn('Error encountered using highlight.js:', e);
-        //                 }
-        //                 return code;
-        //             };
-
-        // }
+        sortedPosts() {
+            return sortBy(this.$store.state.posts, 'postDate');
+        },
+        postIndex() {
+            return findIndex(this.sortedPosts, { slug: this.post.slug });
+        },
+        previousPost() {
+            const idx = this.postIndex - 1;
+            return this.sortedPosts[idx] ? this.sortedPosts[idx] : null;
+        },
+        nextPost() {
+            const idx = this.postIndex + 1;
+            return this.sortedPosts[idx] ? this.sortedPosts[idx] : null;
+        },
     },
     mounted() {
         import(
             /* webpackChunkName: "highlight" */
             'highlight.js',
         ).then(hljs => {
-            console.log('highlighting', hljs);
-            document.querySelectorAll('pre code').forEach(el => hljs.highlightBlock(el));
+            document.querySelectorAll('pre code')
+                .forEach(el => hljs.highlightBlock(el));
         });
     },
     methods: {

@@ -43,7 +43,7 @@ function renderToStream(context, res) {
 function render(req, res) {
     // Global context for Server side template
     const context = {
-        title: 'URBN Community',
+        title: 'Matt Brophy\'s Website',
         req,
         res,
         url: req.url,
