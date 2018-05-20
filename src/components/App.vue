@@ -2,8 +2,7 @@
     <div id="app">
         <noscript>
             Your browser does not have JS enabled, you are still able to browse
-            the website but you won't be able to access advanced features such
-            as editing or logging in.
+            the website but you won't be able to access advanced features.
         </noscript>
         <router-view :key="$route.fullPath" class="view" />
     </div>

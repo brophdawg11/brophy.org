@@ -19,7 +19,17 @@ const renderer = VSR.createBundleRenderer(serverBundle, {
     },
 });
 
+function setCacheControl(res, enable) {
+    const policy = enable ? 'public, max-age=300, s-maxage=600' : 'private';
+    res.set('Cache-Control', policy);
+}
+
 function handleError(err, res) {
+    // Remove any cache congtrol header that was previously set, so long as
+    // we haven't sent any headers yet
+    if (!res.headersSent) {
+        setCacheControl(res, false);
+    }
     if (err.code) {
         return res.status(err.code).send(err.message);
     }
@@ -31,12 +41,14 @@ function renderToString(context, res) {
         if (err) {
             return handleError(err, res);
         }
+        setCacheControl(res, true);
         return res.end(html);
     }, e => res.status(500).end(e));
 }
 
 function renderToStream(context, res) {
     const stream = renderer.renderToStream(context);
+    setCacheControl(res, true);
     stream.on('data', data => res.write(data.toString()));
     stream.on('end', () => res.end());
     stream.on('error', err => handleError(err, res));

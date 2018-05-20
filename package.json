@@ -44,7 +44,7 @@
     "fb:copy:index": "mkdir -p functions/src && cp src/index.tpl.html functions/src/",
     "fb:copy:static": "mkdir -p public && cp -R static public/",
     "fb:copy:dist": "npm run fb:copy:dist:public && npm run fb:copy:dist:functions",
-    "fb:copy:dist:public": "mkdir -p public && cp -R dist public/ && rm -f public/dist/vue-ssr-*.json",
+    "fb:copy:dist:public": "mkdir -p public && cp -R dist public/ && rm -f public/dist/*.json && rm -f public/dist/vue-middleware.js",
     "fb:copy:dist:functions": "mkdir -p functions/dist && cp -R dist/vue-middleware.js functions/dist/",
     "fb:deploy": "firebase deploy",
     "fb:serve": "firebase serve -p 8080",
