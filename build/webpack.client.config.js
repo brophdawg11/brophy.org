@@ -25,6 +25,7 @@ const clientConfig = merge(base, {
             stringifyOptions: {
                 spaces: 4,
             },
+            debug: true,
         }),
     ],
 });

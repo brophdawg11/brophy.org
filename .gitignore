@@ -10,3 +10,8 @@ coverage/
 
 npm-debug.log
 todo.txt
+
+# Firebase
+public/
+functions/src/
+firebase-debug.log
