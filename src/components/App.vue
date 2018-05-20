@@ -5,7 +5,7 @@
             the website but you won't be able to access advanced features such
             as editing or logging in.
         </noscript>
-        <router-view class="view"/>
+        <router-view :key="$route.fullPath" class="view" />
     </div>
 </template>
 

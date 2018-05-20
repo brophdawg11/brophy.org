@@ -5,32 +5,32 @@
              class="c-post__nav-link c-post__nav-link--previous" >
 
             <!--
-            <nuxt-link :to="previousPost.permalink"
+            <router-link :to="previousPost.permalink"
                        :title="previousPost.title">
                 <span class="fa fa-arrow-left"></span>
-            </nuxt-link>
+            </router-link>
             -->
 
-            <nuxt-link :to="previousPost.permalink"
-                       :title="previousPost.title">
+            <router-link :to="`/post/${previousPost.slug}`"
+                         :title="previousPost.title">
                 Previous: {{ previousPost.title }}
-            </nuxt-link>
+            </router-link>
 
         </div>
 
         <div v-if="nextPost"
              class="c-post__nav-link c-post__nav-link--next" >
 
-            <nuxt-link :to="nextPost.permalink"
-                       :title="nextPost.title">
+            <router-link :to="`/post/${nextPost.slug}`"
+                         :title="nextPost.title">
                 Next: {{ nextPost.title }}
-            </nuxt-link>
+            </router-link>
 
             <!--
-            <nuxt-link :to="nextPost.permalink"
+            <router-link :to="nextPost.permalink"
                        :title="nextPost.title">
                 <span class="fa fa-arrow-right"></span>
-            </nuxt-link>
+            </router-link>
             -->
 
         </div>

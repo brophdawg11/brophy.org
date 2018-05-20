@@ -1,38 +1,47 @@
 <template>
-    <div>
+    <DefaultLayout>
+
         <h1 class="c-tags__title">
             <span class="c-tags__title-tag">{{ tag }}</span> Posts
         </h1>
 
         <PostList :posts="posts" />
-    </div>
+
+    </DefaultLayout>
 </template>
 
 <script>
-// import { get, filter, includes } from 'lodash-es';
+import { get, includes } from 'lodash-es';
 
-import PostList from '../../components/PostList.vue';
+import { SET_POSTS } from '@store/mutations';
+
+import DefaultLayout from '@components/layouts/DefaultLayout.vue';
+import PostList from '@components/PostList.vue';
 
 export default {
     components: {
+        DefaultLayout,
         PostList,
     },
-    // asyncData({ app, route }) {
-    //     const tag = get(route, 'params.tag');
-    //     const postHasTag = p => includes(get(p, 'tags', '').split(','), tag);
-    //     return app.$content('/')
-    //         .getAll()
-    //         .then(posts => filter(posts, postHasTag))
-    //         .then(posts => ({
-    //             tag,
-    //             posts: enhancePosts(posts),
-    //         }));
-    // },
+    fetchData({ store }) {
+        return import(
+            /* webpakcChunkName: "contents" */
+            '@dist/contents.json',
+        ).then(contents => {
+            store.commit(SET_POSTS, contents.contents);
+        });
+    },
     data() {
         return {
-            tag: null,
-            posts: [],
+            tag: this.$route.params.tag,
         };
+    },
+    computed: {
+        posts() {
+            const postHasTag = p => includes(get(p, 'tags', '').split(','), this.tag);
+            return this.$store.state.posts
+                .filter(p => postHasTag(p));
+        },
     },
 };
 </script>

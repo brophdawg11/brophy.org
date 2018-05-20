@@ -48,7 +48,7 @@
 <script>
 import { findIndex, sortBy } from 'lodash-es';
 
-import { SET_POST } from '@store/mutations';
+import { SET_POST, SET_POSTS } from '@store/mutations';
 
 import DefaultLayout from '@components/layouts/DefaultLayout.vue';
 import PostMeta from '@components/PostMeta.vue';
@@ -62,12 +62,24 @@ export default {
     },
     fetchData({ store, route }) {
         const { slug } = route.params;
-        return import(
+
+        const loadPosts = store.state.posts == null ?
+            import(
+                /* webpakcChunkName: "contents" */
+                '@dist/contents.json',
+            ).then(contents => {
+                store.commit(SET_POSTS, contents.contents);
+            }) :
+            Promise.resolve();
+
+        const loadPost = import(
             /* webpackChunkName: "post-" */
             `@content/${slug}.md`,
         ).then(post => {
-            store.commit(SET_POST, post.default);
+            store.commit(SET_POST, Object.assign(post.default, { slug }));
         });
+
+        return Promise.all([ loadPosts, loadPost ]);
     },
     computed: {
         url() {
@@ -93,11 +105,11 @@ export default {
         },
         previousPost() {
             const idx = this.postIndex - 1;
-            return this.sortedPosts[idx] ? this.sortedPosts[idx] : null;
+            return idx >= 0 && this.sortedPosts[idx] ? this.sortedPosts[idx] : null;
         },
         nextPost() {
             const idx = this.postIndex + 1;
-            return this.sortedPosts[idx] ? this.sortedPosts[idx] : null;
+            return idx > 0 && this.sortedPosts[idx] ? this.sortedPosts[idx] : null;
         },
     },
     mounted() {

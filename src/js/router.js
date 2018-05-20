@@ -7,10 +7,12 @@ Vue.use(Router);
 export default function createRouter(/* store */) {
     return new Router({
         mode: 'history',
+        scrollBehavior(/* to, from, savedPosition */) {
+            return { x: 0, y: 0 };
+        },
         routes: [{
             path: '/',
             name: 'Home',
-            // Enable code splitting at the route level using async components
             component: () => import(
                 /* webpackChunkName: "home" */
                 '@components/views/Index.vue',
@@ -18,7 +20,6 @@ export default function createRouter(/* store */) {
         }, {
             path: '/posts',
             name: 'Posts',
-            // Enable code splitting at the route level using async components
             component: () => import(
                 /* webpackChunkName: "posts" */
                 '@components/views/Posts.vue',
@@ -26,15 +27,20 @@ export default function createRouter(/* store */) {
         }, {
             path: '/post/:slug',
             name: 'Post',
-            // Enable code splitting at the route level using async components
             component: () => import(
                 /* webpackChunkName: "post" */
                 '@components/views/Post.vue',
             ),
         }, {
+            path: '/tag/:tag',
+            name: 'Tag',
+            component: () => import(
+                /* webpackChunkName: "tag" */
+                '@components/views/Tag.vue',
+            ),
+        }, {
             path: '/resume',
             name: 'Resume',
-            // Enable code splitting at the route level using async components
             component: () => import(
                 /* webpackChunkName: "resume" */
                 '@components/views/Resume.vue',
