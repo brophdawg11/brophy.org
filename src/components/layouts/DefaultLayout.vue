@@ -41,31 +41,51 @@
 
                 <p class="page-footer-line">
                     built with
-                    <a href="https://nuxtjs.org/" title="Nuxt">nuxt</a>
+                    <a href="https://vuejs.org/"
+                       title="Vue"
+                       target="_blank">vue</a>
                 </p>
                 <p class="page-footer-line">
                     hosted on
-                    <a href="https://aws.amazon.com/s3/" title="S3">aws s3</a>
+                    <a href="https://firebase.google.com/"
+                       title="Firebase"
+                       target="_blank">
+                        firebase
+                    </a>
+                    using
+                    <a href="https://firebase.google.com/products/functions/"
+                       title="Cloud Functions"
+                       target="_blank">
+                        cloud functions
+                    </a>
                     &mdash;
                     stored in
                     <a href="https://www.github.com/brophdawg11/brophy.org"
-                       title="GitHub">
+                       title="GitHub"
+                       target="_blank">
                         github
                     </a>
                 </p>
                 <p class="page-footer-line">
                     side images from
-                    <a href="http://www.gratisography.com/" title="Gratisography">
+                    <a href="http://www.gratisography.com/"
+                       title="Gratisography"
+                       target="_blank">
                         gratisography
                     </a>
                     &mdash;
                     icons from
                     <a href="http://fortawesome.github.io/Font-Awesome/"
-                       title="Font-Awesome">
+                       title="Font-Awesome"
+                       target="_blank">
                         font-awesome
                     </a>
                     via
-                    <a href="http://fontello.com/" title="Fontello">fontello</a>
+                    <a href="http://fontello.com/"
+                       title="Fontello"
+                       target="_blank">
+                        fontello
+                    </a>
                 </p>
                 <p class="page-footer-line">
                     &copy; Copyright {{ year }} Matt Brophy
@@ -118,12 +138,6 @@ export default {
                 title: 'Instagram',
                 class: 'instagram',
                 icon: 'instagram',
-            }, {
-                url: 'http://www.facebook.com/matt.b.brophy',
-                external: true,
-                title: 'Facebook',
-                class: 'facebook',
-                icon: 'facebook',
             }, {
                 url: 'http://www.twitter.com/brophdawg11',
                 external: true,

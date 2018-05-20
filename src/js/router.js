@@ -15,7 +15,7 @@ export default function createRouter(/* store */) {
             name: 'Home',
             component: () => import(
                 /* webpackChunkName: "home" */
-                '@components/views/Index.vue',
+                '@components/views/Home.vue',
             ),
         }, {
             path: '/posts',
