@@ -9,6 +9,8 @@ const ContentMetadataPlugin = require('./content-metadata-plugin');
 const isomorphicUtils = require('../src/js/isomorphic-utils');
 const base = require('./webpack.base.config');
 
+const { isLocal, isProd } = isomorphicUtils.config;
+
 const clientConfig = merge(base, {
     // Note: This name must begin with 'client' in order to be picked up by the
     // webpack-hot-server-middleware plugin
@@ -22,15 +24,13 @@ const clientConfig = merge(base, {
         new ContentMetadataPlugin({
             contentDir: './content',
             outputFile: 'contents.json',
-            stringifyOptions: {
-                spaces: 4,
-            },
+            pretty: !isProd,
             debug: true,
         }),
     ],
 });
 
-if (isomorphicUtils.config.isLocal) {
+if (isLocal) {
     // Wire up HMR on the client
     clientConfig.entry = [
         'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
