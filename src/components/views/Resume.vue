@@ -15,10 +15,10 @@
                     <li>{{ resumeData.location }}</li>
                     <li>
                         e:
-                        <ExternalLink :href="`mailto:${resumeData.email}`"
-                                      :title="resumeData.email">
+                        <a :href="`mailto:${resumeData.email}`"
+                           :title="resumeData.email">
                             {{ resumeData.email }}
-                        </ExternalLink>
+                        </a>
                     </li>
                     <li>
                         w:
@@ -121,6 +121,7 @@ import marked from 'marked';
 
 import logger from '@js/logger';
 import CenteredLayout from '@components/layouts/CenteredLayout.vue';
+import ExternalLink from '@components/ExternalLink.vue';
 
 /* eslint-disable max-len */
 const resumeData = {
@@ -464,6 +465,7 @@ const resumeData = {
 export default {
     components: {
         CenteredLayout,
+        ExternalLink,
     },
     created() {
         this.resumeData = resumeData;
