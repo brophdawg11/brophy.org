@@ -77,6 +77,13 @@ router.onReady(() => {
             });
     });
 
+    // Client side routing GA tracking
+    router.afterEach(to => {
+        if (window.gtag) {
+            window.gtag('config', 'UA-17810974-2', { page_path: to.fullPath });
+        }
+    });
+
     app.$mount('#app');
 });
 
