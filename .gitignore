@@ -1,6 +1,18 @@
-node_modules
+# Build artifacts
+node_modules/
+dist/
+
+# Test artifacts
+coverage/
+
+# Sublime project and workspace files
 *.sublime-*
-output
+
 npm-debug.log
-.icon_cache
 todo.txt
+.DS_Store
+
+# Firebase
+public/
+functions/src/
+firebase-debug.log

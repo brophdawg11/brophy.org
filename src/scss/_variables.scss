@@ -1,0 +1,34 @@
+// Breakpoints
+$extra-small-min: 0;
+$extra-small-max: 499px;
+$small-min: 500px;
+$small-max: 767px;
+$medium-min: 768px;
+$medium-max: 1023px;
+$large-min: 1024px;
+
+// Sizing
+$lhs-aside-width: 384px;
+$max-lhs-aside-width: 450px;
+$top-aside-height: 150px;
+$content-padding: 2em;
+
+// Transitions
+$transition-duration: 200ms;
+
+// Colors
+$white: white;
+$offwhite: #fafafa;
+$offblack: #181818;
+$dark-grey: #ccc;
+$grey: grey;
+$lightgrey: #eee;
+$orange: #cf8a05;
+
+// Fonts
+$serif: 'PT Serif', serif;
+$serif-content: $serif;
+$sans-serif: 'system', sans-serif;
+
+// Misc
+$base-link-unit: 0.5em;

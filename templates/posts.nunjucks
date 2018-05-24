@@ -1,9 +1,0 @@
-{% extends "templates/layouts/aside-left.nunjucks" %}
-
-{% block title %}
-    Blog Posts | {{ global.title }}
-{% endblock %}
-
-{% block content %}
-    {% include "templates/partials/post-list.nunjucks" %}
-{% endblock %}
