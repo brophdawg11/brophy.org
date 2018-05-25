@@ -23,11 +23,11 @@
 
                 <p class="c-posts__excerpt">
                     <span v-html="post.excerpt" />
-                    <a :href="post.permalink"
-                       :title="post.title"
-                       class="read-more">
+                    <router-link :to="`/post/${post.slug}`"
+                                 :title="post.title"
+                                 class="read-more">
                         <span class="fa fa-angle-double-right" />
-                    </a>
+                    </router-link>
                 </p>
 
                 <div class="c-posts__meta">

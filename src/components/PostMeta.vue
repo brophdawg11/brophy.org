@@ -2,8 +2,8 @@
     <div>
 
         <p class="c-meta__line1">
-            <span class="c-meta__date">
-                {{ formattedDate }}
+            <span :title="formattedDate" class="c-meta__date">
+                {{ relativeDate }}
             </span>
 
             <span class="c-meta__divider c-meta__divider--first">|</span>
@@ -34,8 +34,8 @@
 
 <script>
 import { isString } from 'lodash-es';
-import moment from 'moment';
 import readingTime from 'reading-time';
+import vagueTime from 'vague-time';
 
 export default {
     props: {
@@ -45,8 +45,15 @@ export default {
         },
     },
     computed: {
+        postDate() {
+            return new Date(Date.parse(this.post.postDate));
+        },
+        relativeDate() {
+            return vagueTime.get({ to: this.postDate.getTime() });
+        },
         formattedDate() {
-            return moment(this.post.postDate).format('MMMM D, YYYY');
+            const [ , month, date, year ] = this.postDate.toDateString().split(' ');
+            return `${month} ${date}, ${year}`;
         },
         tagArray() {
             return isString(this.post.tags) ?
