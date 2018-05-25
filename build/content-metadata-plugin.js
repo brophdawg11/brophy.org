@@ -24,7 +24,7 @@ function mapContents(contentDir, files) {
         .filter(f => fs.statSync(f).isFile() && /\.md$/.test(f))
         .map(f => {
             const source = fs.readFileSync(f);
-            const obj = yaml.parse(source);
+            const obj = yaml.loadFront(source);
             const enhanced = Object.assign(obj, {
                 excerpt: excerpt(marked(obj.__content)),
                 readingTime: readingTime(obj.__content),

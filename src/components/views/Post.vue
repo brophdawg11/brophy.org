@@ -113,7 +113,6 @@ export default {
         },
     },
     mounted() {
-        this.highlightCode();
         this.loadJsBin();
     },
     methods: {
@@ -128,15 +127,6 @@ export default {
         shareGooglePlus() {
             window.open(this.googlePlusUrl, 'google-plus-share', 'width=490,height=530');
             return false;
-        },
-        highlightCode() {
-            return import(
-                /* webpackChunkName: "highlight" */
-                'highlight.js',
-            ).then(hljs => {
-                document.querySelectorAll('pre code')
-                    .forEach(el => hljs.highlightBlock(el));
-            });
         },
         loadJsBin() {
             function appendScript(url) {

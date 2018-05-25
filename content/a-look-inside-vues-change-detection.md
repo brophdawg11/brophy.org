@@ -51,7 +51,7 @@ _Note: The embedded bin is currently unavailable, as I recently moved off static
 
 Now, what would it take to make it reactive?  One explicit way might be to do something like:
 
-```
+```javascript
 function dependsOn(path, renderFns) {
     // Magic logic to compare prior store values to current store 
     // values for store[path] and execute render functions when 
@@ -73,7 +73,7 @@ So, what can we do?  The Vue.js approach is broken down into 3 steps:
 
 The first step Vue tackles is that it creates a sort of pseudo-proxy for your data store using Object [getter]/[setter] functions.  Using this approach, we can define properties on an object that actually contain getter and setter functions for when they are accessed:
 
-```
+```javascript
 let obj = {};
 let value;
 Object.defineProperty(obj, 'foo', {
@@ -101,7 +101,7 @@ Thats pretty cool - we've now got a property `obj.foo`, that we can know any tim
 
 Now, logging something to the console doesn't really do us any good.  Instead, we need a simple way to track dependencies between data store properties and associated render functions.  So Vue uses a really simple class, we'll call it `Dep`, to track dependencies:
 
-```
+```javascript
 window.Dep = class {
     constructor() {
         this.deps = new Set();
@@ -129,7 +129,7 @@ Again, nice and simple.  Maintain an internal [Set][set] object to track all our
 
 Hopefully by now, you're starting to see where we're headed.  We have a way to proxy reads and writes to properties on our data store and do _something_ accordingly.  We also have a simple way to track dependent functions.  And our end goal here is to know what render functions to execute when certain properties change.  _I.e._, we need to know _what_ render functions depend on _what_ data store properties.  And we need to do that automatically, without any explicit declarations on our part.  🤔
 
-```
+```javascript
 // How can we know, automatically, that 'renderA' depends on 'store.a'?
 function renderA() {
   $('a').innerHTML = store.a * store.a;
@@ -142,7 +142,7 @@ I couldn't have been more wrong.  This is what I think is the true genius of Vue
 
 Remember, we have a way using our getter proxy to know any time a given property is accessed.  So - what if we could know _who_ is accessing it?  Well, because Javascript is single threaded, there is only _one_ function running at any given point in time.  So, what if we tracked what that function was, and stored that as our dependency?
 
-```
+```javascript
 // Single global variable to track _what_ function of ours is currently running
 let currentFn;
 

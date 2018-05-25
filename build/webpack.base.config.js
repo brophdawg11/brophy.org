@@ -59,7 +59,7 @@ module.exports = {
             ],
         }, {
             test: /\.md$/,
-            use: 'markdown-with-front-matter-loader',
+            use: './build/markdown-loader',
         }, {
             test: /logo\.png$/,
             use: 'base64-inline-loader?limit=1000&name=[name].[ext]',
