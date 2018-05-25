@@ -3,6 +3,7 @@ const path = require('path');
 /* eslint-disable import/no-extraneous-dependencies */
 const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const VisualizerPlugin = require('webpack-visualizer-plugin');
 /* eslint-enable import/no-extraneous-dependencies */
 
 const isomorphicUtils = require('../src/js/isomorphic-utils');
@@ -78,5 +79,6 @@ module.exports = {
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
         }),
         new VueLoaderPlugin(),
+        new VisualizerPlugin(),
     ],
 };
