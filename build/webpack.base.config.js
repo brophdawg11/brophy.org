@@ -19,8 +19,8 @@ module.exports = {
     mode: environment,
     output: {
         publicPath: '/dist/',
-        filename: '[name].[hash].js',
-        chunkFilename: 'chunk-[name].[chunkhash].js',
+        filename: '[name].h.[hash].js',
+        chunkFilename: 'chunk-[name].h.[chunkhash].js',
     },
     resolve: {
         alias: {

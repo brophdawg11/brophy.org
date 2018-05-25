@@ -6,10 +6,10 @@
             "**/node_modules/**"
         ],
         "headers": [{
-            "source": "/dist/*.js",
+            "source": "/dist/*.h.*.js",
             "headers": [{
                 "key": "Cache-Control",
-                "value": "public, max-age=60, s-maxage=300"
+                "value": "public, max-age=3600, s-maxage=86400"
             }]
         }, {
             "source": "/static/**/*.@(jpg|jpeg|gif|png)",
