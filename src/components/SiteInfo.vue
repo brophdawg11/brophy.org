@@ -30,13 +30,13 @@
         </p>
         <p class="page-footer-line">
             side images from
-            <ExternalLink href="http://www.gratisography.com/" title="Gratisography">
+            <ExternalLink href="https://www.gratisography.com/" title="Gratisography">
                 gratisography
             </ExternalLink>
         </p>
         <p class="page-footer-line">
             icons from
-            <ExternalLink href="http://fortawesome.github.io/Font-Awesome/"
+            <ExternalLink href="https://fontawesome.com/"
                           title="Font-Awesome">
                 font-awesome
             </ExternalLink>

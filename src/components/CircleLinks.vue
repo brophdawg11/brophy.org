@@ -5,21 +5,18 @@
             :key="link.url"
             class="page-link__li">
 
-            <a v-if="link.external"
-               :href="link.url"
-               :title="link.title"
-               class="page-link__a">
-                <span :class="`fa-${link.icon}`" class="fa" /><!--
-                --><span class="page-link__p">{{ link.title }}</span>
-            </a>
+            <ExternalLink v-if="link.external"
+                          :href="link.url"
+                          :title="link.title"
+                          :class="'page-link__a'">
+                <LinkBody :icon="link.icon" :title="link.title" />
+            </ExternalLink>
 
             <router-link v-else
                          :to="link.url"
                          :title="link.title"
                          class="page-link__a">
-                <span :class="`fa-${link.icon}`" class="fa" /><!--
-                --><span class="page-link__p">{{ link.title }}</span>
-
+                <LinkBody :icon="link.icon" :title="link.title" />
             </router-link>
 
         </li>
@@ -28,8 +25,34 @@
 </template>
 
 <script>
+import ExternalLink from '@components/ExternalLink';
+
+const LinkBody = {
+    functional: true,
+    props: {
+        icon: {
+            type: String,
+            required: true,
+        },
+        title: {
+            type: String,
+            required: true,
+        },
+    },
+    render(h, context) {
+        return [
+            h('span', { attrs: { class: `fa fa-${context.props.icon}` } }),
+            h('span', { attrs: { class: 'page-link__p' } }, context.props.title),
+        ];
+    },
+};
+
 export default {
     name: 'CircleLinks',
+    components: {
+        ExternalLink,
+        LinkBody,
+    },
     props: {
         links: {
             type: Array,

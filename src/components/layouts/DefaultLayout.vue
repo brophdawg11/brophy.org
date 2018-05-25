@@ -68,19 +68,19 @@ export default {
                 icon: 'doc-text-inv',
             }],
             footerLinks: [{
-                url: 'http://www.github.com/brophdawg11',
+                url: 'https://www.github.com/brophdawg11',
                 external: true,
                 title: 'GitHub',
                 class: 'github',
                 icon: 'github-circled',
             }, {
-                url: 'http://www.instagram.com/brophdawg11',
+                url: 'https://www.instagram.com/brophdawg11',
                 external: true,
                 title: 'Instagram',
                 class: 'instagram',
                 icon: 'instagram',
             }, {
-                url: 'http://www.twitter.com/brophdawg11',
+                url: 'https://www.twitter.com/brophdawg11',
                 external: true,
                 title: 'Twitter',
                 class: 'twitter',

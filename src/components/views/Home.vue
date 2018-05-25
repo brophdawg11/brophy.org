@@ -13,7 +13,7 @@
 
             <p class="c-home-description">
                 web/software developer at
-                <ExternalLink href="http://www.urbn.com" title="URBN">
+                <ExternalLink href="https://www.urbn.com" title="URBN">
                     urbn
                 </ExternalLink>
             </p>
