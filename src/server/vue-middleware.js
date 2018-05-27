@@ -7,6 +7,8 @@ const serverBundle = require('../../dist/vue-ssr-server-bundle.json');
 const clientManifest = require('../../dist/vue-ssr-client-manifest.json');
 /* eslint-enable import/no-unresolved */
 
+const { config } = require('@js/isomorphic-utils');
+
 const USE_STREAM = true;
 
 const renderer = VSR.createBundleRenderer(serverBundle, {
@@ -15,6 +17,21 @@ const renderer = VSR.createBundleRenderer(serverBundle, {
     template: fs.readFileSync(path.resolve(__dirname, '../index.tpl.html'), 'utf-8'),
     clientManifest,
 });
+
+let gaScripts = '';
+
+if (config.isProd) {
+    gaScripts = `
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-17810974-2"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'UA-17810974-2');
+        </script>
+    `;
+}
 
 function setCacheControl(res, enable) {
     // No caching for now - need to figure out how to coordinate cache updates.
@@ -67,6 +84,7 @@ function render(req, res) {
         res,
         url: req.url,
         initialState: null,
+        gaScripts,
     };
 
     // Render the appropriate Vue components into the renderer template

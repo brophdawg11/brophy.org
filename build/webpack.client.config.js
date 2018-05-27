@@ -7,11 +7,11 @@ const VueSSRClientPlugin = require('vue-server-renderer/client-plugin');
 
 const ContentMetadataPlugin = require('./content-metadata-plugin');
 const isomorphicUtils = require('../src/js/isomorphic-utils');
-const base = require('./webpack.base.config');
+const getBaseConfig = require('./webpack.base.config');
 
 const { isLocal, isProd } = isomorphicUtils.config;
 
-const clientConfig = merge(base, {
+const clientConfig = merge(getBaseConfig('client'), {
     // Note: This name must begin with 'client' in order to be picked up by the
     // webpack-hot-server-middleware plugin
     name: 'client',
