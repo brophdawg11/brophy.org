@@ -145,18 +145,11 @@ export default {
                 });
             }
 
-            if (document.querySelectorAll('.jsbin-embed').length === 0) {
+            if (document.querySelectorAll('.codepen').length === 0) {
                 return Promise.resolve();
             }
 
-            // HACK: This is needed to make embedded JSBin's work on client side
-            // routes for subsequent posts including JSBin.  After it loads the
-            // first time, it sets this global variable which prevents it from
-            // executing on subsequent inclusions of this script.  This may change
-            // at any time and it may break :()
-            // TODO: File issue with JSBin to make this an API behavior
-            window.jsbinified = undefined;
-            return appendScript('https://static.jsbin.com/js/embed.min.js?4.1.0');
+            return appendScript('https://static.codepen.io/assets/embed/ei.js');
         },
     },
 };

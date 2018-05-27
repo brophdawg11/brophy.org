@@ -42,12 +42,7 @@ The `highlight` function is just for this example - to apply a little CSS animat
 
 ## Non-Reactive UI
 
-_Note: The embedded bin is currently unavailable, as I recently moved off static HTTP hosting on AWS S3 to HTTPS hosting via Firebase, and didn't realize embedding JSBin over HTTPS required a Pro account.  For now, use this [direct link to the JSBin](https://jsbin.com/joguyav/3/edit?html,js,output).  Apologies for the inconvenience :(_
-
-<a class="jsbin-embed" 
-   href="https://jsbin.com/joguyav/3/embed?js,output">
-    Simple Non-Reactive UI
-</a>
+<p data-height="265" data-theme-id="0" data-slug-hash="LmwwXP" data-default-tab="js,result" data-user="brophdawg11" data-embed-version="2" data-pen-title="Simple Non-Reactive UI" data-preview="true" class="codepen">See the Pen <a href="https://codepen.io/brophdawg11/pen/LmwwXP/">Simple Non-Reactive UI</a> by Matt Brophy (<a href="https://codepen.io/brophdawg11">@brophdawg11</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 
 Now, what would it take to make it reactive?  One explicit way might be to do something like:
 
@@ -168,12 +163,7 @@ Now, when `renderA` executes inside of `wrapped` above, and it accesses our prox
 
 ## Reactive UI
 
-_Note: The embedded bin is currently unavailable, as I recently moved off static HTTP hosting on AWS S3 to HTTPS hosting via Firebase, and didn't realize embedding JSBin over HTTPS required a Pro account.  For now, [use this direct link to the JSBin](https://jsbin.com/joguyav/5/edit?html,js,output).  Apologies for the inconvenience :(_
-
-<a class="jsbin-embed" 
-   href="https://jsbin.com/joguyav/5/embed?js,output">
-    Fully Reactive UI
-</a>
+<p data-height="265" data-theme-id="0" data-slug-hash="KROOro" data-default-tab="js,result" data-user="brophdawg11" data-embed-version="2" data-pen-title="Fully Reactive UI" data-preview="true" class="codepen">See the Pen <a href="https://codepen.io/brophdawg11/pen/KROOro/">Fully Reactive UI</a> by Matt Brophy (<a href="https://codepen.io/brophdawg11">@brophdawg11</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 
 And there you have it.  Automatic dependency tracking and reactive UI updates.  No manual registering of watcher or subscribers.  No dirty checking.  No virtual DOM diffing.  We know exactly what properties change (via our object proxies), and exactly what render functons care (via our `currentFn` tracking).  so when a given property changes, we execute every render function that cares.  and only those render function that care.
 
