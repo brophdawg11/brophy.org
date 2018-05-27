@@ -42,7 +42,7 @@ The `highlight` function is just for this example - to apply a little CSS animat
 
 ## Non-Reactive UI
 
-_Note: The embedded bin is currently unavailable, as I recently moved off static HTTP hosting on AWS S3 to HTTPS hosting via Firebase, and didn't realize embedding JSBin over HTTPS required a Pro account.  For now, here's the direct link to the JSBin: [https://jsbin.com/joguyav/3/edit?html,js,output].  Apologies for the inconvenience :(_
+_Note: The embedded bin is currently unavailable, as I recently moved off static HTTP hosting on AWS S3 to HTTPS hosting via Firebase, and didn't realize embedding JSBin over HTTPS required a Pro account.  For now, use this [direct link to the JSBin](https://jsbin.com/joguyav/3/edit?html,js,output).  Apologies for the inconvenience :(_
 
 <a class="jsbin-embed" 
    href="https://jsbin.com/joguyav/3/embed?js,output">
@@ -168,7 +168,7 @@ Now, when `renderA` executes inside of `wrapped` above, and it accesses our prox
 
 ## Reactive UI
 
-_Note: The embedded bin is currently unavailable, as I recently moved off static HTTP hosting on AWS S3 to HTTPS hosting via Firebase, and didn't realize embedding JSBin over HTTPS required a Pro account.  For now, here's the direct link to the JSBin: [https://jsbin.com/joguyav/5/edit?html,js,output].  Apologies for the inconvenience :(_
+_Note: The embedded bin is currently unavailable, as I recently moved off static HTTP hosting on AWS S3 to HTTPS hosting via Firebase, and didn't realize embedding JSBin over HTTPS required a Pro account.  For now, [use this direct link to the JSBin](https://jsbin.com/joguyav/5/edit?html,js,output).  Apologies for the inconvenience :(_
 
 <a class="jsbin-embed" 
    href="https://jsbin.com/joguyav/5/embed?js,output">

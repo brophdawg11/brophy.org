@@ -15,7 +15,7 @@
                 class="c-posts__item">
 
                 <h2 class="c-posts__title">
-                    <router-link :to="`/post/${post.slug}`"
+                    <router-link :to="post.permalink"
                                  :title="post.title">
                         {{ post.title }}
                     </router-link>
@@ -23,7 +23,7 @@
 
                 <p class="c-posts__excerpt">
                     <span v-html="post.excerpt" />
-                    <router-link :to="`/post/${post.slug}`"
+                    <router-link :to="post.permalink"
                                  :title="post.title"
                                  class="read-more">
                         <span class="fa fa-angle-double-right" />

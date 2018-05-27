@@ -1,22 +1,12 @@
 /* eslint-disable no-console, no-underscore-dangle */
 const fs = require('fs');
 const path = require('path');
-const marked = require('marked');
 
 /* eslint-disable import/no-extraneous-dependencies */
-const yaml = require('yaml-front-matter');
-const cheerio = require('cheerio');
-const readingTime = require('reading-time');
 const mkdirp = require('mkdirp');
 /* eslint-enable import/no-extraneous-dependencies */
 
-function excerpt(body) {
-    const $ = cheerio.load(body);
-    return $.html($('p').first())
-        .trim()
-        .replace(/^<p>/, '')
-        .replace(/<\/p>$/, '');
-}
+const parseMarkdownContent = require('./parse-markdown-content');
 
 function mapContents(contentDir, files) {
     return files
@@ -24,14 +14,9 @@ function mapContents(contentDir, files) {
         .filter(f => fs.statSync(f).isFile() && /\.md$/.test(f))
         .map(f => {
             const source = fs.readFileSync(f);
-            const obj = yaml.loadFront(source);
-            const enhanced = Object.assign(obj, {
-                excerpt: excerpt(marked(obj.__content)),
-                readingTime: readingTime(obj.__content),
-                slug: path.basename(f, '.md'),
-            });
-            delete enhanced.__content;
-            return enhanced;
+            const obj = parseMarkdownContent(f, source);
+            delete obj.__content;
+            return obj;
         });
 }
 

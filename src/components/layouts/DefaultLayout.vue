@@ -167,6 +167,7 @@ export default {
 }
 
 .page-footer {
+    padding-top: $content-padding;
     text-align: center;
 }
 

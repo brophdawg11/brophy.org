@@ -16,25 +16,30 @@
 
             <footer>
                 <div class="c-post__share">
-                    Enjoy this post?  Share on
 
-                    <a :href="twitterUrl"
-                       class="c-post__share-medium"
-                       @click.prevent="shareTwitter()"><!--
-                       --><span class="fa fa-twitter" /><!--
-                    --></a><!--
+                    <p class="c-post__share-lead-in">
+                        Enjoy this post?  Share on:
+                    </p>
 
-                    --><a :href="facebookUrl"
-                          class="c-post__share-medium"
-                          @click.prevent="shareFacebook()"><!--
-                       --><span class="fa fa-facebook" /><!--
-                    --></a><!--
-
-                    --><a :href="googlePlusUrl"
-                          class="c-post__share-medium"
-                          @click.prevent="shareGooglePlus()"><!--
-                       --><span class="fa fa-gplus" /><!--
-                    --></a>
+                    <p>
+                        <a :href="twitterUrl"
+                           class="c-post__share-medium"
+                           @click.prevent="shareTwitter()">
+                            Twitter
+                        </a>
+                        /
+                        <a :href="facebookUrl"
+                           class="c-post__share-medium"
+                           @click.prevent="shareFacebook()">
+                            Facebook
+                        </a>
+                        /
+                        <a :href="googlePlusUrl"
+                           class="c-post__share-medium"
+                           @click.prevent="shareGooglePlus()">
+                            Google Plus
+                        </a>
+                    </p>
                 </div>
 
                 <PostNav :previous-post="previousPost" :next-post="nextPost" />
@@ -193,6 +198,10 @@ export default {
         margin-bottom: $content-padding;
     }
 
+    &__share-lead-in {
+        padding-bottom: $content-padding / 3;
+    }
+
     &__share-medium {
         .fa {
             padding: 5px;
@@ -217,6 +226,7 @@ export default {
 
         &--previous {
             padding-right: 10px;
+            text-align: left;
         }
 
         &--next {

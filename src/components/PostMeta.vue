@@ -8,7 +8,7 @@
 
             <span class="c-meta__divider c-meta__divider--first">|</span>
 
-            <span class="c-meta__readtime">{{ readTime }}</span>
+            <span class="c-meta__readtime">{{ post.readingTime.text }}</span>
 
         </p>
 
@@ -34,7 +34,6 @@
 
 <script>
 import { isString } from 'lodash-es';
-import readingTime from 'reading-time';
 import vagueTime from 'vague-time';
 
 export default {
@@ -59,19 +58,6 @@ export default {
             return isString(this.post.tags) ?
                 this.post.tags.split(',') :
                 [];
-        },
-        readTime() {
-            if (this.post.readingTime) {
-                return this.post.readingTime.text;
-            }
-
-            /* eslint-disable no-underscore-dangle */
-            if (this.post.__content) {
-                return readingTime(this.post.__content).text;
-            }
-            /* eslint-enable no-underscore-dangle */
-
-            return null;
         },
     },
 };
