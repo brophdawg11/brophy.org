@@ -1,8 +1,8 @@
 <template>
-    <div class="c-post__nav">
+    <div class="c-post-nav">
 
         <div v-if="previousPost"
-             class="c-post__nav-link c-post__nav-link--previous" >
+             class="c-post-nav__link c-post-nav__link--previous" >
 
             <router-link :to="previousPost.permalink"
                          :title="previousPost.title">
@@ -12,7 +12,7 @@
         </div>
 
         <div v-if="nextPost"
-             class="c-post__nav-link c-post__nav-link--next" >
+             class="c-post-nav__link c-post-nav__link--next" >
 
             <router-link :to="nextPost.permalink"
                          :title="nextPost.title">
@@ -38,3 +38,23 @@ export default {
     },
 };
 </script>
+
+<style lang="scss">
+.c-post-nav {
+    display: flex;
+
+    &__link {
+        flex-grow: 1;
+
+        &--previous {
+            padding-right: 10px;
+            text-align: left;
+        }
+
+        &--next {
+            padding-left: 10px;
+            text-align: right;
+        }
+    }
+}
+</style>

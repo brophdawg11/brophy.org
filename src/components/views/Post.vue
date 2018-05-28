@@ -210,24 +210,6 @@ export default {
         }
     }
 
-    &__nav {
-        display: flex;
-    }
-
-    &__nav-link {
-        flex-grow: 1;
-
-        &--previous {
-            padding-right: 10px;
-            text-align: left;
-        }
-
-        &--next {
-            padding-left: 10px;
-            text-align: right;
-        }
-    }
-
 }
 
 </style>
