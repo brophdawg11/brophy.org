@@ -9,13 +9,13 @@
             "source": "/dist/*.h.*.js",
             "headers": [{
                 "key": "Cache-Control",
-                "value": "public, max-age=604800, s-maxage=2592000"
+                "value": "public, max-age=2592000, s-maxage=2592000"
             }]
         }, {
             "source": "/static/**/*.@(jpg|jpeg|gif|png)",
             "headers": [{
                 "key": "Cache-Control",
-                "value": "public, max-age=604800, s-maxage=2592000"
+                "value": "public, max-age=2592000, s-maxage=2592000"
             }]
         }],
         "public": "public",

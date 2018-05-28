@@ -32,7 +32,7 @@ module.exports = function getBaseConfig(type) {
         mode: environment,
         output: {
             publicPath: '/dist/',
-            filename: '[name].h.[hash].js',
+            filename: '[name].h.[chunkhash].js',
             chunkFilename: 'chunk-[name].h.[chunkhash].js',
         },
         resolve: {
