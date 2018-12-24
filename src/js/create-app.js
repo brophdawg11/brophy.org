@@ -4,7 +4,7 @@ import App from '@components/App.vue';
 
 import isomorphicUtils from '@js/isomorphic-utils';
 import createRouter from '@js/router';
-import createStore from '@store/store';
+import createStore from '@js/store';
 
 // Isomorphic function used by both the client and the server to ensure we
 // create identical Vue app instances

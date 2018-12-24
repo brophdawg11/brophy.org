@@ -13,7 +13,7 @@
 <script>
 import { get, includes } from 'lodash-es';
 
-import { SET_POSTS } from '@store/mutations';
+import { SET_POSTS } from '@js/store';
 
 import DefaultLayout from '@components/layouts/DefaultLayout.vue';
 import PostList from '@components/PostList.vue';

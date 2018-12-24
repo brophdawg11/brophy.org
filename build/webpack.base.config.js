@@ -45,7 +45,6 @@ module.exports = function getBaseConfig(type) {
                 '@server': path.resolve(__dirname, '../src/server'),
                 '@src': path.resolve(__dirname, '../src'),
                 '@static': path.resolve(__dirname, '../static'),
-                '@store': path.resolve(__dirname, '../src/store'),
             },
             extensions: [ '*', '.js', '.vue', '.json' ],
         },

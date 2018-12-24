@@ -1,11 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import createLogger from 'vuex/dist/logger';
-import actionLogger from '@store/plugins/action-logger';
+import actionLogger from '@js/plugins/action-logger';
 import { config } from '@js/isomorphic-utils';
-import actions from '@store/actions';
-import getters from '@store/getters';
-import mutations from '@store/mutations';
 
 // must be present to use vuex
 Vue.use(Vuex);
@@ -39,6 +36,21 @@ if (config.isDev) {
     }));
 }
 
+// Mutations
+export const SET_POST = 'SET_POST';
+export const SET_POSTS = 'SET_POSTS';
+
+/* eslint-disable no-param-reassign */
+const mutations = {
+    [SET_POST]: (state, payload) => {
+        state.post = payload;
+    },
+    [SET_POSTS]: (state, payload) => {
+        state.posts = payload;
+    },
+};
+/* eslint-enable no-param-reassign */
+
 // Expose a factory function to ensure a new store per request
 export default function createStore(/* request */) {
     return new Vuex.Store({
@@ -57,8 +69,6 @@ export default function createStore(/* request */) {
             post: null,
             posts: null,
         },
-        getters,
         mutations,
-        actions,
     });
 }

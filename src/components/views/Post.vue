@@ -53,7 +53,7 @@
 <script>
 import { findIndex, sortBy } from 'lodash-es';
 
-import { SET_POST, SET_POSTS } from '@store/mutations';
+import { SET_POST, SET_POSTS } from '@js/store';
 
 import DefaultLayout from '@components/layouts/DefaultLayout.vue';
 import PostMeta from '@components/PostMeta.vue';
