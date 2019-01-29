@@ -17,7 +17,8 @@ function mapContents(contentDir, files) {
             const obj = parseMarkdownContent(f, source);
             delete obj.__content;
             return obj;
-        });
+        })
+        .filter(data => data.draft !== true);
 }
 
 class ContentMetadataPlugin {
