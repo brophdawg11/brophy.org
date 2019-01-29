@@ -3,7 +3,6 @@ title: Nested Reactive Forms in Angular2, Continued
 author: Matt Brophy
 postDate: 2017-02-09 12:34
 tags: angular,javascript,functional,reactive,frp
-layout: post.nunjucks
 ---
 
 If you haven't read [Part 1][part-1] of this post, I suggest you jump over and check that out first, or else you may find yourself lost in the advanced operations we'll be discussing here.  In this post, we're going to look at more advanced usages of this setup, including form submission, adding/removing children, autosaving, undo/redo, and resetting form state.

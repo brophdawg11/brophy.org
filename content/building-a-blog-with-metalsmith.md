@@ -3,7 +3,6 @@ title: Building a Blog with Metalsmith
 author: Matt Brophy
 postDate: 2017-02-15 19:00
 tags: ssg,javascript,metalsmith,blog
-layout: post.nunjucks
 ---
 
 Ever want to set up your own blog?  Stuck on which Static Site Generator to use?  Know Javascript?  Or don't?  After trying out multiple NodeJS based SSG's, and looking into multiple non-NodeJS based ones, I settled on Metalsmith for my own blog.  Here's my beginner's guide to setting up a new blog from scratch.

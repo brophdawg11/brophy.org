@@ -3,7 +3,6 @@ title: My Journey to Metalsmith
 author: Matt Brophy
 postDate: 2016-12-27 12:00
 tags: ssg,javascript,metalsmith
-layout: post.nunjucks
 ---
 
 Every developer has a never-ending _TODO_ list of side projects, experiments,

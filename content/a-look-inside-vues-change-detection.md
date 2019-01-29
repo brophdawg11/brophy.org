@@ -3,7 +3,6 @@ title: A Look Inside Vue's Change Detection
 author: Matt Brophy
 postDate: 2017-11-15 17:30
 tags: vue,javascript,spa
-layout: post.nunjucks
 ---
 
 <style type="text/css">

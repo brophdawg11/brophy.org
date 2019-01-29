@@ -3,7 +3,6 @@ title: Beware of hidden inputs in Angular filters
 author: Matt Brophy
 postDate: 2017-01-14 12:00
 tags: angularjs,javascript,functional
-layout: post.nunjucks
 ---
 
 If you've been writing JavaScript (or really any language for that matter) in the past few years, chances are you've caught wind of the rising popularity of functional programming paradigms.  _Pure functions_ are one of the major concepts of functional programming, and as it turns out, the usage of impure functions in Angular filters can produce some not-so-obvious bugs in your AngularJS application.

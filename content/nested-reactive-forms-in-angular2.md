@@ -3,7 +3,6 @@ title: Nested Reactive Forms in Angular2
 author: Matt Brophy
 postDate: 2017-02-08 22:00
 tags: angular2,javascript,functional,reactive,frp
-layout: post.nunjucks
 ---
 
 Over at [URBN][urbn], I recently worked on a little internal app that involved a fairly complex nested form UI.  Having only done limited Angular2 work thus far, mostly using [NgUpgrade][ng-upgrade] against an existing Angular1 app, it was a great learning experience in some of the new form capabilities offered in Angular2.  However, I couldn't find many great examples involving nested forms that felt clean/maintainable/etc.  After a few days of hacking, I was pretty happy with what we ended up with, and super excited about the new [Reactive Forms][reactive-forms] in Angular2.  
