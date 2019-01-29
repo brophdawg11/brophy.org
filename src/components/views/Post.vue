@@ -18,28 +18,24 @@
                 <div class="c-post__share">
 
                     <p class="c-post__share-lead-in">
-                        Enjoy this post?  Share on:
+                        Enjoy this post?
                     </p>
 
-                    <p>
-                        <a :href="twitterUrl"
-                           class="c-post__share-medium"
-                           @click.prevent="shareTwitter()">
-                            Twitter
-                        </a>
-                        /
-                        <a :href="facebookUrl"
-                           class="c-post__share-medium"
-                           @click.prevent="shareFacebook()">
-                            Facebook
-                        </a>
-                        /
-                        <a :href="googlePlusUrl"
-                           class="c-post__share-medium"
-                           @click.prevent="shareGooglePlus()">
-                            Google Plus
-                        </a>
-                    </p>
+                    <a :href="twitterUrl"
+                       class="c-post__share-medium"
+                       @click.prevent="shareTwitter()">
+                        Share on Twitter
+                    </a>
+
+                    or
+
+                    <a :href="twitterDiscussUrl"
+                       class="c-post__share-medium"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Discuss on Twitter
+                    </a>
+
                 </div>
 
                 <PostNav :previous-post="previousPost" :next-post="nextPost" />
@@ -93,11 +89,8 @@ export default {
         twitterUrl() {
             return `https://twitter.com/share?text=${this.post.title}&amp;url=${this.url}`;
         },
-        facebookUrl() {
-            return `https://www.facebook.com/sharer/sharer.php?u=${this.url}`;
-        },
-        googlePlusUrl() {
-            return `https://plus.google.com/share?url=${this.url}`;
+        twitterDiscussUrl() {
+            return `https://twitter.com/search?q=${this.url}`;
         },
         post() {
             return this.$store.state.post;
@@ -123,14 +116,6 @@ export default {
     methods: {
         shareTwitter() {
             window.open(this.twitterUrl, 'twitter-share', 'width=550,height=235');
-            return false;
-        },
-        shareFacebook() {
-            window.open(this.facebookUrl, 'facebook-share', 'width=580,height=296');
-            return false;
-        },
-        shareGooglePlus() {
-            window.open(this.googlePlusUrl, 'google-plus-share', 'width=490,height=530');
             return false;
         },
         loadJsBin() {

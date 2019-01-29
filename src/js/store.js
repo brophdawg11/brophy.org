@@ -57,7 +57,7 @@ export default function createStore(/* request */) {
         strict,
         plugins,
         state: {
-            url: 'http://brophy.org',
+            url: 'https://brophy.org',
             title: 'Matt Brophy',
             description: 'Matt Brophy\'s Website',
             rss: {
