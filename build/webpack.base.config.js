@@ -32,8 +32,8 @@ module.exports = function getBaseConfig(type) {
         mode: environment,
         output: {
             publicPath: '/dist/',
-            filename: '[name].h.[chunkhash].js',
-            chunkFilename: 'chunk-[name].h.[chunkhash].js',
+            filename: isProd ? '[name].[chunkhash].js' : '[name].js',
+            chunkFilename: isProd ? 'async/[name].[chunkhash].js' : 'async/[name].js',
         },
         resolve: {
             alias: {
