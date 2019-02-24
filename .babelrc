@@ -6,9 +6,6 @@
             },
             modules: false
         }],
-        "stage-3",
-        // Needed for jest unit tests
-        "es2015"
     ],
     plugins: [
         // Allow proper tree shaking of lodash ES6 named imports
