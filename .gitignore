@@ -13,6 +13,7 @@ todo.txt
 .DS_Store
 
 # Firebase
+.firebase/
 public/
 functions/src/
 firebase-debug.log
