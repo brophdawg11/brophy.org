@@ -8,4 +8,4 @@ Matt Brophy's personal webite.
 * side images from [gratisography](http://www.gratisography.com/)
 * icons from [font-awesome](http://fortawesome.github.io/Font-Awesome/) via [fontello](http://fontello.com/)
 
-&copy; Copyright 2018 Matt Brophy
+&copy; Copyright 2019 Matt Brophy
