@@ -1,5 +1,7 @@
 // http://eslint.org/docs/user-guide/configuring
 
+const { join } = require('path');
+
 module.exports = {
     root: true,
     parserOptions: {
@@ -21,7 +23,7 @@ module.exports = {
     settings: {
         'import/resolver': {
             webpack: {
-                config: 'build/webpack.client.config.js'
+                config: join(__dirname, 'build/webpack.client.config.js'),
             }
         }
     },
@@ -52,6 +54,10 @@ module.exports = {
         // extension and therefore causes all aliases imports to error
         //'import/extensions': ['error', 'always', { js: 'never' }],
         'import/extensions': 'off',
+
+        // doesn't seem to play nice with @-aliases as it gets them confused with scoped
+        // npm packages
+        'import/no-extraneous-dependencies': 'off',
 
         // doesn't seem to play nice with aliases
         // See: https://github.com/benmosher/eslint-plugin-import/issues/376
