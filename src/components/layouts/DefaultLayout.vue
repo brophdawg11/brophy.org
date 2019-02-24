@@ -108,10 +108,10 @@ export default {
     background-position: 50% 50%;
     background-size: cover;
     height: 150px;
-    background-image: url('~/static/images/asides/bike-wide-small-4.jpg');
+    background-image: url('~@static/images/asides/bike-wide-small-4.jpg');
 
     @media screen and (min-width: $medium-min) {
-        background-image: url('~/static/images/asides/bike-wide-medium-4.jpg');
+        background-image: url('~@static/images/asides/bike-wide-medium-4.jpg');
     }
 
     @media screen and (min-width: $large-min) {
@@ -121,7 +121,7 @@ export default {
         bottom: 0;
         width: $lhs-aside-width;
         height: 100%;
-        background-image: url('~/static/images/asides/bike-tall-4.jpg');
+        background-image: url('~@static/images/asides/bike-tall-4.jpg');
     }
 }
 

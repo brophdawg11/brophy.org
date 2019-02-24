@@ -3,7 +3,7 @@ const _ = require('lodash');
 const myDeps = require('../package.json');
 const fbDeps = require('../functions/package.json');
 
-console.log('Comparing local dependencies agaionst firebase dependencies');
+console.log('Comparing local dependencies against firebase dependencies');
 
 _.each(myDeps.dependencies, (version, name) => {
     if (fbDeps.dependencies[name] !== version) {

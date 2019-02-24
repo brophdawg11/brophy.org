@@ -1,10 +1,11 @@
+/* eslint-disable import/no-extraneous-dependencies */
+
 const path = require('path');
 
-/* eslint-disable import/no-extraneous-dependencies */
+const cssnano = require('cssnano');
 const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const VisualizerPlugin = require('webpack-visualizer-plugin');
-/* eslint-enable import/no-extraneous-dependencies */
 
 const isomorphicUtils = require('../src/js/isomorphic-utils');
 
@@ -26,6 +27,23 @@ function serverExternals(context, request, callback) {
     }
     return callback();
 }
+
+const cssLoaders = [{
+    loader: 'css-loader',
+    options: {
+        importLoaders: 1,
+    },
+}, {
+    loader: 'postcss-loader',
+    options: {
+        config: {
+            ctx: {
+                isProd,
+                cssnano,
+            },
+        },
+    },
+}];
 
 module.exports = function getBaseConfig(type) {
     return {
@@ -61,29 +79,31 @@ module.exports = function getBaseConfig(type) {
                 test: /\.css$/,
                 use: [
                     'vue-style-loader',
-                    { loader: 'css-loader', options: { minimize: isProd } },
+                    ...cssLoaders,
                 ],
             }, {
                 test: /\.scss$/,
                 use: [
                     'vue-style-loader',
-                    { loader: 'css-loader', options: { minimize: isProd } },
+                    ...cssLoaders,
                     'sass-loader',
                 ],
             }, {
                 test: /\.md$/,
                 use: './build/markdown-loader',
             }, {
-                test: /logo\.png$/,
-                use: 'base64-inline-loader?limit=1000&name=[name].[ext]',
-            }, {
-                test: /\.(ttf|woff2?|eot|svg)$/,
-                use: {
-                    loader: 'url-loader',
-                    options: {
-                        limit: 8192,
+                test: /\.(ttf|woff2?|eot|svg|jpg|gif|png)$/,
+                oneOf: [{
+                    resourceQuery: /logo\.png$/,
+                    use: 'base64-inline-loader?limit=1000&name=[name].[ext]',
+                }, {
+                    use: {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8192,
+                        },
                     },
-                },
+                }],
             }],
         },
         plugins: [
