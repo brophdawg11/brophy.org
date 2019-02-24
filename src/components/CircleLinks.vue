@@ -104,7 +104,8 @@ export default {
         text-decoration: none;
     }
 
-    &:hover {
+    &:hover,
+    &:focus {
         background-color: $orange;
         color: $offwhite;
 
