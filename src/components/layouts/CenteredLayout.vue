@@ -2,7 +2,7 @@
     <div class="c-content-centered-outer">
 
         <div class="c-content-centered">
-            <slot/>
+            <slot />
         </div>
 
     </div>

@@ -2,7 +2,7 @@
     <div class="c-post-nav">
 
         <div v-if="previousPost"
-             class="c-post-nav__link c-post-nav__link--previous" >
+             class="c-post-nav__link c-post-nav__link--previous">
 
             <router-link :to="previousPost.permalink"
                          :title="previousPost.title">
@@ -12,7 +12,7 @@
         </div>
 
         <div v-if="nextPost"
-             class="c-post-nav__link c-post-nav__link--next" >
+             class="c-post-nav__link c-post-nav__link--next">
 
             <router-link :to="nextPost.permalink"
                          :title="nextPost.title">

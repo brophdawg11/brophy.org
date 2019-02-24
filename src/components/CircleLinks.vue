@@ -8,7 +8,7 @@
             <ExternalLink v-if="link.external"
                           :href="link.url"
                           :title="link.title"
-                          :class="'page-link__a'">
+                          class="page-link__a">
                 <LinkBody :icon="link.icon" :title="link.title" />
             </ExternalLink>
 

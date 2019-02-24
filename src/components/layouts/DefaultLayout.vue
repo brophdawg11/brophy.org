@@ -20,7 +20,7 @@
             </header>
 
             <div class="page-content">
-                <slot/>
+                <slot />
             </div>
 
             <footer class="page-footer">
@@ -31,7 +31,7 @@
 
                 </nav>
 
-                <SiteInfo/>
+                <SiteInfo />
 
             </footer>
 

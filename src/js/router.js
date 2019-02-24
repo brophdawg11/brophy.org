@@ -15,36 +15,31 @@ export default function createRouter(/* store */) {
             name: 'Home',
             component: () => import(
                 /* webpackChunkName: "home" */
-                '@components/views/Home.vue',
-            ),
+                '@components/views/Home.vue'),
         }, {
             path: '/posts',
             name: 'Posts',
             component: () => import(
                 /* webpackChunkName: "posts" */
-                '@components/views/Posts.vue',
-            ),
+                '@components/views/Posts.vue'),
         }, {
             path: '/post/:slug',
             name: 'Post',
             component: () => import(
                 /* webpackChunkName: "post" */
-                '@components/views/Post.vue',
-            ),
+                '@components/views/Post.vue'),
         }, {
             path: '/tag/:tag',
             name: 'Tag',
             component: () => import(
                 /* webpackChunkName: "tag" */
-                '@components/views/Tag.vue',
-            ),
+                '@components/views/Tag.vue'),
         }, {
             path: '/resume',
             name: 'Resume',
             component: () => import(
                 /* webpackChunkName: "resume" */
-                '@components/views/Resume.vue',
-            ),
+                '@components/views/Resume.vue'),
         }],
     });
 }

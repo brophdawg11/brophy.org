@@ -22,6 +22,7 @@
                 </h2>
 
                 <p class="c-posts__excerpt">
+                    <!-- eslint-disable-next-line vue/no-v-html-->
                     <span v-html="post.excerpt" />
                     <router-link :to="post.permalink"
                                  :title="post.title"

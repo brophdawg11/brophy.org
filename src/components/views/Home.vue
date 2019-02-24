@@ -21,7 +21,7 @@
             <p class="c-home-description">
                 enjoys sports, beer, coffee, and coding
                 <span class="c-home-description-dash">&mdash;</span>
-                <br class="c-home-description-break" >
+                <br class="c-home-description-break">
                 order of preference depends on day and time
             </p>
 

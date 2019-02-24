@@ -2,12 +2,12 @@ const fs = require('fs');
 const path = require('path');
 const VSR = require('vue-server-renderer');
 
+const { config } = require('@js/isomorphic-utils');
+
 /* eslint-disable import/no-unresolved */
 const serverBundle = require('../../dist/vue-ssr-server-bundle.json');
 const clientManifest = require('../../dist/vue-ssr-client-manifest.json');
 /* eslint-enable import/no-unresolved */
-
-const { config } = require('@js/isomorphic-utils');
 
 const USE_STREAM = true;
 

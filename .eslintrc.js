@@ -42,6 +42,7 @@ module.exports = {
         'no-console': 'error',
         // Allow unary + and -- operators
         "no-plusplus": 'off',
+        "operator-linebreak": ['error', 'after'],
         // Don't enforce on-var for now
         "one-var": 'off',
         // Don't enforce a blank line or not at the beginning of a block
@@ -66,8 +67,15 @@ module.exports = {
             ignore: [ '^@' ],
         }],
 
+        // Always put closing brackets on the same line
+        'vue/html-closing-bracket-newline': ['error', {
+            singleline: 'never',
+            multiline: 'never',
+        }],
+
         // Use 4 space indents in templates
         "vue/html-indent": ['error', 4],
+
         // Allow max 2 attributes on a single line element, but once the
         // element is spread across multiple, require one attribute per line
         "vue/max-attributes-per-line": ['error', {
@@ -76,6 +84,11 @@ module.exports = {
                 "max": 1,
                 "allowFirstLine": true
             }
-        }]
-    },
+        }],
+
+        // Turn off - prefer 2 newlines and that can't be configured
+        'vue/multiline-html-element-content-newline': 'off',
+
+        'vue/singleline-html-element-content-newline': 'error',
+     },
 }

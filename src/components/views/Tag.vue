@@ -24,12 +24,8 @@ export default {
         PostList,
     },
     fetchData({ store }) {
-        return import(
-            /* webpackChunkName: "contents" */
-            '@dist/contents.json',
-        ).then(contents => {
-            store.commit(SET_POSTS, contents.contents);
-        });
+        return import(/* webpackChunkName: "contents" */ '@dist/contents.json')
+            .then(contents => store.commit(SET_POSTS, contents.contents));
     },
     data() {
         return {

@@ -51,7 +51,10 @@
                             {{ keySkill.title }}:
                         </p>
                         <ul :key="`${keySkill.title}-list`" class="keySkills">
-                            <li v-for="skill in keySkill.skills" :key="skill">{{ skill }}</li>
+                            <li
+                                v-for="skill in keySkill.skills"
+                                :key="skill"
+                                v-text="skill" />
                         </ul>
                     </template>
                 </div>
@@ -67,7 +70,8 @@
                 <div class="sectionContent">
 
                     <article v-for="job in resumeData.jobs" :key="job.title">
-                        <h2 v-html="md(job.title)"/>
+                        <!-- eslint-disable vue/no-v-html -->
+                        <h2 v-html="md(job.title)" />
                         <p v-for="subDetail in job.subDetails"
                            :key="subDetail"
                            class="subDetails"
@@ -84,6 +88,7 @@
                                     v-html="md(detail)" />
                             </template>
                         </ul>
+                        <!-- eslint-enable vue/no-v-html -->
                     </article>
 
                 </div>

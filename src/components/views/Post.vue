@@ -11,8 +11,8 @@
                 </div>
             </header>
 
-            <section class="c-post__content"
-                     v-html="post.__content" />
+            <!-- eslint-disable-next-line vue/no-v-html -->
+            <section class="c-post__content" v-html="post.__content" />
 
             <footer>
                 <div class="c-post__share">
@@ -65,20 +65,12 @@ export default {
         const { slug } = route.params;
 
         const loadPosts = store.state.posts == null ?
-            import(
-                /* webpackChunkName: "contents" */
-                '@dist/contents.json',
-            ).then(contents => {
-                store.commit(SET_POSTS, contents.contents);
-            }) :
+            import(/* webpackChunkName: "contents" */ '@dist/contents.json')
+                .then(contents => store.commit(SET_POSTS, contents.contents)) :
             Promise.resolve();
 
-        const loadPost = import(
-            /* webpackChunkName: "post-" */
-            `@content/${slug}.md`,
-        ).then(post => {
-            store.commit(SET_POST, Object.assign(post.default, { slug }));
-        });
+        const loadPost = import(/* webpackChunkName: "post-" */ `@content/${slug}.md`)
+            .then(post => store.commit(SET_POST, Object.assign(post.default, { slug })));
 
         return Promise.all([ loadPosts, loadPost ]);
     },
