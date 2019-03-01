@@ -60,7 +60,7 @@ export default {
     },
     computed: {
         sortedPosts() {
-            return sortBy(this.posts, 'postDate').reverse();
+            return sortBy(this.posts, 'postDate').filter(p => !p.draft).reverse();
         },
     },
 };
