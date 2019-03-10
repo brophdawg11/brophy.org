@@ -63,3 +63,14 @@ a {
         text-decoration: underline;
     }
 }
+
+.nuxt-progress {
+    background-color: $white;
+    height: 5px;
+
+    @media (min-width: 1024px) {
+        left: $lhs-aside-width;
+        background-color: $orange;
+    }
+
+}

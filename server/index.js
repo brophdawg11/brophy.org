@@ -28,9 +28,10 @@ async function start() {
 
     app.use((ctx) => {
         ctx.status = 200;
-        ctx.respond = false; // Bypass Koa's built-in response handling
+        // Bypass Koa's built-in response handling
+        ctx.respond = false;
         // This might be useful later on, e.g. in nuxtServerInit or with nuxt-stash
-        ctx.req.ctx = ctx; 
+        ctx.req.ctx = ctx;
         nuxt.render(ctx.req, ctx.res);
     });
 

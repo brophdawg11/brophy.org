@@ -11,7 +11,7 @@ module.exports = {
      ** Headers of the page
      */
     head: {
-        title: pkg.name,
+        title: pkg.description,
         meta: [
             { charset: 'utf-8' },
             { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -19,24 +19,58 @@ module.exports = {
             { 'http-equiv': 'x-ua-compatible', content: 'ie=edge' },
             { name: 'apple-mobile-web-app-capable', content: 'yes' },
             { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
-            { name: 'apple-mobile-web-app-title', content: 'brophy.org' },    
+            { name: 'apple-mobile-web-app-title', content: 'brophy.org' },
         ],
         link: [
-            { rel: 'manifest', href: '/static/manifest.json' },
-            { rel: 'icon', type: 'image/x-icon', href: '/favicon/favicon.ico' },
-            { rel: 'shortcut icon', type: 'image/x-icon', href: '/favicon/favicon.ico' },
-            { rel: 'apple-touch-icon', type: 'image/x-icon', sizes: '57x57', href: '/static/favicon/apple-touch-icon-57x57.png' },
-            { rel: 'apple-touch-icon', type: 'image/x-icon', sizes: '60x60', href: '/static/favicon/apple-touch-icon-60x60.png' },
-            { rel: 'apple-touch-icon', type: 'image/x-icon', sizes: '72x72', href: '/static/favicon/apple-touch-icon-72x72.png' },
-            { rel: 'apple-touch-icon', type: 'image/x-icon', sizes: '76x76', href: '/static/favicon/apple-touch-icon-76x76.png' },
-            { rel: 'apple-touch-icon', type: 'image/x-icon', sizes: '114x114', href: '/static/favicon/apple-touch-icon-114x114.png' },
-            { rel: 'apple-touch-icon', type: 'image/x-icon', sizes: '120x120', href: '/static/favicon/apple-touch-icon-120x120.png' },
-            { rel: 'apple-touch-icon', type: 'image/x-icon', sizes: '144x144', href: '/static/favicon/apple-touch-icon-144x144.png' },
-            { rel: 'apple-touch-icon', type: 'image/x-icon', sizes: '152x152', href: '/static/favicon/apple-touch-icon-152x152.png' },
-            { rel: 'apple-touch-icon', type: 'image/x-icon', sizes: '180x180', href: '/static/favicon/apple-touch-icon-180x180.png' },
-            { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/static/favicon/favicon-32x32.png' },
-            { rel: 'icon', type: 'image/png', sizes: '192x192', href: '/static/favicon/android-chrome-192x192.png' },
-            { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/static/favicon/favicon-16x16.png' },
+            {
+                rel: 'manifest',
+                href: '/manifest.json',
+            },
+            {
+                rel: 'icon',
+                type: 'image/x-icon',
+                href: '/favicon/favicon.ico',
+            },
+            {
+                rel: 'shortcut icon',
+                type: 'image/x-icon',
+                href: '/favicon/favicon.ico',
+            },
+            {
+                rel: 'icon',
+                type: 'image/png',
+                sizes: '32x32',
+                href: '/favicon/favicon-32x32.png',
+            },
+            {
+                rel: 'icon',
+                type: 'image/png',
+                sizes: '16x16',
+                href: '/favicon/favicon-16x16.png',
+            },
+            ...([
+                '57x57',
+                '60x60',
+                '72x72',
+                '76x76',
+                '114x114',
+                '120x120',
+                '144x144',
+                '152x152',
+                '167x167',
+                '180x180',
+            ].map(size => ({
+                rel: 'apple-touch-icon',
+                type: 'image/x-icon',
+                sizes: size,
+                href: `/favicon/apple-touch-icon-${size}.png`,
+            }))),
+            {
+                rel: 'icon',
+                type: 'image/png',
+                sizes: '192x192',
+                href: '/favicon/android-chrome-192x192.png',
+            },
         ],
 
         // TODO
@@ -46,7 +80,8 @@ module.exports = {
     /*
      ** Customize the progress-bar color
      */
-    loading: { color: '#fff' },
+    loading: {
+    },
 
     /*
      ** Global CSS
@@ -67,15 +102,16 @@ module.exports = {
      ** Nuxt.js modules
      */
     modules: [
-    // Doc: https://axios.nuxtjs.org/usage
+        // Doc: https://axios.nuxtjs.org/usage
         '@nuxtjs/axios',
         '@nuxtjs/pwa',
     ],
+
     /*
      ** Axios module configuration
      */
     axios: {
-    // See https://github.com/nuxt-community/axios-module#options
+        // See https://github.com/nuxt-community/axios-module#options
     },
 
     /*
@@ -88,6 +124,10 @@ module.exports = {
                 'lodash',
             ],
         },
+
+        transpile: [
+            'lodash-es',
+        ],
 
         /*
          ** You can extend webpack config here
