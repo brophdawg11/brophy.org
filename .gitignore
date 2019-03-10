@@ -2,6 +2,7 @@
 .nuxt/
 node_modules/
 dist/
+static/sw.*
 
 # Sublime project and workspace files
 *.sublime-*
