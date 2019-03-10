@@ -2,18 +2,10 @@
 node_modules/
 dist/
 
-# Test artifacts
-coverage/
-
 # Sublime project and workspace files
 *.sublime-*
+*.code-workspace
 
 npm-debug.log
 todo.txt
 .DS_Store
-
-# Firebase
-.firebase/
-public/
-functions/src/
-firebase-debug.log

@@ -5,7 +5,7 @@
     by itself and inline it.  See:
     https://creativemarket.com/blog/the-missing-guide-to-font-formats
   */
-  src: url('~@static/fontello/font/icon-font.woff?88191577') format('woff');
+  src: url('~static/fontello/font/icon-font.woff?88191577') format('woff');
 /*
   src: url('~@static/fontello/font/icon-font.eot?88191577');
   src: url('~@static/fontello/font/icon-font.eot?88191577#iefix') format('embedded-opentype'),

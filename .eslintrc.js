@@ -22,10 +22,10 @@ module.exports = {
     // Check if imports actually resolve
     settings: {
         'import/resolver': {
-            webpack: {
-                config: join(__dirname, 'build/webpack.client.config.js'),
-            }
-        }
+            nuxt: {
+              extensions: ['.js', '.vue'],
+            },
+        },
     },
     rules: {
         // Require spaces in array brackets, unless it's an array of objects
@@ -89,6 +89,6 @@ module.exports = {
         // Turn off - prefer 2 newlines and that can't be configured
         'vue/multiline-html-element-content-newline': 'off',
 
-        'vue/singleline-html-element-content-newline': 'error',
+        'vue/singleline-html-element-content-newline': 'off',
      },
 }
