@@ -50,7 +50,7 @@
         "sizes": "192x192",
         "type": "image/png"
     }],
-    "start_url": "http://brophy.org",
+    "start_url": "https://www.brophy.org",
     "background_color": "#fff",
     "theme_color": "#000",
     "display": "standalone"

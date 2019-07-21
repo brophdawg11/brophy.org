@@ -2,16 +2,16 @@ importScripts('/_nuxt/workbox.4c4f5ca6.js')
 
 workbox.precaching.precacheAndRoute([
   {
-    "url": "/_nuxt/async/app.66828c9f8a8e67467d36.js",
-    "revision": "02f5e8c6b81a3751a8af6474c12bea5e"
+    "url": "/_nuxt/async/app.4457040a617c756a85cc.js",
+    "revision": "855b684ef8a73066f391f248c2a8b5e6"
   },
   {
     "url": "/_nuxt/async/commons.app.818c68e7fc8bb0f5bf2d.js",
     "revision": "99ffd6061731ca101e16227d54ed07fa"
   },
   {
-    "url": "/_nuxt/async/contents.375ec65f163aea60e890.js",
-    "revision": "703ca7d07e1bb416e15c651af429805f"
+    "url": "/_nuxt/async/contents.4835be393b7360362c05.js",
+    "revision": "c1aacf9a791a4205307039c564065f09"
   },
   {
     "url": "/_nuxt/async/pages/index.a822673d24e2764a0bc3.js",
@@ -26,8 +26,8 @@ workbox.precaching.precacheAndRoute([
     "revision": "0d617a48ee29b4033e83b31523585970"
   },
   {
-    "url": "/_nuxt/async/pages/resume.d48f6018fe266aacf4f3.js",
-    "revision": "4fe14f05471ef343d939407af3412fcc"
+    "url": "/_nuxt/async/pages/resume.73a24636a7f51f12387a.js",
+    "revision": "33f4d90e3335521876a6c581bb1f6fb1"
   },
   {
     "url": "/_nuxt/async/pages/tag/_tag.5a1c760cefc1a1276084.js",
@@ -46,12 +46,12 @@ workbox.precaching.precacheAndRoute([
     "revision": "6578f352d30600632bc0acec3b218eee"
   },
   {
-    "url": "/_nuxt/async/post-3.744602c497b227a5ab09.js",
-    "revision": "551e586a9cc2ca249c3a3bb1ee39d442"
+    "url": "/_nuxt/async/post-3.236bbcabd60e91b3e46f.js",
+    "revision": "9b04c84ebb133c2b8ab2b926ed453f7b"
   },
   {
-    "url": "/_nuxt/async/post-4.c1552a84bea6dc187e6d.js",
-    "revision": "f203209c11c0f2c399ee14fa6ccf74a9"
+    "url": "/_nuxt/async/post-4.07c110b9e5c0646780a6.js",
+    "revision": "538cd04c4fe6a9b3787ef6db8e4e91da"
   },
   {
     "url": "/_nuxt/async/post-5.a263c708faf6d3ba0f0c.js",
@@ -74,8 +74,8 @@ workbox.precaching.precacheAndRoute([
     "revision": "a5e40da130f8896c01109e1ee054cf24"
   },
   {
-    "url": "/_nuxt/runtime.e803325abfd56b48e81b.js",
-    "revision": "8884ce30047bf8ebc40d46bb71698d51"
+    "url": "/_nuxt/runtime.22102a7afd9fdd49cb99.js",
+    "revision": "febb9d660debbdc435544b4e27fc9a24"
   }
 ], {
   "cacheId": "brophy.org",
