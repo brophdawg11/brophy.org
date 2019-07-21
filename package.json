@@ -27,9 +27,8 @@
     "dev": "nuxt dev -o",
     "build": "nuxt build",
     "clean": "rm -rf dist",
-    "start": "NODE_ENV=production node server/index.js",
-    "generate": "npm run clean && nuxt generate",
-    "deploy": "npm run generate && rm -rf docs && cp -r dist docs",
+    "start": "node server/index.js",
+    "generate": "npm run clean && nuxt generate && rm -rf docs && cp -r dist docs",
     "lint": "eslint --ext .js,.vue ."
   },
   "dependencies": {
