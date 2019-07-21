@@ -1,5 +1,4 @@
 const Koa = require('koa');
-const consola = require('consola');
 const { Nuxt, Builder } = require('nuxt');
 
 const app = new Koa();
@@ -36,10 +35,9 @@ async function start() {
     });
 
     app.listen(port, host);
-    consola.ready({
-        message: `Server listening on http://${host}:${port}`,
-        badge: true,
-    });
+
+    // eslint-disable-next-line no-console
+    console.log(`Server listening on http://${host}:${port}`);
 }
 
 start();

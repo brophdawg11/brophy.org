@@ -93,12 +93,6 @@ module.exports = {
     },
 
     /*
-     ** Customize the progress-bar color
-     */
-    loading: {
-    },
-
-    /*
      ** Global CSS
      */
     css: [
@@ -108,30 +102,15 @@ module.exports = {
     ],
 
     /*
-     ** Plugins to load before mounting the App
-     */
-    plugins: [
-    ],
-
-    /*
      ** Nuxt.js modules
      */
     modules: [
-        // Doc: https://axios.nuxtjs.org/usage
-        '@nuxtjs/axios',
         '@nuxtjs/pwa',
         [ '@nuxtjs/google-analytics', {
             id: 'UA-17810974-2',
             dev: false,
         }],
     ],
-
-    /*
-     ** Axios module configuration
-     */
-    axios: {
-        // See https://github.com/nuxt-community/axios-module#options
-    },
 
     /*
      ** Build configuration

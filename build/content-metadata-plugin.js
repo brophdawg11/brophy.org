@@ -10,13 +10,11 @@ const parseMarkdownContent = require('./parse-markdown-content');
 
 function readDir(dir) {
     return new Promise((resolve, reject) => {
-        console.log('Reading directory', dir);
         fs.readdir(dir, (err, files) => {
             if (err) {
                 reject(new Error(`Unable to read directory: ${dir}`));
                 return;
             }
-            console.log('Resolving');
             resolve(files);
         });
     });
