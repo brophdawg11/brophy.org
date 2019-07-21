@@ -61,7 +61,7 @@ export default {
         const { slug } = route.params;
 
         const loadPosts = store.state.posts == null ?
-            import(/* webpackChunkName: "contents" */ '~/dist/contents.json')
+            import(/* webpackChunkName: "contents" */ '~/content/contents.json')
                 .then(contents => store.commit(SET_POSTS, contents.contents)) :
             Promise.resolve();
 

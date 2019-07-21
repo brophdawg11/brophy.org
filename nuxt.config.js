@@ -1,11 +1,26 @@
 const { resolve } = require('path');
 
-const ContentMetadataPlugin = require('./build/content-metadata-plugin');
+const { ContentMetadataPlugin, readContents } = require('./build/content-metadata-plugin');
 
 const pkg = require('./package');
 
 module.exports = {
     mode: 'universal',
+
+    generate: {
+        async routes() {
+            const contents = await readContents(resolve(__dirname, './content'));
+            const uniq = arr => [ ...new Set(arr) ];
+            const tags = uniq(contents.reduce((acc, c) => [
+                ...acc,
+                ...c.tags.split(',').map(t => t.trim()),
+            ], []));
+            return [
+                ...contents.map(c => `/post/${c.slug}`),
+                ...tags.map(t => `/tag/${t}`),
+            ];
+        },
+    },
 
     /*
      ** Headers of the page
@@ -143,10 +158,14 @@ module.exports = {
                 use: './build/markdown-loader',
             });
 
+            const hash = ctx.isDev ? 'hash' : 'chunkhash';
+            Object.assign(config.output, {
+                filename: `[name].[${hash}].js`,
+                chunkFilename: `async/[name].[${hash}].js`,
+            });
+
             if (ctx.isClient) {
                 config.plugins.push(new ContentMetadataPlugin({
-                    contentDir: './content',
-                    outputFile: 'contents.json',
                     pretty: ctx.isDev,
                     debug: true,
                 }));

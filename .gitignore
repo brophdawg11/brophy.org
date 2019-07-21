@@ -4,6 +4,8 @@ node_modules/
 dist/
 static/sw.*
 
+content/contents.json
+
 # Sublime project and workspace files
 *.sublime-*
 *.code-workspace

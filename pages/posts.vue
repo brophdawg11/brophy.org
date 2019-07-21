@@ -12,7 +12,7 @@ export default {
         PostList,
     },
     asyncData({ store }) {
-        return import(/* webpackChunkName: "contents" */ '~/dist/contents.json')
+        return import(/* webpackChunkName: "contents" */ '~/content/contents.json')
             .then(contents => store.commit(SET_POSTS, contents.contents));
     },
     computed: {
