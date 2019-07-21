@@ -39,8 +39,10 @@ const mutations = {
     [SET_POST]: (state, payload) => {
         state.post = payload;
     },
-    [SET_POSTS]: (state, payload) => {
-        state.posts = payload;
+    [SET_POSTS]: (state, posts) => {
+        if (Array.isArray(posts)) {
+            state.posts = posts;
+        }
     },
 };
 /* eslint-enable no-param-reassign */
@@ -57,11 +59,9 @@ export default function createStore(/* request */) {
             rss: {
                 title: 'Matt Brophy\'s Blog',
             },
-            cssFile: 'css/app.css',
-            owner: 'Matt Brophy',
             pageSize: 6,
             post: null,
-            posts: null,
+            posts: [],
         },
         mutations,
     });

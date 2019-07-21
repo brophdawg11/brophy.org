@@ -20,7 +20,7 @@ export default {
     components: {
         PostList,
     },
-    fetchData({ store }) {
+    asyncData({ store }) {
         return import(/* webpackChunkName: "contents" */ '~/dist/contents.json')
             .then(contents => store.commit(SET_POSTS, contents.contents));
     },

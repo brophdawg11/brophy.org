@@ -67,7 +67,7 @@ Since library-choices aren't specifically what we want to focus on in this post,
 
 ## Dynamic Imports and Async Components
 
-Which brings us to the main concept of this post - using webpack [Dynamic Imports](https://webpack.js.org/guides/code-splitting/#dynamic-imports) to load code asyncronously only when it's needed.  Thankfully, if you're using Vue, this gets even easier with the use of [Async Components](https://vuejs.org/v2/guide/components-dynamic-async.html#Async-Components).
+Which brings us to the main concept of this post - using webpack [Dynamic Imports](https://webpack.js.org/guides/code-splitting/#dynamic-imports) to load code asynchronously only when it's needed.  Thankfully, if you're using Vue, this gets even easier with the use of [Async Components](https://vuejs.org/v2/guide/components-dynamic-async.html#Async-Components).
 
 An Async Component in Vue is a component that instead of being bundled directly into your main app bundles, is instead split into it's own file (via dynamic imports) and only loaded when you render it into the UI.
 

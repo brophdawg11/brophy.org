@@ -6,26 +6,19 @@
                 vue
             </ExternalLink>
             and
-            <ExternalLink href="https://ssr.vuejs.org/en/" title="Vue SSR">
-                vue ssr
+            <ExternalLink href="https://nuxtjs.org/" title="Nuxt">
+                nuxt
             </ExternalLink>
         </p>
         <p class="page-footer-line">
-            hosted on
-            <ExternalLink href="https://firebase.google.com/" title="Firebase">
-                firebase
-            </ExternalLink>
-            using
-            <ExternalLink href="https://firebase.google.com/products/functions/"
-                          title="Cloud Functions">
-                cloud functions
-            </ExternalLink>
-        </p>
-        <p class="page-footer-line">
-            stored in
+            stored/hosted in
             <ExternalLink href="https://www.github.com/brophdawg11/brophy.org"
                           title="GitHub">
                 github
+            </ExternalLink>
+            using
+            <ExternalLink href="https://pages.github.com/" title="Github Pages">
+                github pages
             </ExternalLink>
         </p>
         <p class="page-footer-line">
