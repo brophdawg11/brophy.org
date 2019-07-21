@@ -40,11 +40,11 @@
     "vague-time": "2.4.2"
   },
   "devDependencies": {
-    "@nuxtjs/eslint-config": "0.0.1",
-    "babel-eslint": "8.2.1",
+    "@nuxtjs/eslint-config": "1.0.1",
+    "babel-eslint": "10.0.2",
     "babel-plugin-lodash": "3.3.4",
     "cheerio": "1.0.0-rc.3",
-    "eslint": "5.16.0",
+    "eslint": "6.1.0",
     "eslint-config-airbnb-base": "13.2.0",
     "eslint-config-standard": "13.0.1",
     "eslint-import-resolver-nuxt": "0.1.5",
