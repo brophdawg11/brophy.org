@@ -1,19 +1,15 @@
 # Build artifacts
+.nuxt/
 node_modules/
 dist/
+static/sw.*
 
-# Test artifacts
-coverage/
+content/contents.json
 
 # Sublime project and workspace files
 *.sublime-*
+*.code-workspace
 
 npm-debug.log
 todo.txt
 .DS_Store
-
-# Firebase
-.firebase/
-public/
-functions/src/
-firebase-debug.log

@@ -8,6 +8,20 @@ const mkdirp = require('mkdirp');
 
 const parseMarkdownContent = require('./parse-markdown-content');
 
+function readDir(dir) {
+    return new Promise((resolve, reject) => {
+        console.log('Reading directory', dir);
+        fs.readdir(dir, (err, files) => {
+            if (err) {
+                reject(new Error(`Unable to read directory: ${dir}`));
+                return;
+            }
+            console.log('Resolving');
+            resolve(files);
+        });
+    });
+}
+
 function mapContents(contentDir, files) {
     return files
         .map(f => path.join(path.resolve(contentDir), f))
@@ -21,11 +35,15 @@ function mapContents(contentDir, files) {
         .filter(data => data.draft !== true);
 }
 
+function readContents(dir) {
+    return readDir(dir).then(files => mapContents(dir, files));
+}
+
 class ContentMetadataPlugin {
     constructor(options) {
         this.options = Object.assign({}, {
             contentDir: './content',
-            outputDir: './dist/',
+            outputDir: './content',
             outputFile: 'contents.json',
             pretty: true,
             debug: false,
@@ -46,15 +64,7 @@ class ContentMetadataPlugin {
     readDir() {
         const { contentDir } = this.options;
         this.debug(`Loading contents from ${contentDir}`);
-        return new Promise((resolve, reject) => {
-            fs.readdir(contentDir, (err, files) => {
-                if (err) {
-                    reject(new Error(`Unable to read directory: ${contentDir}`));
-                    return;
-                }
-                resolve(files);
-            });
-        });
+        return readDir(contentDir);
     }
 
     processContents(compilation, files) {
@@ -104,4 +114,7 @@ class ContentMetadataPlugin {
     }
 }
 
-module.exports = ContentMetadataPlugin;
+module.exports = {
+    ContentMetadataPlugin,
+    readContents,
+};

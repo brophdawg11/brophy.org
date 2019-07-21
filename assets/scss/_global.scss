@@ -1,0 +1,76 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $serif-content;
+    font-size: 100%;
+    color: $offblack;
+}
+
+$headingFontSizesSmall: (
+    h1: 1.5rem,
+    h2: 1.25rem,
+    h3: 1rem,
+    h4: 0.83rem,
+    h5: 0.6rem,
+    h6: 0.5rem
+);
+
+$headingFontSizesMedium: (
+    h1: 2rem,
+    h2: 1.6rem,
+    h3: 1.4rem,
+    h4: 1.2rem,
+    h5: 1rem,
+    h6: 0.75rem
+);
+
+$headingMargins: (
+    h1: 0.67rem 0,
+    h2: 0.75rem 0,
+    h3: 0.83rem 0,
+    h4: 1rem 0,
+    h5: 1.5rem 0,
+    h6: 1.67rem 0
+);
+
+@for $lvl from 1 through 4 {
+    h#{$lvl} {
+        font-family: $serif;
+        font-size: map-get($headingFontSizesSmall, h#{$lvl});
+        font-weight: bold;
+        margin: map-get($headingMargins, h#{$lvl});;
+
+        @media all and (min-width: $medium-min) {
+            font-size: map-get($headingFontSizesMedium, h#{$lvl});
+        }
+    }
+}
+
+pre {
+    font-family: monospace;
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+
+a {
+    color: $orange;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.nuxt-progress {
+    background-color: $white;
+    height: 5px;
+
+    @media (min-width: 1024px) {
+        left: $lhs-aside-width;
+        background-color: $orange;
+    }
+
+}
