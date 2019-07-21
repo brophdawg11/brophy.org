@@ -29,6 +29,7 @@
     "clean": "rm -rf dist",
     "start": "cross-env NODE_ENV=production node server/index.js",
     "generate": "npm run clean && nuxt generate",
+    "deploy": "npm run generate && rm -rf docs && cp -r dist docs",
     "lint": "eslint --ext .js,.vue ."
   },
   "dependencies": {
