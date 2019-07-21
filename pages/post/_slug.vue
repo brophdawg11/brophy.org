@@ -23,8 +23,8 @@
                     :href="twitterUrl"
                     class="c-post__share-medium"
                     @click.prevent="shareTwitter()">
-                    Share on Twitter
-                </a>
+                    Share on Twitter<!--
+                --></a>
 
                 or
 
