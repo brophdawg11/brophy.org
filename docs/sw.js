@@ -18,8 +18,8 @@ workbox.precaching.precacheAndRoute([
     "revision": "6d69ab320b6bb199375759ff31de61de"
   },
   {
-    "url": "/_nuxt/async/pages/post/_slug.d851e136b06223941c64.js",
-    "revision": "d766429f7d92c1e548cfb3b7f9537cff"
+    "url": "/_nuxt/async/pages/post/_slug.db0678a68d1dae0d12e8.js",
+    "revision": "a08ef4a83a69b05416b3702463839841"
   },
   {
     "url": "/_nuxt/async/pages/posts.415f2de41f3294c9f297.js",
@@ -74,8 +74,8 @@ workbox.precaching.precacheAndRoute([
     "revision": "a5e40da130f8896c01109e1ee054cf24"
   },
   {
-    "url": "/_nuxt/runtime.22102a7afd9fdd49cb99.js",
-    "revision": "febb9d660debbdc435544b4e27fc9a24"
+    "url": "/_nuxt/runtime.f0031f775dc9b4327eca.js",
+    "revision": "98b1388a92584dd50238153b5b4f2b4d"
   }
 ], {
   "cacheId": "brophy.org",
