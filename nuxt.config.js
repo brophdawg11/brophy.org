@@ -120,6 +120,10 @@ module.exports = {
         // Doc: https://axios.nuxtjs.org/usage
         '@nuxtjs/axios',
         '@nuxtjs/pwa',
+        [ '@nuxtjs/google-analytics', {
+            id: 'UA-17810974-2',
+            dev: false,
+        }],
     ],
 
     /*
