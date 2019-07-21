@@ -238,7 +238,7 @@ So what's next?  We've got markdown files with frontmatter metadata building int
 
 Good luck!
 
-[brophy.org]: http://brophy.org "brophy.org"
+[brophy.org]: https://www.brophy.org "brophy.org"
 [Metalsmith]: http://metalsmith.io "Metalsmith"
 [Metalsmith-plugins]: http://www.metalsmith.io/#the-community-plugins "Metalsmith Plugins"
 [Metalsmith-details]: http://www.metalsmith.io/#how-does-it-work-in-more-detail- "Metalsmith Details"

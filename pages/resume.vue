@@ -386,7 +386,7 @@ const resumeData = {
             'Used technologies including generative programming and frame-based macro preprocessing.',
         ],
     }, {
-        title: 'Web Programmer, System Admin - [brophy.org](http://www.brophy.org \'www.brophy.org\')',
+        title: 'Web Programmer, System Admin - [brophy.org](https://www.brophy.org \'www.brophy.org\')',
         subDetails: [
             '2002 - Present',
         ],

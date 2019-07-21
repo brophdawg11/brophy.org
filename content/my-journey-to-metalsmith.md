@@ -146,7 +146,7 @@ I'll do a separate post on my Metalsmith setup at some point (_queue TODO list r
 
 So, in the end, it was a bit of a long road, but I'm happy where I landed.  Of course, as I was putting some final touches on tonight adding tag support using [metalsmith-tags], I tripped across the former author's blog post describing a similar journey of his, which resulted in his writing of [Yarn], yet another Node SSG...so, for now I'm for praying I won't be ditching Metalsmith in a few months.  _Shudder._
 
-[brophy.org]: http://brophy.org "brophy.org"
+[brophy.org]: https://www.brophy.org "brophy.org"
 [Metalsmith]: http://metalsmith.io "Metalsmith"
 [Metalsmith-plugins]: http://www.metalsmith.io/#the-community-plugins "Metalsmith Plugins"
 [Metalsmith-details]: http://www.metalsmith.io/#how-does-it-work-in-more-detail- "Metalsmith Details"
