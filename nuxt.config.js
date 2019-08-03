@@ -38,6 +38,11 @@ module.exports = {
         ],
         link: [
             {
+                rel: 'preconnect',
+                href: 'https://www.google-analytics.com',
+                crossorigin: '',
+            },
+            {
                 rel: 'manifest',
                 href: '/manifest.json',
             },
