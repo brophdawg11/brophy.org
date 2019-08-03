@@ -11,14 +11,14 @@
             </ExternalLink>
         </p>
         <p class="page-footer-line">
-            stored/hosted in
+            stored in
             <ExternalLink href="https://www.github.com/brophdawg11/brophy.org"
                           title="GitHub">
-                github
-            </ExternalLink>
-            using
-            <ExternalLink href="https://pages.github.com/" title="Github Pages">
-                github pages
+                github<!--
+            --></ExternalLink>,
+            hosted in
+            <ExternalLink href="https://www.netlify.com/" title="Netlify">
+                netlify
             </ExternalLink>
         </p>
         <p class="page-footer-line">
