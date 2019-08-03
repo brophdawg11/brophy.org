@@ -582,7 +582,7 @@ export default {
         font-family: $serif;
         font-style: italic;
         font-size: 1.5em;
-        color: #cf8a05;
+        color: #c58405;
     }
 
     .sectionContent {
