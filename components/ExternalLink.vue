@@ -3,7 +3,7 @@ export default {
     name: 'ExternalLink',
     functional: true,
     render(h, context) {
-        const data = Object.assign({}, context.data);
+        const data = { ...context.data };
         Object.assign(data.attrs, {
             target: '_blank',
             // Required for Lighthouse accessibility audit

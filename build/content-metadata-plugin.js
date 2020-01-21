@@ -2,9 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 
-/* eslint-disable import/no-extraneous-dependencies */
 const mkdirp = require('mkdirp');
-/* eslint-enable import/no-extraneous-dependencies */
 
 const parseMarkdownContent = require('./parse-markdown-content');
 
@@ -39,13 +37,14 @@ function readContents(dir) {
 
 class ContentMetadataPlugin {
     constructor(options) {
-        this.options = Object.assign({}, {
+        this.options = {
             contentDir: './content',
             outputDir: './content',
             outputFile: 'contents.json',
             pretty: true,
             debug: false,
-        }, options);
+            ...options,
+        };
         this.debug('Loaded plugin with options\n', this.options);
     }
 
