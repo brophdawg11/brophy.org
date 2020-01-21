@@ -50,6 +50,21 @@ export default {
         CircleLinks,
         SiteInfo,
     },
+    head() {
+        return {
+            meta: [{
+                hid: 'og:site_name',
+                name: 'og:site_name',
+                content: 'brophy.org',
+            }, {
+                hid: 'og:image',
+                type: 'og:image',
+                /* eslint-disable global-require */
+                content: require('~/static/images/logo.png'),
+                /* eslint-enable global-require */
+            }],
+        };
+    },
     data() {
         return {
             headerLinks: [{

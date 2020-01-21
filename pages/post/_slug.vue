@@ -70,6 +70,20 @@ export default {
 
         return Promise.all([ loadPosts, loadPost ]);
     },
+    head() {
+        return {
+            title: `${this.post.title} | brophy.org`,
+            meta: [{
+                hid: 'og:title',
+                name: 'og:title',
+                content: this.post.title,
+            }, {
+                hid: 'og:url',
+                name: 'og:url',
+                content: this.url,
+            }],
+        };
+    },
     computed: {
         url() {
             return `${this.$store.state.url}${this.post.permalink}`;
