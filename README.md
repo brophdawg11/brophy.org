@@ -1,4 +1,4 @@
-# [brophy.org](brophy.org)
+# [brophy.org](https://www.brophy.org)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/456b6880-f2ae-402d-adc2-0bdfdf5308f7/deploy-status)](https://app.netlify.com/sites/upbeat-shaw-cb75ac/deploys)
 
