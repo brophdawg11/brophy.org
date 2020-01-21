@@ -40,7 +40,6 @@
     "vague-time": "2.4.2"
   },
   "devDependencies": {
-    "@nuxtjs/eslint-config": "1.0.1",
     "babel-eslint": "10.0.2",
     "babel-plugin-lodash": "3.3.4",
     "cheerio": "1.0.0-rc.3",
@@ -50,11 +49,7 @@
     "eslint-import-resolver-nuxt": "0.1.5",
     "eslint-loader": "2.2.1",
     "eslint-plugin-import": "2.18.2",
-    "eslint-plugin-jest": "22.13.0",
-    "eslint-plugin-node": "9.1.0",
-    "eslint-plugin-nuxt": "0.4.3",
     "eslint-plugin-promise": "4.2.1",
-    "eslint-plugin-standard": "4.0.0",
     "eslint-plugin-vue": "5.2.3",
     "highlight.js": "9.15.8",
     "husky": "3.0.1",

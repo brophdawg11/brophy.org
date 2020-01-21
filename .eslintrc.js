@@ -23,30 +23,41 @@ module.exports = {
     settings: {
         'import/resolver': {
             nuxt: {
-              extensions: ['.js', '.vue'],
+                extensions: ['.js', '.vue'],
             },
         },
     },
     rules: {
         // Require spaces in array brackets, unless it's an array of objects
         "array-bracket-spacing": ['error', 'always', { objectsInArrays: false } ],
+
         // Don't enforce parents around arrow functions with bodies
         "arrow-parens": 'off',
+
         // 4 space indent
         "indent": [ "error", 4 ],
+
         // Don't enforce newlines on function parens
         "function-paren-newline": 'off',
+
         // Max length 0f 80 characters in source code
         "max-len": ['error', { code: 100 }],
+
         // Don't allow console.*, force logger usage
         'no-console': 'error',
+
         // Allow unary + and -- operators
         "no-plusplus": 'off',
+
+        // Force linebreaks after operators for multi-line boolean/ternary expressions
         "operator-linebreak": ['error', 'after'],
+
         // Don't enforce on-var for now
         "one-var": 'off',
+
         // Don't enforce a blank line or not at the beginning of a block
         "padded-blocks": 'off',
+
         // Don't enforce promises being rejected with Error objects
         "prefer-promise-reject-errors": 'off',
 
@@ -88,7 +99,6 @@ module.exports = {
 
         // Turn off - prefer 2 newlines and that can't be configured
         'vue/multiline-html-element-content-newline': 'off',
-
         'vue/singleline-html-element-content-newline': 'off',
      },
 }

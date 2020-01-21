@@ -157,16 +157,6 @@ module.exports = {
                     pretty: ctx.isDev,
                     debug: true,
                 }));
-
-                if (ctx.isDev) {
-                    // Run ESLint on save
-                    config.module.rules.push({
-                        enforce: 'pre',
-                        test: /\.(js|vue)$/,
-                        loader: 'eslint-loader',
-                        exclude: /(node_modules)/,
-                    });
-                }
             }
         },
     },
