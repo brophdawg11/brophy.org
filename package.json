@@ -28,8 +28,8 @@
     "build": "nuxt build",
     "clean": "rm -rf dist",
     "start": "node server/index.js",
-    "generate": "npm run clean && nuxt generate && mv docs/CNAME . && rm -rf docs && cp -r dist docs && mv CNAME docs/",
-    "netlify": "npm run clean && nuxt generate",
+    "generate": "npm run clean && nuxt generate",
+    "netlify": "npm run generate",
     "lint": "eslint --ext .js,.vue ."
   },
   "dependencies": {

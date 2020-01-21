@@ -1,9 +1,8 @@
 ---
 title: Component-Driven Performance Patterns in Vue
 author: Matt Brophy
-postDate: 2019-02-28 20:00
+postDate: 2020-01-20 20:00
 tags: vue,javascript,spa,performance
-draft: true
 ---
 
 As web apps grow more complex, we end up sending larger JS/CSS bundles to the client.  If you're not careful, before long you can find yourself with a site that no longer snappy on slower connections due to the sheer amount of time it takes to send the bundles across the wire.  This post aims to document  handful of patterns we've found handy at [URBN](www.urbn.com) to keep bundles small and our load times fast.
@@ -61,7 +60,7 @@ Since library-choices aren't specifically what we want to focus on in this post,
 * Use vanilla JS where you can
 * Choose smaller alternatives where possible ([date-fns](https://github.com/date-fns/date-fns) over Moment)
 * Use techniques such as [Tree Shaking](https://webpack.js.org/guides/tree-shaking/) to remove unused code
-  * Look for tree-shakable libraries where possible([lodash-es](https://www.npmjs.com/package/lodash-es) over the standard build) 
+  * Look for tree-shakable libraries where possible (i.e., [lodash-es](https://www.npmjs.com/package/lodash-es) over the standard build) 
 * Use webpack's [Performance Configurations](https://webpack.js.org/configuration/performance/#performancemaxentrypointsize) to alert you when your bundle grow beyond the acceptable limit
 
 
@@ -75,7 +74,7 @@ An Async Component in Vue is a component that instead of being bundled directly 
 
 Consider the following example:
 
-```
+```html
 <template>
     <div>
         <button @click="toggleDetails">Show Details</button>
@@ -102,11 +101,12 @@ export default {
         },
     },
 };
+</script>
 ```
 
 We've got a `DetailsComponent` that is always hidden on initial render and only shown when the user clicks a button.  There's no need to send this component up in the initial render, so we can use a dynamic import to split it out into it's own file by changing two lines of code:
 
-```
+```html
 <template>
     <div>
         <button @click="toggleDetails">Show Details</button>
@@ -131,9 +131,14 @@ export default {
         },
     },
 };
+</script>
 ```
 
 Now, webpack will split all of the code for `DetailsComponent.vue`, and all of it's dependencies, into their own separate JS file, which Vue will not load until the user clicks the button.  this is a very powerful pattern that can be leveraged in a variety of ways to reduce our critical bundle sizes and improve app performance.
+
+#### Loading Below-the-Fold Content using IntersectionObserver
+
+What if your content isn't shown on a click, but rather a scroll?  If you have content that's below the fold and not critical for initial render (or SEO) - consider toggling the `v-if` on your Async Component using using an [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API).  It turns out to be fairly straightforward to use a scoped-slot Vue component to create a wrapper `LazyLoad` component that make this super-easy to reuse - but that will need to be a separate post :)
 
 
 ### Route-level Async Components
@@ -260,43 +265,34 @@ const store = new Vuex.Store({
 
 This approach will scale much better as our app grows - however, we're still statically including each module in the critical path bundle.  If a user goes to the homepage - ideally we would only load the homepage module - and delay loading the about module until they click through to the about page.
 
-To accomplish this, we can move the modules into the components and thus bundle them with the component dynamic imports.
+To accomplish this, we can instead import the modules from within the components and dynamically register them, thus bundling them inside the component async bundle.
 
 ```
-// Homepage.vue
-<script>
+// homepage-module.js
 const homepageModule = {
     namespaced: true,
     state: () => ({
         data: { ... },
     }),
-    mutations: {
-        SET_HOMEPAGE_DATA(state, data) {
-            state.data = data
-        },
-    },
-    actions: {
-        LOAD_HOMEPAGE_DATA({ commit }) {
-            axios.get('/api/homepage/data')
-                .then(data => commit(SET_HOMEPAGE_DATA, data));
-        },
-    },
+    mutations: { ... },
+    actions: { ... },
 };
 
+// Homepage.vue
+<script>
+import homepageModule from './homepage-module';
+
+export default {
+    name: 'Homepage',
+    // Or maybe inside asyncData if using nuxt
+    created() {
+        this.$store.registerModule('homepage', homepageModule);
+        this.$store.dispatch('homepage/LOAD_HOMEPAGE_DATA');
+    },
+}
 ```
 
 
+After this, we can now ensure that when the user visits the homepage, they only load the Vuex/Component code required for the homepage, and so on.
 
-* Route level
-* Lazy vuex modules
-* Moving Vuex modules into components
-* On click
-* Loading states/Error states
-* Below the fold (IntersectionObserver)
-* Changing behavior of components (lazy load images)
-* Loading portions of a component (icons)
-* Conclusion
-  * Only deliver what is above-the-fold/user-visible/SEO critical on first load
-  * Lazy load everything else base don user actions (click, scroll)
-  * Push all dependencies behind the component entry point (vuex, third party libs, etc.)
-  * Lazy load images, icons, etc.
+There are a ton more ways to eek out every bit of performance in your app, but I hope these help you get the ball rolling.  Remember to keep a performance-first mindset, and always test your app using tools like (Google Lighthouse)[https://developers.google.com/web/tools/lighthouse] to ensure you're keeping your performance metrics at acceptable levels.
