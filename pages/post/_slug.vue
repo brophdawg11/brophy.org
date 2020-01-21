@@ -81,6 +81,14 @@ export default {
                 hid: 'og:url',
                 name: 'og:url',
                 content: this.url,
+            }, {
+                hid: 'twitter:title',
+                name: 'twitter:title',
+                content: this.post.title,
+            }, {
+                hid: 'twitter:url',
+                name: 'twitter:url',
+                content: this.url,
             }],
         };
     },

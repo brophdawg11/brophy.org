@@ -62,6 +62,12 @@ export default {
                 /* eslint-disable global-require */
                 content: require('~/static/images/logo.png'),
                 /* eslint-enable global-require */
+            }, {
+                hid: 'twitter:image',
+                type: 'twitter:image',
+                /* eslint-disable global-require */
+                content: require('~/static/images/logo.png'),
+                /* eslint-enable global-require */
             }],
         };
     },
