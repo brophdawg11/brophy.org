@@ -29,6 +29,30 @@
 }
 
 @mixin post-styles() {
+    h1, h2, h3, h4, h5, h6 {
+        position: relative;
+
+        a[href] {
+            position: absolute;
+            top: 0;
+            left: -1.5rem;
+            padding-right: 0.5rem;
+            opacity: 0.0;
+            text-decoration: none;
+            transition: opacity 200ms;
+
+            &:hover, &:focus {
+                opacity: 1;
+            }
+        }
+
+        &:hover, &:focus {
+            a {
+                opacity: 1;
+            }
+        }
+    }
+
     p {
         font-size: 0.9em;
         line-height: 1.5em;

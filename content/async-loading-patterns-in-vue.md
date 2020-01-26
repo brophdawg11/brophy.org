@@ -295,4 +295,4 @@ export default {
 
 After this, we can now ensure that when the user visits the homepage, they only load the Vuex/Component code required for the homepage, and so on.
 
-There are a ton more ways to eek out every bit of performance in your app, but I hope these help you get the ball rolling.  Remember to keep a performance-first mindset, and always test your app using tools like (Google Lighthouse)[https://developers.google.com/web/tools/lighthouse] to ensure you're keeping your performance metrics at acceptable levels.
+There are a ton more ways to eek out every bit of performance in your app, but I hope these help you get the ball rolling.  Remember to keep a performance-first mindset, and always test your app using tools like [Google Lighthouse](https://developers.google.com/web/tools/lighthouse) to ensure you're keeping your performance metrics at acceptable levels.
