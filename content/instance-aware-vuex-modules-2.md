@@ -369,18 +369,18 @@ function mapInstanceState(getModuleNameFn, mappers) {
 
 What we're doing here is going through all of the values of the object passed as the second argument to `mapInstanceState` (i.e., the mapper functions) and creating wrapping them in little outer functions that will determine the proper namespace, then the namespaced module state, and then call the existing mapper function with the module state.  then we take this newly created object and pass it along to `mapState`.  
 
-Now if we update our example to use these dynamic namespaced based on the route slug, we can see that we no longer hav an issue during our animations - because we are working off of two different sub-modules:
+Now if we update our example to use these dynamic namespaced based on the route slug, we can see that we no longer have an issue during our animations - because we are working off of two different sub-modules:
 
 <p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="result" data-user="brophdawg11" data-slug-hash="ZEYPgZm" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Vuex Module/Vue Router Animation Issue - Fixed">
   <span>See the Pen <a href="https://codepen.io/brophdawg11/pen/ZEYPgZm">
   Vuex Module/Vue Router Animation Issue</a> by Matt Brophy (<a href="https://codepen.io/brophdawg11">@brophdawg11</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
+<br>
 
+I should note that the function above doesn't yet support all of the same usages as the `mapState` function.  For example, it cannot use the array shorthand, nor does it pass through module `getters` as the second argument, but those are not terribly complex changes to add if required.
 
-I should note that the function above doesn't yet support all of the same usages as the `mapState` function.  For example, it cannot use the array shorthand, nor does it pass through module `getters` as the second argument, but those are not terribly complex changes to add if required.  
-
-We should also note that similar `mapInstanceMutations`, `mapInstanceActions` and `mapInstanceGetters` can be written using very similar approaches.  We've been using this type of approach a lot over at [URBN](https://www.urbn.com) and hopefully we'll open source our versions of these utilitie sin the near future.
+We should also note that similar `mapInstanceMutations`, `mapInstanceActions` and `mapInstanceGetters` can be written using very similar approaches.  We've been using this type of approach a lot over at [URBN](https://www.urbn.com) and hopefully we'll open source our versions of these utilities in the near future.
 
 Thanks for Reading, and stay tuned for part 3 of this series where we will look into some other use cases for instance-aware Vuex components beyond strictly route-level components.
 
