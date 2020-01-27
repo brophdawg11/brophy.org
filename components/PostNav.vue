@@ -4,12 +4,18 @@
         <div v-if="previousPost"
              class="c-post-nav__link c-post-nav__link--previous">
 
+            <nuxt-link
+                class="c-post-nav__link-arrow"
+                :to="previousPost.permalink"
+                :title="previousPost.title">
+                ⏪
+            </nuxt-link>
+
             <!-- eslint-disable-next-line vue/component-name-in-template-casing -->
             <nuxt-link
                 :to="previousPost.permalink"
-                :title="previousPost.title">
-                Previous: {{ previousPost.title }}
-            </nuxt-link>
+                :title="previousPost.title"
+                v-text="previousPost.title" />
 
         </div>
 
@@ -19,8 +25,14 @@
             <!-- eslint-disable-next-line vue/component-name-in-template-casing -->
             <nuxt-link
                 :to="nextPost.permalink"
+                :title="nextPost.title"
+                v-text="nextPost.title" /><!--
+
+            --><nuxt-link
+                class="c-post-nav__link-arrow"
+                :to="nextPost.permalink"
                 :title="nextPost.title">
-                Next: {{ nextPost.title }}
+                ⏩
             </nuxt-link>
 
         </div>
@@ -58,6 +70,12 @@ export default {
         &--next {
             padding-left: 10px;
             text-align: right;
+        }
+    }
+
+    &__link-arrow {
+        &:hover {
+            text-decoration: none;
         }
     }
 }
