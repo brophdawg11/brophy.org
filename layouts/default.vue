@@ -44,6 +44,7 @@
 <script>
 import CircleLinks from '~/components/CircleLinks.vue';
 import SiteInfo from '~/components/SiteInfo.vue';
+import logoUrl from '~/static/images/logo.png';
 
 export default {
     components: {
@@ -51,6 +52,8 @@ export default {
         SiteInfo,
     },
     head() {
+        const baseUrl = this.$store.state.url;
+        const imageUrl = `${baseUrl}${logoUrl}`;
         return {
             meta: [{
                 hid: 'og:site_name',
@@ -59,15 +62,11 @@ export default {
             }, {
                 hid: 'og:image',
                 type: 'og:image',
-                /* eslint-disable global-require */
-                content: require('~/static/images/logo.png'),
-                /* eslint-enable global-require */
+                content: imageUrl,
             }, {
                 hid: 'twitter:image',
                 type: 'twitter:image',
-                /* eslint-disable global-require */
-                content: require('~/static/images/logo.png'),
-                /* eslint-enable global-require */
+                content: imageUrl,
             }],
         };
     },
