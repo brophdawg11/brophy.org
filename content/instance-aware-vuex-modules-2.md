@@ -160,9 +160,9 @@ But, if we need to support this - what are our options?  There's no way to tell 
 
 ### Namespacing to the rescue
 
-Namespacing seems like an obvious solution to this issue, but we're already namespacing, so what gives?  the problem is that we haven't made our namespace specific enough.  We chose `product`, which is specific to our route-entry, but not specific enough for each potential instance of that route-entry.  Because our route of `/product/:slug` is slug-specific - we need to also ensure our Vuex namespace is slug-specific.
+Namespacing seems like an obvious solution to this issue, but we're already namespacing, so what gives?  The problem is that we haven't made our namespace specific enough.  We chose `product`, which is specific to our route-entry, but not specific enough for each potential instance of that route-entry.  Because our route of `/product/:slug` is slug-specific - we need to also ensure our Vuex namespace is slug-specific.
 
-So, lets take a look at what that might mean to our above setup.  We don't need to change our vuex module at all - we simply need to adjust the namespace we register it with.  So what if instead of a static string for the namespace, we provided a function that could generate a namespaced given a component instance?
+So, lets take a look at what that might mean to our above setup.  We don't need to change our vuex module at all - we simply need to adjust the namespace we register it with.  So what if instead of a static string for the namespace, we provided a function that could generate a namespace given a component instance?
 
 ```js
 // ProductRouteComponent.vue
@@ -200,6 +200,16 @@ store.state = {
     },
 }
 ```
+
+Now if we update our example to use these dynamic namespaces based on the route slug, we can see that we no longer have an issue during our animations - because we are working off of two different sub-modules:
+
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="result" data-user="brophdawg11" data-slug-hash="ZEYPgZm" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Vuex Module/Vue Router Animation Issue - Fixed">
+  <span>See the Pen <a href="https://codepen.io/brophdawg11/pen/ZEYPgZm">
+  Vuex Module/Vue Router Animation Issue</a> by Matt Brophy (<a href="https://codepen.io/brophdawg11">@brophdawg11</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<br>
+
 
 ### map* helpers 
 
@@ -367,20 +377,11 @@ function mapInstanceState(getModuleNameFn, mappers) {
 }
 ```
 
-What we're doing here is going through all of the values of the object passed as the second argument to `mapInstanceState` (i.e., the mapper functions) and creating wrapping them in little outer functions that will determine the proper namespace, then the namespaced module state, and then call the existing mapper function with the module state.  then we take this newly created object and pass it along to `mapState`.  
-
-Now if we update our example to use these dynamic namespaced based on the route slug, we can see that we no longer have an issue during our animations - because we are working off of two different sub-modules:
-
-<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="result" data-user="brophdawg11" data-slug-hash="ZEYPgZm" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Vuex Module/Vue Router Animation Issue - Fixed">
-  <span>See the Pen <a href="https://codepen.io/brophdawg11/pen/ZEYPgZm">
-  Vuex Module/Vue Router Animation Issue</a> by Matt Brophy (<a href="https://codepen.io/brophdawg11">@brophdawg11</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<br>
+What we're doing here is going through all of the values of the object passed as the second argument to `mapInstanceState` (i.e., the mapper functions) and wrapping them in little outer functions that will determine the proper namespace, then the namespaced module state, and then call the existing mapper function with the module state.  Then we take this newly created object and pass it along to `mapState`.  
 
 I should note that the function above doesn't yet support all of the same usages as the `mapState` function.  For example, it cannot use the array shorthand, nor does it pass through module `getters` as the second argument, but those are not terribly complex changes to add if required.
 
 We should also note that similar `mapInstanceMutations`, `mapInstanceActions` and `mapInstanceGetters` can be written using very similar approaches.  We've been using this type of approach a lot over at [URBN](https://www.urbn.com) and hopefully we'll open source our versions of these utilities in the near future.
 
-Thanks for Reading, and stay tuned for part 3 of this series where we will look into some other use cases for instance-aware Vuex components beyond strictly route-level components.
+Thanks for reading, and stay tuned for part 3 of this series where we will look into some other use cases for instance-aware Vuex components beyond strictly route-level components.
 

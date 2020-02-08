@@ -57,7 +57,7 @@ export default {
 
 As our application grows, and we add more data to `state` and corresponding `mutations` and `actions` to our store, we'll find that it starts to grow in size rather quickly.  As your store file grows, sometimes some folks have recommended splitting `state`/`mutations`/`actions`/`getters` into their own files and combining them in a `store/index.js` file.  Personally, I am not a fan of this approach, as it adds a level of context-switching that I find slows down a developers ability to move quickly.  For example, when you are writing a `mutation`, you are directly mutating the `state` object.  If you have to reference the `state` object to determine it's shape, I would prefer to scroll upwards within the same file then switch to a different file all together.  Similar arguments can be made when writing `actions` using `mutations`, or `getters` accessing `state`
 
-I find a much cleaner approach to be to split your store into [Vuex sub-modules](https://vuex.vuejs.org/guide/modules.html) focused on functionality instead of spitting by portions of the store.  In an e-commerce application, this might consist of a handful of Vuex modules:
+I find a much cleaner approach to be to split your store into [Vuex sub-modules](https://vuex.vuejs.org/guide/modules.html) focused on functionality instead of splitting by portions of the store.  In an e-commerce application, this might consist of a handful of Vuex modules:
 
 * An `auth` module for manging the user's authentication status
 * A `cart` module for managing the items in the user's cart
