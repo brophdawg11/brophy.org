@@ -44,7 +44,7 @@
 <script>
 import CircleLinks from '~/components/CircleLinks.vue';
 import SiteInfo from '~/components/SiteInfo.vue';
-import logoUrl from '~/static/images/logo.png';
+import twitterPhotoUrl from '~/static/images/twitter-card.jpg';
 
 export default {
     components: {
@@ -68,7 +68,10 @@ export default {
                     name: 'twitter:creator',
                     content: '@brophdawg11',
                 },
-                ...dupTags([ 'image', 'og:image', 'twitter:image' ], `${baseUrl}${logoUrl}`),
+                ...dupTags(
+                    [ 'image', 'og:image', 'twitter:image' ],
+                    `${baseUrl}${twitterPhotoUrl}`,
+                ),
             ],
         };
     },
