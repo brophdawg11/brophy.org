@@ -53,21 +53,23 @@ export default {
     },
     head() {
         const baseUrl = this.$store.state.url;
-        const imageUrl = `${baseUrl}${logoUrl}`;
+        const dupTags = (names, content) => names.map(name => ({ name, content }));
+
         return {
-            meta: [{
-                hid: 'og:site_name',
-                name: 'og:site_name',
-                content: 'brophy.org',
-            }, {
-                hid: 'og:image',
-                type: 'og:image',
-                content: imageUrl,
-            }, {
-                hid: 'twitter:image',
-                type: 'twitter:image',
-                content: imageUrl,
-            }],
+            meta: [
+                {
+                    name: 'og:site_name',
+                    content: 'brophy.org',
+                },
+                {
+                    name: 'twitter:card',
+                    content: 'summary',
+                }, {
+                    name: 'twitter:creator',
+                    content: '@brophdawg11',
+                },
+                ...dupTags([ 'image', 'og:image', 'twitter:image' ], `${baseUrl}${logoUrl}`),
+            ],
         };
     },
     data() {

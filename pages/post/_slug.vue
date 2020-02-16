@@ -71,25 +71,17 @@ export default {
         return Promise.all([ loadPosts, loadPost ]);
     },
     head() {
+        const dupTags = (names, content) => names.map(name => ({ name, content }));
         return {
             title: `${this.post.title} | brophy.org`,
-            meta: [{
-                hid: 'og:title',
-                name: 'og:title',
-                content: this.post.title,
-            }, {
-                hid: 'og:url',
-                name: 'og:url',
-                content: this.url,
-            }, {
-                hid: 'twitter:title',
-                name: 'twitter:title',
-                content: this.post.title,
-            }, {
-                hid: 'twitter:url',
-                name: 'twitter:url',
-                content: this.url,
-            }],
+            meta: [
+                {
+                    name: 'keywords',
+                    content: this.post.tags,
+                },
+                ...dupTags([ 'title', 'og:title', 'twitter:title' ], this.post.title),
+                ...dupTags([ 'og:url', 'twitter:url' ], this.url),
+            ],
         };
     },
     computed: {
