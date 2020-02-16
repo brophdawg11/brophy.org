@@ -24,10 +24,10 @@
     "css"
   ],
   "scripts": {
-    "dev": "nuxt dev -o",
-    "build": "nuxt build",
+    "dev": "npm run clean && nuxt dev -o",
+    "build": "npm run clean && nuxt build",
     "clean": "rm -rf dist",
-    "start": "node server/index.js",
+    "start": "nuxt start",
     "generate": "npm run clean && nuxt generate",
     "netlify": "npm run generate",
     "lint": "eslint --ext .js,.vue ."

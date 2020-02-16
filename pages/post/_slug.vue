@@ -65,7 +65,7 @@ export default {
                 .then(contents => store.commit(SET_POSTS, contents.contents)) :
             Promise.resolve();
 
-        const loadPost = import(/* webpackChunkName: "post-" */ `~/content/${slug}.md`)
+        const loadPost = import(/* webpackChunkName: "content/[request]" */ `~/content/${slug}.md`)
             .then(post => store.commit(SET_POST, Object.assign(post.default, { slug })));
 
         return Promise.all([ loadPosts, loadPost ]);
