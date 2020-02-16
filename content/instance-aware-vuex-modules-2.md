@@ -1,7 +1,7 @@
 ---
 title: Instance-Aware Vuex Modules - Part 2
 author: Matt Brophy
-postDate: 2020-01-26 21:00
+postDate: 2020-01-26 21:10
 tags: vue,vuex,javascript,spa
 ---
 
@@ -384,4 +384,6 @@ I should note that the function above doesn't yet support all of the same usages
 We should also note that similar `mapInstanceMutations`, `mapInstanceActions` and `mapInstanceGetters` can be written using very similar approaches.  We've been using this type of approach a lot over at [URBN](https://www.urbn.com) and hopefully we'll open source our versions of these utilities in the near future.
 
 Thanks for reading, and stay tuned for part 3 of this series where we will look into some other use cases for instance-aware Vuex components beyond strictly route-level components.
+
+_Update: Interested in using this approach?  We've open-sourced these helpers functions we're using at [URBN](https://www.urbn.com/) as the [`@urbn/vuex-helpers`](https://www.npmjs.com/package/@urbn/vuex-helpers) package on `npm`._
 
