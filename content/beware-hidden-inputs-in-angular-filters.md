@@ -73,7 +73,7 @@ This is where the "magical" nature of Angular's digest cycle almost came back to
 
 However, if we look deep into the internals of Angular's parser and dirty checking logic, we can see where the problem arises:
 
-[![Filter with hidden input](/assets/images/post/beware-hidden-inputs-in-angular-filters/parser-filter-impure.png)](/assets/images/post/beware-hidden-inputs-in-angular-filters/parser-filter-impure.png)
+[![Filter with hidden input](/images/post/beware-hidden-inputs-in-angular-filters/parser-filter-impure.png)](/images/post/beware-hidden-inputs-in-angular-filters/parser-filter-impure.png)
 
 When parsing the expression, Angular determines that there is only one input for the expression, `data.price`.  This is based on an internal Angular assumption that the filter is pure, and therefore given one input, it will always produce the same output.  Thus, Angular doesn't need to bother executing the `taxBroken` or `currency` filters if `data.price` hasn't changed, because by definition, the output will not change.  And boom - the nasty hidden input gets ignored and our UI is broken if the `SalesService.taxRate` value changes without the corresponding price changing.
 
@@ -98,13 +98,13 @@ We could then generate the display by explicitly passing the taxRate as a second
 
 Now, let's look again at the Angular internals:
 
-[![Filter with hidden input](/assets/images/post/beware-hidden-inputs-in-angular-filters/parser-filter-pure.png)](/assets/images/post/beware-hidden-inputs-in-angular-filters/parser-filter-pure.png)
+[![Filter with hidden input](/images/post/beware-hidden-inputs-in-angular-filters/parser-filter-pure.png)](/images/post/beware-hidden-inputs-in-angular-filters/parser-filter-pure.png)
 
 We can see by adjusting the filter to pass the `taxRate` in as an input to the filter, the expression is now parsed with 2 inputs, the same first input as before, and an additional second input which is a function call corresponding to `getTaxRate()`.  
 
 This produces our Plnkr UI showing the live usages of the broken and fixed versions of the filter while updating the tax rate:
 
-![Plnkr UI](/assets/images/post/beware-hidden-inputs-in-angular-filters/output.png)
+![Plnkr UI](/images/post/beware-hidden-inputs-in-angular-filters/output.png)
 
 ### Takeaway
 
