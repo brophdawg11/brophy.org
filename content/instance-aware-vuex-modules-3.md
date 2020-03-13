@@ -408,7 +408,7 @@ export default {
 
 This works great!  We just `mapState` from our different Vuex modules to get access to our items, and them loop through them using `v-for` and display each `CartItem`.  
 
-But, there's still a lurking problem.  Remember what our sub-components ended up looking likje once we wired them up to dispatch events directly to Vuex?
+But, there's still a lurking problem.  Remember what our sub-components ended up looking like once we wired them up to dispatch events directly to Vuex?
 
 ```js
 // CartItemRemove.vue
@@ -474,7 +474,7 @@ I think this concept of re-using Vuex modules with different/dynamic namespaces 
 * We've achieved a level of colocation by dispatching our Vuex actions directly from our presentational components
 * By using dynamic Vuex modules, we've allowed ourselves to re-use Vuex modules more easily while not impacting the way in which users can use map* methods to reduce Vuex boilerplate code
 
-It's somewhat odd that it took 3 full blog to arrive at this final conclusion of "you can call `mapInstanceState` instead of `mapState`" 😬.  I think these are the types of patterns that start to emerge when doing application development at scale.  When working in smaller apps or even blog post examples, it's really easy to look at container/presentational patterns and see them working really well.  Or not seeing the issues of a lack of co-location because there is just not enough different logic to make it a pain point.  From my experience, it;'s not until you get into a larger-scale usage that the pain points can start to emerge.  
+It's somewhat odd that it took 3 full blog posts to arrive at this final conclusion of "you can call `mapInstanceState` instead of `mapState`" 😬.  I think these are the types of patterns that start to emerge when doing application development at scale.  When working in smaller apps or even blog post examples, it's really easy to look at container/presentational patterns and see them working really well.  Or not seeing the issues of a lack of co-location because there is just not enough different logic to make it a pain point.  From my experience, it;'s not until you get into a larger-scale usage that the pain points can start to emerge.  
 
 Anyway, I hope you enjoyed this, thanks for reading!
 
