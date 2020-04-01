@@ -110,7 +110,9 @@ module.exports = {
      ** Nuxt.js modules
      */
     modules: [
-        '@nuxtjs/pwa',
+        ...(process.env.NODE_ENV === 'production' ? [
+            '@nuxtjs/pwa',
+        ] : []),
         [ '@nuxtjs/google-analytics', {
             id: 'UA-17810974-2',
             dev: false,

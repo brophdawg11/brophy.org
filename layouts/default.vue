@@ -169,7 +169,7 @@ export default {
 
 .page-content {
     width: 100%;
-    max-width: 768px;
+    max-width: 660px;
     margin: auto;
     padding-bottom: $content-padding;
     flex: 1;
