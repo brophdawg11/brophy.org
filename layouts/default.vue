@@ -51,30 +51,6 @@ export default {
         CircleLinks,
         SiteInfo,
     },
-    head() {
-        const baseUrl = this.$store.state.url;
-        const dupTags = (names, content) => names.map(name => ({ name, content }));
-
-        return {
-            meta: [
-                {
-                    name: 'og:site_name',
-                    content: 'brophy.org',
-                },
-                {
-                    name: 'twitter:card',
-                    content: 'summary',
-                }, {
-                    name: 'twitter:creator',
-                    content: '@brophdawg11',
-                },
-                ...dupTags(
-                    [ 'image', 'og:image', 'twitter:image' ],
-                    `${baseUrl}${twitterPhotoUrl}`,
-                ),
-            ],
-        };
-    },
     data() {
         return {
             headerLinks: [{
@@ -123,6 +99,30 @@ export default {
         pageScope() {
             return this.$store.state.pageScope || '';
         },
+    },
+    head() {
+        const baseUrl = this.$store.state.url;
+        const dupTags = (names, content) => names.map(name => ({ name, content }));
+
+        return {
+            meta: [
+                {
+                    name: 'og:site_name',
+                    content: 'brophy.org',
+                },
+                {
+                    name: 'twitter:card',
+                    content: 'summary',
+                }, {
+                    name: 'twitter:creator',
+                    content: '@brophdawg11',
+                },
+                ...dupTags(
+                    ['image', 'og:image', 'twitter:image'],
+                    `${baseUrl}${twitterPhotoUrl}`,
+                ),
+            ],
+        };
     },
 };
 </script>

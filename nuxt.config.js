@@ -10,7 +10,7 @@ module.exports = {
     generate: {
         async routes() {
             const contents = await readContents(resolve(__dirname, './content'));
-            const uniq = arr => [ ...new Set(arr) ];
+            const uniq = arr => [...new Set(arr)];
             const tags = uniq(contents.reduce((acc, c) => [
                 ...acc,
                 ...c.tags.split(',').map(t => t.trim()),
@@ -113,7 +113,7 @@ module.exports = {
         ...(process.env.NODE_ENV === 'production' ? [
             '@nuxtjs/pwa',
         ] : []),
-        [ '@nuxtjs/google-analytics', {
+        ['@nuxtjs/google-analytics', {
             id: 'UA-17810974-2',
             dev: false,
         }],

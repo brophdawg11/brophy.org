@@ -28,19 +28,13 @@ module.exports = {
         },
     },
     rules: {
-        // Require spaces in array brackets, unless it's an array of objects
-        "array-bracket-spacing": ['error', 'always', { objectsInArrays: false } ],
-
         // Don't enforce parents around arrow functions with bodies
         "arrow-parens": 'off',
 
         // 4 space indent
         "indent": [ "error", 4 ],
 
-        // Don't enforce newlines on function parens
-        "function-paren-newline": 'off',
-
-        // Max length 0f 80 characters in source code
+        // Max length of 80 characters in source code
         "max-len": ['error', { code: 100 }],
 
         // Don't allow console.*, force logger usage
@@ -51,15 +45,6 @@ module.exports = {
 
         // Force linebreaks after operators for multi-line boolean/ternary expressions
         "operator-linebreak": ['error', 'after'],
-
-        // Don't enforce on-var for now
-        "one-var": 'off',
-
-        // Don't enforce a blank line or not at the beginning of a block
-        "padded-blocks": 'off',
-
-        // Don't enforce promises being rejected with Error objects
-        "prefer-promise-reject-errors": 'off',
 
         // Require extensions on non-JS files.  Turned off for now because when
         // aliased imports are ignored below, this can't determine the proper
@@ -90,7 +75,7 @@ module.exports = {
         // Allow max 2 attributes on a single line element, but once the
         // element is spread across multiple, require one attribute per line
         "vue/max-attributes-per-line": ['error', {
-            "singleline": 2,
+            "singleline": 10,
             "multiline": {
                 "max": 1,
                 "allowFirstLine": true

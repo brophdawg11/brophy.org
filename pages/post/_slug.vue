@@ -68,21 +68,7 @@ export default {
         const loadPost = import(/* webpackChunkName: "content/[request]" */ `~/content/${slug}.md`)
             .then(post => store.commit(SET_POST, Object.assign(post.default, { slug })));
 
-        return Promise.all([ loadPosts, loadPost ]);
-    },
-    head() {
-        const dupTags = (names, content) => names.map(name => ({ name, content }));
-        return {
-            title: `${this.post.title} | brophy.org`,
-            meta: [
-                {
-                    name: 'keywords',
-                    content: this.post.tags,
-                },
-                ...dupTags([ 'title', 'og:title', 'twitter:title' ], this.post.title),
-                ...dupTags([ 'og:url', 'twitter:url' ], this.url),
-            ],
-        };
+        return Promise.all([loadPosts, loadPost]);
     },
     computed: {
         url() {
@@ -138,6 +124,20 @@ export default {
 
             return appendScript('https://static.codepen.io/assets/embed/ei.js');
         },
+    },
+    head() {
+        const dupTags = (names, content) => names.map(name => ({ name, content }));
+        return {
+            title: `${this.post.title} | brophy.org`,
+            meta: [
+                {
+                    name: 'keywords',
+                    content: this.post.tags,
+                },
+                ...dupTags(['title', 'og:title', 'twitter:title'], this.post.title),
+                ...dupTags(['og:url', 'twitter:url'], this.url),
+            ],
+        };
     },
 };
 </script>
