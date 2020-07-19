@@ -82,29 +82,13 @@
         font-style: italic;
     }
 
-    code {
-        padding: 0 3px;
-        font-family: monospace;
-        background-color: #F8F8F8; // Specific for accessibility
-        box-shadow: inset black 0px 0px 5px -2px;
-        border-radius: 5px;
-    }
-
-    // Only large sections of code, not inline <code> tags
     pre {
-        padding-bottom: $content-padding;
         margin: 0;
+        font-size: 0.9rem;
 
         @media screen and (min-width: $medium-min) {
             margin-left: $content-padding;
             margin-right: $content-padding;
-        }
-
-        code {
-            display: block;
-            padding: 1em;
-            font-size: 0.9em;
-            line-height: 1.25em;
         }
     }
 

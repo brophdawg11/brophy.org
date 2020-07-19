@@ -9,8 +9,7 @@
             </div>
         </header>
 
-        <!-- eslint-disable-next-line vue/no-v-html -->
-        <section class="c-post__content" v-html="post.__content" />
+        <nuxt-content class="c-post__content" :document="post" />
 
         <footer>
             <div class="c-post__share">
@@ -45,10 +44,6 @@
 </template>
 
 <script>
-import { findIndex, sortBy } from 'lodash-es';
-
-import { SET_POST, SET_POSTS } from '~/store';
-
 import PostMeta from '~/components/PostMeta.vue';
 import PostNav from '~/components/PostNav.vue';
 
@@ -57,18 +52,20 @@ export default {
         PostMeta,
         PostNav,
     },
-    asyncData({ store, route }) {
+    async asyncData({ route, $content }) {
         const { slug } = route.params;
+        const data = await Promise.all([
+            $content(slug).fetch(),
+            $content()
+                .where({ draft: { $ne: true } })
+                .only(['title', 'permalink'])
+                .sortBy('postDate', 'desc')
+                .surround(slug)
+                .fetch(),
+        ]);
 
-        const loadPosts = store.state.posts == null ?
-            import(/* webpackChunkName: "contents" */ '~/content/contents.json')
-                .then(contents => store.commit(SET_POSTS, contents.contents)) :
-            Promise.resolve();
-
-        const loadPost = import(/* webpackChunkName: "content/[request]" */ `~/content/${slug}.md`)
-            .then(post => store.commit(SET_POST, Object.assign(post.default, { slug })));
-
-        return Promise.all([loadPosts, loadPost]);
+        const [post, [nextPost, previousPost]] = data;
+        return { post, nextPost, previousPost };
     },
     computed: {
         url() {
@@ -79,23 +76,6 @@ export default {
         },
         twitterDiscussUrl() {
             return `https://twitter.com/search?q=${this.url}`;
-        },
-        post() {
-            return this.$store.state.post;
-        },
-        sortedPosts() {
-            return sortBy(this.$store.state.posts, 'postDate');
-        },
-        postIndex() {
-            return findIndex(this.sortedPosts, { slug: this.post.slug });
-        },
-        previousPost() {
-            const idx = this.postIndex - 1;
-            return idx >= 0 && this.sortedPosts[idx] ? this.sortedPosts[idx] : null;
-        },
-        nextPost() {
-            const idx = this.postIndex + 1;
-            return idx > 0 && this.sortedPosts[idx] ? this.sortedPosts[idx] : null;
         },
     },
     mounted() {
@@ -199,4 +179,7 @@ export default {
 
 }
 
+.nuxt-content-highlight {
+    padding-bottom: $content-padding;
+}
 </style>

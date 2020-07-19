@@ -5,7 +5,7 @@ postDate: 2020-01-20 20:00
 tags: vue,javascript,spa,performance
 ---
 
-As web apps grow more complex, we end up sending larger JS/CSS bundles to the client.  If you're not careful, before long you can find yourself with a site that no longer snappy on slower connections due to the sheer amount of time it takes to send the bundles across the wire.  This post aims to document  handful of patterns we've found handy at [URBN](www.urbn.com) to keep bundles small and our load times fast.
+As web apps grow more complex, we end up sending larger JS/CSS bundles to the client.  If you're not careful, before long you can find yourself with a site that is no longer snappy on slower connections due to the sheer amount of time it takes to send the bundles across the wire.  This post aims to document  handful of patterns we've found handy at [URBN](www.urbn.com) to keep bundles small and our load times fast.
 
 
 ## What is "Performance"?
@@ -267,7 +267,7 @@ This approach will scale much better as our app grows - however, we're still sta
 
 To accomplish this, we can instead import the modules from within the components and dynamically register them, thus bundling them inside the component async bundle.
 
-```
+```js
 // homepage-module.js
 const homepageModule = {
     namespaced: true,
@@ -277,9 +277,10 @@ const homepageModule = {
     mutations: { ... },
     actions: { ... },
 };
+```
 
+```js
 // Homepage.vue
-<script>
 import homepageModule from './homepage-module';
 
 export default {
