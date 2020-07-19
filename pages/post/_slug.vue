@@ -178,8 +178,4 @@ export default {
     }
 
 }
-
-.nuxt-content-highlight {
-    padding-bottom: $content-padding;
-}
 </style>
