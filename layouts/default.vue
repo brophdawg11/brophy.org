@@ -7,7 +7,7 @@
 
         </aside>
 
-        <section :class="pageScope" class="page-content-wrapper">
+        <section class="page-content-wrapper">
 
             <header class="page-header">
 
@@ -50,30 +50,6 @@ export default {
     components: {
         CircleLinks,
         SiteInfo,
-    },
-    head() {
-        const baseUrl = this.$store.state.url;
-        const dupTags = (names, content) => names.map(name => ({ name, content }));
-
-        return {
-            meta: [
-                {
-                    name: 'og:site_name',
-                    content: 'brophy.org',
-                },
-                {
-                    name: 'twitter:card',
-                    content: 'summary',
-                }, {
-                    name: 'twitter:creator',
-                    content: '@brophdawg11',
-                },
-                ...dupTags(
-                    [ 'image', 'og:image', 'twitter:image' ],
-                    `${baseUrl}${twitterPhotoUrl}`,
-                ),
-            ],
-        };
     },
     data() {
         return {
@@ -119,10 +95,28 @@ export default {
             }],
         };
     },
-    computed: {
-        pageScope() {
-            return this.$store.state.pageScope || '';
-        },
+    head() {
+        const dupTags = (names, content) => names.map(name => ({ name, content }));
+
+        return {
+            meta: [
+                {
+                    name: 'og:site_name',
+                    content: 'brophy.org',
+                },
+                {
+                    name: 'twitter:card',
+                    content: 'summary',
+                }, {
+                    name: 'twitter:creator',
+                    content: '@brophdawg11',
+                },
+                ...dupTags(
+                    ['image', 'og:image', 'twitter:image'],
+                    `https://www.brophy.org${twitterPhotoUrl}`,
+                ),
+            ],
+        };
     },
 };
 </script>

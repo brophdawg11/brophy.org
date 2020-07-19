@@ -22,9 +22,7 @@
                     </li>
                     <li>
                         w:
-                        <a :href="`http://${resumeData.website}`">
-                            {{ resumeData.website }}
-                        </a>
+                        <nuxt-link to="/">{{ resumeData.website }}</nuxt-link>
                     </li>
                     <li>
                         <ExternalLink :href="`https://${resumeData.github}`"

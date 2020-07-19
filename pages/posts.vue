@@ -3,22 +3,16 @@
 </template>
 
 <script>
-import { SET_POSTS } from '~/store';
-
+import { getPostsContentChain } from '~/assets/js/utils';
 import PostList from '~/components/PostList.vue';
 
 export default {
     components: {
         PostList,
     },
-    asyncData({ store }) {
-        return import(/* webpackChunkName: "contents" */ '~/content/contents.json')
-            .then(contents => store.commit(SET_POSTS, contents.contents));
-    },
-    computed: {
-        posts() {
-            return this.$store.state.posts;
-        },
+    async asyncData({ $content }) {
+        const posts = await getPostsContentChain($content).fetch();
+        return { posts };
     },
 };
 </script>

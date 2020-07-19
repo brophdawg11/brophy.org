@@ -75,7 +75,7 @@ At this point, we started doing some investigations into form validation at the 
 
 Here's a quick example of the `ValidityState` object for the following input when it is left blank:
 
-```
+```html
 <input required minlength="5" />
 ```
 
@@ -215,7 +215,7 @@ _I need to do custom validations_
 
 OK!  So long as we know the input, we know the input value via `el.value`.  Therefore, we should be able to add our own custom validations.  We could pass them in via a prop and add support for checking them in `emitValidity`.  For example:
 
-```
+```js
 // Assume the incoming customValidations prop is:
 // {
 //    phoneNumber: v => /\d{3}-\d{3}-\d{4}/.test(v)

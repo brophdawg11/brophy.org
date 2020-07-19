@@ -10,31 +10,17 @@
 </template>
 
 <script>
-import { get, includes } from 'lodash-es';
-
-import { SET_POSTS } from '~/store';
-
+import { getPostsContentChain } from '~/assets/js/utils';
 import PostList from '~/components/PostList.vue';
 
 export default {
     components: {
         PostList,
     },
-    asyncData({ store }) {
-        return import(/* webpackChunkName: "contents" */ '~/content/contents.json')
-            .then(contents => store.commit(SET_POSTS, contents.contents));
-    },
-    data() {
-        return {
-            tag: this.$route.params.tag,
-        };
-    },
-    computed: {
-        posts() {
-            const postHasTag = p => includes(get(p, 'tags', '').split(','), this.tag);
-            return this.$store.state.posts
-                .filter(p => postHasTag(p));
-        },
+    async asyncData({ $content, route }) {
+        const { tag } = route.params;
+        const posts = await getPostsContentChain($content).fetch();
+        return { tag, posts: posts.filter(p => p.tags.split(',').includes(tag)) };
     },
 };
 </script>

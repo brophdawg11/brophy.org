@@ -8,7 +8,7 @@
 
             <span class="c-meta__divider c-meta__divider--first">|</span>
 
-            <span class="c-meta__readtime">{{ post.readingTime.text }}</span>
+            <span class="c-meta__readtime">{{ post.readingTime }}</span>
 
         </p>
 
@@ -52,7 +52,7 @@ export default {
             return vagueTime.get({ to: this.postDate.getTime() });
         },
         formattedDate() {
-            const [ , month, date, year ] = this.postDate.toDateString().split(' ');
+            const [, month, date, year] = this.postDate.toDateString().split(' ');
             return `${month} ${date}, ${year}`;
         },
         tagArray() {

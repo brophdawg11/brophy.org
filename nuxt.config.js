@@ -1,5 +1,9 @@
 const { resolve } = require('path');
 
+const cheerio = require('cheerio');
+const marked = require('marked');
+const readingTime = require('reading-time');
+
 const { ContentMetadataPlugin, readContents } = require('./build/content-metadata-plugin');
 
 const pkg = require('./package');
@@ -10,7 +14,7 @@ module.exports = {
     generate: {
         async routes() {
             const contents = await readContents(resolve(__dirname, './content'));
-            const uniq = arr => [ ...new Set(arr) ];
+            const uniq = arr => [...new Set(arr)];
             const tags = uniq(contents.reduce((acc, c) => [
                 ...acc,
                 ...c.tags.split(',').map(t => t.trim()),
@@ -26,7 +30,7 @@ module.exports = {
      ** Headers of the page
      */
     head: {
-        title: pkg.description,
+        title: 'Matt Brophy | Web Developer',
         meta: [
             { charset: 'utf-8' },
             { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -110,10 +114,11 @@ module.exports = {
      ** Nuxt.js modules
      */
     modules: [
+        '@nuxt/content',
         ...(process.env.NODE_ENV === 'production' ? [
             '@nuxtjs/pwa',
         ] : []),
-        [ '@nuxtjs/google-analytics', {
+        ['@nuxtjs/google-analytics', {
             id: 'UA-17810974-2',
             dev: false,
         }],
@@ -159,6 +164,26 @@ module.exports = {
                     pretty: ctx.isDev,
                     debug: true,
                 }));
+            }
+        },
+    },
+
+    content: {
+
+    },
+
+    hooks: {
+        'content:file:beforeInsert': (doc) => {
+            if (doc.extension === '.md') {
+                const $ = cheerio.load(marked(doc.text));
+                Object.assign(doc, {
+                    permalink: `/post/${doc.slug}`,
+                    excerpt: $.html($('p').first())
+                        .trim()
+                        .replace(/^<p>/, '')
+                        .replace(/<\/p>$/, ''),
+                    readingTime: readingTime(doc.text).text,
+                });
             }
         },
     },
