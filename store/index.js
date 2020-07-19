@@ -30,23 +30,6 @@ if (process.env.NODE_ENV !== 'production') {
     }));
 }
 
-// Mutations
-export const SET_POST = 'SET_POST';
-export const SET_POSTS = 'SET_POSTS';
-
-/* eslint-disable no-param-reassign */
-const mutations = {
-    [SET_POST]: (state, payload) => {
-        state.post = payload;
-    },
-    [SET_POSTS]: (state, posts) => {
-        if (Array.isArray(posts)) {
-            state.posts = posts;
-        }
-    },
-};
-/* eslint-enable no-param-reassign */
-
 // Expose a factory function to ensure a new store per request
 export default function createStore(/* request */) {
     return new Vuex.Store({
@@ -56,13 +39,6 @@ export default function createStore(/* request */) {
             url: 'https://www.brophy.org',
             title: 'Matt Brophy',
             description: 'Matt Brophy\'s Website',
-            rss: {
-                title: 'Matt Brophy\'s Blog',
-            },
-            pageSize: 6,
-            post: null,
-            posts: [],
         },
-        mutations,
     });
 }
