@@ -7,7 +7,7 @@
 
         </aside>
 
-        <section :class="pageScope" class="page-content-wrapper">
+        <section class="page-content-wrapper">
 
             <header class="page-header">
 
@@ -95,13 +95,7 @@ export default {
             }],
         };
     },
-    computed: {
-        pageScope() {
-            return this.$store.state.pageScope || '';
-        },
-    },
     head() {
-        const baseUrl = this.$store.state.url;
         const dupTags = (names, content) => names.map(name => ({ name, content }));
 
         return {
@@ -119,7 +113,7 @@ export default {
                 },
                 ...dupTags(
                     ['image', 'og:image', 'twitter:image'],
-                    `${baseUrl}${twitterPhotoUrl}`,
+                    `https://www.brophy.org${twitterPhotoUrl}`,
                 ),
             ],
         };

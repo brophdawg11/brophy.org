@@ -1,14 +1,9 @@
 <template>
     <div class="c-home-content">
 
-        <img
-            :src="logo"
-            class="c-home-logo"
-            alt="Matt Brophy">
+        <img :src="logo" class="c-home-logo" alt="Matt Brophy">
 
-        <h1 class="c-home-title">
-            {{ title }}
-        </h1>
+        <h1 class="c-home-title">Matt Brophy</h1>
 
         <p class="c-home-description">
             web/software developer at
@@ -35,9 +30,6 @@ export default {
         ExternalLink,
     },
     computed: {
-        title() {
-            return this.$store.state.title;
-        },
         logo() {
             /* eslint-disable global-require */
             return require('~/static/images/logo.png');

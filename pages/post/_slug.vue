@@ -69,7 +69,7 @@ export default {
     },
     computed: {
         url() {
-            return `${this.$store.state.url}${this.post.permalink}`;
+            return `https://www.brophy.org${this.post.permalink}`;
         },
         twitterUrl() {
             return `https://twitter.com/share?text=${this.post.title}&amp;url=${this.url}`;
