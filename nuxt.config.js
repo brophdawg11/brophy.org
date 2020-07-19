@@ -1,10 +1,10 @@
-const { resolve } = require('path');
+const fs = require('fs');
+const path = require('path');
 
 const cheerio = require('cheerio');
 const marked = require('marked');
 const readingTime = require('reading-time');
-
-const { ContentMetadataPlugin, readContents } = require('./build/content-metadata-plugin');
+const yaml = require('yaml-front-matter');
 
 const pkg = require('./package');
 
@@ -13,12 +13,33 @@ module.exports = {
 
     generate: {
         async routes() {
-            const contents = await readContents(resolve(__dirname, './content'));
+            // Readt contents/ directory
+            const dir = path.resolve(__dirname, './content');
+            const files = await new Promise((resolve, reject) => fs.readdir(dir, (err, data) => {
+                if (err) {
+                    reject(new Error(`Unable to read directory: ${dir}`));
+                    return;
+                }
+                resolve(data);
+            }));
+
+            // Map to frontmatter objects
+            const contents = files
+                .map(f => path.join(path.resolve(dir), f))
+                .filter(f => fs.statSync(f).isFile() && /\.md$/.test(f))
+                .map(f => ({
+                    slug: path.basename(f, '.md'),
+                    ...yaml.loadFront(fs.readFileSync(f)),
+                }))
+                .filter(data => data.draft !== true);
+
+            // Generate full list of tags for all posts
             const uniq = arr => [...new Set(arr)];
             const tags = uniq(contents.reduce((acc, c) => [
                 ...acc,
                 ...c.tags.split(',').map(t => t.trim()),
             ], []));
+
             return [
                 ...contents.map(c => `/post/${c.slug}`),
                 ...tags.map(t => `/tag/${t}`),
@@ -144,13 +165,8 @@ module.exports = {
          */
         extend(config, ctx) {
             Object.assign(config.resolve.alias, {
-                scss: resolve(__dirname, './assets/scss'),
-                static: resolve(__dirname, './static'),
-            });
-
-            config.module.rules.push({
-                test: /\.md$/,
-                use: './build/markdown-loader',
+                scss: path.resolve(__dirname, './assets/scss'),
+                static: path.resolve(__dirname, './static'),
             });
 
             const hash = ctx.isDev ? 'hash' : 'chunkhash';
@@ -158,13 +174,6 @@ module.exports = {
                 filename: `[name].[${hash}].js`,
                 chunkFilename: `async/[name].[${hash}].js`,
             });
-
-            if (ctx.isClient) {
-                config.plugins.push(new ContentMetadataPlugin({
-                    pretty: ctx.isDev,
-                    debug: true,
-                }));
-            }
         },
     },
 
