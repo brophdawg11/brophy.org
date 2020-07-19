@@ -56,10 +56,9 @@
     "eslint-plugin-vue": "6.1.2",
     "husky": "4.2.5",
     "lodash-es": "4.17.15",
-    "mkdirp": "0.5.1",
     "node-sass": "4.14.1",
     "reading-time": "1.2.0",
-    "sass-loader": "8.0.2",
+    "sass-loader": "9.0.2",
     "yaml-front-matter": "4.1.0"
   }
 }
