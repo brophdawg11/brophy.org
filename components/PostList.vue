@@ -1,16 +1,9 @@
 <template>
     <div>
-        <!--
-        {% if pagination %}
-            {% if pagination.previous %}
-                {% include "templates/partials/pagination.nunjucks" %}
-            {% endif %}
-        {% endif %}
-        -->
 
         <ul class="c-posts__list">
 
-            <li v-for="post in sortedPosts"
+            <li v-for="post in posts"
                 :key="post.permalink"
                 class="c-posts__item">
 
@@ -43,13 +36,10 @@
 
         </ul>
 
-        <!--{% include "templates/partials/pagination.nunjucks" %}-->
     </div>
 </template>
 
 <script>
-import { sortBy } from 'lodash-es';
-
 import PostMeta from './PostMeta.vue';
 
 export default {
@@ -60,11 +50,6 @@ export default {
         posts: {
             type: Array,
             default: () => [],
-        },
-    },
-    computed: {
-        sortedPosts() {
-            return sortBy(this.posts, 'postDate').filter(p => !p.draft).reverse();
         },
     },
 };

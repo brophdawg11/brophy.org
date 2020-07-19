@@ -8,7 +8,7 @@
 
             <span class="c-meta__divider c-meta__divider--first">|</span>
 
-            <span class="c-meta__readtime">{{ post.readingTime.text }}</span>
+            <span class="c-meta__readtime">{{ post.readingTime }}</span>
 
         </p>
 

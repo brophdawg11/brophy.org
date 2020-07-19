@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { SET_POSTS } from '~/store';
+import { omit } from 'lodash-es';
 
 import PostList from '~/components/PostList.vue';
 
@@ -11,14 +11,17 @@ export default {
     components: {
         PostList,
     },
-    asyncData({ store }) {
-        return import(/* webpackChunkName: "contents" */ '~/content/contents.json')
-            .then(contents => store.commit(SET_POSTS, contents.contents));
-    },
-    computed: {
-        posts() {
-            return this.$store.state.posts;
-        },
+    async asyncData({ $content }) {
+        const posts = await $content()
+            .where({
+                draft: { $ne: true },
+                extension: { $eq: '.md' },
+            })
+            .sortBy('postDate', 'desc')
+            .fetch();
+        return {
+            posts: posts.map(p => omit(p, ['body', 'toc'])),
+        };
     },
 };
 </script>
