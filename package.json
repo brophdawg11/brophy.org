@@ -26,7 +26,7 @@
   "scripts": {
     "dev": "npm run clean && nuxt -o",
     "build": "npm run clean && nuxt build",
-    "clean": "rm -rf .nuxt",
+    "clean": "rm -rf .nuxt/ && rm -rf dist/",
     "start": "nuxt start",
     "generate": "npm run clean && nuxt generate",
     "netlify": "npm run generate",

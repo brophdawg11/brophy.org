@@ -11,6 +11,24 @@ const pkg = require('./package');
 module.exports = {
     mode: 'universal',
 
+    features: {
+        router: true,
+        store: false,
+        layouts: true,
+        meta: true,
+        middleware: false,
+        transitions: true,
+        deprecations: true,
+        validate: false,
+        asyncData: true,
+        fetch: false,
+        clientOnline: true,
+        clientPrefetch: true,
+        clientUseUrl: false,
+        componentAliases: false,
+        componentClientOnly: false,
+    },
+
     generate: {
         async routes() {
             // Readt contents/ directory
