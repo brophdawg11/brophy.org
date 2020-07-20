@@ -33,12 +33,12 @@
     "lint": "eslint --ext .js,.vue ."
   },
   "dependencies": {
-    "@nuxt/content": "1.2.0",
-    "@nuxtjs/google-analytics": "2.3.0",
+    "@nuxt/content": "1.4.1",
+    "@nuxtjs/google-analytics": "2.4.0",
     "@nuxtjs/pwa": "3.0.0-beta.20",
-    "koa": "2.12.0",
+    "koa": "2.13.0",
     "marked": "1.1.1",
-    "nuxt": "2.12.2",
+    "nuxt": "2.13.3",
     "vague-time": "2.4.2"
   },
   "devDependencies": {
