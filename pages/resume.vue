@@ -140,50 +140,39 @@ const resumeData = {
             'JavaScript',
             'HTML5',
             'CSS3',
-            'Less',
             'SCSS',
-            'Java Servlets',
-            'JSP',
-            'PHP',
+            'Less',
+            'JSON',
             'XML',
-            'XSLT',
         ],
     }, {
         title: 'Web Frameworks',
         skills: [
-            'Angular',
+            'Vue/Vuex',
+            'AngularJs',
+            'Express',
             'Hapi',
-            'Gulp',
             'Backbone',
-            'Java Stripes',
         ],
     }, {
         title: 'Web Technologies',
         skills: [
-            'LoDash',
+            'Webpack',
+            'Lodash',
+            'Modernizr',
+            'Axios',
             'jQuery',
-            'Zepto',
             'jQuery Mobile',
-            'Underscore',
-            'Knockout',
             'Hammer',
             'Handlebars',
+            'Gulp',
+            'Jest',
             'Karma',
             'Jasmine',
             'QUnit',
-            'localSorage',
-            'lscache',
-            'WebSQL',
-            'Director',
-            'Dust.js',
-            'Canvas',
             'Google Maps API',
             'Leaflet',
             'Chart.js',
-            'Modernizr',
-            'MochiKit',
-            'Apache Tomcat',
-            'CGI',
         ],
     }, {
         title: 'Mobile Technologies',
@@ -206,7 +195,7 @@ const resumeData = {
     }, {
         title: 'Systems',
         skills: [
-            'Mac OS X (10.6-10.8)',
+            'Mac OS X (10.6-10.15)',
             'Windows (7, XP, NT, 98, 95)',
             'Linux (Ubuntu, CentOS, Fedora, RedHat)',
             'UNIX (Sun Solaris)',
@@ -214,23 +203,24 @@ const resumeData = {
     }, {
         title: 'Cloud Technologies',
         skills: [
-            'AWS EC2',
-            'AWS S3',
-            'AWS SNS',
+            'Netlify',
+            'AWS (S3, Cloudfront, EC2, SNS)',
+        ],
+    }, {
+        title: 'Databases',
+        skills: [
+            'Redis',
+            'MongoDB',
+            'MySQL',
+            'SQL Server 2008',
+            'MS Access',
+            'PostgreSQL',
         ],
     }, {
         title: 'Semantic Web Languages',
         skills: [
             'OWL',
             'RDF',
-        ],
-    }, {
-        title: 'Databases',
-        skills: [
-            'MySQL',
-            'SQL Server 2008',
-            'MS Access',
-            'PostgreSQL',
         ],
     }, {
         title: 'Other',
@@ -250,7 +240,23 @@ const resumeData = {
             'February 2015 - Present',
         ],
         details: [
-            'Unified Cart Checkout Application',
+            'Front End Web Architect _(August 2018 - Present)_',
+            [
+                'Leading the architecture and development of the next-generation multi-tenant e-commerce application using Vue/Vuex/Express',
+                'Created and maintaining a custom Vue SSR platform',
+                'Instituting performance best practices including automated performance budgets and lighthouse testing',
+                'Overseeing the incremental migration from the prior application to the new application on a route-by-route basis',
+                'Developed and overseeing the development and CI pipeline using Docker and Jenkins2',
+                'Managing ongoing feature development using feature flags to avoid long-lived feature branches',
+            ],
+            'Front End Web Architect _(October 2017 - August 2018)_',
+            [
+                'Served as the architect for the front end web group, consisting of 4 teams of 4-5 developers',
+                'Focused on big-picture initiatives, evolution of the e-commerce application, performance, and best practices',
+                'Retrofitted existing application with webpack dynamic import patterns to improve application performance',
+                'Consolidated 6 individual git repositories into a single monolithic repository for the e-commerce front-end',
+            ],
+            'Unified Cart Checkout Application _(February 2015 - October 2017)_',
             [
                 'Lead Architect and Developer for a multi-tenant Angular.js application providing the URBN brand Cart/Checkout E-Commerce experience',
                 'Heavily asynchronous SPA leveraging RESTful micro services',
@@ -610,6 +616,10 @@ export default {
     .workDetails-list {
         list-style-type: disc;
         list-style-position: outside;
+
+        em {
+            font-style: italic;
+        }
     }
 
     .keySkills + .subDetails {
