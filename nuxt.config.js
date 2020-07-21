@@ -1,10 +1,8 @@
-const fs = require('fs');
 const path = require('path');
 
 const cheerio = require('cheerio');
 const marked = require('marked');
 const readingTime = require('reading-time');
-const yaml = require('yaml-front-matter');
 
 const pkg = require('./package');
 
@@ -31,36 +29,20 @@ module.exports = {
 
     generate: {
         async routes() {
-            // Readt contents/ directory
-            const dir = path.resolve(__dirname, './content');
-            const files = await new Promise((resolve, reject) => fs.readdir(dir, (err, data) => {
-                if (err) {
-                    reject(new Error(`Unable to read directory: ${dir}`));
-                    return;
-                }
-                resolve(data);
-            }));
-
-            // Map to frontmatter objects
-            const contents = files
-                .map(f => path.join(path.resolve(dir), f))
-                .filter(f => fs.statSync(f).isFile() && /\.md$/.test(f))
-                .map(f => ({
-                    slug: path.basename(f, '.md'),
-                    ...yaml.loadFront(fs.readFileSync(f)),
-                }))
-                .filter(data => data.draft !== true);
+            // eslint-disable-next-line global-require
+            const { $content } = require('@nuxt/content');
+            const files = await $content().only(['permalink', 'tags']).fetch();
 
             // Generate full list of tags for all posts
             const uniq = arr => [...new Set(arr)];
-            const tags = uniq(contents.reduce((acc, c) => [
+            const tags = files.reduce((acc, f) => [
                 ...acc,
-                ...c.tags.split(',').map(t => t.trim()),
-            ], []));
+                ...f.tags.split(',').map(t => t.trim()),
+            ], []);
 
             return [
-                ...contents.map(c => `/post/${c.slug}`),
-                ...tags.map(t => `/tag/${t}`),
+                ...files.map(f => f.permalink),
+                ...uniq(tags).map(t => `/tag/${t}`),
             ];
         },
     },
@@ -79,79 +61,63 @@ module.exports = {
             { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
             { name: 'apple-mobile-web-app-title', content: 'brophy.org' },
         ],
-        link: [
-            {
-                rel: 'preconnect',
-                href: 'https://www.google-analytics.com',
-                crossorigin: '',
-            },
-            {
-                rel: 'manifest',
-                href: '/manifest.json',
-            },
-            {
-                rel: 'icon',
-                type: 'image/x-icon',
-                href: '/favicon/favicon.ico',
-            },
-            {
-                rel: 'shortcut icon',
-                type: 'image/x-icon',
-                href: '/favicon/favicon.ico',
-            },
-            {
-                rel: 'icon',
-                type: 'image/png',
-                sizes: '32x32',
-                href: '/favicon/favicon-32x32.png',
-            },
-            {
-                rel: 'icon',
-                type: 'image/png',
-                sizes: '16x16',
-                href: '/favicon/favicon-16x16.png',
-            },
-            ...([
-                '57x57',
-                '60x60',
-                '72x72',
-                '76x76',
-                '114x114',
-                '120x120',
-                '144x144',
-                '152x152',
-                '167x167',
-                '180x180',
-            ].map(size => ({
-                rel: 'apple-touch-icon',
-                type: 'image/x-icon',
-                sizes: size,
-                href: `/favicon/apple-touch-icon-${size}.png`,
-            }))),
-            {
-                rel: 'icon',
-                type: 'image/png',
-                sizes: '192x192',
-                href: '/favicon/android-chrome-192x192.png',
-            },
-        ],
-
-        // TODO
-        // {{{ gaScripts }}}
+        link: [{
+            rel: 'preconnect',
+            href: 'https://www.google-analytics.com',
+            crossorigin: '',
+        }, {
+            rel: 'manifest',
+            href: '/manifest.json',
+        }, {
+            rel: 'icon',
+            type: 'image/x-icon',
+            href: '/favicon/favicon.ico',
+        }, {
+            rel: 'shortcut icon',
+            type: 'image/x-icon',
+            href: '/favicon/favicon.ico',
+        }, {
+            rel: 'icon',
+            type: 'image/png',
+            sizes: '32x32',
+            href: '/favicon/favicon-32x32.png',
+        }, {
+            rel: 'icon',
+            type: 'image/png',
+            sizes: '16x16',
+            href: '/favicon/favicon-16x16.png',
+        },
+        ...([
+            '57x57',
+            '60x60',
+            '72x72',
+            '76x76',
+            '114x114',
+            '120x120',
+            '144x144',
+            '152x152',
+            '167x167',
+            '180x180',
+        ].map(size => ({
+            rel: 'apple-touch-icon',
+            type: 'image/x-icon',
+            sizes: size,
+            href: `/favicon/apple-touch-icon-${size}.png`,
+        }))),
+        {
+            rel: 'icon',
+            type: 'image/png',
+            sizes: '192x192',
+            href: '/favicon/android-chrome-192x192.png',
+        }],
     },
 
-    /*
-     ** Global CSS
-     */
     css: [
         '~/static/fontello/css/icon-font.css',
         // Layout inspired by http://demo.onedesigns.com/graceunderpressure/journal/
         '~/assets/scss/index.scss',
     ],
 
-    /*
-     ** Nuxt.js modules
-     */
     modules: [
         '@nuxt/content',
         ...(process.env.NODE_ENV === 'production' ? [
@@ -163,9 +129,6 @@ module.exports = {
         }],
     ],
 
-    /*
-     ** Build configuration
-     */
     build: {
         babel: {
             plugins: [
@@ -193,10 +156,6 @@ module.exports = {
                 chunkFilename: `async/[name].[${hash}].js`,
             });
         },
-    },
-
-    content: {
-
     },
 
     hooks: {
