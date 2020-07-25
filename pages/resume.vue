@@ -495,6 +495,14 @@ export default {
         padding: 15px;
     }
 
+    #mainArea {
+        padding: 0.5em;
+
+        @media all and (min-width: $medium-min) {
+            padding: 1%;
+        }
+    }
+
     .name,
     .contactDetails {
         text-align: center;

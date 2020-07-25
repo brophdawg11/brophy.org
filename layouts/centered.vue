@@ -26,11 +26,9 @@ export default {
 
 .c-content-centered {
     background: $offwhite;
-    padding: 0.5em;
 
     @media all and (min-width: $medium-min) {
         width: 94%;
-        padding: 1%;
         margin: 0 3%;
     }
 
