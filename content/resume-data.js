@@ -114,7 +114,7 @@ export default {
             ],
         ],
     }, {
-        title: 'Senior Web/Mobile Developer - Judge Consulting Group',
+        title: 'Senior Web/Mobile Developer - [Judge Consulting Group](https://www.judge.com/)',
         subDetails: [
             'January 2012 - February 2013',
             'February 2014 - February 2015',
@@ -179,7 +179,7 @@ export default {
             ],
         ],
     }, {
-        title: 'JavaScript Developer - EPAM Empathy Lab',
+        title: 'JavaScript Developer - [EPAM Empathy Lab](https://www.epam.com/)',
         subDetails: [
             'February 2013 - February 2014',
         ],
@@ -223,7 +223,7 @@ export default {
             'Additional areas of study included Semantic Web, WWW Search, Web Applications, Pattern Recognition, Parallel Computing, and Robotics',
         ],
     }, {
-        title: 'Web Programmer - Software Consulting Services',
+        title: 'Web Programmer - [Software Consulting Services](https://www.newspapersystems.com/)',
         subDetails: [
             'January 2008 - January 2010',
         ],

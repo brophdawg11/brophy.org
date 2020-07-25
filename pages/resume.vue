@@ -8,9 +8,9 @@
                     :alt="data.name">
             </div>
 
-            <div class="resume__name">
-                <h1>{{ data.name }}</h1>
-                <h2>{{ data.title }}</h2>
+            <div class="resume__info">
+                <h1 class="resume__name">{{ data.name }}</h1>
+                <h2 class="resume__title">{{ data.title }}</h2>
             </div>
 
             <div class="resume__contact">
@@ -35,8 +35,6 @@
                     </li>
                 </ul>
             </div>
-
-            <div class="resume__clear" />
         </div>
 
         <div class="resume__main">
@@ -56,7 +54,7 @@
 
             <ResumeSection title="Work Experience">
                 <ul class="resume__experience">
-                    <li v-for="job in data.jobs" :key="job.title" class="resume__job">
+                    <li v-for="job in data.jobs" :key="job.title">
                         <!-- eslint-disable vue/no-v-html -->
                         <h3 v-html="md(job.title)" />
                         <p v-for="subDetail in job.subDetails"
@@ -146,78 +144,48 @@ export default {
     }
 
     &__header {
-        border-bottom: 2px solid #cf8a05;
-        background: #ededed;
+        display: grid;
+        grid-template-columns: 1fr;
+        border-bottom: 2px solid $orange;
+        background: $lightgrey;
         padding: 15px;
+
+        @media (min-width: $medium-min) {
+            grid-template-columns: 2fr 10fr 3fr;
+        }
     }
 
     &__headshot {
-        /* TODO: Come back and fix this. Don't include the image for mobile. */
         display: none;
 
         @media (min-width: $medium-min) {
             display: block;
-            width: 80px;
-            float: left;
-            margin-right: 30px;
         }
     }
 
     &__headshot-img {
-        width: 100%;
+        width: 75%;
         height: auto;
-        -webkit-border-radius: 50%;
         border-radius: 50%;
     }
 
-    &__name {
+    &__info {
         text-align: center;
 
         @media (min-width: $medium-min) {
-            float: left;
             text-align: left;
         }
-
-        h1 {
-            font-size: 1.5em;
-            line-height: 125%;
-            font-weight: 700;
-            font-family: $serif;
-            margin-bottom: -6px;
-
-            @media (min-width: $medium-min) {
-                font-size: 2.5em;
-            }
-        }
-
-        h2 {
-            font-size: 1.25em;
-            line-height: 125%;
-            margin-left: 2px;
-            font-family: $serif;
-
-            @media (min-width: $medium-min) {
-                font-size: 2em;
-            }
-        }
-
     }
 
     &__contact {
+        text-align: center;
+
         ul {
             list-style-type: none;
-            font-size: 0.9em;
-            margin-top: 2px;
-        }
-
-        li {
-            margin-bottom: 3px;
-            color: #444;
         }
 
         @media (min-width: $medium-min) {
-            float: right;
-            text-align: left;
+            text-align: right;
         }
     }
 
@@ -234,8 +202,7 @@ export default {
         font-size: 0.8em;
         font-style: italic;
         margin-top: 10px;
-        margin-bottom: 0;
-        color: #444;
+        color: $darkgrey;
     }
 
     &__skills {
@@ -245,10 +212,6 @@ export default {
 
     &__experience {
         list-style-type: none;
-    }
-
-    &__job {
-
     }
 
     &__job-details {
@@ -305,10 +268,6 @@ export default {
     .resume__headshot {
         display: none;
         margin-right: 0;
-    }
-
-    .resume__contact {
-        text-align: center;
     }
 }
 </style>
