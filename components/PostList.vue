@@ -3,30 +3,17 @@
 
         <ul class="c-posts__list">
 
-            <li v-for="post in posts"
-                :key="post.permalink"
-                class="c-posts__item">
+            <li v-for="post in posts" :key="post.permalink" class="c-posts__item">
 
                 <h2 class="c-posts__title">
                     <!-- eslint-disable-next-line vue/component-name-in-template-casing -->
-                    <nuxt-link
-                        :to="post.permalink"
-                        :title="post.title">
+                    <nuxt-link :to="post.permalink" :title="post.title">
                         {{ post.title }}
                     </nuxt-link>
                 </h2>
 
-                <p class="c-posts__excerpt">
-                    <!-- eslint-disable-next-line vue/no-v-html-->
-                    <span v-html="post.excerpt" />
-                    <!-- eslint-disable-next-line vue/component-name-in-template-casing -->
-                    <nuxt-link
-                        :to="post.permalink"
-                        :title="post.title"
-                        class="read-more">
-                        <span class="fa fa-angle-double-right" />
-                    </nuxt-link>
-                </p>
+                <!-- eslint-disable-next-line vue/no-v-html-->
+                <p class="c-posts__excerpt" v-html="post.excerpt" />
 
                 <div class="c-posts__meta">
                     <PostMeta :post="post" />
@@ -82,14 +69,7 @@ export default {
 
     &__meta {
         text-align: right;
-        font-size: 1em;
-        font-style: italic;
     }
 
-}
-
-.c-pagination {
-    text-align: center;
-    margin-bottom: $content-padding;
 }
 </style>

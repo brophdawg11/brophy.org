@@ -63,6 +63,7 @@ export default {
 
 .post-meta {
     line-height: 1.5em;
+    font-style: italic;
 
     @media (min-width: $medium-min) {
         line-height: 1em;
