@@ -9,7 +9,7 @@ export default {
     website: 'www.brophy.org',
     github: 'github.com/brophdawg11',
 
-    keySkills: [{
+    skills: [{
         title: 'Web Languages',
         skills: [
             'JavaScript',

@@ -1,117 +1,98 @@
 <template>
-    <div v-once id="cv">
-        <div class="mainDetails">
-            <div class="headshot">
-                <img :src="resumeData.headshot" :alt="resumeData.name">
+    <div v-once id="cv" class="resume">
+        <div class="resume__header">
+            <div class="resume__headshot">
+                <img
+                    class="resume__headshot-img"
+                    :src="data.headshot"
+                    :alt="data.name">
             </div>
 
-            <div class="name">
-                <h1>{{ resumeData.name }}</h1>
-                <h2>{{ resumeData.title }}</h2>
+            <div class="resume__name">
+                <h1>{{ data.name }}</h1>
+                <h2>{{ data.title }}</h2>
             </div>
 
-            <div class="contactDetails">
+            <div class="resume__contact">
                 <ul>
-                    <li>{{ resumeData.location }}</li>
+                    <li>{{ data.location }}</li>
                     <li>
                         e:
-                        <a :href="`mailto:${resumeData.email}`"
-                           :title="resumeData.email">
-                            {{ resumeData.email }}
+                        <a :href="`mailto:${data.email}`"
+                           :title="data.email">
+                            {{ data.email }}
                         </a>
                     </li>
                     <li>
                         w:
-                        <nuxt-link to="/">{{ resumeData.website }}</nuxt-link>
+                        <nuxt-link to="/">{{ data.website }}</nuxt-link>
                     </li>
                     <li>
-                        <ExternalLink :href="`https://${resumeData.github}`"
-                                      :title="resumeData.github">
-                            {{ resumeData.github }}
+                        <ExternalLink :href="`https://${data.github}`"
+                                      :title="data.github">
+                            {{ data.github }}
                         </ExternalLink>
                     </li>
                 </ul>
             </div>
 
-            <div class="clear" />
+            <div class="resume__clear" />
         </div>
 
-        <div id="mainArea">
+        <div class="resume__main">
 
-            <section class="keySkillsSection">
-                <div class="sectionTitle">
-                    <h1>Key Skills</h1>
-                </div>
-
-                <div class="sectionContent">
-                    <template v-for="keySkill in resumeData.keySkills">
-                        <p :key="`${keySkill.title}-title`" class="subDetails">
-                            {{ keySkill.title }}:
+            <ResumeSection title="Key Skills">
+                <ul class="resume__skills">
+                    <li v-for="skill in data.skills" :key="skill.title">
+                        <p class="resume__subtitle">
+                            {{ skill.title }}:
                         </p>
-                        <ul :key="`${keySkill.title}-list`" class="keySkills">
-                            <li
-                                v-for="skill in keySkill.skills"
-                                :key="skill"
-                                v-text="skill" />
-                        </ul>
-                    </template>
-                </div>
+                        <p>
+                            {{ skill.skills.join(', ') }}
+                        </p>
+                    </li>
+                </ul>
+            </ResumeSection>
 
-                <div class="clear" />
-            </section>
-
-            <section class="workDetails">
-                <div class="sectionTitle">
-                    <h1>Work Experience</h1>
-                </div>
-
-                <div class="sectionContent">
-
-                    <article v-for="job in resumeData.jobs" :key="job.title">
+            <ResumeSection title="Work Experience">
+                <ul class="resume__experience">
+                    <li v-for="job in data.jobs" :key="job.title" class="resume__job">
                         <!-- eslint-disable vue/no-v-html -->
-                        <h2 v-html="md(job.title)" />
+                        <h3 v-html="md(job.title)" />
                         <p v-for="subDetail in job.subDetails"
                            :key="subDetail"
-                           class="subDetails"
+                           class="resume__subtitle"
                            v-html="md(subDetail)" />
-                        <ul class="workDetails-list">
-                            <template v-for="(detail, index) in job.details">
+                        <ul class="resume__job-details">
+                            <li
+                                v-for="(detail, index) in job.details"
+                                :key="index"
+                                :class="{ 'is-nested': isArray(detail) }">
                                 <ul v-if="isArray(detail)" :key="index">
                                     <li v-for="detail2 in detail"
                                         :key="detail2"
                                         v-html="md(detail2)" />
                                 </ul>
-                                <li v-else
-                                    :key="detail"
-                                    v-html="md(detail)" />
-                            </template>
+                                <span v-else v-html="md(detail)" />
+                            </li>
                         </ul>
                         <!-- eslint-enable vue/no-v-html -->
-                    </article>
+                    </li>
+                </ul>
+            </ResumeSection>
 
-                </div>
-                <div class="clear" />
-            </section>
-
-            <section>
-                <div class="sectionTitle">
-                    <h1>Education</h1>
-                </div>
-
-                <div class="sectionContent">
-                    <article v-for="education in resumeData.education"
-                             :key="education.title">
-                        <h2>{{ education.title }}</h2>
-                        <p v-for="(detail, index) in education.details"
-                           :key="index"
-                           class="subDetails">
-                            {{ detail }}
-                        </p>
-                    </article>
-                </div>
-
-                <div class="clear" />
-            </section>
+            <ResumeSection title="Education">
+                <ul class="resume__education">
+                    <li v-for="education in data.education" :key="education.title">
+                        <h3>{{ education.title }}</h3>
+                        <ul>
+                            <li v-for="(detail, index) in education.details" :key="index">
+                                {{ detail }}
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </ResumeSection>
 
         </div>
 
@@ -123,16 +104,18 @@ import { isArray } from 'lodash-es';
 import marked from 'marked';
 
 import ExternalLink from '~/components/ExternalLink.vue';
-import resumeData from '~/content/resume-data';
+import ResumeSection from '~/components/ResumeSection.vue';
+import data from '~/content/resume-data';
 
 // @todo Custom meta tags?
 export default {
     layout: 'centered',
     components: {
         ExternalLink,
+        ResumeSection,
     },
     created() {
-        this.resumeData = resumeData;
+        this.data = data;
     },
     methods: {
         isArray,
@@ -150,284 +133,182 @@ export default {
 <style lang='scss'>
 @import '~scss/_variables.scss';
 
-#cv {
-
-    ////// Old resume styles
-    .clear {
-        clear: both;
-        margin-top: 10px;
-    }
-
-    .bold { font-weight: bold; }
-
-    .italics { font-style: italic; }
-
-    p {
-        font-size: 1em;
-        line-height: 1.4em;
-        color: #444;
-    }
+.resume {
 
     li {
         line-height: 125%;
         padding-bottom: 5px;
     }
 
-    .headshot {
-        /* TODO: Come back and fix this. Don't include the image for mobile. */
-        display: none;
+    &__clear {
+        clear: both;
+        margin-top: 10px;
     }
 
-    .mainDetails {
+    &__header {
         border-bottom: 2px solid #cf8a05;
         background: #ededed;
         padding: 15px;
     }
 
-    #mainArea {
-        padding: 0.5em;
+    &__headshot {
+        /* TODO: Come back and fix this. Don't include the image for mobile. */
+        display: none;
 
-        @media all and (min-width: $medium-min) {
-            padding: 1%;
+        @media (min-width: $medium-min) {
+            display: block;
+            width: 80px;
+            float: left;
+            margin-right: 30px;
         }
     }
 
-    .name,
-    .contactDetails {
+    &__headshot-img {
+        width: 100%;
+        height: auto;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+    }
+
+    &__name {
         text-align: center;
+
+        @media (min-width: $medium-min) {
+            float: left;
+            text-align: left;
+        }
+
+        h1 {
+            font-size: 1.5em;
+            line-height: 125%;
+            font-weight: 700;
+            font-family: $serif;
+            margin-bottom: -6px;
+
+            @media (min-width: $medium-min) {
+                font-size: 2.5em;
+            }
+        }
+
+        h2 {
+            font-size: 1.25em;
+            line-height: 125%;
+            margin-left: 2px;
+            font-family: $serif;
+
+            @media (min-width: $medium-min) {
+                font-size: 2em;
+            }
+        }
+
     }
 
-    .name h1 {
-        font-size: 1.5em;
-        line-height: 125%;
-        font-weight: 700;
-        font-family: $serif;
-        margin-bottom: -6px;
+    &__contact {
+        ul {
+            list-style-type: none;
+            font-size: 0.9em;
+            margin-top: 2px;
+        }
+
+        li {
+            margin-bottom: 3px;
+            color: #444;
+        }
+
+        @media (min-width: $medium-min) {
+            float: right;
+            text-align: left;
+        }
     }
 
-    .name h2 {
-        font-size: 1.25em;
-        line-height: 125%;
-        margin-left: 2px;
-        font-family: $serif;
+    &__main {
+        padding: 0 0.5em;
+
+        @media (min-width: $medium-min) {
+            padding: 0 20px;
+        }
     }
 
-    .contactDetails ul {
-        list-style-type: none;
-        font-size: 0.9em;
-        margin-top: 2px;
-    }
-
-    .contactDetails ul li {
-        margin-bottom: 3px;
+    &__subtitle {
+        line-height: 1.4em;
+        font-size: 0.8em;
+        font-style: italic;
+        margin-top: 10px;
+        margin-bottom: 0;
         color: #444;
     }
 
-    section {
-        border-top: 1px solid #dedede;
-        padding: 10px 0;
+    &__skills {
+        list-style-type: none;
+        line-height: 1.25em;
     }
 
-    section:first-child {
-        border-top: 0;
+    &__experience {
+        list-style-type: none;
     }
 
-    section:last-child {
-        padding-bottom: 10px;
+    &__job {
+
     }
 
-    .sectionTitle,
-    .sectionContent {
-        float: none;
-        width: 100%;
-    }
-
-    .sectionTitle {
-        font-size: 1.25em;
-    }
-
-    .sectionTitle h1 {
-        font-family: $serif;
-        font-style: italic;
-        font-size: 1.5em;
-        color: #c58405;
-    }
-
-    .sectionContent {
-        margin-left: 5px;
-    }
-
-    .sectionContent article {
-        margin-top: 15px;
-        margin-right: 10px;
-    }
-
-    .sectionContent h2 {
-        font-family: $serif;
-        font-size: 1.5em;
-    }
-
-    .subDetails {
-        font-size: 0.8em;
-        font-style: italic;
-        margin-bottom: 0;
-    }
-
-    .workDetails .sectionContent ul {
-        padding: 5px 0 4px 20px;
-    }
-
-    .workDetails-list {
+    &__job-details {
         list-style-type: disc;
         list-style-position: outside;
+        padding: 5px 0 4px 20px;
+
+        ul {
+            list-style-type: disc;
+            list-style-position: outside;
+            padding: 5px 0 4px 20px;
+        }
+
+        li {
+            &.is-nested {
+                list-style-type: none;
+
+                ul {
+                    list-style-type: circle;
+                }
+            }
+        }
 
         em {
             font-style: italic;
         }
     }
 
-    .keySkills + .subDetails {
-        padding-top: 10px;
-    }
-
-    .keySkills {
+    &__education {
         list-style-type: none;
-        -moz-column-count: 2;
-        -webkit-column-count: 2;
-        column-count: 2;
-        font-size: 1em;
-        color: #444;
-    }
 
-    .keySkills.large {
-        -moz-column-count: 1;
-        -webkit-column-count: 1;
-        column-count: 1;
-    }
-
-    .keySkills:last-child {
-        margin-bottom: 5%;
-    }
-
-    /* Add a third column, and some external padding */
-    @media all and (min-width: 480px) {
-        .keySkills {
-            -moz-column-count: 3;
-            -webkit-column-count: 3;
-            column-count: 3;
-        }
-    }
-
-    /* Transform the columns into comma separated lists */
-    @media all and (min-width: 600px), print {
-        .name h1 {
-            font-size: 2.5em;
-        }
-
-        .name h2 {
-            font-size: 2em;
-        }
-
-        .keySkills,
-        .keySkills.large {
-            display: inline;
-            list-style: none;
-            padding-bottom: 10px;
-        }
-
-        .keySkills li,
-        .keySkills.large li {
-            display: inline;
-        }
-
-        .keySkills li:after,
-        .keySkills.large li:after {
-            content: ", ";
-        }
-
-        .keySkills li:last-child:after,
-        .keySkills.large li:last-child:after {
-            content: '';
-        }
-
-        .keySkills:last-child {
-            margin-bottom: 30px;
-        }
-    }
-
-    /* Show the headshot */
-    @media screen and (min-width: 700px), print {
-        .name {
-            float: left;
-            text-align: left;
-        }
-
-        .contactDetails {
-            float: right;
-            text-align: left;
-        }
-
-        .headshot {
-            display: block;
-            width: 80px;
-            float: left;
-            margin-right: 30px;
-        }
-
-        .headshot img {
-            width: 100%;
-            height: auto;
-            -webkit-border-radius: 50%;
-            border-radius: 50%;
-        }
-    }
-
-    /* For print, remove background colors and headshot */
-    @media print {
-        html,
-        body,
-        #cv,
-        .mainDetails {
-            background: white;
-            font-size: 95%;
-        }
-
-        .mainDetails {
-            background: inherit;
-            padding: 0;
-        }
-
-        .headshot {
-            display: none;
-            margin-right: 0;
-        }
-
-        .noprint {
-            display: none;
-        }
-    }
-
-    /* Move the headers to the left column, and cap the max width of the content */
-    @media all and (min-width: 800px) {
-
-        .sectionTitle {
-            float: left;
-            width: 25%;
-        }
-
-        .sectionContent {
-            float: right;
-            width: 72.5%;
-        }
-
-        .sectionContent article:first-child {
-            margin-top: 5px;
-        }
-
-        .keySkillsSection p:first-child {
-            margin-top: 10px;
+        ul {
+            list-style-type: disc;
+            list-style-position: outside;
+            padding: 5px 0 4px 20px;
         }
     }
 }
 
+/* For print, remove background colors and headshot */
+@media print {
+    html,
+    body,
+    .resume__header {
+        background: white;
+        font-size: 95%;
+    }
+
+    .resume__header {
+        background: inherit;
+        padding: 0;
+    }
+
+    .resume__headshot {
+        display: none;
+        margin-right: 0;
+    }
+
+    .resume__contact {
+        text-align: center;
+    }
+}
 </style>
