@@ -1,7 +1,7 @@
 ---
 title: Vue Microfrontends
 author: Matt Brophy
-postDate: 2020-03-31 22:00
+postDate: 2020-03-31
 tags: vue,javascript,spa,microfrontend
 draft: true
 ---

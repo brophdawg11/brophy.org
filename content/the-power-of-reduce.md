@@ -1,7 +1,7 @@
 ---
 title: The Power of Reduce
 author: Matt Brophy
-postDate: 2019-01-28 21:30
+postDate: 2019-01-28
 tags: javascript
 ---
 

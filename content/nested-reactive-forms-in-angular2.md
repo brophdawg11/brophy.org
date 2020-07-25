@@ -1,7 +1,7 @@
 ---
 title: Nested Reactive Forms in Angular2
 author: Matt Brophy
-postDate: 2017-02-08 22:00
+postDate: 2017-02-08
 tags: angular,javascript,functional,reactive,frp
 ---
 

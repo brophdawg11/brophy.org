@@ -1,7 +1,7 @@
 ---
 title: Building a Blog with Metalsmith
 author: Matt Brophy
-postDate: 2017-02-15 19:00
+postDate: 2017-02-15
 tags: ssg,javascript,metalsmith,blog
 ---
 

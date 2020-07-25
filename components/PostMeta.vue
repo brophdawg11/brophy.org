@@ -1,8 +1,10 @@
 <template>
     <p class="post-meta">
-        <span :title="formattedDate" class="c-meta__date">{{ relativeDate }}</span>
 
-        <span class="post-meta__divider1">|</span>
+        <template v-if="relativeDate">
+            <span :title="formattedDate" class="c-meta__date">{{ relativeDate }}</span>
+            <span class="post-meta__divider1">|</span>
+        </template>
 
         {{ post.readingTime }}
 
@@ -30,12 +32,20 @@ export default {
     },
     computed: {
         postDate() {
-            return new Date(Date.parse(this.post.postDate));
+            try {
+                const [, y, m, d] = this.post.postDate.match(/(\d{4})-(\d{2})-(\d{2})/);
+                return new Date(parseInt(y, 10), parseInt(m, 10) - 1, parseInt(d, 10));
+            } catch (e) {
+                return null;
+            }
         },
         relativeDate() {
-            return vagueTime.get({ to: this.postDate.getTime() });
+            return this.postDate ? vagueTime.get({ to: this.postDate.getTime() }) : null;
         },
         formattedDate() {
+            if (!this.postDate) {
+                return this.post.postDate;
+            }
             const [, month, date, year] = this.postDate.toDateString().split(' ');
             return `${month} ${date}, ${year}`;
         },

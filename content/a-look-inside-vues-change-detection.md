@@ -1,7 +1,7 @@
 ---
 title: A Look Inside Vue's Change Detection
 author: Matt Brophy
-postDate: 2017-11-15 17:30
+postDate: 2017-11-15
 tags: vue,javascript,spa
 ---
 

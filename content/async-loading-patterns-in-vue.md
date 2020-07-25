@@ -1,7 +1,7 @@
 ---
 title: Component-Driven Performance Patterns in Vue
 author: Matt Brophy
-postDate: 2020-01-20 20:00
+postDate: 2020-01-20
 tags: vue,javascript,spa,performance
 ---
 

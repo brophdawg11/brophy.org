@@ -9,6 +9,11 @@ const pkg = require('./package');
 module.exports = {
     mode: 'universal',
 
+    server: {
+        host: '0.0.0.0',
+        port: 8000,
+    },
+
     features: {
         router: true,
         store: false,
