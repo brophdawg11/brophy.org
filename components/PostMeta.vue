@@ -1,36 +1,20 @@
 <template>
-    <div>
+    <p class="post-meta">
+        <span :title="formattedDate" class="c-meta__date">{{ relativeDate }}</span>
 
-        <p class="c-meta__line1">
-            <span :title="formattedDate" class="c-meta__date">
-                {{ relativeDate }}
-            </span>
+        <span class="post-meta__divider1">|</span>
 
-            <span class="c-meta__divider c-meta__divider--first">|</span>
+        {{ post.readingTime }}
 
-            <span class="c-meta__readtime">{{ post.readingTime }}</span>
+        <br class="post-meta__br">
 
-        </p>
+        <span class="post-meta__divider2">|</span>
 
-        <p class="c-meta__line2">
-
-            <span class="c-meta__tags">
-                Tags:
-                <template v-for="(tag, index) in tagArray">
-                    <!-- eslint-disable-next-line vue/component-name-in-template-casing -->
-                    <nuxt-link
-                        :key="tag"
-                        :to="`/tag/${tag}/`"
-                        :title="tag"><!--
-                        -->{{ tag }}<!--
-                    --></nuxt-link><!--
-                    --><template v-if="index < tagArray.length - 1">, </template>
-                </template>
-            </span>
-
-        </p>
-
-    </div>
+        <span v-for="tag in tagArray" :key="tag" class="post-meta__link">
+            <!-- eslint-disable-next-line vue/component-name-in-template-casing -->
+            <nuxt-link :key="tag" :to="`/tag/${tag}/`" :title="tag">{{ tag }}</nuxt-link>
+        </span>
+    </p>
 </template>
 
 <script>
@@ -65,27 +49,38 @@ export default {
 </script>
 
 <style lang="scss">
-.c-meta {
+@import '~scss/_variables.scss';
 
-    &__line1 {
-        padding-bottom: 0.5rem;
+.post-meta {
+    line-height: 1.5em;
+
+    @media (min-width: $medium-min) {
+        line-height: 1em;
     }
 
-    &__date {
-
+    &__divider1,
+    &__divider2 {
+        padding: 0 5px;
     }
 
-    &__divider {
-        padding: 0 10px;
+    &__divider2 {
+        display: none;
+
+        @media (min-width: $medium-min) {
+            display: inline;
+        }
     }
 
-    &__tags {
-
+    &__br {
+        @media (min-width: $medium-min) {
+            display: none;
+        }
     }
 
-    &__readtime {
-
+    &__link {
+        &:not(:last-child):after {
+            content: ', ';
+        }
     }
-
 }
 </style>

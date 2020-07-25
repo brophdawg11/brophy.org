@@ -81,6 +81,7 @@ export default {
     }
 
     &__meta {
+        text-align: right;
         font-size: 1em;
         font-style: italic;
     }
