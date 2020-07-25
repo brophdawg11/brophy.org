@@ -1,5 +1,5 @@
 <template>
-    <div v-once id="cv" class="resume">
+    <div v-once class="resume">
         <div class="resume__header">
             <div class="resume__headshot">
                 <img
