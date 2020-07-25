@@ -87,11 +87,12 @@ export default {
                 title: 'Twitter',
                 class: 'twitter',
                 icon: 'twitter',
-            // }, {
-            //     url: '/rss.xml',
-            //     title: 'RSS',
-            //     class: 'rss',
-            //     icon: 'rss-squared',
+            }, {
+                url: '/rss.xml',
+                external: true,
+                title: 'RSS',
+                class: 'rss',
+                icon: 'rss-squared',
             }],
         };
     },

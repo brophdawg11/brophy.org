@@ -5,7 +5,7 @@ postDate: 2020-01-26
 tags: vue,vuex,javascript,spa
 ---
 
-_Note: This is part 2 of a 3-part series on "Instance Aware Vuex Modules".  In [Part 1](/post/instance-aware-vuex-modules-1) we covered a basic introduction to Vuex and the use of namespaced modules.  In this post, we'll explore using dynamically-namespaced Vuex modules alongside dynamic routes in vue-router, and some interesting challenges presented._
+_Note: This is part 2 of a 3-part series on "Instance Aware Vuex Modules".  In [Part 1](https://www.brophy.org/post/instance-aware-vuex-modules-1) we covered a basic introduction to Vuex and the use of namespaced modules.  In this post, we'll explore using dynamically-namespaced Vuex modules alongside dynamic routes in vue-router, and some interesting challenges presented._
 
 ## Dynamic Vuex Modules per Route
 

@@ -308,4 +308,4 @@ For more advanced usages of this setup, including form submission, adding/removi
 [dynamic-forms]: https://angular.io/docs/ts/latest/cookbook/dynamic-form.html "Dynamic Forms"
 [ng-upgrade]: https://angular.io/docs/ts/latest/guide/upgrade.html "NgUpgrade"
 [nested-forms-in-angular2]: https://scotch.io/tutorials/how-to-build-nested-model-driven-forms-in-angular-2 "Nested Forms in Angular2"
-[continued]: /post/nested-reactive-forms-in-angular2-continued/ "Nested Reactive Forms in Angular2, Continued"
+[continued]: https://www.brophy.org/post/nested-reactive-forms-in-angular2-continued/ "Nested Reactive Forms in Angular2, Continued"

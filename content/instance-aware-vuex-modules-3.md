@@ -5,7 +5,7 @@ postDate: 2020-02-16
 tags: vue,vuex,javascript,spa
 ---
 
-_Note: This is part 3 of a 3-part series on "Instance Aware Vuex Modules".  In [Part 1](/post/instance-aware-vuex-modules-1) we covered a basic introduction to Vuex and the use of namespaced modules.  In [Part 2](/post/instance-aware-vuex-modules-2) we covered the usage of dynamic route-based Vuex modules, the issues with `map*` helpers, and how we can work around them with our own `mapInstance*` helpers methods.  In this post, we'll explore other opportunities where instance-aware Vuex modules can help us._
+_Note: This is part 3 of a 3-part series on "Instance Aware Vuex Modules".  In [Part 1](https://www.brophy.org/post/instance-aware-vuex-modules-1) we covered a basic introduction to Vuex and the use of namespaced modules.  In [Part 2](https://www.brophy.org/post/instance-aware-vuex-modules-2) we covered the usage of dynamic route-based Vuex modules, the issues with `map*` helpers, and how we can work around them with our own `mapInstance*` helpers methods.  In this post, we'll explore other opportunities where instance-aware Vuex modules can help us._
 
 _Interested in using this approach?  We've open-sourced these helpers functions we're using at [URBN](https://www.urbn.com/) as the [`@urbn/vuex-helpers`](https://www.npmjs.com/package/@urbn/vuex-helpers) package on `npm`._
 

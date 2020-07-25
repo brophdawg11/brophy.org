@@ -5,7 +5,7 @@ postDate: 2020-01-20
 tags: vue,javascript,spa,performance
 ---
 
-As web apps grow more complex, we end up sending larger JS/CSS bundles to the client.  If you're not careful, before long you can find yourself with a site that is no longer snappy on slower connections due to the sheer amount of time it takes to send the bundles across the wire.  This post aims to document  handful of patterns we've found handy at [URBN](www.urbn.com) to keep bundles small and our load times fast.
+As web apps grow more complex, we end up sending larger JS/CSS bundles to the client.  If you're not careful, before long you can find yourself with a site that is no longer snappy on slower connections due to the sheer amount of time it takes to send the bundles across the wire.  This post aims to document  handful of patterns we've found handy at [URBN](https://www.urbn.com) to keep bundles small and our load times fast.
 
 
 ## What is "Performance"?
@@ -39,7 +39,7 @@ In this post, we will focus on minimizing the amount of JS we send to the client
 
 ## Performance Budgets
 
-While I'm unsure who coined the _Performance Budget_ term, I came across the following article by Alex Russell at Google a while back, and it has largely been the basis for a lot of the performance work we've been doing at [URBN](www.urbn.com) over the past year or so.
+While I'm unsure who coined the _Performance Budget_ term, I came across the following article by Alex Russell at Google a while back, and it has largely been the basis for a lot of the performance work we've been doing at [URBN](https://www.urbn.com) over the past year or so.
 
 > [Can You Afford It?: Real-world Web Performance Budgets](https://infrequently.org/2017/10/can-you-afford-it-real-world-web-performance-budgets/)
 

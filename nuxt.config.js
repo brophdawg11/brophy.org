@@ -131,6 +131,7 @@ module.exports = {
         ...(process.env.NODE_ENV === 'production' ? [
             '@nuxtjs/pwa',
         ] : []),
+        '@nuxtjs/feed',
         ['@nuxtjs/google-analytics', {
             id: 'UA-17810974-2',
             dev: false,
@@ -165,6 +166,41 @@ module.exports = {
             });
         },
     },
+
+    feed: [{
+        path: '/rss.xml',
+        type: 'rss2',
+        async create(feed) {
+            // eslint-disable-next-line no-param-reassign
+            feed.options = {
+                title: 'Matt Brophy\'s Blog',
+                link: 'https://www.brophy.org/rss.xml',
+                description: 'Matt Brophy\'s Blog',
+            };
+
+            // eslint-disable-next-line global-require
+            const { $content } = require('@nuxt/content');
+            const posts = await $content().fetch();
+            posts.forEach(post => feed.addItem({
+                title: post.title,
+                date: new Date(post.postDate),
+                id: `https://www.brophy.org${post.permalink}`,
+                link: `https://www.brophy.org${post.permalink}`,
+                description: post.excerpt,
+                author: [{
+                    name: 'Matt Brophy',
+                    email: 'matt@brophy.org',
+                    link: 'https://www.brophy.org/',
+                }],
+            }));
+
+            feed.addContributor({
+                name: 'Matt Brophy',
+                email: 'matt@brophy.org',
+                link: 'https://www.brophy.org/',
+            });
+        },
+    }],
 
     hooks: {
         'content:file:beforeInsert': (doc) => {

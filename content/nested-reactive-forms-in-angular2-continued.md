@@ -224,5 +224,5 @@ In the end, I was pleasantly surprised with how easy Angular2's new `ReactiveFor
 [dynamic-forms]: https://angular.io/docs/ts/latest/cookbook/dynamic-form.html "Dynamic Forms"
 [ng-upgrade]: https://angular.io/docs/ts/latest/guide/upgrade.html "NgUpgrade"
 [nested-forms-in-angular2]: https://scotch.io/tutorials/how-to-build-nested-model-driven-forms-in-angular-2 "Nested Forms in Angular2"
-[part-1]: /post/nested-reactive-forms-in-angular2/ "Nested Reactive Forms in Angular2"
+[part-1]: https://www.brophy.org/post/nested-reactive-forms-in-angular2/ "Nested Reactive Forms in Angular2"
 [twitter]: http://www.twitter.com/brophdawg11 "@brophdawg11"
