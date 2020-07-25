@@ -5,6 +5,7 @@ const marked = require('marked');
 const readingTime = require('reading-time');
 
 const pkg = require('./package');
+const { getPostsContentChain } = require('./assets/js/utils');
 
 module.exports = {
     mode: 'universal',
@@ -36,7 +37,7 @@ module.exports = {
         async routes() {
             // eslint-disable-next-line global-require
             const { $content } = require('@nuxt/content');
-            const files = await $content().only(['permalink', 'tags']).fetch();
+            const files = await getPostsContentChain($content).fetch();
 
             // Generate full list of tags for all posts
             const uniq = arr => [...new Set(arr)];
@@ -180,7 +181,7 @@ module.exports = {
 
             // eslint-disable-next-line global-require
             const { $content } = require('@nuxt/content');
-            const posts = await $content().fetch();
+            const posts = await getPostsContentChain($content).fetch();
             posts.forEach(post => feed.addItem({
                 title: post.title,
                 date: new Date(post.postDate),
