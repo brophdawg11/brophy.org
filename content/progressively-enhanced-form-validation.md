@@ -51,7 +51,7 @@ So, when we first started evaluating Vue form validation libraries at URBN back 
 
 We initially looked at the two main Vue form validation libraries - [Vee-Validate](https://logaretm.github.io/vee-validate/) and [Vuelidate](https://vuelidate.js.org/).
 
-#### vee-validate
+### vee-validate
 
 The thing we liked about vee-validate was it's template driven approach.  However, it was still going through a custom `v-validate` directive which cluttered up the actual `input` elements.  You also specified your validation rules through this directive instead of using existing HTML5 validation attributes.  Finally, at the time v2 was [prohibitively large](https://bundlephobia.com/result?p=vee-validate@2.2.15) (30k gzipped).  So in the end, it didn't meet a few of our requirements.
 
@@ -64,7 +64,7 @@ It does look like they've made some major changes in v3 - moving to a wrapper co
 </ValidationProvider>
 ```
 
-#### vuelidate
+### vuelidate
 
 Vuelidate was much more reasonable in size, only [3.5k gzipped](https://bundlephobia.com/result?p=vuelidate@0.7.5), but it had a fairly awkward model-driven approach that was intrusive to `v-model`, required defining validations in javascript instead of the template, and didn't use any existing HTML5 validation attributes.
 

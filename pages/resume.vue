@@ -14,26 +14,12 @@
             </div>
 
             <div class="resume__contact">
-                <ul>
-                    <li>{{ data.location }}</li>
-                    <li>
-                        e:
-                        <a :href="`mailto:${data.email}`"
-                           :title="data.email">
-                            {{ data.email }}
-                        </a>
-                    </li>
-                    <li>
-                        w:
-                        <nuxt-link to="/">{{ data.website }}</nuxt-link>
-                    </li>
-                    <li>
-                        <ExternalLink :href="`https://${data.github}`"
-                                      :title="data.github">
-                            {{ data.github }}
-                        </ExternalLink>
-                    </li>
-                </ul>
+                {{ data.location }}<br>
+                <a :href="`mailto:${data.email}`" :title="data.email">{{ data.email }}</a><br>
+                <nuxt-link to="/">{{ data.website }}</nuxt-link><br>
+                <ExternalLink :href="`https://${data.github}`" :title="data.github">
+                    {{ data.github }}
+                </ExternalLink>
             </div>
         </div>
 
@@ -57,18 +43,22 @@
                     <li v-for="job in data.jobs" :key="job.title">
                         <!-- eslint-disable vue/no-v-html -->
                         <h3 v-html="md(job.title)" />
+
                         <p v-for="subDetail in job.subDetails"
                            :key="subDetail"
                            class="resume__subtitle"
                            v-html="md(subDetail)" />
+
                         <ul class="resume__job-details">
                             <li
-                                v-for="(detail, index) in job.details"
-                                :key="index"
+                                v-for="(detail, idx) in job.details"
+                                :key="idx"
+                                class="resume__job-details-line"
                                 :class="{ 'is-nested': isArray(detail) }">
-                                <ul v-if="isArray(detail)" :key="index">
-                                    <li v-for="detail2 in detail"
-                                        :key="detail2"
+                                <ul v-if="isArray(detail)" class="resume__job-details-nested">
+                                    <li v-for="(detail2, idx2) in detail"
+                                        :key="idx2"
+                                        class="resume__job-details-line-nested"
                                         v-html="md(detail2)" />
                                 </ul>
                                 <span v-else v-html="md(detail)" />
@@ -83,7 +73,7 @@
                 <ul class="resume__education">
                     <li v-for="education in data.education" :key="education.title">
                         <h3>{{ education.title }}</h3>
-                        <ul>
+                        <ul class="resume__education-list">
                             <li v-for="(detail, index) in education.details" :key="index">
                                 {{ detail }}
                             </li>
@@ -138,9 +128,8 @@ export default {
         padding-bottom: 5px;
     }
 
-    &__clear {
-        clear: both;
-        margin-top: 10px;
+    em {
+        font-style: italic;
     }
 
     &__header {
@@ -179,10 +168,7 @@ export default {
 
     &__contact {
         text-align: center;
-
-        ul {
-            list-style-type: none;
-        }
+        line-height: 1.5em;
 
         @media (min-width: $medium-min) {
             text-align: right;
@@ -214,40 +200,31 @@ export default {
         list-style-type: none;
     }
 
-    &__job-details {
+    &__job-details,
+    &__job-details-nested {
         list-style-type: disc;
         list-style-position: outside;
         padding: 5px 0 4px 20px;
+    }
 
-        ul {
-            list-style-type: disc;
-            list-style-position: outside;
-            padding: 5px 0 4px 20px;
+    &__job-details-line {
+        &.is-nested {
+            list-style-type: none;
         }
+    }
 
-        li {
-            &.is-nested {
-                list-style-type: none;
-
-                ul {
-                    list-style-type: circle;
-                }
-            }
-        }
-
-        em {
-            font-style: italic;
-        }
+    &__job-details-nested {
+        list-style-type: circle;
     }
 
     &__education {
         list-style-type: none;
+    }
 
-        ul {
-            list-style-type: disc;
-            list-style-position: outside;
-            padding: 5px 0 4px 20px;
-        }
+    &__education-list {
+        list-style-type: disc;
+        list-style-position: outside;
+        padding: 5px 0 4px 20px;
     }
 }
 
