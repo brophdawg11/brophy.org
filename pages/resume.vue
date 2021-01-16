@@ -88,7 +88,6 @@
 </template>
 
 <script>
-import { isArray } from 'lodash-es';
 import marked from 'marked';
 
 import ExternalLink from '~/components/ExternalLink.vue';
@@ -97,16 +96,18 @@ import data from '~/content/resume-data';
 
 // @todo Custom meta tags?
 export default {
-    layout: 'centered',
     components: {
         ExternalLink,
         ResumeSection,
     },
+    layout: 'centered',
     created() {
         this.data = data;
     },
     methods: {
-        isArray,
+        isArray(arr) {
+            return Array.isArray(arr);
+        },
         md(value) {
             try {
                 return marked(value).trim().replace(/^<p>|<\/p>$/g, '');

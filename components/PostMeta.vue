@@ -20,7 +20,6 @@
 </template>
 
 <script>
-import { isString } from 'lodash-es';
 import vagueTime from 'vague-time';
 
 export default {
@@ -50,7 +49,7 @@ export default {
             return `${month} ${date}, ${year}`;
         },
         tagArray() {
-            return isString(this.post.tags) ?
+            return typeof this.post.tags === 'string' ?
                 this.post.tags.split(',') :
                 [];
         },

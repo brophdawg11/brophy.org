@@ -67,6 +67,20 @@ export default {
         const [post, [nextPost, previousPost]] = data;
         return { post, nextPost, previousPost };
     },
+    head() {
+        const dupTags = (names, content) => names.map(name => ({ name, content }));
+        return {
+            title: `${this.post.title} | brophy.org`,
+            meta: [
+                {
+                    name: 'keywords',
+                    content: this.post.tags,
+                },
+                ...dupTags(['title', 'og:title', 'twitter:title'], this.post.title),
+                ...dupTags(['og:url', 'twitter:url'], this.url),
+            ],
+        };
+    },
     computed: {
         url() {
             return `https://www.brophy.org${this.post.permalink}`;
@@ -104,20 +118,6 @@ export default {
 
             return appendScript('https://static.codepen.io/assets/embed/ei.js');
         },
-    },
-    head() {
-        const dupTags = (names, content) => names.map(name => ({ name, content }));
-        return {
-            title: `${this.post.title} | brophy.org`,
-            meta: [
-                {
-                    name: 'keywords',
-                    content: this.post.tags,
-                },
-                ...dupTags(['title', 'og:title', 'twitter:title'], this.post.title),
-                ...dupTags(['og:url', 'twitter:url'], this.url),
-            ],
-        };
     },
 };
 </script>

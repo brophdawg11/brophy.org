@@ -1,4 +1,3 @@
-
 <template>
     <div>
         <h1 class="c-tags__title">
