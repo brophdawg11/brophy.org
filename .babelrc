@@ -1,15 +1,13 @@
 {
-    presets: [
-        ["env", {
-            targets: {
-                browsers: [ ">5%", "last 2 versions" ]
+    "presets": [
+        ["@babel/preset-env", {
+            "targets": {
+                "browsers": [ ">1%", "last 2 versions" ]
             },
-            modules: false
-        }],
+            "modules": false
+        }]
     ],
-    plugins: [
-        // Allow proper tree shaking of lodash ES6 named imports
-        "lodash",
-        "syntax-dynamic-import"
-    ],
+    "plugins": [
+        "@babel/plugin-syntax-dynamic-import"
+    ]
 }

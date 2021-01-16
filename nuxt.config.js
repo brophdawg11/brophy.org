@@ -142,17 +142,6 @@ module.exports = {
     ],
 
     build: {
-        babel: {
-            plugins: [
-                // Allow proper tree shaking of lodash ES6 named imports
-                'lodash',
-            ],
-        },
-
-        transpile: [
-            'lodash-es',
-        ],
-
         /*
          ** You can extend webpack config here
          */
