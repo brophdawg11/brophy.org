@@ -1,29 +1,30 @@
 <template>
-    <ul class="page-links__ul">
+    <nav class="circle-links">
 
-        <li v-for="link in links"
-            :key="link.url"
-            class="page-link__li">
+        <template v-for="link in links">
 
-            <ExternalLink v-if="link.external"
-                          :href="link.url"
-                          :title="link.title"
-                          class="page-link__a">
+            <ExternalLink
+                v-if="link.external"
+                :key="link.url"
+                :href="link.url"
+                :title="link.title"
+                class="circle-links__a">
                 <LinkBody :icon="link.icon" :title="link.title" />
             </ExternalLink>
 
             <!-- eslint-disable-next-line vue/component-name-in-template-casing -->
             <nuxt-link
                 v-else
+                :key="link.url"
                 :to="link.url"
                 :title="link.title"
-                class="page-link__a">
+                class="circle-links__a">
                 <LinkBody :icon="link.icon" :title="link.title" />
             </nuxt-link>
 
-        </li>
+        </template>
 
-    </ul>
+    </nav>
 </template>
 
 <script>
@@ -44,7 +45,7 @@ const LinkBody = {
     render(h, context) {
         return [
             h('span', { attrs: { class: `fa fa-${context.props.icon}` } }),
-            h('span', { attrs: { class: 'page-link__p' } }, context.props.title),
+            h('span', { attrs: { class: 'circle-links__p' } }, context.props.title),
         ];
     },
 };
@@ -67,75 +68,63 @@ export default {
 <style lang="scss">
 @import '~scss/_variables.scss';
 
-.page-links__ul {
+.circle-links {
     text-align: center;
     color: $orange;
-}
 
-.page-link__li {
-    display: inline-block;
-    margin: 1em;
-
-    &:hover {
-
-    }
-
-    @media screen and (min-width: $large-min) {
+    &__a {
         position: relative;
-    }
-}
-
-.page-link__a {
-    background-color: $offwhite;
-    border: 2px solid $orange;
-    border-radius: 50%;
-    transition: all $transition-duration;
-    padding: (2.5 * $base-link-unit) (1.4 * $base-link-unit) (2 * $base-link-unit);
-    text-decoration: none;
-    font-family: $sans-serif;
-
-    .fa {
-        font-size: 3 * $base-link-unit;
-    }
-
-    &:link,
-    &:active,
-    &:visited,
-    &:hover {
-        color: inherit;
+        display: inline-block;
+        margin: 0 $base-link-unit;
+        background-color: $offwhite;
+        border: 2px solid $orange;
+        border-radius: 50%;
+        transition: all $transition-duration;
+        padding: (2 * $base-link-unit) (1.5 * $base-link-unit);
         text-decoration: none;
-    }
+        font-family: $sans-serif;
 
-    &:hover,
-    &:focus {
-        background-color: $orange;
-        color: $offwhite;
+        .fa {
+            font-size: 3 * $base-link-unit;
+        }
 
-        @media screen and (min-width: $large-min) {
-            .page-link__p {
-                opacity: 1;
+        &:link,
+        &:active,
+        &:visited,
+        &:hover {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        &:hover,
+        &:focus {
+            background-color: $orange;
+            color: $offwhite;
+
+            @media screen and (min-width: $large-min) {
+                & .circle-links__p {
+                    opacity: 1;
+                }
             }
         }
     }
-}
 
-.page-link__p {
-    display: none;
+    &__p {
+        display: none;
 
-    @media screen and (min-width: $large-min) {
-        display: block;
-        color: $orange;
-        opacity: 0;
-        position: absolute;
-        bottom: 0;
-        width: 150%;
-        margin-bottom: -(6 * $base-link-unit);
-        margin-left: -25%;
-        text-align: center;
-        left: 0;
-        right: 0;
-        transition: opacity $transition-duration;
-        font-size: 0.8em;
+        @media screen and (min-width: $large-min) {
+            display: block;
+            color: $orange;
+            opacity: 0;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            margin-bottom: -(4 * $base-link-unit);
+            text-align: center;
+            transition: opacity $transition-duration;
+            font-size: 0.8em;
+        }
     }
 }
 </style>

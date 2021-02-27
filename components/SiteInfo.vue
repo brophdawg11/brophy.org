@@ -22,12 +22,6 @@
             </ExternalLink>
         </p>
         <p class="page-footer-line">
-            side images from
-            <ExternalLink href="https://www.gratisography.com/" title="Gratisography">
-                gratisography
-            </ExternalLink>
-        </p>
-        <p class="page-footer-line">
             icons from
             <ExternalLink href="https://fontawesome.com/"
                           title="Font-Awesome">

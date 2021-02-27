@@ -1,42 +1,19 @@
 <template>
-    <div>
+    <div :class="`page-content-wrapper s-page-${$route.name}`">
 
-        <aside class="page-aside">
+        <header class="page-header">
+            <CircleLinks :links="headerLinks" />
+        </header>
 
-            <div class="page-aside-img-loader" />
+        <div class="page-content">
+            <!-- eslint-disable-next-line vue/component-name-in-template-casing -->
+            <nuxt />
+        </div>
 
-        </aside>
-
-        <section class="page-content-wrapper">
-
-            <header class="page-header">
-
-                <nav>
-
-                    <CircleLinks :links="headerLinks" class="s-header-links" />
-
-                </nav>
-
-            </header>
-
-            <div class="page-content">
-                <!-- eslint-disable-next-line vue/component-name-in-template-casing -->
-                <nuxt />
-            </div>
-
-            <footer class="page-footer">
-
-                <nav class="page-footer-nav">
-
-                    <CircleLinks :links="footerLinks" class="s-footer-links" />
-
-                </nav>
-
-                <SiteInfo />
-
-            </footer>
-
-        </section>
+        <footer class="page-footer">
+            <CircleLinks :links="footerLinks" class="page-footer__links" />
+            <SiteInfo />
+        </footer>
 
     </div>
 </template>
@@ -125,71 +102,36 @@ export default {
 <style lang="scss">
 @import '~scss/_variables.scss';
 
-.page-aside {
-    background-position: 50% 50%;
-    background-size: cover;
-    height: 150px;
-    background-image: url('~static/images/asides/bike-wide-small-4.jpg');
-
-    @media screen and (min-width: $medium-min) {
-        background-image: url('~static/images/asides/bike-wide-medium-4.jpg');
-    }
-
-    @media screen and (min-width: $large-min) {
-        position: fixed;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        width: $lhs-aside-width;
-        height: 100%;
-        background-image: url('~static/images/asides/bike-tall-4.jpg');
-    }
-}
-
 .page-content-wrapper {
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
+    padding: 0 $content-padding;
+}
 
-    position: relative;
-    padding: $content-padding;
-
-    @media screen and (min-width: $large-min) {
-        padding: $content-padding 0;
-        // @todo This is messy!!
-        margin-left: calc(#{$lhs-aside-width} + #{$content-padding});
-        width: calc(100% - #{$lhs-aside-width} - #{2 * $content-padding});
-        min-height: 100vh;
-    }
+.page-header {
+    padding: $content-padding 0 (2 * $content-padding);
+    text-align: center;
 }
 
 .page-content {
+    padding-bottom: 2 * $content-padding;
     width: 100%;
-    max-width: 660px;
+    max-width: 45em;
     margin: auto;
-    padding-bottom: $content-padding;
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.page-header {
-    position: absolute;
-    top: -($top-aside-height / 2);
-    left: 0;
-    right: 0;
-    padding-bottom: $content-padding;
-    text-align: center;
-
-    @media screen and (min-width: $large-min) {
-        position: relative;
-        top: 0;
-    }
-}
-
 .page-footer {
-    padding-top: $content-padding;
+    padding: (2 * $content-padding) 0 $content-padding;
     text-align: center;
+
+    &__links {
+        margin-bottom: 6 * $base-link-unit;
+    }
 }
 
 .page-footer-nav {
@@ -197,21 +139,13 @@ export default {
     font-size: 0.75em;
 }
 
-.s-header-links {
+ @media screen and (min-width: $large-min) {
+    .page-header, .page-footer {
+        opacity: 0.2;
+        transition: opacity 500ms ease;
 
-}
-
-.s-footer-links {
-
-    &.page-links__ul {
-        padding-bottom: $content-padding;
-    }
-
-    .page-link__li {
-        margin: (3 * $base-link-unit) (1.5 * $base-link-unit);
-
-        @media screen and (min-width: $small-min) {
-            margin: 2 * $base-link-unit;
+        &:hover, .s-page-index & {
+            opacity: 1;
         }
     }
 }

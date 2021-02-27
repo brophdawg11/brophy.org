@@ -137,7 +137,6 @@ export default {
         display: grid;
         grid-template-columns: 1fr;
         border-bottom: 2px solid $orange;
-        background: $lightgrey;
         padding: 15px;
 
         @media (min-width: $medium-min) {
@@ -229,17 +228,12 @@ export default {
     }
 }
 
-/* For print, remove background colors and headshot */
+/* For print, remove headshot */
 @media print {
     html,
     body,
     .resume__header {
-        background: white;
         font-size: 95%;
-    }
-
-    .resume__header {
-        background: inherit;
         padding: 0;
     }
 

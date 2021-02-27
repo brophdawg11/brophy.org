@@ -1,7 +1,7 @@
 <template>
     <div>
-        <h1 class="c-tags__title">
-            <span class="c-tags__title-tag">{{ tag }}</span> Posts
+        <h1 class="tag__title">
+            Posts tagged with <span class="tag__tag">{{ tag }}</span>
         </h1>
 
         <PostList :posts="posts" />
@@ -25,4 +25,17 @@ export default {
 </script>
 
 <style lang="scss">
+@import '~scss/_variables.scss';
+
+.tag {
+    &__title {
+        margin-bottom: 2em;
+        font-size: 1.5em;
+        text-align: center;
+    }
+
+    &__tag {
+        color: $orange;
+    }
+}
 </style>
