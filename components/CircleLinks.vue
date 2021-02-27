@@ -84,6 +84,14 @@ export default {
         text-decoration: none;
         font-family: $sans-serif;
 
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+
         .fa {
             font-size: 3 * $base-link-unit;
         }
