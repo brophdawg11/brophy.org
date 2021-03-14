@@ -102,10 +102,14 @@
         border-radius: 5px;
     }
 
-    .nuxt-content-highlight {
-        padding-bottom: $content-padding;
+    pre.hljs {
+        margin-bottom: $content-padding;
+        line-height: 1.25rem;
+        border: 1px solid $grey;
 
         code {
+            width: 100%;
+            overflow-x: auto;
             padding: 0;
             font-size: inherit;
             background-color: inherit;

@@ -9,7 +9,7 @@
             </div>
         </header>
 
-        <nuxt-content class="c-post__content" :document="post" />
+        <div class="c-post__content" v-html="post.__content"></div>
 
         <footer>
             <div class="c-post__share">
@@ -47,25 +47,45 @@
 import PostMeta from '~/components/PostMeta.vue';
 import PostNav from '~/components/PostNav.vue';
 
+async function loadManifest() {
+    const manifest = await import(/* webpackChunkName: "contents" */ '~/build/contents.json');
+    return manifest.default;
+}
+
+async function loadPost(manifest, slug) {
+    const { default: post } = await import(`~/content/${slug}.md`);
+    const postMeta = manifest.contents.find(p => p.slug === slug);
+    return {
+        ...post,
+        ...postMeta,
+    };
+}
+
+function getSurroundingPosts(manifest, slug) {
+    const posts = manifest.contents.filter(p => !p.draft);
+    const idx = posts.findIndex(p => p.slug === slug);
+    if (idx < 0) {
+        return [null, null];
+    }
+    return [posts[idx + 1], posts[idx - 1]];
+}
+
 export default {
     components: {
         PostMeta,
         PostNav,
     },
-    async asyncData({ route, $content }) {
+    async asyncData({ route }) {
         const { slug } = route.params;
-        const data = await Promise.all([
-            $content(slug).fetch(),
-            $content()
-                .where({ draft: { $ne: true } })
-                .only(['title', 'permalink'])
-                .sortBy('postDate', 'desc')
-                .surround(slug)
-                .fetch(),
-        ]);
+        const manifest = await loadManifest();
+        const post = await loadPost(manifest, slug);
+        const [previousPost, nextPost] = getSurroundingPosts(manifest, slug);
 
-        const [post, [nextPost, previousPost]] = data;
-        return { post, nextPost, previousPost };
+        return {
+            post,
+            previousPost,
+            nextPost,
+        };
     },
     head() {
         const dupTags = (names, content) => names.map(name => ({ name, content }));

@@ -3,16 +3,16 @@
 </template>
 
 <script>
-import { getPostsContentChain } from '~/assets/js/utils';
 import PostList from '~/components/PostList.vue';
 
 export default {
     components: {
         PostList,
     },
-    async asyncData({ $content }) {
-        const posts = await getPostsContentChain($content).fetch();
-        return { posts };
+    async asyncData() {
+        const { default: data } =
+            await import(/* webpackChunkName: "contents" */ '~/build/contents.json');
+        return { posts: data.contents };
     },
 };
 </script>

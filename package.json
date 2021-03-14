@@ -33,7 +33,6 @@
     "lint": "eslint --ext .js,.vue ."
   },
   "dependencies": {
-    "@nuxt/content": "1.4.1",
     "@nuxtjs/feed": "2.0.0",
     "@nuxtjs/google-analytics": "2.4.0",
     "@nuxtjs/pwa": "3.0.0-beta.20",
@@ -53,9 +52,14 @@
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-promise": "4.2.1",
     "eslint-plugin-vue": "7.4.1",
+    "highlight.js": "10.6.0",
     "husky": "4.3.8",
+    "markdown-with-front-matter-loader": "0.1.0",
+    "mkdirp": "1.0.4",
     "node-sass": "4.14.1",
+    "pify": "5.0.0",
     "reading-time": "1.2.1",
-    "sass-loader": "9.0.2"
+    "sass-loader": "9.0.2",
+    "yaml-front-matter": "4.1.1"
   }
 }
