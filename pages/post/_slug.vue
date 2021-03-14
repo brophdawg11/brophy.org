@@ -47,10 +47,22 @@
 import PostMeta from '~/components/PostMeta.vue';
 import PostNav from '~/components/PostNav.vue';
 
-async function getSurroundingPosts(slug) {
-    const { default: data } =
-        await import(/* webpackChunkName: "contents" */ '~/build/contents.json');
-    const posts = data.contents.filter(p => !p.draft);
+async function loadManifest() {
+    const manifest = await import(/* webpackChunkName: "contents" */ '~/build/contents.json');
+    return manifest.default;
+}
+
+async function loadPost(manifest, slug) {
+    const { default: post } = await import(`~/content/${slug}.md`);
+    const postMeta = manifest.contents.find(p => p.slug === slug);
+    return {
+        ...post,
+        ...postMeta,
+    };
+}
+
+function getSurroundingPosts(manifest, slug) {
+    const posts = manifest.contents.filter(p => !p.draft);
     const idx = posts.findIndex(p => p.slug === slug);
     if (idx < 0) {
         return [null, null];
@@ -65,16 +77,12 @@ export default {
     },
     async asyncData({ route }) {
         const { slug } = route.params;
-        const [data, [previousPost, nextPost]] = await Promise.all([
-            import(`~/content/${slug}.md`),
-            getSurroundingPosts(slug),
-        ]);
+        const manifest = await loadManifest();
+        const post = await loadPost(manifest, slug);
+        const [previousPost, nextPost] = getSurroundingPosts(manifest, slug);
 
         return {
-            post: {
-                ...data.default,
-                permalink: `/shop/${slug}`,
-            },
+            post,
             previousPost,
             nextPost,
         };

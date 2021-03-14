@@ -2,10 +2,6 @@
 
 const path = require('path');
 
-const cheerio = require('cheerio');
-const marked = require('marked');
-const readingTime = require('reading-time');
-
 const ManifestPlugin = require('./build/manifest-plugin');
 const pkg = require('./package');
 
@@ -198,20 +194,4 @@ module.exports = {
             });
         },
     }],
-
-    hooks: {
-        'content:file:beforeInsert': (doc) => {
-            if (doc.extension === '.md') {
-                const $ = cheerio.load(marked(doc.text));
-                Object.assign(doc, {
-                    permalink: `/post/${doc.slug}`,
-                    excerpt: $.html($('p').first())
-                        .trim()
-                        .replace(/^<p>/, '')
-                        .replace(/<\/p>$/, ''),
-                    readingTime: readingTime(doc.text).text,
-                });
-            }
-        },
-    },
 };
