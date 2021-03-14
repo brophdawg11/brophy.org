@@ -6,8 +6,8 @@ const cheerio = require('cheerio');
 const marked = require('marked');
 const readingTime = require('reading-time');
 
+const ManifestPlugin = require('./build/manifest-plugin');
 const pkg = require('./package');
-const { getPostsContentChain } = require('./assets/js/utils');
 
 module.exports = {
     mode: 'universal',
@@ -38,18 +38,17 @@ module.exports = {
     generate: {
         async routes() {
             // eslint-disable-next-line global-require
-            const { $content } = require('@nuxt/content');
-            const files = await getPostsContentChain($content).fetch();
+            const { contents } = require('./dist/contents.json').default;
 
             // Generate full list of tags for all posts
             const uniq = arr => [...new Set(arr)];
-            const tags = files.reduce((acc, f) => [
+            const tags = contents.reduce((acc, f) => [
                 ...acc,
                 ...f.tags.split(',').map(t => t.trim()),
             ], []);
 
             return [
-                ...files.map(f => f.permalink),
+                ...contents.map(f => f.permalink),
                 ...uniq(tags).map(t => `/tag/${t}`),
             ];
         },
@@ -130,7 +129,6 @@ module.exports = {
     ],
 
     modules: [
-        '@nuxt/content',
         ...(process.env.NODE_ENV === 'production' ? [
             '@nuxtjs/pwa',
         ] : []),
@@ -142,9 +140,6 @@ module.exports = {
     ],
 
     build: {
-        /*
-         ** You can extend webpack config here
-         */
         extend(config, ctx) {
             Object.assign(config.resolve.alias, {
                 scss: path.resolve(__dirname, './assets/scss'),
@@ -156,6 +151,17 @@ module.exports = {
                 filename: `[name].[${hash}].js`,
                 chunkFilename: `async/[name].[${hash}].js`,
             });
+
+            config.module.rules.push({
+                test: /\.md$/,
+                loader: './build/markdown-loader',
+            });
+
+            config.plugins.push(new ManifestPlugin({
+                forceRebuild: !ctx.isDev,
+                includeDraft: ctx.isDev,
+                pretty: ctx.isDev,
+            }));
         },
     },
 
@@ -171,9 +177,8 @@ module.exports = {
             };
 
             // eslint-disable-next-line global-require
-            const { $content } = require('@nuxt/content');
-            const posts = await getPostsContentChain($content).fetch();
-            posts.forEach(post => feed.addItem({
+            const { contents } = require('./dist/contents.json').default;
+            contents.forEach(post => feed.addItem({
                 title: post.title,
                 date: new Date(post.postDate),
                 id: `https://www.brophy.org${post.permalink}`,

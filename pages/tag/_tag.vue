@@ -9,17 +9,20 @@
 </template>
 
 <script>
-import { getPostsContentChain } from '~/assets/js/utils';
 import PostList from '~/components/PostList.vue';
 
 export default {
     components: {
         PostList,
     },
-    async asyncData({ $content, route }) {
+    async asyncData({ route }) {
         const { tag } = route.params;
-        const posts = await getPostsContentChain($content).fetch();
-        return { tag, posts: posts.filter(p => p.tags.split(',').includes(tag)) };
+        const { default: data } =
+            await import(/* webpackChunkName: "contents" */ '~/dist/contents.json');
+        return {
+            tag,
+            posts: data.contents.filter(p => p.tags.split(',').includes(tag)),
+        };
     },
 };
 </script>
