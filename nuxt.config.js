@@ -38,7 +38,7 @@ module.exports = {
     generate: {
         async routes() {
             // eslint-disable-next-line global-require
-            const { contents } = require('./dist/contents.json').default;
+            const { contents } = require('./build/contents.json');
 
             // Generate full list of tags for all posts
             const uniq = arr => [...new Set(arr)];
@@ -177,7 +177,7 @@ module.exports = {
             };
 
             // eslint-disable-next-line global-require
-            const { contents } = require('./dist/contents.json').default;
+            const { contents } = require('./build/contents.json');
             contents.forEach(post => feed.addItem({
                 title: post.title,
                 date: new Date(post.postDate),

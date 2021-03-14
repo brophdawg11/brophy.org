@@ -49,7 +49,7 @@ import PostNav from '~/components/PostNav.vue';
 
 async function getSurroundingPosts(slug) {
     const { default: data } =
-        await import(/* webpackChunkName: "contents" */ '~/dist/contents.json');
+        await import(/* webpackChunkName: "contents" */ '~/build/contents.json');
     const posts = data.contents.filter(p => !p.draft);
     const idx = posts.findIndex(p => p.slug === slug);
     if (idx < 0) {

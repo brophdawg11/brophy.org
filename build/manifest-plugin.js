@@ -56,7 +56,7 @@ class ManifestPlugin {
     constructor(options) {
         this.options = {
             contentDir: './content',
-            outputDir: './dist',
+            outputDir: './build',
             outputFile: 'contents.json',
             pretty: true,
             ...options,
@@ -95,7 +95,7 @@ class ManifestPlugin {
         const pluginName = this.constructor.name;
         this.logger = compiler.getInfrastructureLogger(pluginName);
         this.logger.debug('Loaded with options', this.options);
-        compiler.hooks.beforeCompile.tapAsync('run', (compilation, callback) => {
+        compiler.hooks.beforeRun.tapAsync('run', (compilation, callback) => {
             if (!this.options.forceRebuild && !haveFilesChanged(this.options)) {
                 callback();
                 return;

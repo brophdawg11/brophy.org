@@ -11,7 +11,7 @@ export default {
     },
     async asyncData() {
         const { default: data } =
-            await import(/* webpackChunkName: "contents" */ '~/dist/contents.json');
+            await import(/* webpackChunkName: "contents" */ '~/build/contents.json');
         return { posts: data.contents };
     },
 };

@@ -18,7 +18,7 @@ export default {
     async asyncData({ route }) {
         const { tag } = route.params;
         const { default: data } =
-            await import(/* webpackChunkName: "contents" */ '~/dist/contents.json');
+            await import(/* webpackChunkName: "contents" */ '~/build/contents.json');
         return {
             tag,
             posts: data.contents.filter(p => p.tags.split(',').includes(tag)),
