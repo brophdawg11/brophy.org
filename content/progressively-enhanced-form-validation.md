@@ -1,7 +1,7 @@
 ---
 title: Progressively Enhanced Form Validation
 author: Matt Brophy
-postDate: 2020-02-16
+postDate: 2020-02-16T20:00:00
 tags: vue,javascript,spa,forms
 ---
 

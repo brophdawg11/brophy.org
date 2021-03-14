@@ -1,7 +1,7 @@
 ---
 title: Instance-Aware Vuex Modules - Part 2
 author: Matt Brophy
-postDate: 2020-01-26
+postDate: 2020-01-26T18:00:00
 tags: vue,vuex,javascript,spa
 ---
 
