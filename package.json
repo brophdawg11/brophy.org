@@ -38,8 +38,7 @@
     "@nuxtjs/pwa": "3.0.0-beta.20",
     "koa": "2.13.1",
     "marked": "1.2.7",
-    "nuxt": "2.13.3",
-    "vague-time": "2.4.2"
+    "nuxt": "2.13.3"
   },
   "devDependencies": {
     "@babel/eslint-parser": "7.12.1",
@@ -60,6 +59,7 @@
     "pify": "5.0.0",
     "reading-time": "1.2.1",
     "sass-loader": "9.0.2",
+    "vague-time": "2.4.2",
     "yaml-front-matter": "4.1.1"
   }
 }

@@ -1,10 +1,9 @@
 <template>
     <p class="post-meta">
 
-        <template v-if="relativeDate">
-            <span :title="formattedDate" class="c-meta__date">{{ relativeDate }}</span>
-            <span class="post-meta__divider1">|</span>
-        </template>
+        <span :title="formattedDate" class="c-meta__date">{{ post.relativeDate }}</span>
+
+        <span class="post-meta__divider1">|</span>
 
         {{ post.readingTime }}
 
@@ -20,8 +19,6 @@
 </template>
 
 <script>
-import vagueTime from 'vague-time';
-
 export default {
     props: {
         post: {
@@ -30,23 +27,14 @@ export default {
         },
     },
     computed: {
-        postDate() {
-            try {
-                const [, y, m, d] = this.post.postDate.match(/(\d{4})-(\d{2})-(\d{2})/);
-                return new Date(parseInt(y, 10), parseInt(m, 10) - 1, parseInt(d, 10));
-            } catch (e) {
-                return null;
-            }
-        },
-        relativeDate() {
-            return this.postDate ? vagueTime.get({ to: this.postDate.getTime() }) : null;
-        },
         formattedDate() {
-            if (!this.postDate) {
+            try {
+                const date = new Date(this.post.postDate);
+                const [, month, day, year] = date.toDateString().split(' ');
+                return `${month} ${day}, ${year}`;
+            } catch (e) {
                 return this.post.postDate;
             }
-            const [, month, date, year] = this.postDate.toDateString().split(' ');
-            return `${month} ${date}, ${year}`;
         },
         tagArray() {
             return typeof this.post.tags === 'string' ?

@@ -7,6 +7,7 @@ const marked = require('marked');
 const mkdirp = require('mkdirp');
 const pify = require('pify');
 const readingTime = require('reading-time');
+const vagueTime = require('vague-time');
 const yaml = require('yaml-front-matter');
 
 function excerpt(body) {
@@ -41,6 +42,7 @@ function mapContents(contentDir, files, includeDraft) {
                 permalink: `/post/${slug}`,
                 excerpt: excerpt(marked(obj.__content)),
                 readingTime: readingTime(obj.__content).text,
+                relativeDate: vagueTime.get({ to: obj.postDate }),
                 slug,
             });
             delete enhanced.__content;
