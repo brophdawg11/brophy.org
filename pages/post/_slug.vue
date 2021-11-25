@@ -9,7 +9,8 @@
             </div>
         </header>
 
-        <div class="c-post__content" v-html="post.__content"></div>
+        <!-- eslint-disable-next-line vue/no-v-html -->
+        <div class="c-post__content" v-html="post.__content" />
 
         <footer>
             <div class="c-post__share">

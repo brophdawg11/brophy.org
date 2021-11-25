@@ -1,8 +1,7 @@
 <template>
     <div class="c-post-nav">
 
-        <div v-if="previousPost"
-             class="c-post-nav__link c-post-nav__link--previous">
+        <div v-if="previousPost" class="c-post-nav__link c-post-nav__link--previous">
 
             <nuxt-link
                 class="c-post-nav__link-arrow"
@@ -11,7 +10,6 @@
                 ⏪
             </nuxt-link>
 
-            <!-- eslint-disable-next-line vue/component-name-in-template-casing -->
             <nuxt-link
                 :to="previousPost.permalink"
                 :title="previousPost.title"
@@ -19,16 +17,14 @@
 
         </div>
 
-        <div v-if="nextPost"
-             class="c-post-nav__link c-post-nav__link--next">
+        <div v-if="nextPost" class="c-post-nav__link c-post-nav__link--next">
 
-            <!-- eslint-disable-next-line vue/component-name-in-template-casing -->
             <nuxt-link
                 :to="nextPost.permalink"
                 :title="nextPost.title"
-                v-text="nextPost.title" /><!--
+                v-text="nextPost.title" />
 
-            --><nuxt-link
+            <nuxt-link
                 class="c-post-nav__link-arrow"
                 :to="nextPost.permalink"
                 :title="nextPost.title">

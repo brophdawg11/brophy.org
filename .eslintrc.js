@@ -30,6 +30,19 @@ module.exports = {
         // 4 space indent
         indent: ['error', 4],
 
+        // Copied from airbnb but turning off the requirement for a space before this,
+        // for usage in vue components with ${this.thing}
+        'keyword-spacing': ['error', {
+            before: true,
+            after: true,
+            overrides: {
+                case: { after: true },
+                return: { after: true },
+                this: { before: false },
+                throw: { after: true },
+            },
+        }],
+
         // Max length of 80 characters in source code
         'max-len': ['error', { code: 100 }],
 
@@ -57,18 +70,21 @@ module.exports = {
         // Use 4 space indents in templates
         'vue/html-indent': ['error', 4],
 
-        // Allow max 2 attributes on a single line element, but once the
-        // element is spread across multiple, require one attribute per line
+        // Allow as many attrs as git on one line, but once the element is spread
+        // across multiple, require one attribute per line
         'vue/max-attributes-per-line': ['error', {
             singleline: 10,
-            multiline: {
-                max: 1,
-                allowFirstLine: true,
-            },
+            multiline: 1,
         }],
 
         // Turn off - prefer 2 newlines and that can't be configured
         'vue/multiline-html-element-content-newline': 'off',
         'vue/singleline-html-element-content-newline': 'off',
     },
+    overrides: [{
+        files: ['layouts/**/*.vue', 'pages/**/*.vue'],
+        rules: {
+            'vue/multi-word-component-names': 'off',
+        },
+    }],
 };

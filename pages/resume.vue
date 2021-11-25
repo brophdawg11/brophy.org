@@ -44,10 +44,11 @@
                         <!-- eslint-disable vue/no-v-html -->
                         <h3 v-html="md(job.title)" />
 
-                        <p v-for="subDetail in job.subDetails"
-                           :key="subDetail"
-                           class="resume__subtitle"
-                           v-html="md(subDetail)" />
+                        <p
+                            v-for="subDetail in job.subDetails"
+                            :key="subDetail"
+                            class="resume__subtitle"
+                            v-html="md(subDetail)" />
 
                         <ul class="resume__job-details">
                             <li
@@ -56,7 +57,8 @@
                                 class="resume__job-details-line"
                                 :class="{ 'is-nested': isArray(detail) }">
                                 <ul v-if="isArray(detail)" class="resume__job-details-nested">
-                                    <li v-for="(detail2, idx2) in detail"
+                                    <li
+                                        v-for="(detail2, idx2) in detail"
                                         :key="idx2"
                                         class="resume__job-details-line-nested"
                                         v-html="md(detail2)" />
