@@ -37,9 +37,9 @@
     "@nuxtjs/feed": "2.0.0",
     "@nuxtjs/google-analytics": "2.4.0",
     "@nuxtjs/pwa": "3.3.5",
-    "koa": "2.13.1",
+    "koa": "2.13.4",
     "marked": "4.0.5",
-    "nuxt": "2.15.3"
+    "nuxt": "2.15.8"
   },
   "devDependencies": {
     "@babel/eslint-parser": "7.16.3",

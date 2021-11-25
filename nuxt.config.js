@@ -6,6 +6,8 @@ const ManifestPlugin = require('./build/manifest-plugin');
 const pkg = require('./package');
 
 module.exports = {
+    target: 'static',
+
     server: {
         host: '0.0.0.0',
         port: 8000,
@@ -132,6 +134,12 @@ module.exports = {
             dev: false,
         }],
     ],
+
+    pwa: {
+        icon: {
+            source: './static/images/logo.png',
+        },
+    },
 
     build: {
         babel: {
