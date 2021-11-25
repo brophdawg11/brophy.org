@@ -5,6 +5,10 @@
   "author": "Matt Brophy <matt@brophy.org>",
   "license": "MIT",
   "homepage": "https://www.brophy.org",
+  "engines": {
+    "node": ">=16.13.0 <17",
+    "npm": ">=8.1.0 <9"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/brophdawg11/brophy.org.git"
