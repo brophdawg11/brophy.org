@@ -6,8 +6,6 @@ const ManifestPlugin = require('./build/manifest-plugin');
 const pkg = require('./package');
 
 module.exports = {
-    mode: 'universal',
-
     server: {
         host: '0.0.0.0',
         port: 8000,
@@ -136,6 +134,18 @@ module.exports = {
     ],
 
     build: {
+        babel: {
+            /* eslint-disable no-param-reassign */
+            presets({ isServer }, [, options]) {
+                options.debug = false;
+                if (!isServer) {
+                    // Empty object to remove the internal default for IE9
+                    options.targets = {};
+                }
+            },
+            /* eslint-enable no-param-reassign */
+        },
+
         extend(config, ctx) {
             Object.assign(config.resolve.alias, {
                 scss: path.resolve(__dirname, './assets/scss'),

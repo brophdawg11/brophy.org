@@ -1,12 +1,5 @@
+// Note this is only used for eslint, nuxt has a built-in babel config that uses .browserslistrc
 {
-    "presets": [
-        ["@babel/preset-env", {
-            "targets": {
-                "browsers": [ ">1%", "last 2 versions" ]
-            },
-            "modules": false
-        }]
-    ],
     "plugins": [
         "@babel/plugin-syntax-dynamic-import"
     ]

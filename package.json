@@ -43,7 +43,6 @@
   "devDependencies": {
     "@babel/eslint-parser": "7.16.3",
     "@babel/plugin-syntax-dynamic-import": "7.8.3",
-    "@babel/preset-env": "7.16.4",
     "@babel/types": "7.16.0",
     "cheerio": "1.0.0-rc.10",
     "eslint": "8.3.0",
