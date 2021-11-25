@@ -27,34 +27,19 @@ export default {
             'Vuex',
             'Express',
             'Webpack',
-            'Lodash',
             'Axios',
             'Jest',
             'Gulp',
+            'Storybook',
         ],
     }, {
-        title: 'Programming Languages',
-        skills: [
-            'JavaScript',
-            'Java',
-            'C#',
-            'C++',
-            'Perl',
-            'Bash',
-        ],
-    }, {
-        title: 'Cloud Technologies',
+        title: 'Cloud/CI Technologies',
         skills: [
             'Netlify',
+            'Github Actions',
+            'Jenkins',
             'AWS (S3, Cloudfront, Route 53, EC2)',
             'Travis CI',
-        ],
-    }, {
-        title: 'Systems',
-        skills: [
-            'Mac OS X',
-            'Unix',
-            'Linux',
         ],
     }, {
         title: 'Databases',
@@ -67,29 +52,33 @@ export default {
     }, {
         title: 'Other',
         skills: [
+            'OSX/*nix',
             'Git',
             'Bash',
-            'MapReduce',
+            'Python',
+            'Java',
+            'C#',
             'Agile (Scrum)',
         ],
     }],
 
     jobs: [{
-        title: 'Senior Front-End Developer/Architect - [URBN](http://www.urbn.com/ \'URBN\')',
+        title: 'Web Architect - [URBN](http://www.urbn.com/ \'URBN\')',
         subDetails: [
             'February 2015 - Present',
         ],
         details: [
             'Front End Web Architect _(August 2018 - Present)_',
             [
-                'Leading the architecture and development of the next-generation multi-tenant e-commerce application using Vue/Vuex/Express',
+                'Leading the architecture and development of the next-generation multi-tenant e-commerce application',
                 'Created and maintaining a [custom Vue SSR platform](https://github.com/brophdawg11/vue-ssr-build)',
+                'Custom universal REST client wrapping axios to handle all internal API calls including token management',
                 'Instituting performance best practices including automated performance budgets and lighthouse testing',
                 'Overseeing incremental migration from the prior application on a route-by-route basis',
-                'Developed and overseeing the development and CI pipeline using Docker and Jenkins2',
+                'Developed and overseeing the development and CI pipeline using Docker, Jenkins2, and Github Actions',
                 'Managing ongoing development using feature flags to avoid long-lived feature branches',
                 'Complex UI flows implemented with [state machines](https://github.com/brophdawg11/state-machine)',
-                'Technologies: vue, vue-router, vuex, vue-server-renderer, vue-i18n, express, webpack, lodash-es, docker, jenkins2',
+                'Technologies: vue, vue-router, vuex, vue-server-renderer, vue-i18n, express, webpack, lodash-es, docker, jenkins2, github actions',
             ],
             'Front End Web Architect _(October 2017 - August 2018)_',
             [
@@ -97,8 +86,9 @@ export default {
                 'Focused on big-picture initiatives, evolution of the e-commerce application, performance, and best practices',
                 'Retrofitted existing application with webpack dynamic import patterns to improve application performance',
                 'Consolidated 6 individual git repositories into a single monolithic repository for the e-commerce front-end',
+                'Technologies: python, tornado, redux, redux sagas, gulp, webpack, lodash, docker, jenkins2',
             ],
-            'Unified Cart Checkout Application _(February 2015 - October 2017)_',
+            'Senior Web Engineer - Unified Cart Checkout Application _(February 2015 - October 2017)_',
             [
                 'Lead Architect and Developer for a multi-tenant Angular.js application providing the URBN brand Cart/Checkout E-Commerce experience',
                 'Heavily asynchronous SPA leveraging RESTful micro services',
