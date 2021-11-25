@@ -144,6 +144,7 @@ export default {
 </script>
 
 <style lang="scss">
+@use "sass:math";
 @import '~/static/highlightjs/atom-one-light.min.css';
 @import '~scss/_variables.scss';
 @import '~scss/utils/_mixins.scss';
@@ -180,7 +181,7 @@ export default {
     }
 
     &__share-lead-in {
-        padding-bottom: $content-padding / 3;
+        padding-bottom: math.div($content-padding, 3);
     }
 
     &__share-medium {
