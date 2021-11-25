@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const cheerio = require('cheerio');
-const marked = require('marked');
+const { marked } = require('marked');
 const mkdirp = require('mkdirp');
 const pify = require('pify');
 const readingTime = require('reading-time');

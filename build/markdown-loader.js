@@ -2,7 +2,7 @@
 
 const cheerio = require('cheerio');
 const { highlightAuto } = require('highlight.js');
-const marked = require('marked');
+const { marked } = require('marked');
 const yaml = require('yaml-front-matter');
 
 module.exports = function markdownLoader(source) {

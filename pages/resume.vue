@@ -90,7 +90,7 @@
 </template>
 
 <script>
-import marked from 'marked';
+import { marked } from 'marked';
 
 import ExternalLink from '~/components/ExternalLink.vue';
 import ResumeSection from '~/components/ResumeSection.vue';
