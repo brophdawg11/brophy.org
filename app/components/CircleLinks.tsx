@@ -27,14 +27,11 @@ function LinkBody({ icon, title }: LinkBodyProps) {
 }
 
 function CircleLink({ url, title, icon, external }: CircleLinkProps) {
-    return external ? (
-        <ExternalLink href={url} title={title} className="circle-links__a">
+    const LinkComponent = external ? ExternalLink : 'a';
+    return (
+        <LinkComponent href={url} title={title} className="circle-links__a">
             <LinkBody icon={icon} title={title} />
-        </ExternalLink>
-    ) : (
-        <a href={url} title={title} className="circle-links__a">
-            <LinkBody icon={icon} title={title} />
-        </a>
+        </LinkComponent>
     );
 }
 
