@@ -1,6 +1,6 @@
 # Welcome to Remix!
 
-- [Remix Docs](https://remix.run/docs)
+-   [Remix Docs](https://remix.run/docs)
 
 ## Fly Setup
 
@@ -8,15 +8,15 @@
 
 2. Sign up and log in to Fly
 
-   ```sh
-   flyctl auth signup
-   ```
+    ```sh
+    flyctl auth signup
+    ```
 
 3. Setup Fly. It might ask if you want to deploy, say no since you haven't built the app yet.
 
-   ```sh
-   flyctl launch
-   ```
+    ```sh
+    flyctl launch
+    ```
 
 ## Development
 
