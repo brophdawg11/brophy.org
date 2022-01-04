@@ -95,7 +95,7 @@ export default function DefaultLayout() {
                     links={data.footerLinks}
                     className="page-footer__links"
                 />
-                <SiteInfo year={new Date().getFullYear()} />
+                <SiteInfo />
             </footer>
         </div>
     );

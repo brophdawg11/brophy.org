@@ -1,39 +1,35 @@
 import ExternalLink from './ExternalLink';
 
-export interface SiteInfoProps {
-    year: number;
-}
-
 interface LinkLine {
     href: string;
     title: string;
 }
 type Line = LinkLine | string;
 
-export default function SiteInfo({ year }: SiteInfoProps) {
+export default function SiteInfo() {
     const lines: Line[][] = [
         [
             'built with ',
             {
-                href: 'https://vuejs.org/',
-                title: 'vue',
+                href: 'https://reactjs.org/',
+                title: 'react',
             },
             ' and ',
             {
-                href: 'https://nuxtjs.org/',
-                title: 'nuxt',
+                href: 'https://remix.run/',
+                title: 'remix',
             },
         ],
         [
             'stored in ',
             {
-                href: 'https://www.github.com/brophdawg11/brophy.org',
-                title: 'gitHub',
+                href: 'https://www.github.com/brophdawg11/brophy.org-remix',
+                title: 'github',
             },
             ', hosted in ',
             {
-                href: 'https://www.netlify.com/',
-                title: 'netlify',
+                href: 'https://fly.io/',
+                title: 'fly.io',
             },
         ],
         [
@@ -49,6 +45,7 @@ export default function SiteInfo({ year }: SiteInfoProps) {
             },
         ],
     ];
+    const year = new Date().getFullYear();
 
     return (
         <div>
