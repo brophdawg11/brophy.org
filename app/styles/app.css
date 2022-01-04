@@ -524,3 +524,224 @@ a:hover {
         display: block;
     }
 }
+
+/* PostList */
+
+.c-posts__list {
+    list-style: none;
+    padding-bottom: var(--content-padding);
+}
+
+.c-posts__item {
+    padding-bottom: var(--content-padding);
+}
+
+.c-posts__title {
+    margin-bottom: 0.25em;
+}
+
+.c-posts__excerpt {
+    padding-bottom: 1em;
+    line-height: 1.5em;
+}
+
+.c-posts__meta {
+    text-align: right;
+}
+
+/* PostMeta */
+.post-meta {
+    line-height: 1.5em;
+    font-style: italic;
+}
+
+@media (min-width: 768px) {
+    .post-meta {
+        line-height: 1em;
+    }
+}
+
+.post-meta__divider1,
+.post-meta__divider2 {
+    padding: 0 5px;
+}
+
+.post-meta__divider2 {
+    display: none;
+}
+@media (min-width: 768px) {
+    .post-meta__divider2 {
+        display: inline;
+    }
+}
+
+@media (min-width: 768px) {
+    .post-meta__br {
+        display: none;
+    }
+}
+
+.post-meta__link:not(:last-child):after {
+    content: ', ';
+}
+
+/* u-post-styles */
+.u-post-styles h1,
+.u-post-styles h2,
+.u-post-styles h3,
+.u-post-styles h4,
+.u-post-styles h5,
+.u-post-styles h6 {
+    position: relative;
+}
+
+.u-post-styles h1 a[href],
+.u-post-styles h2 a[href],
+.u-post-styles h3 a[href],
+.u-post-styles h4 a[href],
+.u-post-styles h5 a[href],
+.u-post-styles h6 a[href] {
+    position: absolute;
+    top: 0;
+    left: -1.5rem;
+    padding-right: 0.5rem;
+    opacity: 0;
+    text-decoration: none;
+    transition: opacity 200ms;
+}
+
+.u-post-styles h1 a[href]:hover,
+.u-post-styles h1 a[href]:focus,
+.u-post-styles h2 a[href]:hover,
+.u-post-styles h2 a[href]:focus,
+.u-post-styles h3 a[href]:hover,
+.u-post-styles h3 a[href]:focus,
+.u-post-styles h4 a[href]:hover,
+.u-post-styles h4 a[href]:focus,
+.u-post-styles h5 a[href]:hover,
+.u-post-styles h5 a[href]:focus,
+.u-post-styles h6 a[href]:hover,
+.u-post-styles h6 a[href]:focus {
+    opacity: 1;
+}
+
+.u-post-styles h1:hover a,
+.u-post-styles h1:focus a,
+.u-post-styles h2:hover a,
+.u-post-styles h2:focus a,
+.u-post-styles h3:hover a,
+.u-post-styles h3:focus a,
+.u-post-styles h4:hover a,
+.u-post-styles h4:focus a,
+.u-post-styles h5:hover a,
+.u-post-styles h5:focus a,
+.u-post-styles h6:hover a,
+.u-post-styles h6:focus a {
+    opacity: 1;
+}
+
+.u-post-styles p {
+    font-size: 0.9em;
+    line-height: 1.5em;
+    padding-bottom: var(--content-padding);
+}
+
+@media screen and (min-width: 768px) {
+    .u-post-styles p {
+        font-size: 1em;
+    }
+}
+
+.u-post-styles img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+.u-post-styles li {
+    font-size: 0.9em;
+    line-height: 1.5em;
+}
+
+.u-post-styles strong {
+    font-weight: bold;
+}
+
+.u-post-styles em {
+    font-style: italic;
+}
+
+.u-post-styles pre {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+@media screen and (min-width: 768px) {
+    .u-post-styles pre {
+        margin-left: var(--content-padding);
+        margin-right: var(--content-padding);
+    }
+}
+
+/* Inline monospaced <code> words only */
+.u-post-styles code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    padding: 0 3px;
+    font-size: 0.9em;
+    background-color: #f8f8f8; /* Specific for accessibility */
+    box-shadow: inset black 0px 0px 4px -2px;
+    border-radius: 5px;
+}
+
+.u-post-styles pre.hljs {
+    margin-bottom: var(--content-padding);
+    line-height: 1.25rem;
+    border: 1px solid var(--grey);
+}
+
+.u-post-styles pre.hljs code {
+    width: 100%;
+    overflow-x: auto;
+    padding: 0;
+    font-size: inherit;
+    background-color: inherit;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.u-post-styles blockquote {
+    padding: 1em;
+    background-color: var(--lightgrey);
+    margin: 0 0 var(--content-padding);
+    font-style: italic;
+}
+
+@media screen and (min-width: 768px) {
+    .u-post-styles blockquote {
+        margin-left: var(--content-padding);
+        margin-right: var(--content-padding);
+    }
+}
+
+.u-post-styles ol,
+.u-post-styles ul {
+    margin-left: 40px;
+    padding-bottom: var(--content-padding);
+}
+
+.u-post-styles p:last-child {
+    padding-bottom: 0;
+}
+
+.u-post-styles ol,
+.u-post-styles ul {
+    margin-left: 40px;
+    margin-bottom: 2em;
+}
+.u-post-styles ol ol,
+.u-post-styles ul ul,
+.u-post-styles ol ul,
+.u-post-styles ul ol {
+    margin-left: 20px;
+    margin-bottom: 0;
+}
