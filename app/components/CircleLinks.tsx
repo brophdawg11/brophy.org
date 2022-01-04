@@ -1,3 +1,4 @@
+import { Link } from 'remix';
 import ExternalLink from './ExternalLink';
 
 interface LinkBodyProps {
@@ -27,9 +28,9 @@ function LinkBody({ icon, title }: LinkBodyProps) {
 }
 
 function CircleLink({ url, title, icon, external }: CircleLinkProps) {
-    const LinkComponent = external ? ExternalLink : 'a';
+    const LinkComponent = external ? ExternalLink : Link;
     return (
-        <LinkComponent href={url} title={title} className="circle-links__a">
+        <LinkComponent to={url} title={title} className="circle-links__a">
             <LinkBody icon={icon} title={title} />
         </LinkComponent>
     );

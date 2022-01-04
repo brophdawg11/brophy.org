@@ -1,3 +1,4 @@
+import { Link } from 'remix';
 import { Post } from '~/post-api';
 import PostMeta from './PostMeta';
 
@@ -12,9 +13,9 @@ export default function PostList({ posts }: PostListProps) {
                 {posts.map((post) => (
                     <li key={post.permalink} className="c-posts__item">
                         <h2 className="c-posts__title">
-                            <a href={post.permalink} title={post.title}>
+                            <Link to={post.permalink} title={post.title}>
                                 {post.title}
-                            </a>
+                            </Link>
                         </h2>
 
                         <p

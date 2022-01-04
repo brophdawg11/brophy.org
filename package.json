@@ -17,6 +17,7 @@
     "cheerio": "1.0.0-rc.10",
     "front-matter": "4.0.2",
     "marked": "4.0.8",
+    "prismjs": "1.25.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "reading-time": "1.5.0",
@@ -27,6 +28,7 @@
   "devDependencies": {
     "@remix-run/dev": "^1.1.1",
     "@types/marked": "4.0.1",
+    "@types/prismjs": "1.16.6",
     "@types/react": "^17.0.24",
     "@types/react-dom": "^17.0.9",
     "husky": "7.0.4",

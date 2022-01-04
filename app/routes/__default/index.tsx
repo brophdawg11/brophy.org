@@ -17,7 +17,7 @@ export default function Homepage() {
 
             <p className="c-home-description">
                 web/software developer at&nbsp;
-                <ExternalLink href="https://www.urbn.com" title="URBN">
+                <ExternalLink to="https://www.urbn.com" title="URBN">
                     urbn
                 </ExternalLink>
             </p>

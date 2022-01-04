@@ -1,3 +1,4 @@
+import { Link } from 'remix';
 import { Post } from '~/post-api';
 
 type PostMetaProps = {
@@ -28,9 +29,9 @@ export default function PostMeta({ post }: PostMetaProps) {
 
             {post.tags.map((tag) => (
                 <span key={tag} className="post-meta__link">
-                    <a href={`/tag/${tag}/`} title={tag}>
+                    <Link to={`/tag/${tag}/`} title={tag}>
                         {tag}
-                    </a>
+                    </Link>
                 </span>
             ))}
         </p>

@@ -32,12 +32,12 @@ export const loader: LoaderFunction = (): LoaderData => {
                 icon: 'home',
             },
             {
-                url: '/posts/',
+                url: '/posts',
                 title: 'Blog',
                 icon: 'chat',
             },
             {
-                url: '/resume/',
+                url: '/resume',
                 title: 'Resume',
                 icon: 'doc-text-inv',
             },

@@ -55,7 +55,7 @@ export default function SiteInfo() {
                         typeof text === 'string' ? (
                             <span key={index2}>{text}</span>
                         ) : (
-                            <ExternalLink key={index2} href={text.href}>
+                            <ExternalLink key={index2} to={text.href}>
                                 {text.title}
                             </ExternalLink>
                         )
