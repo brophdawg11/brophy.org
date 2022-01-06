@@ -1,0 +1,11 @@
+.cache/
+.husky/
+build/
+node_modules/
+
+.lintstagedrc
+.prettierignore
+.prettierrc.json
+Dockerfile
+fly.toml
+README.md
