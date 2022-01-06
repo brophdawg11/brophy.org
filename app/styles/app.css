@@ -811,3 +811,14 @@ a:hover {
 .c-post-nav__link-arrow:hover {
     text-decoration: none;
 }
+
+/* Tag page */
+.tag__title {
+    margin-bottom: 2em;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.tag__tag {
+    color: var(--orange);
+}
