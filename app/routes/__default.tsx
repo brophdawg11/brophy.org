@@ -7,7 +7,7 @@ import {
 } from 'remix';
 import CircleLinks, { CircleLinkProps } from '~/components/CircleLinks';
 import SiteInfo from '~/components/SiteInfo';
-import appStyles from '../styles/app.css';
+import defaultStyles from '../styles/default.css';
 
 type LoaderData = {
     headerLinks: CircleLinkProps[];
@@ -18,7 +18,7 @@ export const links: LinksFunction = () => {
     return [
         {
             rel: 'stylesheet',
-            href: appStyles,
+            href: defaultStyles,
         },
     ];
 };
