@@ -5,6 +5,7 @@
   "license": "",
   "scripts": {
     "build": "remix build",
+    "clean": "rm -rf .cache/ && rm -rf build/ && rm -rf public/build/",
     "deploy": "fly deploy --remote-only",
     "dev": "remix dev",
     "postinstall": "remix setup node",
