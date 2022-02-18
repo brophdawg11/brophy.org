@@ -1,8 +1,20 @@
 {
   "private": true,
-  "name": "remix-app-template",
-  "description": "",
-  "license": "",
+  "name": "brophy.org-remix",
+  "version": "3.0.0",
+  "description": "Matt Brophy's Personal Website",
+  "author": "Matt Brophy <matt@brophy.org>",
+  "license": "MIT",
+  "homepage": "https://www.brophy.org",
+  "sideEffects": false,
+  "engines": {
+    "node": ">=16.13.0 <17",
+    "npm": ">=8.1.0 <9"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brophdawg11/brophy.org-remix.git"
+  },
   "scripts": {
     "build": "remix build",
     "clean": "rm -rf .cache/ && rm -rf build/ && rm -rf public/build/",
@@ -36,9 +48,5 @@
     "lint-staged": "12.1.4",
     "prettier": "2.5.1",
     "typescript": "^4.1.2"
-  },
-  "engines": {
-    "node": ">=14"
-  },
-  "sideEffects": false
+  }
 }

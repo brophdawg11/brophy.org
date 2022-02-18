@@ -1,9 +1,16 @@
 import { LoaderFunction, useLoaderData } from 'remix';
 import invariant from 'tiny-invariant';
 import PostList from '~/components/PostList';
-import { getPosts } from '~/ts/post-api';
+import { getPosts, Post } from '~/ts/post-api';
 
-export const loader: LoaderFunction = async ({ params }) => {
+type LoaderData = {
+    tag: string;
+    posts: Post[];
+};
+
+export const loader: LoaderFunction = async ({
+    params,
+}): Promise<LoaderData> => {
     const { tag } = params;
     const posts = await getPosts();
     invariant(typeof tag === 'string', 'No tag provided');
@@ -14,7 +21,7 @@ export const loader: LoaderFunction = async ({ params }) => {
 };
 
 export default function Posts() {
-    const { tag, posts } = useLoaderData();
+    const { tag, posts } = useLoaderData<LoaderData>();
     return (
         <div>
             <h1 className="tag__title">

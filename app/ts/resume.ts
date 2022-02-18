@@ -38,26 +38,20 @@ const resumeData: ResumeData = {
     skills: [
         {
             title: 'Web Languages',
-            skills: [
-                'JavaScript',
-                'HTML',
-                'CSS',
-                'SCSS',
-                'Less',
-                'JSON',
-                'XML',
-            ],
+            skills: ['JavaScript', 'HTML', 'CSS', 'SCSS'],
         },
         {
             title: 'Web Technologies',
             skills: [
                 'Vue',
                 'Vuex',
+                'Remix',
+                'React',
                 'Express',
                 'Webpack',
+                'esbuild',
                 'Axios',
                 'Jest',
-                'Gulp',
                 'Storybook',
             ],
         },
@@ -65,6 +59,7 @@ const resumeData: ResumeData = {
             title: 'Cloud/CI Technologies',
             skills: [
                 'Netlify',
+                'Fly.io',
                 'Github Actions',
                 'Jenkins',
                 'AWS (S3, Cloudfront, Route 53, EC2)',
@@ -91,18 +86,24 @@ const resumeData: ResumeData = {
 
     jobs: [
         {
-            title: "Web Architect - [URBN](http://www.urbn.com/ 'URBN')",
-            subDetails: ['February 2015 - Present'],
+            title: "Senior Software Engineer - [Remix](https://remix.run/ 'Remix')",
+            subDetails: ['February 2022 - Present'],
+            details: [],
+        },
+        {
+            title: "Web Architect - [URBN](https://www.urbn.com/ 'URBN')",
+            subDetails: ['February 2015 - February 2022'],
             details: [
-                'Front End Web Architect _(August 2018 - Present)_',
+                'Front End Web Architect _(August 2018 - February 2022)_',
                 [
-                    'Leading the architecture and development of the next-generation multi-tenant e-commerce application',
+                    'Leading the architecture and development of the next-generation multi-tenant e-commerce application powering [urbanoutfitters.com](https://www.urbanoutfitters.com), [anthropologie.com](https://www.anthropologie.com), and [freepeople.com](https://www.freepeople.com)',
                     'Created and maintaining a [custom Vue SSR platform](https://github.com/brophdawg11/vue-ssr-build)',
                     'Custom universal REST client wrapping axios to handle all internal API calls including token management',
                     'Instituting performance best practices including automated performance budgets and lighthouse testing',
                     'Overseeing incremental migration from the prior application on a route-by-route basis',
                     'Developed and overseeing the development and CI pipeline using Docker, Jenkins2, and Github Actions',
                     'Managing ongoing development using feature flags to avoid long-lived feature branches',
+                    'Implemented [progressively enhanced form validation](https://www.vuemastery.com/conferences/vueconf-us-2019/progressively-enhanced-form-validation/)',
                     'Complex UI flows implemented with [state machines](https://github.com/brophdawg11/state-machine)',
                     'Technologies: vue, vue-router, vuex, vue-server-renderer, vue-i18n, express, webpack, lodash-es, docker, jenkins2, github actions',
                 ],

@@ -1,11 +1,28 @@
 import { useEffect } from 'react';
-import { LinksFunction, LoaderFunction, useLoaderData } from 'remix';
+import {
+    LinksFunction,
+    LoaderFunction,
+    MetaFunction,
+    useLoaderData,
+} from 'remix';
 import invariant from 'tiny-invariant';
 import ExternalLink from '~/components/ExternalLink';
 import PostMeta from '~/components/PostMeta';
 import PostNav from '~/components/PostNav';
-import { getPost, getPosts } from '~/ts/post-api';
+import { FullPost, getPost, getPosts, Post } from '~/ts/post-api';
 import prismStyles from '~/styles/prism.css';
+
+type LoaderData = {
+    post: FullPost;
+    previousPost: Post;
+    nextPost: Post;
+};
+
+export const meta: MetaFunction = ({ data }: { data: LoaderData }) => {
+    return {
+        title: data.post.title,
+    };
+};
 
 export const links: LinksFunction = () => {
     return [
@@ -16,7 +33,9 @@ export const links: LinksFunction = () => {
     ];
 };
 
-export const loader: LoaderFunction = async ({ params }) => {
+export const loader: LoaderFunction = async ({
+    params,
+}): Promise<LoaderData> => {
     const { slug } = params;
     invariant(typeof slug === 'string', 'Invalid slug');
     const post = await getPost(slug);
@@ -28,7 +47,7 @@ export const loader: LoaderFunction = async ({ params }) => {
 };
 
 export default function Post() {
-    const { post, previousPost, nextPost } = useLoaderData();
+    const { post, previousPost, nextPost } = useLoaderData<LoaderData>();
 
     const url = `https://www.brophy.org${post.permalink}`;
     const twitterUrl = `https://twitter.com/share?text=${post.title}&amp;url=${url}`;

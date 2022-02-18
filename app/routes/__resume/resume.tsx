@@ -4,7 +4,7 @@ import { ReactElement } from 'react';
 import { Link, LinksFunction, LoaderFunction, useLoaderData } from 'remix';
 import ExternalLink from '~/components/ExternalLink';
 
-import resumeData, { ResumeData } from '~/data/resume';
+import resumeData, { ResumeData } from '~/ts/resume';
 import resumeStyles from '~/styles/resume.css';
 
 type LoaderData = {
@@ -110,6 +110,35 @@ function ResumeSkills({ data }: ResumeHelperProps) {
     );
 }
 
+function ResumeJobDetail({ detail }: { detail: string | string[] }) {
+    return (
+        <li
+            className={`resume__job-details-line ${
+                Array.isArray(detail) ? 'is-nested' : ''
+            }`}>
+            {Array.isArray(detail) ? (
+                <ul className="resume__job-details-nested">
+                    {detail.map((detail2, idx) => (
+                        <li
+                            key="idx2"
+                            className="resume__job-details-line-nested"
+                            dangerouslySetInnerHTML={{
+                                __html: detail2,
+                            }}
+                        />
+                    ))}
+                </ul>
+            ) : (
+                <span
+                    dangerouslySetInnerHTML={{
+                        __html: detail,
+                    }}
+                />
+            )}
+        </li>
+    );
+}
+
 function ResumeJobs({ data }: ResumeHelperProps) {
     return (
         <ResumeSection title="Work Experience">
@@ -128,31 +157,7 @@ function ResumeJobs({ data }: ResumeHelperProps) {
 
                         <ul className="resume__job-details">
                             {job.details.map((detail, idx) => (
-                                <li
-                                    key={idx}
-                                    className={`resume__job-details-line ${
-                                        Array.isArray(detail) ? 'is-nested' : ''
-                                    }`}>
-                                    {Array.isArray(detail) ? (
-                                        <ul className="resume__job-details-nested">
-                                            {detail.map((detail2, idx) => (
-                                                <li
-                                                    key="idx2"
-                                                    className="resume__job-details-line-nested"
-                                                    dangerouslySetInnerHTML={{
-                                                        __html: detail2,
-                                                    }}
-                                                />
-                                            ))}
-                                        </ul>
-                                    ) : (
-                                        <span
-                                            dangerouslySetInnerHTML={{
-                                                __html: detail,
-                                            }}
-                                        />
-                                    )}
-                                </li>
+                                <ResumeJobDetail detail={detail} key={idx} />
                             ))}
                         </ul>
                     </li>
