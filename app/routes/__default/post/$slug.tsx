@@ -4,7 +4,7 @@ import invariant from 'tiny-invariant';
 import ExternalLink from '~/components/ExternalLink';
 import PostMeta from '~/components/PostMeta';
 import PostNav from '~/components/PostNav';
-import { getPost, getPosts } from '~/post-api';
+import { getPost, getPosts } from '~/ts/post-api';
 import prismStyles from '~/styles/prism.css';
 
 export const links: LinksFunction = () => {

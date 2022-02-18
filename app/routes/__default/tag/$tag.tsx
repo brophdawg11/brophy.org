@@ -1,7 +1,7 @@
 import { LoaderFunction, useLoaderData } from 'remix';
 import invariant from 'tiny-invariant';
 import PostList from '~/components/PostList';
-import { getPosts } from '~/post-api';
+import { getPosts } from '~/ts/post-api';
 
 export const loader: LoaderFunction = async ({ params }) => {
     const { tag } = params;

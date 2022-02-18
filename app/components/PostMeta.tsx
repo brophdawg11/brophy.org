@@ -1,5 +1,5 @@
 import { Link } from 'remix';
-import { Post } from '~/post-api';
+import { Post } from '~/ts/post-api';
 
 type PostMetaProps = {
     post: Post;

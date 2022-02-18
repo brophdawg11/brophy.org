@@ -11,7 +11,7 @@ import type { MetaFunction } from 'remix';
 import appStyles from '~/styles/app.css';
 
 export const meta: MetaFunction = () => {
-    return { title: 'New Remix App' };
+    return { title: 'Matt Brophy' };
 };
 
 export const links: LinksFunction = () => {
