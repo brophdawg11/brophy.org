@@ -24,6 +24,7 @@
 
 .s-homepage .page-content {
     justify-content: center;
+    padding-bottom: 0;
 }
 
 .page-footer {

@@ -11,6 +11,8 @@ export default function Homepage() {
                 src="/images/logo.png"
                 className="c-home-logo"
                 alt="Matt Brophy Logo"
+                width="75"
+                height="101"
             />
 
             <h1>Matt Brophy</h1>
