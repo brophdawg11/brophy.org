@@ -19,7 +19,7 @@
     "build": "remix build",
     "clean": "rm -rf .cache/ && rm -rf build/ && rm -rf public/build/",
     "deploy": "fly deploy --remote-only",
-    "dev": "remix dev",
+    "dev": "node -r dotenv/config node_modules/.bin/remix dev",
     "postinstall": "remix setup node",
     "prepare": "husky install",
     "start": "remix-serve build"
@@ -44,6 +44,7 @@
     "@types/prismjs": "1.26.0",
     "@types/react": "17.0.39",
     "@types/react-dom": "17.0.11",
+    "dotenv": "16.0.0",
     "husky": "7.0.4",
     "lint-staged": "12.3.4",
     "prettier": "2.5.1",

@@ -1,5 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
-import { Form, json, LoaderFunction, useFetcher, useLoaderData } from 'remix';
+import {
+    Form,
+    json,
+    LoaderFunction,
+    MetaFunction,
+    useFetcher,
+    useLoaderData,
+} from 'remix';
 
 type ApiMovie = {
     Title: string;
@@ -25,6 +32,22 @@ type LoaderData = {
 };
 
 const cache: Record<string, ApiResponse> = {};
+
+// See: https://usehooks.com/useDebounce/
+function useDebounce(value: any, delay: number) {
+    const [debouncedValue, setDebouncedValue] = useState(value);
+    useEffect(() => {
+        const handler = setTimeout(() => setDebouncedValue(value), delay);
+        return () => clearTimeout(handler);
+    }, [value, delay]);
+    return debouncedValue;
+}
+
+export const meta: MetaFunction = ({ data }: { data: LoaderData }) => {
+    return {
+        title: `Results: ${data.query}`,
+    };
+};
 
 export const loader: LoaderFunction = async ({ request }) => {
     const query = new URL(request.url).searchParams.get('query')?.toLowerCase();
@@ -64,6 +87,7 @@ export default function Autocomplete() {
     const loaderData = useLoaderData<LoaderData>();
     const formEl = useRef(null);
     const [query, setQuery] = useState(loaderData.query || '');
+    const debouncedQuery = useDebounce(query, 300);
     const fetcher = useFetcher<LoaderData>();
     // Prefer realtime fetcher results
     const data: LoaderData = fetcher.data || loaderData;
@@ -72,15 +96,15 @@ export default function Autocomplete() {
     useEffect(() => {
         if (
             !formEl?.current ||
-            query === loaderData.query ||
-            query.length < 3
+            debouncedQuery === loaderData.query ||
+            debouncedQuery.length < 3
         ) {
             return;
         }
         const formData = new FormData(formEl.current);
         const qs = new URLSearchParams(formData as any);
         fetcher.load(`${window.location.pathname}?${qs}`);
-    }, [query]);
+    }, [debouncedQuery]);
 
     return (
         <>
