@@ -29,10 +29,10 @@
     "@remix-run/serve": "1.2.1",
     "cheerio": "1.0.0-rc.10",
     "front-matter": "4.0.2",
-    "marked": "4.0.8",
-    "prismjs": "1.25.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "marked": "4.0.12",
+    "prismjs": "1.27.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
     "reading-time": "1.5.0",
     "remix": "1.2.1",
     "tiny-invariant": "1.2.0",
@@ -40,13 +40,13 @@
   },
   "devDependencies": {
     "@remix-run/dev": "1.2.1",
-    "@types/marked": "4.0.1",
-    "@types/prismjs": "1.16.6",
-    "@types/react": "^17.0.24",
-    "@types/react-dom": "^17.0.9",
+    "@types/marked": "4.0.2",
+    "@types/prismjs": "1.26.0",
+    "@types/react": "17.0.39",
+    "@types/react-dom": "17.0.11",
     "husky": "7.0.4",
-    "lint-staged": "12.1.4",
+    "lint-staged": "12.3.4",
     "prettier": "2.5.1",
-    "typescript": "^4.1.2"
+    "typescript": "4.5.5"
   }
 }
