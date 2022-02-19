@@ -9,14 +9,23 @@ import {
 } from 'remix';
 import type { MetaFunction } from 'remix';
 import appStyles from '~/styles/app.css';
-import pkg from '../package.json';
 
 export const meta: MetaFunction = () => {
     return {
         title: 'Matt Brophy | Web Developer',
         charset: 'utf-8',
         viewport: 'width=device-width, initial-scale=1',
-        description: pkg.description,
+        description: "Matt Brophy's Personal Website",
+        'og:site_name': 'brophy.org',
+        'twitter:card': 'summary',
+        'twitter:creator': '@brophdawg11',
+        ...['image', 'og:image', 'twitter:image'].reduce(
+            (acc, t) =>
+                Object.assign(acc, {
+                    [t]: 'https://www.brophy.org/images/logo.png',
+                }),
+            {}
+        ),
     };
 };
 

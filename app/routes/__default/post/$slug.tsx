@@ -21,6 +21,10 @@ type LoaderData = {
 export const meta: MetaFunction = ({ data }: { data: LoaderData }) => {
     return {
         title: data.post.title,
+        'og:title': data.post.title,
+        'twitter:title': data.post.title,
+        'og:url': `https://www.brophy.org/post/${data.post.slug}`,
+        'twitter:url': `https://www.brophy.org/post/${data.post.slug}`,
     };
 };
 

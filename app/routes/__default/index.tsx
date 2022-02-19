@@ -18,10 +18,11 @@ export default function Homepage() {
             <h1>Matt Brophy</h1>
 
             <p className="c-home-description">
-                web/software developer at&nbsp;
+                web developer at&nbsp;
                 <ExternalLink to="https://remix.run" title="Remix">
                     remix
                 </ExternalLink>
+                &nbsp;💿
             </p>
 
             <p className="c-home-description">

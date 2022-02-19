@@ -1,14 +1,25 @@
-import { insertAfter } from 'cheerio/lib/api/manipulation';
-import { marked } from 'marked';
 import { ReactElement } from 'react';
-import { Link, LinksFunction, LoaderFunction, useLoaderData } from 'remix';
+import {
+    Link,
+    LinksFunction,
+    LoaderFunction,
+    MetaFunction,
+    useLoaderData,
+} from 'remix';
 import ExternalLink from '~/components/ExternalLink';
-
+import marked from '~/ts/marked.server';
 import resumeData, { ResumeData } from '~/ts/resume';
 import resumeStyles from '~/styles/resume.css';
 
 type LoaderData = {
     resumeData: ResumeData;
+};
+
+export const meta: MetaFunction = () => {
+    return {
+        title: "Matt Brophy's Resume",
+        description: "Matt Brophy's Resume",
+    };
 };
 
 export const links: LinksFunction = () => {
@@ -120,7 +131,7 @@ function ResumeJobDetail({ detail }: { detail: string | string[] }) {
                 <ul className="resume__job-details-nested">
                     {detail.map((detail2, idx) => (
                         <li
-                            key="idx2"
+                            key={idx}
                             className="resume__job-details-line-nested"
                             dangerouslySetInnerHTML={{
                                 __html: detail2,
