@@ -1,0 +1,8 @@
+.cache
+build
+node_modules
+public/build
+
+.env
+package.json
+package-lock.json

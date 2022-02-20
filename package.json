@@ -1,0 +1,53 @@
+{
+  "private": true,
+  "name": "brophy.org",
+  "version": "3.0.0",
+  "description": "Matt Brophy's Personal Website",
+  "author": "Matt Brophy <matt@brophy.org>",
+  "license": "MIT",
+  "homepage": "https://www.brophy.org",
+  "sideEffects": false,
+  "engines": {
+    "node": ">=16.13.0 <17",
+    "npm": ">=8.1.0 <9"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brophdawg11/brophy.org.git"
+  },
+  "scripts": {
+    "build": "remix build",
+    "clean": "rm -rf .cache/ && rm -rf build/ && rm -rf public/build/",
+    "deploy": "fly deploy --remote-only",
+    "dev": "node -r dotenv/config node_modules/.bin/remix dev",
+    "postinstall": "remix setup node",
+    "prepare": "husky install",
+    "start": "remix-serve build"
+  },
+  "dependencies": {
+    "@remix-run/react": "1.2.1",
+    "@remix-run/serve": "1.2.1",
+    "cheerio": "1.0.0-rc.10",
+    "front-matter": "4.0.2",
+    "marked": "4.0.12",
+    "prismjs": "1.27.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "reading-time": "1.5.0",
+    "remix": "1.2.1",
+    "tiny-invariant": "1.2.0",
+    "vague-time": "2.4.2"
+  },
+  "devDependencies": {
+    "@remix-run/dev": "1.2.1",
+    "@types/marked": "4.0.2",
+    "@types/prismjs": "1.26.0",
+    "@types/react": "17.0.39",
+    "@types/react-dom": "17.0.11",
+    "dotenv": "16.0.0",
+    "husky": "7.0.4",
+    "lint-staged": "12.3.4",
+    "prettier": "2.5.1",
+    "typescript": "4.5.5"
+  }
+}
