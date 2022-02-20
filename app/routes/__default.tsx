@@ -61,12 +61,12 @@ export const loader: LoaderFunction = (): LoaderData => {
                 title: 'Twitter',
                 icon: 'twitter',
             },
-            {
-                url: '/rss.xml',
-                external: true,
-                title: 'RSS',
-                icon: 'rss-squared',
-            },
+            // {
+            //     url: '/rss.xml',
+            //     external: true,
+            //     title: 'RSS',
+            //     icon: 'rss-squared',
+            // },
         ],
     };
 };
