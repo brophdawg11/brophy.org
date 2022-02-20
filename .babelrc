@@ -1,6 +1,0 @@
-// Note this is only used for eslint, nuxt has a built-in babel config that uses .browserslistrc
-{
-    "plugins": [
-        "@babel/plugin-syntax-dynamic-import"
-    ]
-}
