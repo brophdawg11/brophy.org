@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-
 export type ResumeData = {
     name: string;
     title: string;

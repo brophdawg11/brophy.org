@@ -12,7 +12,10 @@ export default function PostList({ posts }: PostListProps) {
             <ul className="c-posts__list">
                 {posts.map((post) => (
                     <li key={post.permalink} className="c-posts__item">
-                        <h2 className="c-posts__title">
+                        <h2
+                            className={`c-posts__title ${
+                                post.draft ? 'c-posts__title--draft' : ''
+                            }`}>
                             <Link to={post.permalink} title={post.title}>
                                 {post.title}
                             </Link>

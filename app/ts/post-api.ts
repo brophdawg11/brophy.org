@@ -86,9 +86,8 @@ export async function getPosts(): Promise<Post[]> {
     const posts = await Promise.all(dir.map(readPost));
     return (
         posts
-            .filter((p) => !p.draft)
+            .filter((p) => process.env.SHOW_DRAFT_POSTS === 'true' || !p.draft)
             // Reverse chronological order
-            // eslint-disable-next-line no-nested-ternary
             .sort((a, b) =>
                 a.postDate < b.postDate ? 1 : a.postDate > b.postDate ? -1 : 0
             )

@@ -184,6 +184,11 @@
     margin-bottom: 0.25em;
 }
 
+.c-posts__title--draft:before {
+    content: '[DRAFT] ';
+    color: red;
+}
+
 .c-posts__excerpt {
     padding-bottom: 1em;
     line-height: 1.5em;
