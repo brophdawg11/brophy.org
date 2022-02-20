@@ -12,6 +12,9 @@ import vagueTime from 'vague-time';
 const loadLanguages = require('prismjs/components/');
 loadLanguages(['bash', 'json', 'typescript', 'markdown']);
 
+let postsCache: Post[] | null = null;
+const postCache: Record<string, FullPost> = {};
+
 export type PostMarkdownAttributes = {
     title: string;
     author: string;
@@ -75,26 +78,29 @@ async function readFullPost(filename: string): Promise<FullPost> {
     };
 }
 
-export async function readPost(filename: string): Promise<Post> {
+async function readPost(filename: string): Promise<Post> {
     const fullPost = await readFullPost(filename);
     const { body, ...rest } = fullPost;
     return { ...rest };
 }
 
 export async function getPosts(): Promise<Post[]> {
-    const dir = await fs.readdir(postsPath);
-    const posts = await Promise.all(dir.map(readPost));
-    return (
-        posts
+    if (!postsCache) {
+        const dir = await fs.readdir(postsPath);
+        const posts = await Promise.all(dir.map(readPost));
+        postsCache = posts
             .filter((p) => process.env.SHOW_DRAFT_POSTS === 'true' || !p.draft)
             // Reverse chronological order
             .sort((a, b) =>
                 a.postDate < b.postDate ? 1 : a.postDate > b.postDate ? -1 : 0
-            )
-    );
+            );
+    }
+    return postsCache;
 }
 
 export async function getPost(slug: string): Promise<FullPost> {
-    const post = await readFullPost(`${slug}.md`);
-    return post;
+    if (!postCache[slug]) {
+        postCache[slug] = await readFullPost(`${slug}.md`);
+    }
+    return postCache[slug];
 }
