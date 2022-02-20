@@ -4,5 +4,6 @@ node_modules
 public/build
 
 .env
+*.md
 package.json
 package-lock.json
