@@ -4,4 +4,6 @@ node_modules
 public/build
 
 .env
-todo.txt
+*.md
+package.json
+package-lock.json
