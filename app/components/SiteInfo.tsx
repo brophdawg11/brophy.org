@@ -23,7 +23,7 @@ export default function SiteInfo() {
         [
             'stored in ',
             {
-                href: 'https://www.github.com/brophdawg11/brophy.org-remix',
+                href: 'https://www.github.com/brophdawg11/brophy.org',
                 title: 'github',
             },
             ', hosted in ',
