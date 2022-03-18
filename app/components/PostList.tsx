@@ -16,7 +16,10 @@ export default function PostList({ posts }: PostListProps) {
                             className={`c-posts__title ${
                                 post.draft ? 'c-posts__title--draft' : ''
                             }`}>
-                            <Link to={post.permalink} title={post.title}>
+                            <Link
+                                to={post.permalink}
+                                title={post.title}
+                                prefetch="intent">
                                 {post.title}
                             </Link>
                         </h2>

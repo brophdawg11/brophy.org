@@ -14,13 +14,15 @@ export default function PostNav({ previousPost, nextPost }: PostNavProps) {
                     <Link
                         className="c-post-nav__link-arrow"
                         to={previousPost.permalink}
-                        title={previousPost.title}>
+                        title={previousPost.title}
+                        prefetch="intent">
                         ⏪
                     </Link>
                     &nbsp;
                     <Link
                         to={previousPost.permalink}
-                        title={previousPost.title}>
+                        title={previousPost.title}
+                        prefetch="intent">
                         {previousPost.title}
                     </Link>
                 </div>
@@ -28,14 +30,18 @@ export default function PostNav({ previousPost, nextPost }: PostNavProps) {
 
             {nextPost && (
                 <div className="c-post-nav__link c-post-nav__link--next">
-                    <Link to={nextPost.permalink} title={nextPost.title}>
+                    <Link
+                        to={nextPost.permalink}
+                        title={nextPost.title}
+                        prefetch="intent">
                         {nextPost.title}
                     </Link>
                     &nbsp;
                     <Link
                         className="c-post-nav__link-arrow"
                         to={nextPost.permalink}
-                        title={nextPost.title}>
+                        title={nextPost.title}
+                        prefetch="intent">
                         ⏩
                     </Link>
                 </div>

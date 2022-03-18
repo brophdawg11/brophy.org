@@ -29,7 +29,7 @@ export default function PostMeta({ post }: PostMetaProps) {
 
             {post.tags.map((tag) => (
                 <span key={tag} className="post-meta__link">
-                    <Link to={`/tag/${tag}/`} title={tag}>
+                    <Link to={`/tag/${tag}/`} title={tag} prefetch="intent">
                         {tag}
                     </Link>
                 </span>
