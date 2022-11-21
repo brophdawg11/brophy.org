@@ -1,4 +1,4 @@
-import { Link, Outlet } from 'remix';
+import { Link, Outlet } from '@remix-run/react';
 
 export default function PlaygroundLayout() {
     return (

@@ -1,12 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import {
-    Form,
-    json,
-    LoaderFunction,
-    MetaFunction,
-    useFetcher,
-    useLoaderData,
-} from 'remix';
+import { json, LoaderFunction, MetaFunction } from '@remix-run/node';
+import { Form, useFetcher, useLoaderData } from '@remix-run/react';
 
 type ApiMovie = {
     Title: string;

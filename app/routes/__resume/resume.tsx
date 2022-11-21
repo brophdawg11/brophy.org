@@ -1,11 +1,6 @@
 import { ReactElement } from 'react';
-import {
-    Link,
-    LinksFunction,
-    LoaderFunction,
-    MetaFunction,
-    useLoaderData,
-} from 'remix';
+import { LinksFunction, LoaderFunction, MetaFunction } from '@remix-run/node';
+import { Link, useLoaderData } from '@remix-run/react';
 import ExternalLink from '~/components/ExternalLink';
 import marked from '~/ts/marked.server';
 import resumeData, { ResumeData } from '~/ts/resume';

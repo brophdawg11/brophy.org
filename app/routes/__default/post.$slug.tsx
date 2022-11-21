@@ -1,10 +1,6 @@
 import { useEffect } from 'react';
-import {
-    LinksFunction,
-    LoaderFunction,
-    MetaFunction,
-    useLoaderData,
-} from 'remix';
+import { LinksFunction, LoaderFunction, MetaFunction } from '@remix-run/node';
+import { useLoaderData } from '@remix-run/react';
 import invariant from 'tiny-invariant';
 import ExternalLink from '~/components/ExternalLink';
 import PostMeta from '~/components/PostMeta';
@@ -50,7 +46,7 @@ export const loader: LoaderFunction = async ({
     return { post, previousPost, nextPost };
 };
 
-export default function Post() {
+export default function PostView() {
     const { post, previousPost, nextPost } = useLoaderData<LoaderData>();
 
     const url = `https://www.brophy.org${post.permalink}`;

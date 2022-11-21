@@ -1,13 +1,13 @@
+import type { MetaFunction } from '@remix-run/node';
+import { LinksFunction } from '@remix-run/node';
 import {
     Links,
-    LinksFunction,
     LiveReload,
     Meta,
     Outlet,
     Scripts,
     ScrollRestoration,
-} from 'remix';
-import type { MetaFunction } from 'remix';
+} from '@remix-run/react';
 import appStyles from '~/styles/app.css';
 
 export const meta: MetaFunction = () => {

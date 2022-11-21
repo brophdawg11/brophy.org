@@ -1,10 +1,5 @@
-import {
-    LinksFunction,
-    LoaderFunction,
-    Outlet,
-    useLoaderData,
-    useMatches,
-} from 'remix';
+import { LinksFunction, LoaderFunction } from '@remix-run/node';
+import { Outlet, useLoaderData, useMatches } from '@remix-run/react';
 import CircleLinks, { CircleLinkProps } from '~/components/CircleLinks';
 import SiteInfo from '~/components/SiteInfo';
 import defaultStyles from '../styles/default.css';

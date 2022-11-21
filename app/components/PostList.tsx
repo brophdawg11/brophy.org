@@ -1,4 +1,4 @@
-import { Link } from 'remix';
+import { Link } from '@remix-run/react';
 import { Post } from '~/ts/post-api';
 import PostMeta from './PostMeta';
 

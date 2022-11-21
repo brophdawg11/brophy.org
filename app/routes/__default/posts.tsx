@@ -1,4 +1,5 @@
-import { LoaderFunction, useLoaderData } from 'remix';
+import { LoaderFunction } from '@remix-run/node';
+import { useLoaderData } from '@remix-run/react';
 import PostList from '~/components/PostList';
 import { getPosts, Post } from '~/ts/post-api';
 
