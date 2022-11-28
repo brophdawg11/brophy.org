@@ -84,12 +84,22 @@ const resumeData: ResumeData = {
 
     jobs: [
         {
-            title: "Senior Software Engineer - [Remix](https://remix.run/ 'Remix')",
-            subDetails: ['February 2022 - Present'],
-            details: [],
+            title: 'Staff Developer - Remix team at [Shopify](https://shopify.engineering/)',
+            subDetails: ['September 2022 - Present'],
+            details: [
+                'Replaced all Remix data API logic with the updated React Router 6.4 package ([blog post](https://remix.run/blog/react-routering-remix))',
+            ],
         },
         {
-            title: "Web Architect - [URBN](https://www.urbn.com/ 'URBN')",
+            title: 'Senior Software Engineer - [Remix](https://remix.run/)',
+            subDetails: ['February 2022 - September 2022'],
+            details: [
+                'Migrated Remix data APIs into React Router via a framework-agnostic router package such that [other UI libraries](https://github.com/brophdawg11/remix-routers) can leverage the data APIs ([blog post](https://remix.run/blog/remixing-react-router))',
+                'Remix was acquired by Shopify in the fall of 2022',
+            ],
+        },
+        {
+            title: 'Web Architect - [URBN](https://www.urbn.com/)',
             subDetails: ['February 2015 - February 2022'],
             details: [
                 'Front End Web Architect _(August 2018 - February 2022)_',

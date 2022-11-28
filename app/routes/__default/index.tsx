@@ -18,11 +18,14 @@ export default function Homepage() {
             <h1>Matt Brophy</h1>
 
             <p className="c-home-description">
-                web developer at&nbsp;
-                <ExternalLink to="https://remix.run" title="Remix">
-                    remix
+                web developer
+                <br />
+                working on&nbsp;
+                <ExternalLink to="https://remix.run">remix</ExternalLink>
+                &nbsp;💿 at&nbsp;
+                <ExternalLink to="https://shopify.engineering/">
+                    shopify
                 </ExternalLink>
-                &nbsp;💿
             </p>
 
             <p className="c-home-description">
