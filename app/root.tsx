@@ -1,4 +1,4 @@
-import type { MetaFunction, V2_MetaFunction } from '@remix-run/node';
+import type { V2_MetaFunction } from '@remix-run/node';
 import { LinksFunction } from '@remix-run/node';
 import {
   Links,
@@ -12,16 +12,18 @@ import appStyles from '~/styles/app.css';
 
 export const meta: V2_MetaFunction = () => {
   return [
-    { title: 'Matt Brophy | Web Developer' },
     { charset: 'utf-8' },
     { viewport: 'width=device-width, initial-scale=1' },
-    { description: "Matt Brophy's Personal Website" },
     { 'og:site_name': 'brophy.org' },
     { 'twitter:card': 'summary' },
     { 'twitter:creator': '@brophdawg11' },
     ...['image', 'og:image', 'twitter:image'].map((t) => ({
       [t]: 'https://www.brophy.org/images/logo.png',
     })),
+    // Put these at the end where they'll be in children - helps React better
+    // re-use the above entries
+    { title: 'Matt Brophy | Web Developer' },
+    { description: "Matt Brophy's Personal Website" },
   ];
 };
 

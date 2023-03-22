@@ -3,7 +3,6 @@ import {
   json,
   LinksFunction,
   LoaderFunction,
-  MetaFunction,
   V2_MetaFunction,
 } from '@remix-run/node';
 import {
@@ -25,11 +24,16 @@ type LoaderData = {
   nextPost: Post;
 };
 
-export const meta: V2_MetaFunction = ({ data }: { data: LoaderData }) => {
+export const meta: V2_MetaFunction<typeof loader, { root: any }> = ({
+  data,
+  matches,
+}) => {
   if (!data?.post) {
     return [{ title: 'Error' }];
   }
+
   return [
+    ...matches[0].meta.filter((o) => !('title' in o) && !('description' in o)),
     { title: data.post.title },
     { 'og:title': data.post.title },
     { 'twitter:title': data.post.title },

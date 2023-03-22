@@ -14,8 +14,11 @@ type LoaderData = {
   resumeData: ResumeData;
 };
 
-export const meta: V2_MetaFunction = () => {
+export const meta: V2_MetaFunction<typeof loader, { root: any }> = ({
+  matches,
+}) => {
   return [
+    ...matches[0].meta.filter((o) => !('title' in o) && !('description' in o)),
     { title: "Matt Brophy's Resume" },
     { description: "Matt Brophy's Resume" },
   ];
