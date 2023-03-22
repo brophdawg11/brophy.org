@@ -1,153 +1,153 @@
 .content-centered {
-    width: 100%;
-    max-width: 1000px;
-    min-height: 100vh;
-    margin: 0 auto;
+  width: 100%;
+  max-width: 1000px;
+  min-height: 100vh;
+  margin: 0 auto;
 }
 
 /* resume section */
 .resume-section {
-    display: grid;
-    grid-template-columns: 1fr;
-    padding: 10px 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 10px 0;
 }
 
 @media (min-width: 768px) {
-    .resume-section {
-        grid-template-columns: 1fr 3fr;
-    }
+  .resume-section {
+    grid-template-columns: 1fr 3fr;
+  }
 }
 
 .resume-section:not(:first-child) {
-    border-top: 1px solid var(--grey);
+  border-top: 1px solid var(--grey);
 }
 
 .resume-section__title {
-    font-style: italic;
-    color: var(--orange);
+  font-style: italic;
+  color: var(--orange);
 }
 
 /* resume page */
 .resume li {
-    line-height: 125%;
-    padding-bottom: 5px;
+  line-height: 125%;
+  padding-bottom: 5px;
 }
 
 .resume em {
-    font-style: italic;
+  font-style: italic;
 }
 
 .resume__header {
-    display: grid;
-    grid-template-columns: 1fr;
-    border-bottom: 2px solid var(--orange);
-    padding: 15px;
+  display: grid;
+  grid-template-columns: 1fr;
+  border-bottom: 2px solid var(--orange);
+  padding: 15px;
 }
 @media (min-width: 768px) {
-    .resume__header {
-        grid-template-columns: 2fr 10fr 3fr;
-    }
+  .resume__header {
+    grid-template-columns: 2fr 10fr 3fr;
+  }
 }
 
 .resume__headshot {
-    display: none;
+  display: none;
 }
 
 @media (min-width: 768px) {
-    .resume__headshot {
-        display: block;
-    }
+  .resume__headshot {
+    display: block;
+  }
 }
 
 .resume__headshot-img {
-    width: 75%;
-    height: auto;
-    border-radius: 50%;
+  width: 75%;
+  height: auto;
+  border-radius: 50%;
 }
 
 .resume__info {
-    text-align: center;
+  text-align: center;
 }
 @media (min-width: 768px) {
-    .resume__info {
-        text-align: left;
-    }
+  .resume__info {
+    text-align: left;
+  }
 }
 
 .resume__contact {
-    text-align: center;
-    line-height: 1.5em;
+  text-align: center;
+  line-height: 1.5em;
 }
 
 @media (min-width: 768px) {
-    .resume__contact {
-        text-align: right;
-    }
+  .resume__contact {
+    text-align: right;
+  }
 }
 
 .resume__main {
-    padding: 0 0.5em;
+  padding: 0 0.5em;
 }
 
 @media (min-width: 768px) {
-    .resume__main {
-        padding: 0 20px;
-    }
+  .resume__main {
+    padding: 0 20px;
+  }
 }
 
 .resume__subtitle {
-    line-height: 1.4em;
-    font-size: 0.8em;
-    font-style: italic;
-    margin-top: 10px;
-    color: var(--darkgrey);
+  line-height: 1.4em;
+  font-size: 0.8em;
+  font-style: italic;
+  margin-top: 10px;
+  color: var(--darkgrey);
 }
 
 .resume__skills {
-    list-style-type: none;
-    line-height: 1.25em;
+  list-style-type: none;
+  line-height: 1.25em;
 }
 
 .resume__experience {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 .resume__job-details,
 .resume__job-details-nested {
-    list-style-type: disc;
-    list-style-position: outside;
-    padding: 5px 0 4px 20px;
+  list-style-type: disc;
+  list-style-position: outside;
+  padding: 5px 0 4px 20px;
 }
 
 .resume__job-details-line.is-nested {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 .resume__job-details-nested {
-    list-style-type: circle;
+  list-style-type: circle;
 }
 
 .resume__education {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 .resume__education-list {
-    list-style-type: disc;
-    list-style-position: outside;
-    padding: 5px 0 4px 20px;
+  list-style-type: disc;
+  list-style-position: outside;
+  padding: 5px 0 4px 20px;
 }
 
 /* For print, remove headshot */
 @media print {
-    html,
-    body,
-    .resume__header {
-        font-size: 95%;
-        padding: 0;
-    }
+  html,
+  body,
+  .resume__header {
+    font-size: 95%;
+    padding: 0;
+  }
 
-    .resume__headshot {
-        display: none;
-        margin-right: 0;
-    }
+  .resume__headshot {
+    display: none;
+    margin-right: 0;
+  }
 }

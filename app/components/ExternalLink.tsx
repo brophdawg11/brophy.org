@@ -1,18 +1,18 @@
 import * as React from 'react';
 
 export interface ExternalLinkProps
-    extends Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> {
-    to: string;
+  extends Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> {
+  to: string;
 }
 
 export default function ExternalLink({
-    children,
-    to,
-    ...rest
+  children,
+  to,
+  ...rest
 }: ExternalLinkProps) {
-    return (
-        <a {...rest} href={to} target="_blank" rel="noopener">
-            {children}
-        </a>
-    );
+  return (
+    <a {...rest} href={to} target="_blank" rel="noopener">
+      {children}
+    </a>
+  );
 }

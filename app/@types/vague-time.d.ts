@@ -1,3 +1,3 @@
 declare module 'vague-time' {
-    function get(args: { to: string }): string;
+  function get(args: { to: string }): string;
 }
