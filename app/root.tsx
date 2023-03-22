@@ -54,3 +54,18 @@ export default function App() {
     </html>
   );
 }
+
+export function ErrorBoundary() {
+  return (
+    <html lang="en">
+      <head>
+        <Meta />
+        <Links />
+      </head>
+      <body className="c-error__body">
+        <h1>Oh no something went wrong!</h1>
+        <p>Please try reloading the page</p>
+      </body>
+    </html>
+  );
+}

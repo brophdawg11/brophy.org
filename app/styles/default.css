@@ -276,6 +276,14 @@
   background-color: var(--orange);
 }
 
+.c-post__error {
+  text-align: center;
+}
+
+.c-post__error-title {
+  color: var(--orange);
+}
+
 /* u-post-styles */
 .u-post-styles h1,
 .u-post-styles h2,
@@ -471,4 +479,10 @@
 
 .tag__tag {
   color: var(--orange);
+}
+
+/* Error Page */
+.c-error__body {
+  padding-top: 5rem;
+  text-align: center;
 }

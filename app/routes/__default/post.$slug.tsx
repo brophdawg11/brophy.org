@@ -1,6 +1,16 @@
 import { useEffect } from 'react';
-import { LinksFunction, LoaderFunction, MetaFunction } from '@remix-run/node';
-import { useLoaderData } from '@remix-run/react';
+import {
+  json,
+  LinksFunction,
+  LoaderFunction,
+  MetaFunction,
+} from '@remix-run/node';
+import {
+  isRouteErrorResponse,
+  Link,
+  useLoaderData,
+  useRouteError,
+} from '@remix-run/react';
 import invariant from 'tiny-invariant';
 import ExternalLink from '~/components/ExternalLink';
 import PostMeta from '~/components/PostMeta';
@@ -15,6 +25,9 @@ type LoaderData = {
 };
 
 export const meta: MetaFunction = ({ data }: { data: LoaderData }) => {
+  if (!data?.post) {
+    return {};
+  }
   return {
     title: data.post.title,
     'og:title': data.post.title,
@@ -38,6 +51,15 @@ export const loader: LoaderFunction = async ({
 }): Promise<LoaderData> => {
   const { slug } = params;
   invariant(typeof slug === 'string', 'Invalid slug');
+  if (slug === 'error') {
+    throw new Error('wat');
+  }
+  if (slug === '404') {
+    throw json(
+      { message: `Unable to find a post with slug "${slug}"` },
+      { status: 404 }
+    );
+  }
   const post = await getPost(slug);
   const posts = await getPosts();
   const idx = posts.findIndex((p) => p.slug === slug);
@@ -103,4 +125,22 @@ export default function PostView() {
       </footer>
     </article>
   );
+}
+
+export function ErrorBoundary() {
+  let error = useRouteError();
+  if (isRouteErrorResponse(error)) {
+    if (error.status === 404) {
+      return (
+        <div className="c-post__error">
+          <h1>🤔 {error.data.message}</h1>
+          <br />
+          <br />
+          <Link to="/posts">Go back to the post listing</Link>
+        </div>
+      );
+    }
+  }
+
+  throw error;
 }
