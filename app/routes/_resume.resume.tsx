@@ -1,5 +1,9 @@
 import { ReactElement } from 'react';
-import { LinksFunction, LoaderFunction, MetaFunction } from '@remix-run/node';
+import {
+  LinksFunction,
+  LoaderFunction,
+  V2_MetaFunction,
+} from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
 import ExternalLink from '~/components/ExternalLink';
 import marked from '~/ts/marked.server';
@@ -10,11 +14,11 @@ type LoaderData = {
   resumeData: ResumeData;
 };
 
-export const meta: MetaFunction = () => {
-  return {
-    title: "Matt Brophy's Resume",
-    description: "Matt Brophy's Resume",
-  };
+export const meta: V2_MetaFunction = () => {
+  return [
+    { title: "Matt Brophy's Resume" },
+    { description: "Matt Brophy's Resume" },
+  ];
 };
 
 export const links: LinksFunction = () => {

@@ -1,5 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
-import { json, LoaderFunction, MetaFunction } from '@remix-run/node';
+import {
+  json,
+  LoaderFunction,
+  MetaFunction,
+  V2_MetaFunction,
+} from '@remix-run/node';
 import { Form, useFetcher, useLoaderData } from '@remix-run/react';
 
 type ApiMovie = {
@@ -37,10 +42,12 @@ function useDebounce(value: any, delay: number) {
   return debouncedValue;
 }
 
-export const meta: MetaFunction = ({ data }: { data: LoaderData }) => {
-  return {
-    title: `Results: ${data.query}`,
-  };
+export const meta: V2_MetaFunction = ({ data }: { data: LoaderData }) => {
+  return [
+    {
+      title: `Results: ${data.query}`,
+    },
+  ];
 };
 
 export const loader: LoaderFunction = async ({ request }) => {

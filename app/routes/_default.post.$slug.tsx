@@ -4,6 +4,7 @@ import {
   LinksFunction,
   LoaderFunction,
   MetaFunction,
+  V2_MetaFunction,
 } from '@remix-run/node';
 import {
   isRouteErrorResponse,
@@ -24,17 +25,17 @@ type LoaderData = {
   nextPost: Post;
 };
 
-export const meta: MetaFunction = ({ data }: { data: LoaderData }) => {
+export const meta: V2_MetaFunction = ({ data }: { data: LoaderData }) => {
   if (!data?.post) {
-    return {};
+    return [{ title: 'Error' }];
   }
-  return {
-    title: data.post.title,
-    'og:title': data.post.title,
-    'twitter:title': data.post.title,
-    'og:url': `https://www.brophy.org/post/${data.post.slug}`,
-    'twitter:url': `https://www.brophy.org/post/${data.post.slug}`,
-  };
+  return [
+    { title: data.post.title },
+    { 'og:title': data.post.title },
+    { 'twitter:title': data.post.title },
+    { 'og:url': `https://www.brophy.org/post/${data.post.slug}` },
+    { 'twitter:url': `https://www.brophy.org/post/${data.post.slug}` },
+  ];
 };
 
 export const links: LinksFunction = () => {
