@@ -21,16 +21,18 @@ export type PostMarkdownAttributes = {
     postDate: string;
     tags: string;
     draft?: boolean;
+    crossPostName?: string;
+    crossPostUrl?: string;
+    crossPostExcerpt?: string;
 };
 
-export type Post = Omit<PostMarkdownAttributes, 'tags'> & {
+export type Post = Omit<PostMarkdownAttributes, 'tags' | 'crossPostExcerpt'> & {
     slug: string;
     tags: string[];
     permalink: string;
     excerpt: string;
     readingTime: string;
     relativeDate: string;
-    draft?: boolean;
 };
 
 export type FullPost = Post & {
@@ -53,6 +55,13 @@ function excerpt(html: string): string {
         .replace(/<\/p>$/, '');
 }
 
+function md(str: string) {
+    return marked.parse(str, {
+        highlight: (code, lang) =>
+            prism.highlight(code, prism.languages[lang], lang),
+    });
+}
+
 async function readFullPost(filename: string): Promise<FullPost> {
     const file = await fs.readFile(path.join(postsPath, filename));
     const fileContents = file.toString();
@@ -62,17 +71,16 @@ async function readFullPost(filename: string): Promise<FullPost> {
         `${filename} has bad meta data!`
     );
     const slug = filename.replace(/\.md$/, '');
-    const html = marked.parse(body, {
-        highlight: (code, lang) =>
-            prism.highlight(code, prism.languages[lang], lang),
-    });
+    const html = md(body);
     return {
         ...attributes,
         body: html,
         tags: (attributes.tags ?? '').split(','),
         slug,
         permalink: `/post/${slug}`,
-        excerpt: excerpt(html),
+        excerpt: attributes.crossPostExcerpt
+            ? excerpt(md(attributes.crossPostExcerpt))
+            : excerpt(html),
         readingTime: readingTime(body).text,
         relativeDate: vagueTime.get({ to: attributes.postDate }),
     };

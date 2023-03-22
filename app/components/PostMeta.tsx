@@ -21,11 +21,13 @@ export default function PostMeta({ post }: PostMetaProps) {
 
             <span className="post-meta__divider1">|</span>
 
-            <span>{post.readingTime}</span>
-
-            <br className="post-meta__br" />
-
-            <span className="post-meta__divider2">|</span>
+            {!post.crossPostUrl ? (
+                <>
+                    <span>{post.readingTime}</span>
+                    <br className="post-meta__br" />
+                    <span className="post-meta__divider2">|</span>
+                </>
+            ) : null}
 
             {post.tags.map((tag) => (
                 <span key={tag} className="post-meta__link">

@@ -41,10 +41,11 @@ const resumeData: ResumeData = {
         {
             title: 'Web Technologies',
             skills: [
+                'Remix',
+                'React Router',
+                'React',
                 'Vue',
                 'Vuex',
-                'Remix',
-                'React',
                 'Express',
                 'Webpack',
                 'esbuild',
