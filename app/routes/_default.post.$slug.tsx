@@ -33,12 +33,19 @@ export const meta: V2_MetaFunction<typeof loader, { root: any }> = ({
   }
 
   return [
-    ...matches[0].meta.filter((o) => !('title' in o) && !('description' in o)),
+    // @ts-expect-error
+    ...matches[0].meta.filter((o) => !o.title && o.name !== 'description'),
     { title: data.post.title },
-    { 'og:title': data.post.title },
-    { 'twitter:title': data.post.title },
-    { 'og:url': `https://www.brophy.org/post/${data.post.slug}` },
-    { 'twitter:url': `https://www.brophy.org/post/${data.post.slug}` },
+    { name: 'og:title', content: data.post.title },
+    { name: 'twitter:title', content: data.post.title },
+    {
+      name: 'og:url',
+      content: `https://www.brophy.org/post/${data.post.slug}`,
+    },
+    {
+      name: 'twitter:url',
+      content: `https://www.brophy.org/post/${data.post.slug}`,
+    },
   ];
 };
 

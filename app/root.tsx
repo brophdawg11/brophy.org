@@ -12,18 +12,19 @@ import appStyles from '~/styles/app.css';
 
 export const meta: V2_MetaFunction = () => {
   return [
-    { charset: 'utf-8' },
-    { viewport: 'width=device-width, initial-scale=1' },
-    { 'og:site_name': 'brophy.org' },
-    { 'twitter:card': 'summary' },
-    { 'twitter:creator': '@brophdawg11' },
+    { name: 'charset', content: 'utf-8' },
+    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+    { name: 'og:site_name', content: 'brophy.org' },
+    { name: 'twitter:card', content: 'summary' },
+    { name: 'twitter:creator', content: '@brophdawg11' },
     ...['image', 'og:image', 'twitter:image'].map((t) => ({
-      [t]: 'https://www.brophy.org/images/logo.png',
+      name: t,
+      content: 'https://www.brophy.org/images/logo.png',
     })),
     // Put these at the end where they'll be in children - helps React better
     // re-use the above entries
     { title: 'Matt Brophy | Web Developer' },
-    { description: "Matt Brophy's Personal Website" },
+    { name: 'description', content: "Matt Brophy's Personal Website" },
   ];
 };
 

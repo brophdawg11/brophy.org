@@ -18,9 +18,10 @@ export const meta: V2_MetaFunction<typeof loader, { root: any }> = ({
   matches,
 }) => {
   return [
-    ...matches[0].meta.filter((o) => !('title' in o) && !('description' in o)),
+    // @ts-expect-error
+    ...matches[0].meta.filter((o) => !o.title && o.name !== 'description'),
     { title: "Matt Brophy's Resume" },
-    { description: "Matt Brophy's Resume" },
+    { name: 'description', content: "Matt Brophy's Resume" },
   ];
 };
 

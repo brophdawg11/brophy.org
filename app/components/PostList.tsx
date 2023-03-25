@@ -22,7 +22,7 @@ export default function PostList({ posts }: PostListProps) {
                 prefetch="intent"
                 {...(post.crossPostUrl ? { target: '_blank' } : {})}>
                 {post.title +
-                  (post.crossPostName ? ` (${post.crossPostName})` : '')}
+                  (post.crossPostName ? ` (${post.crossPostName}) ↗️` : '')}
               </Link>
             </h2>
 
