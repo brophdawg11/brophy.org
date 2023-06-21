@@ -20,7 +20,7 @@
     "clean": "rm -rf .cache/ && rm -rf build/ && rm -rf public/build/",
     "deploy": "fly deploy --remote-only",
     "dev": "remix dev",
-    "lint": "eslint --cache .",
+    "lint": "eslint --cache --max-warnings 0 .",
     "prepare": "husky install",
     "start": "remix-serve build"
   },
