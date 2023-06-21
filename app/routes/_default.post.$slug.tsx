@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
-import {
-  json,
+import type {
   LinksFunction,
   LoaderFunction,
   V2_MetaFunction,
 } from '@remix-run/node';
+import { json } from '@remix-run/node';
 import {
   isRouteErrorResponse,
   Link,
@@ -15,7 +15,8 @@ import invariant from 'tiny-invariant';
 import ExternalLink from '~/components/ExternalLink';
 import PostMeta from '~/components/PostMeta';
 import PostNav from '~/components/PostNav';
-import { FullPost, getPost, getPosts, Post } from '~/ts/post-api';
+import type { FullPost, Post } from '~/ts/post-api';
+import { getPost, getPosts } from '~/ts/post-api';
 import prismStyles from '~/styles/prism.css';
 
 type LoaderData = {
@@ -124,7 +125,8 @@ export default function PostView() {
             className="c-post__share-medium"
             href={twitterUrl}
             target="_blank"
-            onClick={shareTwitter}>
+            onClick={shareTwitter}
+            rel="noreferrer">
             Share on Twitter
           </a>
           &nbsp;or&nbsp;

@@ -1,5 +1,5 @@
-import { ReactElement } from 'react';
-import {
+import type { ReactElement } from 'react';
+import type {
   LinksFunction,
   LoaderFunction,
   V2_MetaFunction,
@@ -7,7 +7,8 @@ import {
 import { Link, useLoaderData } from '@remix-run/react';
 import ExternalLink from '~/components/ExternalLink';
 import marked from '~/ts/marked.server';
-import resumeData, { ResumeData } from '~/ts/resume';
+import type { ResumeData } from '~/ts/resume';
+import resumeData from '~/ts/resume';
 import resumeStyles from '~/styles/resume.css';
 
 type LoaderData = {

@@ -1,8 +1,9 @@
-import { LoaderFunction } from '@remix-run/node';
+import type { LoaderFunction } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import invariant from 'tiny-invariant';
 import PostList from '~/components/PostList';
-import { getPosts, Post } from '~/ts/post-api';
+import type { Post } from '~/ts/post-api';
+import { getPosts } from '~/ts/post-api';
 
 type LoaderData = {
   tag: string;

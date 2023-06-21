@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { json, LoaderFunction, V2_MetaFunction } from '@remix-run/node';
+import type { LoaderFunction, V2_MetaFunction } from '@remix-run/node';
+import { json } from '@remix-run/node';
 import { Form, useFetcher, useLoaderData } from '@remix-run/react';
 
 type ApiMovie = {
@@ -103,7 +104,7 @@ export default function Autocomplete() {
     const formData = new FormData(formEl.current);
     const qs = new URLSearchParams(formData as any);
     fetcher.load(`${window.location.pathname}?${qs}`);
-  }, [debouncedQuery]);
+  }, [debouncedQuery, fetcher, loaderData.query]);
 
   return (
     <>
@@ -141,7 +142,11 @@ export default function Autocomplete() {
           }}>
           {data.results.map((r, i) => (
             <li key={i}>
-              <img src={r.poster} style={{ width: '100%' }} />
+              <img
+                src={r.poster}
+                alt={`Movie poster for "${r.title}"`}
+                style={{ width: '100%' }}
+              />
             </li>
           ))}
         </ul>

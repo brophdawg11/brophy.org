@@ -1,5 +1,5 @@
 import { Link } from '@remix-run/react';
-import { Post } from '~/ts/post-api';
+import type { Post } from '~/ts/post-api';
 
 type PostMetaProps = {
   post: Post;

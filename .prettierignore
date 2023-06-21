@@ -1,4 +1,5 @@
 .cache
+.eslintcache
 build
 node_modules
 public/build
