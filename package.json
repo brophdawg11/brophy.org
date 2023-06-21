@@ -24,9 +24,9 @@
     "start": "remix-serve build"
   },
   "dependencies": {
-    "@remix-run/node": "^1.16.0-pre.4",
-    "@remix-run/react": "^1.16.0-pre.4",
-    "@remix-run/serve": "^1.16.0-pre.4",
+    "@remix-run/node": "^1.18.0-pre.0",
+    "@remix-run/react": "^1.18.0-pre.0",
+    "@remix-run/serve": "^1.18.0-pre.0",
     "cheerio": "1.0.0-rc.10",
     "front-matter": "4.0.2",
     "isbot": "^3.6.10",
@@ -39,7 +39,7 @@
     "vague-time": "2.4.2"
   },
   "devDependencies": {
-    "@remix-run/dev": "^1.16.0-pre.4",
+    "@remix-run/dev": "^1.18.0-pre.0",
     "@types/marked": "4.0.2",
     "@types/prismjs": "1.26.0",
     "@types/react": "^18.2.0",
