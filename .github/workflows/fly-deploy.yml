@@ -24,7 +24,7 @@ jobs:
       - name: 📥 Install deps
         run: npm ci
 
-      - run: ✅ npm run validate
+      - run: npm run validate
 
   deploy:
     name: '🚀 Deploy'
