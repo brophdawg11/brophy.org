@@ -54,13 +54,13 @@ As you can see, it's really easy to eat into that 130Kb, with these libraries al
 
 ### Quick wins
 
-Since library-choices aren't specifically what we want to focus on in this post, I'll just say there are a few quick wins you can and should evaluate.  
+Since library-choices aren't specifically what we want to focus on in this post, I'll just say there are a few quick wins you can and should evaluate.
 
 * Consider each third party library you choose to bring into your codebase, and it's impact on your budget
 * Use vanilla JS where you can
 * Choose smaller alternatives where possible ([date-fns](https://github.com/date-fns/date-fns) over Moment)
 * Use techniques such as [Tree Shaking](https://webpack.js.org/guides/tree-shaking/) to remove unused code
-  * Look for tree-shakable libraries where possible (i.e., [lodash-es](https://www.npmjs.com/package/lodash-es) over the standard build) 
+  * Look for tree-shakable libraries where possible (i.e., [lodash-es](https://www.npmjs.com/package/lodash-es) over the standard build)
 * Use webpack's [Performance Configurations](https://webpack.js.org/configuration/performance/#performancemaxentrypointsize) to alert you when your bundle grow beyond the acceptable limit
 
 
@@ -70,7 +70,7 @@ Which brings us to the main concept of this post - using webpack [Dynamic Import
 
 An Async Component in Vue is a component that instead of being bundled directly into your main app bundles, is instead split into it's own file (via dynamic imports) and only loaded when you render it into the UI.
 
-### Basic Async Component 
+### Basic Async Component
 
 Consider the following example:
 
@@ -216,7 +216,7 @@ const store = new Vuex.Store({
 Over time, this can lead to a very large store, with blurred boundaries about which state/mutations/actions are used by which routes.  A better approach would be to use [Vuex Modules](https://vuex.vuejs.org/guide/modules.html) to keep each our routes stores separate:
 
 ```js
-// Better - routes are separated into modules...but still loaded on 
+// Better - routes are separated into modules...but still loaded on
 // the critical path
 const homepageModule = {
     namespaced: true,

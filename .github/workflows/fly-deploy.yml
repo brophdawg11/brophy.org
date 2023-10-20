@@ -11,8 +11,14 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  validate:
+    name: '✅ Validate'
+    runs-on: ubuntu-latest
+    run: npm run validate
+
   deploy:
-    name: Deploy
+    name: '🚀 Deploy'
+    needs: validate
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
