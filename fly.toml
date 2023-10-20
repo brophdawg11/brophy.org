@@ -12,6 +12,9 @@ primary_region = "iad"
   internal_port = 3000
   processes = ["app"]
   protocol = "tcp"
+  auto_start_machines = true
+  auto_stop_machines = true
+  min_machines_running = 1
 
   [services.concurrency]
     hard_limit = 25
@@ -28,5 +31,5 @@ primary_region = "iad"
 
   [[services.tcp_checks]]
     grace_period = "5s"
-    interval = "15s"
-    timeout = "2s"
+    interval = "60s"
+    timeout = "5s"
