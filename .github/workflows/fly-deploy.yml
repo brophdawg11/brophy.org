@@ -14,7 +14,8 @@ jobs:
   validate:
     name: '✅ Validate'
     runs-on: ubuntu-latest
-    run: npm run validate
+    steps:
+      run: npm run validate
 
   deploy:
     name: '🚀 Deploy'
