@@ -31,5 +31,5 @@ primary_region = "iad"
 
   [[services.tcp_checks]]
     grace_period = "5s"
-    interval = "60s"
+    interval = "15s"
     timeout = "5s"
