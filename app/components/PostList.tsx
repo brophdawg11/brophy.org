@@ -1,12 +1,10 @@
 import { Link } from '@remix-run/react';
-
 import type { Post } from '~/ts/post-api';
-
 import PostMeta from './PostMeta';
 
-interface PostListProps {
+type PostListProps = {
   posts: Post[];
-}
+};
 
 export default function PostList({ posts }: PostListProps) {
   return (

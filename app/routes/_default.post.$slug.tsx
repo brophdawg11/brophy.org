@@ -1,7 +1,8 @@
+import { useEffect } from 'react';
 import type {
   LinksFunction,
   LoaderFunction,
-  MetaFunction,
+  V2_MetaFunction,
 } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import {
@@ -10,33 +11,31 @@ import {
   useLoaderData,
   useRouteError,
 } from '@remix-run/react';
-import { useEffect } from 'react';
 import invariant from 'tiny-invariant';
-
 import ExternalLink from '~/components/ExternalLink';
 import PostMeta from '~/components/PostMeta';
 import PostNav from '~/components/PostNav';
-import { meta as rootMeta } from '~/root';
-import prismStyles from '~/styles/prism.css';
-import { getPost, getPosts } from '~/ts/post-api';
 import type { FullPost, Post } from '~/ts/post-api';
+import { getPost, getPosts } from '~/ts/post-api';
+import prismStyles from '~/styles/prism.css';
 
-interface LoaderData {
+type LoaderData = {
   post: FullPost;
   previousPost: Post;
   nextPost: Post;
-}
+};
 
-export const meta: MetaFunction<typeof loader> = ({ data, matches }) => {
+export const meta: V2_MetaFunction<typeof loader, { root: any }> = ({
+  data,
+  matches,
+}) => {
   if (!data?.post) {
     return [{ title: 'Error' }];
   }
 
-  const rootMatchMeta = matches[0].meta as ReturnType<typeof rootMeta>;
   return [
-    ...rootMatchMeta.filter(
-      (m) => !('title' in m) && 'name' in m && m.name !== 'description'
-    ),
+    // @ts-expect-error
+    ...matches[0].meta.filter((o) => !o.title && o.name !== 'description'),
     { title: data.post.title },
     { name: 'og:title', content: data.post.title },
     { name: 'twitter:title', content: data.post.title },
@@ -96,9 +95,7 @@ export default function PostView() {
 
   useEffect(() => {
     if (document.querySelectorAll('.codepen').length === 0) {
-      return () => {
-        // no-op
-      };
+      return () => {};
     }
     const el = document.createElement('script');
     el.src = 'https://static.codepen.io/assets/embed/ei.js';
@@ -145,7 +142,7 @@ export default function PostView() {
 }
 
 export function ErrorBoundary() {
-  const error = useRouteError();
+  let error = useRouteError();
   if (isRouteErrorResponse(error)) {
     if (error.status === 404) {
       return (

@@ -1,22 +1,21 @@
-import fs from 'fs/promises';
 import path from 'path';
+import fs from 'fs/promises';
 
 import cheerio from 'cheerio';
-import parseFrontMatter from 'front-matter';
 import { marked } from 'marked';
 import prism from 'prismjs';
-import readingTime from 'reading-time';
 import invariant from 'tiny-invariant';
+import parseFrontMatter from 'front-matter';
+import readingTime from 'reading-time';
 import vagueTime from 'vague-time';
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const loadLanguages = require('prismjs/components/');
 loadLanguages(['bash', 'json', 'typescript', 'markdown']);
 
 let postsCache: Post[] | null = null;
 const postCache: Record<string, FullPost> = {};
 
-export interface PostMarkdownAttributes {
+export type PostMarkdownAttributes = {
   title: string;
   author: string;
   postDate: string;
@@ -25,7 +24,7 @@ export interface PostMarkdownAttributes {
   crossPostName?: string;
   crossPostUrl?: string;
   crossPostExcerpt?: string;
-}
+};
 
 export type Post = Omit<PostMarkdownAttributes, 'tags' | 'crossPostExcerpt'> & {
   slug: string;
@@ -43,17 +42,12 @@ export type FullPost = Post & {
 const postsPath = path.join(__dirname, '..', 'posts');
 
 function isValidPostAttributes(
-  attributes: unknown
+  attributes: any
 ): attributes is PostMarkdownAttributes {
-  return (
-    attributes != null &&
-    typeof attributes === 'object' &&
-    'title' in attributes
-  );
+  return attributes?.title;
 }
 
 function excerpt(html: string): string {
-  // eslint-disable-next-line import/no-named-as-default-member
   const $ = cheerio.load(html);
   return $.html($('p').first())
     .trim()
@@ -94,7 +88,6 @@ async function readFullPost(filename: string): Promise<FullPost> {
 
 async function readPost(filename: string): Promise<Post> {
   const fullPost = await readFullPost(filename);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { body, ...rest } = fullPost;
   return { ...rest };
 }

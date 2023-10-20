@@ -1,37 +1,35 @@
-import type { LoaderFunction, MetaFunction } from '@remix-run/node';
+import { useEffect, useRef, useState } from 'react';
+import type { LoaderFunction, V2_MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { Form, useFetcher, useLoaderData } from '@remix-run/react';
-import { useEffect, useRef, useState } from 'react';
 
-import { meta as rootMeta } from '~/root';
-
-interface ApiMovie {
+type ApiMovie = {
   Title: string;
   Year: string;
   imdbID: string;
   Type: string;
   Poster: string;
-}
+};
 
-interface ApiResponse {
+type ApiResponse = {
   Response: 'True' | 'False';
   Error?: string;
   Search: ApiMovie[];
-}
+};
 
-interface LoaderData {
+type LoaderData = {
   query?: string;
   results?: {
     title: string;
     poster: string;
   }[];
   error?: string;
-}
+};
 
 const cache: Record<string, ApiResponse> = {};
 
 // See: https://usehooks.com/useDebounce/
-function useDebounce<T>(value: T, delay: number) {
+function useDebounce(value: any, delay: number) {
   const [debouncedValue, setDebouncedValue] = useState(value);
   useEffect(() => {
     const handler = setTimeout(() => setDebouncedValue(value), delay);
@@ -40,12 +38,13 @@ function useDebounce<T>(value: T, delay: number) {
   return debouncedValue;
 }
 
-export const meta: MetaFunction<typeof loader> = ({ data, matches }) => {
-  const rootMatchMeta = matches[0].meta as ReturnType<typeof rootMeta>;
+export const meta: V2_MetaFunction<typeof loader, { root: any }> = ({
+  data,
+  matches,
+}) => {
   return [
-    ...rootMatchMeta.filter(
-      (m) => !('title' in m) && 'name' in m && m.name !== 'description'
-    ),
+    // @ts-expect-error
+    ...matches[0].meta.filter((o) => !o.title && o.name !== 'description'),
     { title: `Results: ${data.query}` },
   ];
 };
@@ -95,21 +94,17 @@ export default function Autocomplete() {
 
   // Autocomplete via useFetcher
   useEffect(() => {
-    if (debouncedQuery.length < 3) {
-      return;
-    }
-    const sp = new URLSearchParams({ query: debouncedQuery });
-    // Short circuit if the fetcher has already completed for this query
     if (
-      // Already fetching this query
-      fetcher.formData?.get('query') === debouncedQuery ||
-      // Already fetched this query
-      fetcher.data?.query === debouncedQuery
+      !formEl?.current ||
+      debouncedQuery === loaderData.query ||
+      debouncedQuery.length < 3
     ) {
       return;
     }
-    fetcher.submit(sp);
-  }, [debouncedQuery, fetcher]);
+    const formData = new FormData(formEl.current);
+    const qs = new URLSearchParams(formData as any);
+    fetcher.load(`${window.location.pathname}?${qs}`);
+  }, [debouncedQuery, fetcher, loaderData.query]);
 
   return (
     <>
@@ -133,9 +128,9 @@ export default function Autocomplete() {
       </Form>
       <br />
 
-      {data.error ? <p style={{ color: 'red' }}>{data.error}</p> : null}
+      {data.error && <p style={{ color: 'red' }}>{data.error}</p>}
 
-      {data?.results ? (
+      {data?.results && (
         <ul
           style={{
             listStyleType: 'none',
@@ -155,7 +150,7 @@ export default function Autocomplete() {
             </li>
           ))}
         </ul>
-      ) : null}
+      )}
     </>
   );
 }

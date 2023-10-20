@@ -1,16 +1,14 @@
 import type { LinksFunction, LoaderFunction } from '@remix-run/node';
 import { Outlet, useLoaderData, useMatches } from '@remix-run/react';
-
 import type { CircleLinkProps } from '~/components/CircleLinks';
 import CircleLinks from '~/components/CircleLinks';
 import SiteInfo from '~/components/SiteInfo';
-
 import defaultStyles from '../styles/default.css';
 
-interface LoaderData {
+type LoaderData = {
   headerLinks: CircleLinkProps[];
   footerLinks: CircleLinkProps[];
-}
+};
 
 export const links: LinksFunction = () => {
   return [
@@ -72,13 +70,7 @@ export const loader: LoaderFunction = (): LoaderData => {
 export default function DefaultLayout() {
   const matches = useMatches();
   const data: LoaderData = useLoaderData();
-  const isHomepage = matches.some(
-    (m) =>
-      m.handle != null &&
-      typeof m.handle === 'object' &&
-      'isHomepage' in m.handle &&
-      m.handle.isHomepage
-  );
+  const isHomepage = matches.some((m) => m.handle?.isHomepage);
 
   return (
     <div

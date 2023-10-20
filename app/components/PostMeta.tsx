@@ -1,10 +1,9 @@
 import { Link } from '@remix-run/react';
-
 import type { Post } from '~/ts/post-api';
 
-interface PostMetaProps {
+type PostMetaProps = {
   post: Post;
-}
+};
 
 export default function PostMeta({ post }: PostMetaProps) {
   let formattedDate = post.postDate;
@@ -12,9 +11,7 @@ export default function PostMeta({ post }: PostMetaProps) {
     const date = new Date(post.postDate);
     const [, month, day, year] = date.toDateString().split(' ');
     formattedDate = `${month} ${day}, ${year}`;
-  } catch (e) {
-    // No-op
-  }
+  } catch (e) {}
 
   return (
     <p className="post-meta">

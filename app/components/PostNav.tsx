@@ -1,16 +1,15 @@
 import { Link } from '@remix-run/react';
-
 import type { Post } from '~/ts/post-api';
 
-interface PostNavProps {
+type PostNavProps = {
   previousPost?: Post;
   nextPost?: Post;
-}
+};
 
 export default function PostNav({ previousPost, nextPost }: PostNavProps) {
   return (
     <div className="c-post-nav">
-      {previousPost ? (
+      {previousPost && (
         <div className="c-post-nav__link c-post-nav__link--previous">
           <Link
             className="c-post-nav__link-arrow"
@@ -27,9 +26,9 @@ export default function PostNav({ previousPost, nextPost }: PostNavProps) {
             {previousPost.title}
           </Link>
         </div>
-      ) : null}
+      )}
 
-      {nextPost ? (
+      {nextPost && (
         <div className="c-post-nav__link c-post-nav__link--next">
           <Link
             to={nextPost.permalink}
@@ -46,7 +45,7 @@ export default function PostNav({ previousPost, nextPost }: PostNavProps) {
             ⏩
           </Link>
         </div>
-      ) : null}
+      )}
     </div>
   );
 }

@@ -1,5 +1,4 @@
 import { Link } from '@remix-run/react';
-
 import ExternalLink from './ExternalLink';
 
 interface LinkBodyProps {
