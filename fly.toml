@@ -1,6 +1,12 @@
-# fly.toml file generated for brophy-org on 2022-01-05T22:18:46-05:00
+# fly.toml app configuration file generated for brophy-org on 2023-10-20T09:54:09-04:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
 
 app = "brophy-org"
+primary_region = "iad"
+
+[build]
 
 [[services]]
   internal_port = 3000
@@ -21,7 +27,6 @@ app = "brophy-org"
     port = 443
 
   [[services.tcp_checks]]
-    grace_period = "1s"
+    grace_period = "5s"
     interval = "15s"
-    restart_limit = 0
     timeout = "2s"
