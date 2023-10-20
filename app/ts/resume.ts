@@ -1,4 +1,4 @@
-export type ResumeData = {
+export interface ResumeData {
   name: string;
   title: string;
   headshot: string;
@@ -22,7 +22,7 @@ export type ResumeData = {
     title: string;
     details: string[];
   }[];
-};
+}
 
 const resumeData: ResumeData = {
   name: 'Matt Brophy',

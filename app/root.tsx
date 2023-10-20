@@ -1,5 +1,4 @@
-import type { V2_MetaFunction } from '@remix-run/node';
-import type { LinksFunction } from '@remix-run/node';
+import type { MetaFunction, LinksFunction } from '@remix-run/node';
 import {
   Links,
   LiveReload,
@@ -8,9 +7,10 @@ import {
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react';
+
 import appStyles from '~/styles/app.css';
 
-export const meta: V2_MetaFunction = () => {
+export const meta: MetaFunction = () => {
   return [
     { name: 'charset', content: 'utf-8' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -48,7 +48,7 @@ export default function App() {
         <Outlet />
         <ScrollRestoration />
         <Scripts />
-        {process.env.NODE_ENV === 'development' && <LiveReload />}
+        {process.env.NODE_ENV === 'development' ? <LiveReload /> : null}
       </body>
     </html>
   );

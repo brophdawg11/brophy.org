@@ -1,26 +1,28 @@
-import type { ReactElement } from 'react';
 import type {
   LinksFunction,
   LoaderFunction,
-  V2_MetaFunction,
+  MetaFunction,
 } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
+import type { ReactElement } from 'react';
+
 import ExternalLink from '~/components/ExternalLink';
+import { meta as rootMeta } from '~/root';
+import resumeStyles from '~/styles/resume.css';
 import marked from '~/ts/marked.server';
 import type { ResumeData } from '~/ts/resume';
 import resumeData from '~/ts/resume';
-import resumeStyles from '~/styles/resume.css';
 
-type LoaderData = {
+interface LoaderData {
   resumeData: ResumeData;
-};
+}
 
-export const meta: V2_MetaFunction<typeof loader, { root: any }> = ({
-  matches,
-}) => {
+export const meta: MetaFunction<typeof loader> = ({ matches }) => {
+  const rootMatchMeta = matches[0].meta as ReturnType<typeof rootMeta>;
   return [
-    // @ts-expect-error
-    ...matches[0].meta.filter((o) => !o.title && o.name !== 'description'),
+    ...rootMatchMeta.filter(
+      (m) => !('title' in m) && 'name' in m && m.name !== 'description'
+    ),
     { title: "Matt Brophy's Resume" },
     { name: 'description', content: "Matt Brophy's Resume" },
   ];
@@ -59,10 +61,10 @@ export const loader: LoaderFunction = (): LoaderData => {
   return { resumeData: enhancedData };
 };
 
-type ResumeSectionProps = {
+interface ResumeSectionProps {
   title: string;
   children: ReactElement;
-};
+}
 
 function ResumeSection({ children, title }: ResumeSectionProps) {
   return (
@@ -73,9 +75,9 @@ function ResumeSection({ children, title }: ResumeSectionProps) {
   );
 }
 
-type ResumeHelperProps = {
+interface ResumeHelperProps {
   data: ResumeData;
-};
+}
 
 function ResumeHeader({ data }: ResumeHelperProps) {
   return (

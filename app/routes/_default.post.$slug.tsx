@@ -1,8 +1,7 @@
-import { useEffect } from 'react';
 import type {
   LinksFunction,
   LoaderFunction,
-  V2_MetaFunction,
+  MetaFunction,
 } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import {
@@ -11,31 +10,33 @@ import {
   useLoaderData,
   useRouteError,
 } from '@remix-run/react';
+import { useEffect } from 'react';
 import invariant from 'tiny-invariant';
+
 import ExternalLink from '~/components/ExternalLink';
 import PostMeta from '~/components/PostMeta';
 import PostNav from '~/components/PostNav';
-import type { FullPost, Post } from '~/ts/post-api';
-import { getPost, getPosts } from '~/ts/post-api';
+import { meta as rootMeta } from '~/root';
 import prismStyles from '~/styles/prism.css';
+import { getPost, getPosts } from '~/ts/post-api';
+import type { FullPost, Post } from '~/ts/post-api';
 
-type LoaderData = {
+interface LoaderData {
   post: FullPost;
   previousPost: Post;
   nextPost: Post;
-};
+}
 
-export const meta: V2_MetaFunction<typeof loader, { root: any }> = ({
-  data,
-  matches,
-}) => {
+export const meta: MetaFunction<typeof loader> = ({ data, matches }) => {
   if (!data?.post) {
     return [{ title: 'Error' }];
   }
 
+  const rootMatchMeta = matches[0].meta as ReturnType<typeof rootMeta>;
   return [
-    // @ts-expect-error
-    ...matches[0].meta.filter((o) => !o.title && o.name !== 'description'),
+    ...rootMatchMeta.filter(
+      (m) => !('title' in m) && 'name' in m && m.name !== 'description'
+    ),
     { title: data.post.title },
     { name: 'og:title', content: data.post.title },
     { name: 'twitter:title', content: data.post.title },
@@ -95,7 +96,9 @@ export default function PostView() {
 
   useEffect(() => {
     if (document.querySelectorAll('.codepen').length === 0) {
-      return () => {};
+      return () => {
+        // no-op
+      };
     }
     const el = document.createElement('script');
     el.src = 'https://static.codepen.io/assets/embed/ei.js';
@@ -142,7 +145,7 @@ export default function PostView() {
 }
 
 export function ErrorBoundary() {
-  let error = useRouteError();
+  const error = useRouteError();
   if (isRouteErrorResponse(error)) {
     if (error.status === 404) {
       return (
