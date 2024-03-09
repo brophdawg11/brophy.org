@@ -27,9 +27,9 @@
     "validate": "npm run lint && npm run typecheck"
   },
   "dependencies": {
-    "@remix-run/node": "2.1.0",
-    "@remix-run/react": "2.1.0",
-    "@remix-run/serve": "2.1.0",
+    "@remix-run/node": "2.8.1",
+    "@remix-run/react": "2.8.1",
+    "@remix-run/serve": "2.8.1",
     "cheerio": "1.0.0-rc.12",
     "front-matter": "4.0.2",
     "isbot": "3.6.12",
@@ -42,12 +42,13 @@
     "vague-time": "2.4.2"
   },
   "devDependencies": {
-    "@remix-run/dev": "2.1.0",
+    "@remix-run/dev": "2.8.1",
     "@types/marked": "4.3.1",
     "@types/prismjs": "1.26.0",
     "@types/react": "18.2.13",
     "@types/react-dom": "18.2.6",
     "@typescript-eslint/eslint-plugin": "6.8.0",
+    "@typescript-eslint/parser": "6.8.0",
     "eslint": "8.51.0",
     "eslint-config-prettier": "9.0.0",
     "eslint-import-resolver-typescript": "3.6.1",
