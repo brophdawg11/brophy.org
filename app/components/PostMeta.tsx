@@ -10,6 +10,7 @@ export default function PostMeta({ post }: PostMetaProps) {
   let formattedDate = post.postDate;
   try {
     const date = new Date(post.postDate);
+    date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
     const [, month, day, year] = date.toDateString().split(' ');
     formattedDate = `${month} ${day}, ${year}`;
   } catch (e) {

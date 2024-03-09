@@ -1,70 +1,67 @@
-import type { MetaFunction, LinksFunction } from '@remix-run/node';
+import { cssBundleHref } from '@remix-run/css-bundle';
+import type { LinksFunction, MetaFunction } from '@remix-run/node';
 import {
   Links,
-  LiveReload,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
+  useRouteError,
 } from '@remix-run/react';
 
-import appStyles from '~/styles/app.css';
+import '~/styles/app.css';
 
 export const meta: MetaFunction = () => {
   return [
-    { name: 'charset', content: 'utf-8' },
-    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-    { name: 'og:site_name', content: 'brophy.org' },
-    { name: 'twitter:card', content: 'summary' },
-    { name: 'twitter:creator', content: '@brophdawg11' },
-    ...['image', 'og:image', 'twitter:image'].map((t) => ({
-      name: t,
-      content: 'https://www.brophy.org/images/logo.png',
-    })),
-    // Put these at the end where they'll be in children - helps React better
-    // re-use the above entries
     { title: 'Matt Brophy | Web Developer' },
     { name: 'description', content: "Matt Brophy's Personal Website" },
   ];
 };
 
-export const links: LinksFunction = () => {
-  return [
-    {
-      rel: 'stylesheet',
-      href: appStyles,
-    },
-  ];
-};
+export const links: LinksFunction = () => [
+  ...(cssBundleHref ? [{ rel: 'stylesheet', href: cssBundleHref }] : []),
+];
 
-export default function App() {
+export function Layout({ children }: { children: React.ReactNode }) {
+  const error = useRouteError();
   return (
     <html lang="en">
       <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="og:site_name" content="brophy.org" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:creator" content="@brophdawg11" />
+        <meta name="image" content="https://www.brophy.org/images/logo.png" />
+        <meta
+          name="og:image"
+          content="https://www.brophy.org/images/logo.png"
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.brophy.org/images/logo.png"
+        />
         <Meta />
         <Links />
       </head>
-      <body>
-        <Outlet />
+      <body className={error ? 'c-error__body' : undefined}>
+        {children}
         <ScrollRestoration />
         <Scripts />
-        {process.env.NODE_ENV === 'development' ? <LiveReload /> : null}
       </body>
     </html>
   );
 }
 
+export default function App() {
+  return <Outlet />;
+}
+
 export function ErrorBoundary() {
   return (
-    <html lang="en">
-      <head>
-        <Meta />
-        <Links />
-      </head>
-      <body className="c-error__body">
-        <h1>Oh no something went wrong!</h1>
-        <p>Please try reloading the page</p>
-      </body>
-    </html>
+    <div>
+      <h1>Oh no something went wrong!</h1>
+      <p>Please try reloading the page</p>
+    </div>
   );
 }

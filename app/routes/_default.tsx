@@ -1,25 +1,16 @@
-import type { LinksFunction, LoaderFunction } from '@remix-run/node';
+import type { LoaderFunction } from '@remix-run/node';
 import { Outlet, useLoaderData, useMatches } from '@remix-run/react';
 
 import type { CircleLinkProps } from '~/components/CircleLinks';
 import CircleLinks from '~/components/CircleLinks';
 import SiteInfo from '~/components/SiteInfo';
 
-import defaultStyles from '../styles/default.css';
+import '~/styles/default.css';
 
 interface LoaderData {
   headerLinks: CircleLinkProps[];
   footerLinks: CircleLinkProps[];
 }
-
-export const links: LinksFunction = () => {
-  return [
-    {
-      rel: 'stylesheet',
-      href: defaultStyles,
-    },
-  ];
-};
 
 export const loader: LoaderFunction = (): LoaderData => {
   return {

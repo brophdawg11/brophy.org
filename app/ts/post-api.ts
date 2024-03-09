@@ -1,5 +1,6 @@
 import fs from 'fs/promises';
-import path from 'path';
+import path from 'node:path';
+import url from 'node:url';
 
 import cheerio from 'cheerio';
 import parseFrontMatter from 'front-matter';
@@ -8,9 +9,8 @@ import prism from 'prismjs';
 import readingTime from 'reading-time';
 import invariant from 'tiny-invariant';
 import vagueTime from 'vague-time';
+import loadLanguages from 'prismjs/components/index.js';
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const loadLanguages = require('prismjs/components/');
 loadLanguages(['bash', 'json', 'typescript', 'markdown']);
 
 let postsCache: Post[] | null = null;
@@ -40,7 +40,12 @@ export type FullPost = Post & {
   body: string;
 };
 
-const postsPath = path.join(__dirname, '..', 'posts');
+const postsPath = path.join(
+  path.dirname(url.fileURLToPath(import.meta.url)),
+  '..',
+  '..',
+  'posts'
+);
 
 function isValidPostAttributes(
   attributes: unknown

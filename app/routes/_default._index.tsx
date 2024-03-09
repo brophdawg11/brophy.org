@@ -20,9 +20,8 @@ export default function Homepage() {
       <p className="c-home-description">
         web developer
         <br />
-        working on&nbsp;
-        <ExternalLink to="https://remix.run">remix</ExternalLink>
-        &nbsp;💿 at&nbsp;
+        working on <ExternalLink to="https://remix.run">remix</ExternalLink>
+        {' 💿 at '}
         <ExternalLink to="https://shopify.engineering/">shopify</ExternalLink>
       </p>
 

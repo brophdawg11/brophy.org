@@ -6,6 +6,7 @@
   "author": "Matt Brophy <matt@brophy.org>",
   "license": "MIT",
   "homepage": "https://www.brophy.org",
+  "type": "module",
   "sideEffects": false,
   "engines": {
     "node": ">=18",
@@ -16,17 +17,18 @@
     "url": "https://github.com/brophdawg11/brophy.org.git"
   },
   "scripts": {
-    "build": "remix build",
+    "build": "remix vite:build",
     "clean": "rm -rf .cache/ && rm -rf build/ && rm -rf public/build/",
     "deploy": "fly deploy --remote-only",
-    "dev": "remix dev --manual",
+    "dev": "remix vite:dev",
     "lint": "eslint --cache --max-warnings 0 .",
     "prepare": "husky install",
-    "start": "remix-serve ./build/index.js",
+    "start": "remix-serve ./build/server/index.js",
     "typecheck": "tsc",
     "validate": "npm run lint && npm run typecheck"
   },
   "dependencies": {
+    "@remix-run/css-bundle": "2.8.1",
     "@remix-run/node": "2.8.1",
     "@remix-run/react": "2.8.1",
     "@remix-run/serve": "2.8.1",
@@ -60,6 +62,7 @@
     "husky": "8.0.3",
     "lint-staged": "13.2.2",
     "prettier": "2.8.8",
-    "typescript": "5.2.2"
+    "typescript": "5.2.2",
+    "vite-tsconfig-paths": "4.3.1"
   }
 }

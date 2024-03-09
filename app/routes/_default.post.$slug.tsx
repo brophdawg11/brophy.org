@@ -1,8 +1,4 @@
-import type {
-  LinksFunction,
-  LoaderFunction,
-  MetaFunction,
-} from '@remix-run/node';
+import type { LoaderFunction, MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import {
   isRouteErrorResponse,
@@ -17,9 +13,10 @@ import ExternalLink from '~/components/ExternalLink';
 import PostMeta from '~/components/PostMeta';
 import PostNav from '~/components/PostNav';
 import { meta as rootMeta } from '~/root';
-import prismStyles from '~/styles/prism.css';
 import { getPost, getPosts } from '~/ts/post-api';
 import type { FullPost, Post } from '~/ts/post-api';
+
+import '~/styles/prism.css';
 
 interface LoaderData {
   post: FullPost;
@@ -47,15 +44,6 @@ export const meta: MetaFunction<typeof loader> = ({ data, matches }) => {
     {
       name: 'twitter:url',
       content: `https://www.brophy.org/post/${data.post.slug}`,
-    },
-  ];
-};
-
-export const links: LinksFunction = () => {
-  return [
-    {
-      rel: 'stylesheet',
-      href: prismStyles,
     },
   ];
 };

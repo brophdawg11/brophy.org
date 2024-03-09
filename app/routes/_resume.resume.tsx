@@ -1,17 +1,14 @@
-import type {
-  LinksFunction,
-  LoaderFunction,
-  MetaFunction,
-} from '@remix-run/node';
+import type { LoaderFunction, MetaFunction } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
 import type { ReactElement } from 'react';
 
 import ExternalLink from '~/components/ExternalLink';
 import { meta as rootMeta } from '~/root';
-import resumeStyles from '~/styles/resume.css';
 import marked from '~/ts/marked.server';
 import type { ResumeData } from '~/ts/resume';
 import resumeData from '~/ts/resume';
+
+import '~/styles/resume.css';
 
 interface LoaderData {
   resumeData: ResumeData;
@@ -25,15 +22,6 @@ export const meta: MetaFunction<typeof loader> = ({ matches }) => {
     ),
     { title: "Matt Brophy's Resume" },
     { name: 'description', content: "Matt Brophy's Resume" },
-  ];
-};
-
-export const links: LinksFunction = () => {
-  return [
-    {
-      rel: 'stylesheet',
-      href: resumeStyles,
-    },
   ];
 };
 
