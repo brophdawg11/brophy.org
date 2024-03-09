@@ -89,14 +89,27 @@ const resumeData: ResumeData = {
         'Staff Developer - Remix team at [Shopify](https://shopify.engineering/)',
       subDetails: ['September 2022 - Present'],
       details: [
-        'Replaced all Remix data API logic with the updated React Router 6.4 package ([blog post](https://remix.run/blog/react-routering-remix))',
+        'Primarily working on the data/routing functionality at the intersection of Remix and React Router',
+        [
+          'Added support for Remix [Client Data](https://remix.run/docs/en/main/guides/client-data) ' +
+            'and [SPA Mode](https://remix.run/docs/en/main/future/spa-mode)',
+          'Implemented various new APIs including ' +
+            '[route.lazy](https://reactrouter.com/en/main/route/lazy), ' +
+            '[useBlocker](https://reactrouter.com/en/main/hooks/use-blocker), ' +
+            'and support for the [ViewTransition API](https://reactrouter.com/en/main/components/link#unstable_viewtransition)',
+          'Replaced all Remix data API logic with the updated React Router 6.4 package ([blog post](https://remix.run/blog/react-routering-remix))',
+        ],
+        'Managed the React Router and Remix release processes',
       ],
     },
     {
       title: 'Senior Software Engineer - [Remix](https://remix.run/)',
       subDetails: ['February 2022 - September 2022'],
       details: [
-        'Migrated Remix data APIs into React Router via a framework-agnostic router package such that [other UI libraries](https://github.com/brophdawg11/remix-routers) can leverage the data APIs ([blog post](https://remix.run/blog/remixing-react-router))',
+        'Primarily working on the data/routing functionality at the intersection of Remix and React Router',
+        [
+          'Migrated Remix data APIs into React Router via a framework-agnostic router package such that [other UI libraries](https://github.com/brophdawg11/remix-routers) can leverage the data APIs ([blog post](https://remix.run/blog/remixing-react-router))',
+        ],
         'Remix was acquired by Shopify in the fall of 2022',
       ],
     },
