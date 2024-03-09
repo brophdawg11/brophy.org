@@ -44,7 +44,7 @@ export const meta: MetaFunction<typeof loader> = ({ data, matches }) => {
   const rootMatchMeta = matches[0].meta as ReturnType<typeof rootMeta>;
   return [
     ...rootMatchMeta.filter(
-      (m) => !('title' in m) && 'name' in m && m.name !== 'description'
+      (m) => !('title' in m) && 'name' in m && m.name !== 'description',
     ),
     { title: `Results: ${data.query}` },
   ];

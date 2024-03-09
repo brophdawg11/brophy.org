@@ -4,11 +4,11 @@ import type { ReactElement } from 'react';
 
 import ExternalLink from '~/components/ExternalLink';
 import { meta as rootMeta } from '~/root';
-import marked from '~/ts/marked.server';
 import type { ResumeData } from '~/ts/resume';
 import resumeData from '~/ts/resume';
 
 import '~/styles/resume.css';
+import { md } from '~/ts/marked.server';
 
 interface LoaderData {
   resumeData: ResumeData;
@@ -18,32 +18,22 @@ export const meta: MetaFunction<typeof loader> = ({ matches }) => {
   const rootMatchMeta = matches[0].meta as ReturnType<typeof rootMeta>;
   return [
     ...rootMatchMeta.filter(
-      (m) => !('title' in m) && 'name' in m && m.name !== 'description'
+      (m) => !('title' in m) && 'name' in m && m.name !== 'description',
     ),
     { title: "Matt Brophy's Resume" },
     { name: 'description', content: "Matt Brophy's Resume" },
   ];
 };
 
-function md(value: string): string {
-  try {
-    return marked(value)
-      .trim()
-      .replace(/^<p>|<\/p>$/g, '');
-  } catch (e) {
-    return value;
-  }
-}
-
 export const loader: LoaderFunction = (): LoaderData => {
   const enhancedData: ResumeData = {
     ...resumeData,
     jobs: resumeData.jobs.map((j) => ({
-      title: md(j.title),
+      title: mdTrim(j.title),
       details: j.details.map((d) =>
-        Array.isArray(d) ? d.map((d2) => md(d2)) : md(d)
+        Array.isArray(d) ? d.map((d2) => mdTrim(d2)) : mdTrim(d),
       ),
-      subDetails: j.subDetails.map((sd) => md(sd)),
+      subDetails: j.subDetails.map((sd) => mdTrim(sd)),
     })),
   };
   return { resumeData: enhancedData };
@@ -205,4 +195,10 @@ export default function Resume() {
       </div>
     </div>
   );
+}
+
+function mdTrim(str: string) {
+  return md(str)
+    .trim()
+    .replace(/^<p>|<\/p>$/g, '');
 }

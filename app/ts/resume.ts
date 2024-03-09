@@ -86,7 +86,7 @@ const resumeData: ResumeData = {
   jobs: [
     {
       title:
-        'Staff Developer - Remix team at [Shopify](https://shopify.engineering/)',
+        'Staff Developer - [Shopify](https://shopify.engineering/) (Remix) ',
       subDetails: ['September 2022 - Present'],
       details: [
         'Primarily working on the data/routing functionality at the intersection of Remix and React Router',

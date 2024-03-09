@@ -58,7 +58,7 @@ export default function SiteInfo() {
               <ExternalLink key={index2} to={text.href}>
                 {text.title}
               </ExternalLink>
-            )
+            ),
           )}
         </p>
       ))}

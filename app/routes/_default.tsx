@@ -68,7 +68,7 @@ export default function DefaultLayout() {
       m.handle != null &&
       typeof m.handle === 'object' &&
       'isHomepage' in m.handle &&
-      m.handle.isHomepage
+      m.handle.isHomepage,
   );
 
   return (

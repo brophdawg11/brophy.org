@@ -32,7 +32,7 @@ export const meta: MetaFunction<typeof loader> = ({ data, matches }) => {
   const rootMatchMeta = matches[0].meta as ReturnType<typeof rootMeta>;
   return [
     ...rootMatchMeta.filter(
-      (m) => !('title' in m) && 'name' in m && m.name !== 'description'
+      (m) => !('title' in m) && 'name' in m && m.name !== 'description',
     ),
     { title: data.post.title },
     { name: 'og:title', content: data.post.title },
@@ -59,7 +59,7 @@ export const loader: LoaderFunction = async ({
   if (slug === '404') {
     throw json(
       { message: `Unable to find a post with slug "${slug}"` },
-      { status: 404 }
+      { status: 404 },
     );
   }
   const post = await getPost(slug);

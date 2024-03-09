@@ -4,12 +4,12 @@ import url from 'node:url';
 
 import cheerio from 'cheerio';
 import parseFrontMatter from 'front-matter';
-import { marked } from 'marked';
-import prism from 'prismjs';
 import readingTime from 'reading-time';
 import invariant from 'tiny-invariant';
 import vagueTime from 'vague-time';
 import loadLanguages from 'prismjs/components/index.js';
+
+import { md } from '~/ts/marked.server';
 
 loadLanguages(['bash', 'json', 'typescript', 'markdown']);
 
@@ -44,11 +44,11 @@ const postsPath = path.join(
   path.dirname(url.fileURLToPath(import.meta.url)),
   '..',
   '..',
-  'posts'
+  'posts',
 );
 
 function isValidPostAttributes(
-  attributes: unknown
+  attributes: unknown,
 ): attributes is PostMarkdownAttributes {
   return (
     attributes != null &&
@@ -66,20 +66,13 @@ function excerpt(html: string): string {
     .replace(/<\/p>$/, '');
 }
 
-function md(str: string) {
-  return marked.parse(str, {
-    highlight: (code, lang) =>
-      prism.highlight(code, prism.languages[lang], lang),
-  });
-}
-
 async function readFullPost(filename: string): Promise<FullPost> {
   const file = await fs.readFile(path.join(postsPath, filename));
   const fileContents = file.toString();
   const { attributes, body } = parseFrontMatter(fileContents);
   invariant(
     isValidPostAttributes(attributes),
-    `${filename} has bad meta data!`
+    `${filename} has bad meta data!`,
   );
   const slug = filename.replace(/\.md$/, '');
   const html = md(body);
@@ -112,7 +105,7 @@ export async function getPosts(): Promise<Post[]> {
       .filter((p) => process.env.SHOW_DRAFT_POSTS === 'true' || !p.draft)
       // Reverse chronological order
       .sort((a, b) =>
-        a.postDate < b.postDate ? 1 : a.postDate > b.postDate ? -1 : 0
+        a.postDate < b.postDate ? 1 : a.postDate > b.postDate ? -1 : 0,
       );
   }
   return postsCache;
