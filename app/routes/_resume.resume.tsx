@@ -1,4 +1,4 @@
-import type { LoaderFunction, MetaFunction } from '@remix-run/node';
+import type { MetaFunction } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
 import type { ReactElement } from 'react';
 
@@ -9,10 +9,6 @@ import resumeData from '~/ts/resume';
 
 import '~/styles/resume.css';
 import { md } from '~/ts/marked.server';
-
-interface LoaderData {
-  resumeData: ResumeData;
-}
 
 export const meta: MetaFunction<typeof loader> = ({ matches }) => {
   const rootMatchMeta = matches[0].meta as ReturnType<typeof rootMeta>;
@@ -25,7 +21,7 @@ export const meta: MetaFunction<typeof loader> = ({ matches }) => {
   ];
 };
 
-export const loader: LoaderFunction = (): LoaderData => {
+export async function loader() {
   const enhancedData: ResumeData = {
     ...resumeData,
     jobs: resumeData.jobs.map((j) => ({
@@ -37,7 +33,7 @@ export const loader: LoaderFunction = (): LoaderData => {
     })),
   };
   return { resumeData: enhancedData };
-};
+}
 
 interface ResumeSectionProps {
   title: string;
@@ -182,7 +178,7 @@ function ResumeEducation({ data }: ResumeHelperProps) {
 }
 
 export default function Resume() {
-  const { resumeData: data } = useLoaderData<LoaderData>();
+  const { resumeData: data } = useLoaderData<typeof loader>();
   return (
     <div className="content-centered">
       <div className="resume">

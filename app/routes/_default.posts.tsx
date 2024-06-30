@@ -1,20 +1,14 @@
-import type { LoaderFunction } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 
 import PostList from '~/components/PostList';
-import type { Post } from '~/ts/post-api';
 import { getPosts } from '~/ts/post-api';
 
-interface LoaderData {
-  posts: Post[];
-}
-
-export const loader: LoaderFunction = async (): Promise<LoaderData> => {
+export async function loader() {
   const posts = await getPosts();
   return { posts };
-};
+}
 
 export default function Posts() {
-  const { posts } = useLoaderData<LoaderData>();
+  const { posts } = useLoaderData<typeof loader>();
   return <PostList posts={posts} />;
 }

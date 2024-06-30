@@ -1,5 +1,4 @@
-import type { LoaderFunction, MetaFunction } from '@remix-run/node';
-import { json } from '@remix-run/node';
+import type { LoaderFunctionArgs, MetaFunction } from '@remix-run/node';
 import {
   isRouteErrorResponse,
   Link,
@@ -14,15 +13,8 @@ import PostMeta from '~/components/PostMeta';
 import PostNav from '~/components/PostNav';
 import { meta as rootMeta } from '~/root';
 import { getPost, getPosts } from '~/ts/post-api';
-import type { FullPost, Post } from '~/ts/post-api';
 
 import '~/styles/prism.css';
-
-interface LoaderData {
-  post: FullPost;
-  previousPost: Post;
-  nextPost: Post;
-}
 
 export const meta: MetaFunction<typeof loader> = ({ data, matches }) => {
   if (!data?.post) {
@@ -48,19 +40,16 @@ export const meta: MetaFunction<typeof loader> = ({ data, matches }) => {
   ];
 };
 
-export const loader: LoaderFunction = async ({
-  params,
-}): Promise<LoaderData> => {
+export async function loader({ params }: LoaderFunctionArgs) {
   const { slug } = params;
   invariant(typeof slug === 'string', 'Invalid slug');
   if (slug === 'error') {
     throw new Error('wat');
   }
   if (slug === '404') {
-    throw json(
-      { message: `Unable to find a post with slug "${slug}"` },
-      { status: 404 },
-    );
+    throw new Response(`Unable to find a post with slug "${slug}"`, {
+      status: 404,
+    });
   }
   const post = await getPost(slug);
   const posts = await getPosts();
@@ -68,10 +57,10 @@ export const loader: LoaderFunction = async ({
   const previousPost = posts[idx + 1];
   const nextPost = posts[idx - 1];
   return { post, previousPost, nextPost };
-};
+}
 
 export default function PostView() {
-  const { post, previousPost, nextPost } = useLoaderData<LoaderData>();
+  const { post, previousPost, nextPost } = useLoaderData<typeof loader>();
 
   const url = `https://www.brophy.org${post.permalink}`;
   const twitterUrl = `https://twitter.com/share?text=${post.title}&amp;url=${url}`;

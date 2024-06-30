@@ -1,18 +1,11 @@
-import type { LoaderFunction } from '@remix-run/node';
 import { Outlet, useLoaderData, useMatches } from '@remix-run/react';
 
-import type { CircleLinkProps } from '~/components/CircleLinks';
 import CircleLinks from '~/components/CircleLinks';
 import SiteInfo from '~/components/SiteInfo';
 
 import '~/styles/default.css';
 
-interface LoaderData {
-  headerLinks: CircleLinkProps[];
-  footerLinks: CircleLinkProps[];
-}
-
-export const loader: LoaderFunction = (): LoaderData => {
+export async function loader() {
   return {
     headerLinks: [
       {
@@ -57,19 +50,14 @@ export const loader: LoaderFunction = (): LoaderData => {
       //     icon: 'rss-squared',
       // },
     ],
-  };
-};
+  } as const;
+}
 
 export default function DefaultLayout() {
   const matches = useMatches();
-  const data: LoaderData = useLoaderData();
-  const isHomepage = matches.some(
-    (m) =>
-      m.handle != null &&
-      typeof m.handle === 'object' &&
-      'isHomepage' in m.handle &&
-      m.handle.isHomepage,
-  );
+  const data = useLoaderData<typeof loader>();
+  // @ts-expect-error handle is typed as unknown
+  const isHomepage = matches.some((m) => m.handle?.isHomepage);
 
   return (
     <div

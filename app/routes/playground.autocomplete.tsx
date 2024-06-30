@@ -1,5 +1,4 @@
-import type { LoaderFunction, MetaFunction } from '@remix-run/node';
-import { json } from '@remix-run/node';
+import type { LoaderFunctionArgs, MetaFunction } from '@remix-run/node';
 import { Form, useFetcher, useLoaderData } from '@remix-run/react';
 import { useEffect, useRef, useState } from 'react';
 
@@ -17,15 +16,6 @@ interface ApiResponse {
   Response: 'True' | 'False';
   Error?: string;
   Search: ApiMovie[];
-}
-
-interface LoaderData {
-  query?: string;
-  results?: {
-    title: string;
-    poster: string;
-  }[];
-  error?: string;
 }
 
 const cache: Record<string, ApiResponse> = {};
@@ -46,14 +36,18 @@ export const meta: MetaFunction<typeof loader> = ({ data, matches }) => {
     ...rootMatchMeta.filter(
       (m) => !('title' in m) && 'name' in m && m.name !== 'description',
     ),
-    { title: `Results: ${data.query}` },
+    { title: `Results: ${data?.query}` },
   ];
 };
 
-export const loader: LoaderFunction = async ({ request }) => {
+export async function loader({ request }: LoaderFunctionArgs) {
   const query = new URL(request.url).searchParams.get('query')?.toLowerCase();
   if (!query) {
-    return json<LoaderData>({});
+    return {
+      query: '',
+      results: [],
+      error: undefined,
+    };
   }
 
   let data = cache[query];
@@ -74,24 +68,24 @@ export const loader: LoaderFunction = async ({ request }) => {
     }
   }
 
-  return json<LoaderData>({
+  return {
     query,
     results: data.Search?.map((m) => ({
       title: m.Title,
       poster: m.Poster,
     })),
     error: data.Error,
-  });
-};
+  };
+}
 
 export default function Autocomplete() {
-  const loaderData = useLoaderData<LoaderData>();
+  const loaderData = useLoaderData<typeof loader>();
   const formEl = useRef(null);
   const [query, setQuery] = useState(loaderData.query || '');
   const debouncedQuery = useDebounce(query, 300);
-  const fetcher = useFetcher<LoaderData>();
+  const fetcher = useFetcher<typeof loader>();
   // Prefer realtime fetcher results
-  const data: LoaderData = fetcher.data || loaderData;
+  const data = fetcher.data || loaderData;
 
   // Autocomplete via useFetcher
   useEffect(() => {

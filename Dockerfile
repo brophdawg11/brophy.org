@@ -13,4 +13,5 @@ RUN npm prune --omit=dev
 COPY --from=build /brophy.org/build ./build
 COPY --from=build /brophy.org/posts ./posts
 COPY --from=build /brophy.org/public ./public
+ENV IS_FLY=true
 CMD npm run start

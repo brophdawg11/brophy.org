@@ -7,6 +7,7 @@ import {
   Scripts,
   ScrollRestoration,
   useRouteError,
+  useRouteLoaderData,
 } from '@remix-run/react';
 
 import '~/styles/app.css';
@@ -22,7 +23,18 @@ export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: 'stylesheet', href: cssBundleHref }] : []),
 ];
 
+export function loader() {
+  return {
+    isProd: process.env.IS_FLY === 'true',
+  };
+}
+
+export function shouldRevalidate() {
+  return false;
+}
+
 export function Layout({ children }: { children: React.ReactNode }) {
+  const data = useRouteLoaderData<typeof loader>('root');
   const error = useRouteError();
   return (
     <html lang="en">
@@ -45,19 +57,23 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body className={error ? 'c-error__body' : undefined}>
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-6VHREDE1NE"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: [
-              `window.dataLayer = window.dataLayer || [];`,
-              `function gtag(){window.dataLayer.push(arguments);}`,
-              `gtag('js', new Date());`,
-              `gtag('config', 'G-6VHREDE1NE');`,
-            ].join(''),
-          }}
-        />
+        {data?.isProd ? (
+          <>
+            <script
+              async
+              src="https://www.googletagmanager.com/gtag/js?id=G-6VHREDE1NE"></script>
+            <script
+              dangerouslySetInnerHTML={{
+                __html: [
+                  `window.dataLayer = window.dataLayer || [];`,
+                  `function gtag(){window.dataLayer.push(arguments);}`,
+                  `gtag('js', new Date());`,
+                  `gtag('config', 'G-6VHREDE1NE');`,
+                ].join('\n'),
+              }}
+            />
+          </>
+        ) : null}
         {children}
         <ScrollRestoration />
         <Scripts />
