@@ -36,7 +36,7 @@ const resumeData: ResumeData = {
   skills: [
     {
       title: 'Web Languages',
-      skills: ['JavaScript', 'HTML', 'CSS', 'SCSS'],
+      skills: ['JavaScript', 'HTML', 'CSS'],
     },
     {
       title: 'Web Technologies',
@@ -47,9 +47,10 @@ const resumeData: ResumeData = {
         'Vue',
         'Vuex',
         'Express',
+        'Vite',
         'Webpack',
         'esbuild',
-        'Axios',
+        'Playwright',
         'Jest',
         'Storybook',
       ],
@@ -57,12 +58,12 @@ const resumeData: ResumeData = {
     {
       title: 'Cloud/CI Technologies',
       skills: [
-        'Netlify',
         'Fly.io',
+        'Netlify',
         'Github Actions',
         'Jenkins',
-        'AWS (S3, Cloudfront, Route 53, EC2)',
         'Travis CI',
+        'AWS (S3, Cloudfront, Route 53, EC2)',
       ],
     },
     {
@@ -90,15 +91,25 @@ const resumeData: ResumeData = {
       subDetails: ['September 2022 - Present'],
       details: [
         'Primarily working on the data/routing functionality at the intersection of Remix and React Router',
+        'Implemented new Remix Features including: ',
         [
-          'Added support for Remix [Client Data](https://remix.run/docs/en/main/guides/client-data) ' +
-            'and [SPA Mode](https://remix.run/docs/en/main/future/spa-mode)',
-          'Implemented various new APIs including ' +
-            '[route.lazy](https://reactrouter.com/en/main/route/lazy), ' +
-            '[useBlocker](https://reactrouter.com/en/main/hooks/use-blocker), ' +
-            'and support for the [ViewTransition API](https://reactrouter.com/en/main/components/link#unstable_viewtransition)',
-          'Replaced all Remix data API logic with the updated React Router 6.4 package ([blog post](https://remix.run/blog/react-routering-remix))',
+          '[Client Data](https://remix.run/docs/en/main/guides/client-data)',
+          '[SPA Mode](https://remix.run/docs/en/main/future/spa-mode)',
+          '[Single Fetch](https://remix.run/docs/en/main/guides/single-fetch)',
+          '[Fog of War](https://remix.run/docs/en/main/guides/fog-of-war)',
         ],
+        'Implemented new React Router features including: ',
+        [
+          '[dataStrategy](https://reactrouter.com/en/main/routers/create-browser-router#optsunstable_datastrategy)',
+          '[patchRoutesOnMiss](https://reactrouter.com/en/main/routers/create-browser-router#optsunstable_patchroutesonmiss)',
+          '[route.lazy](https://reactrouter.com/en/main/route/lazy)',
+          '[useBlocker](https://reactrouter.com/en/main/hooks/use-blocker)',
+          '[ViewTransition API](https://reactrouter.com/en/main/components/link#unstable_viewtransition) support',
+        ],
+        'Replaced all Remix data API logic with the updated React Router 6.4 package ([blog post](https://remix.run/blog/react-routering-remix))',
+        'Managed the `git` migration from the Remix repository to the React Router ' +
+          'repository to preserve multiple years of Remix commit history during ' +
+          'the [React Router v7](https://remix.run/blog/merging-remix-and-react-router) merge',
         'Managed the React Router and Remix release processes',
       ],
     },
