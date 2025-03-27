@@ -1,5 +1,3 @@
-import { cssBundleHref } from '@remix-run/css-bundle';
-import type { LinksFunction, MetaFunction } from '@remix-run/node';
 import {
   Links,
   Meta,
@@ -8,20 +6,16 @@ import {
   ScrollRestoration,
   useRouteError,
   useRouteLoaderData,
-} from '@remix-run/react';
+} from 'react-router';
 
 import '~/styles/app.css';
 
-export const meta: MetaFunction = () => {
+export function meta() {
   return [
     { title: 'Matt Brophy | Web Developer' },
     { name: 'description', content: "Matt Brophy's Personal Website" },
   ];
-};
-
-export const links: LinksFunction = () => [
-  ...(cssBundleHref ? [{ rel: 'stylesheet', href: cssBundleHref }] : []),
-];
+}
 
 export function loader() {
   return {

@@ -1,5 +1,6 @@
 .cache
 .eslintcache
+.react-router/
 build
 node_modules
 public/build

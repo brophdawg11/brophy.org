@@ -1,9 +1,10 @@
-import { Outlet, useLoaderData, useMatches } from '@remix-run/react';
+import { Outlet } from 'react-router';
 
 import CircleLinks from '~/components/CircleLinks';
 import SiteInfo from '~/components/SiteInfo';
 
 import '~/styles/default.css';
+import type { Route } from './+types/_default';
 
 export async function loader() {
   return {
@@ -53,20 +54,17 @@ export async function loader() {
   } as const;
 }
 
-export default function DefaultLayout() {
-  const matches = useMatches();
-  const data = useLoaderData<typeof loader>();
+export default function DefaultLayout({
+  matches,
+  loaderData,
+}: Route.ComponentProps) {
   // @ts-expect-error handle is typed as unknown
-  const isHomepage = matches.some((m) => m.handle?.isHomepage);
+  const isHomepage = matches.some((m) => m?.handle?.isHomepage);
 
   return (
-    <div
-      className={`
-                page-content-wrapper
-                ${isHomepage ? 's-homepage' : ''}
-            `}>
+    <div className={`page-content-wrapper ${isHomepage ? 's-homepage' : ''}`}>
       <header className="page-header">
-        <CircleLinks links={data.headerLinks} />
+        <CircleLinks links={loaderData.headerLinks} />
       </header>
 
       <div className="page-content">
@@ -74,7 +72,10 @@ export default function DefaultLayout() {
       </div>
 
       <footer className="page-footer">
-        <CircleLinks links={data.footerLinks} className="page-footer__links" />
+        <CircleLinks
+          links={loaderData.footerLinks}
+          className="page-footer__links"
+        />
         <SiteInfo />
       </footer>
     </div>

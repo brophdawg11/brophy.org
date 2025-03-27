@@ -1,17 +1,16 @@
-import type { MetaFunction } from '@remix-run/node';
-import { Link, useLoaderData } from '@remix-run/react';
+import { Link } from 'react-router';
 import type { ReactElement } from 'react';
 
+import type { Route } from './+types/_resume.resume';
 import ExternalLink from '~/components/ExternalLink';
-import { meta as rootMeta } from '~/root';
 import type { ResumeData } from '~/ts/resume';
 import resumeData from '~/ts/resume';
 
 import '~/styles/resume.css';
 import { md } from '~/ts/marked.server';
 
-export const meta: MetaFunction<typeof loader> = ({ matches }) => {
-  const rootMatchMeta = matches[0].meta as ReturnType<typeof rootMeta>;
+export function meta({ matches }: Route.MetaArgs) {
+  const rootMatchMeta = matches[0].meta;
   return [
     ...rootMatchMeta.filter(
       (m) => !('title' in m) && 'name' in m && m.name !== 'description',
@@ -19,7 +18,7 @@ export const meta: MetaFunction<typeof loader> = ({ matches }) => {
     { title: "Matt Brophy's Resume" },
     { name: 'description', content: "Matt Brophy's Resume" },
   ];
-};
+}
 
 export async function loader() {
   const enhancedData: ResumeData = {
@@ -177,8 +176,8 @@ function ResumeEducation({ data }: ResumeHelperProps) {
   );
 }
 
-export default function Resume() {
-  const { resumeData: data } = useLoaderData<typeof loader>();
+export default function Resume({ loaderData }: Route.ComponentProps) {
+  const { resumeData: data } = loaderData;
   return (
     <div className="content-centered">
       <div className="resume">

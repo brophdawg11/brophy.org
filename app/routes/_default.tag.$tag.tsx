@@ -1,11 +1,10 @@
-import type { LoaderFunctionArgs } from '@remix-run/node';
-import { useLoaderData } from '@remix-run/react';
 import invariant from 'tiny-invariant';
 
+import type { Route } from './+types/_default.tag.$tag';
 import PostList from '~/components/PostList';
 import { getPosts } from '~/ts/post-api';
 
-export async function loader({ params }: LoaderFunctionArgs) {
+export async function loader({ params }: Route.LoaderArgs) {
   const { tag } = params;
   const posts = await getPosts();
   invariant(typeof tag === 'string', 'No tag provided');
@@ -15,14 +14,13 @@ export async function loader({ params }: LoaderFunctionArgs) {
   };
 }
 
-export default function Posts() {
-  const { tag, posts } = useLoaderData<typeof loader>();
+export default function Posts({ loaderData }: Route.ComponentProps) {
   return (
     <div>
       <h1 className="tag__title">
-        Posts tagged with <span className="tag__tag">{tag}</span>
+        Posts tagged with <span className="tag__tag">{loaderData.tag}</span>
       </h1>
-      <PostList posts={posts} />
+      <PostList posts={loaderData.posts} />
     </div>
   );
 }

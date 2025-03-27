@@ -10,7 +10,6 @@ WORKDIR /brophy.org
 COPY --from=build /brophy.org/package.json /brophy.org/package-lock.json ./
 COPY --from=build /brophy.org/node_modules ./node_modules
 RUN npm prune --omit=dev
-COPY --from=build /brophy.org/server.js ./
 COPY --from=build /brophy.org/build ./build
 COPY --from=build /brophy.org/posts ./posts
 COPY --from=build /brophy.org/public ./public

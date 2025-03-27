@@ -1,5 +1,4 @@
-import { useLoaderData } from '@remix-run/react';
-
+import type { Route } from './+types/_default.posts';
 import PostList from '~/components/PostList';
 import { getPosts } from '~/ts/post-api';
 
@@ -8,7 +7,6 @@ export async function loader() {
   return { posts };
 }
 
-export default function Posts() {
-  const { posts } = useLoaderData<typeof loader>();
-  return <PostList posts={posts} />;
+export default function Posts({ loaderData }: Route.ComponentProps) {
+  return <PostList posts={loaderData.posts} />;
 }

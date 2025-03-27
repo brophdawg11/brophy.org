@@ -1,8 +1,7 @@
-import type { LoaderFunctionArgs, MetaFunction } from '@remix-run/node';
-import { Form, useFetcher, useLoaderData } from '@remix-run/react';
+import { Form, useFetcher } from 'react-router';
 import { useEffect, useRef, useState } from 'react';
 
-import { meta as rootMeta } from '~/root';
+import type { Route } from './+types/playground.autocomplete';
 
 interface ApiMovie {
   Title: string;
@@ -30,17 +29,17 @@ function useDebounce<T>(value: T, delay: number) {
   return debouncedValue;
 }
 
-export const meta: MetaFunction<typeof loader> = ({ data, matches }) => {
-  const rootMatchMeta = matches[0].meta as ReturnType<typeof rootMeta>;
+export function meta({ matches, data }: Route.MetaArgs) {
+  const rootMatchMeta = matches[0].meta;
   return [
     ...rootMatchMeta.filter(
       (m) => !('title' in m) && 'name' in m && m.name !== 'description',
     ),
     { title: `Results: ${data?.query}` },
   ];
-};
+}
 
-export async function loader({ request }: LoaderFunctionArgs) {
+export async function loader({ request }: Route.LoaderArgs) {
   const query = new URL(request.url).searchParams.get('query')?.toLowerCase();
   if (!query) {
     return {
@@ -78,8 +77,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
   };
 }
 
-export default function Autocomplete() {
-  const loaderData = useLoaderData<typeof loader>();
+export default function Autocomplete({ loaderData }: Route.ComponentProps) {
   const formEl = useRef(null);
   const [query, setQuery] = useState(loaderData.query || '');
   const debouncedQuery = useDebounce(query, 300);

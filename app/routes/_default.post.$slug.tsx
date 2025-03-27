@@ -1,29 +1,23 @@
-import type { LoaderFunctionArgs, MetaFunction } from '@remix-run/node';
-import {
-  isRouteErrorResponse,
-  Link,
-  useLoaderData,
-  useRouteError,
-} from '@remix-run/react';
+import type { Route } from './+types/_default.post.$slug';
+import { isRouteErrorResponse, Link, useRouteError } from 'react-router';
 import { useEffect } from 'react';
 import invariant from 'tiny-invariant';
 
 import ExternalLink from '~/components/ExternalLink';
 import PostMeta from '~/components/PostMeta';
 import PostNav from '~/components/PostNav';
-import { meta as rootMeta } from '~/root';
 import { getPost, getPosts } from '~/ts/post-api';
 
 import '~/styles/prism.css';
 
-export const meta: MetaFunction<typeof loader> = ({ data, matches }) => {
+export function meta({ data, matches }: Route.MetaArgs) {
   if (!data?.post) {
     return [{ title: 'Error' }];
   }
 
-  const rootMatchMeta = matches[0].meta as ReturnType<typeof rootMeta>;
+  const rootMatchMeta = matches[0].meta;
   return [
-    ...rootMatchMeta.filter(
+    rootMatchMeta.filter(
       (m) => !('title' in m) && 'name' in m && m.name !== 'description',
     ),
     { title: data.post.title },
@@ -38,9 +32,9 @@ export const meta: MetaFunction<typeof loader> = ({ data, matches }) => {
       content: `https://www.brophy.org/post/${data.post.slug}`,
     },
   ];
-};
+}
 
-export async function loader({ params }: LoaderFunctionArgs) {
+export async function loader({ params }: Route.LoaderArgs) {
   const { slug } = params;
   invariant(typeof slug === 'string', 'Invalid slug');
   if (slug === 'error') {
@@ -59,8 +53,8 @@ export async function loader({ params }: LoaderFunctionArgs) {
   return { post, previousPost, nextPost };
 }
 
-export default function PostView() {
-  const { post, previousPost, nextPost } = useLoaderData<typeof loader>();
+export default function PostView({ loaderData }: Route.ComponentProps) {
+  const { post, previousPost, nextPost } = loaderData;
 
   const url = `https://www.brophy.org${post.permalink}`;
   const twitterUrl = `https://twitter.com/share?text=${post.title}&amp;url=${url}`;
