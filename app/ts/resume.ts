@@ -92,7 +92,11 @@ const resumeData: ResumeData = {
       details: [
         'Primarily working on the data/routing functionality at the intersection of Remix and React Router',
         'Implemented new React Router v7 features including:',
-        ['[Pre-rendering](https://reactrouter.com/how-to/pre-rendering)'],
+        [
+          '[Pre-rendering](https://reactrouter.com/how-to/pre-rendering)',
+          '[Middleware (unstable)](https://github.com/remix-run/react-router/blob/main/CHANGELOG.md#middleware-unstable)',
+          '[Preview RSC Support](https://remix.run/blog/rsc-preview)',
+        ],
         'Implemented new Remix Features including:',
         [
           '[Client Data](https://remix.run/docs/en/main/guides/client-data)',
@@ -106,7 +110,7 @@ const resumeData: ResumeData = {
           '[patchRoutesOnNavigation](https://reactrouter.com/v6/routers/create-browser-router#optspatchroutesonnavigation)',
           '[route.lazy](https://reactrouter.com/v6/route/lazy)',
           '[useBlocker](https://reactrouter.com/v6/hooks/use-blocker)',
-          '[ViewTransition API](https://reactrouter.com/v6/components/link#viewtransition) support',
+          '[ViewTransition API support](https://reactrouter.com/v6/components/link#viewtransition)',
         ],
         'Replaced all Remix data API logic with the updated React Router 6.4 package ([blog post](https://remix.run/blog/react-routering-remix))',
         'Managed the `git` migration from the Remix repository to the React Router ' +
